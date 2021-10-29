@@ -9,9 +9,7 @@ const Footer = () => {
         <footer>
             <div className="contentContainer">
                     <div className="contact-year">© 2021 | Contact</div>
-                    <div className="contacts-links">
-                    <div><i class="fab fa-github"/></div>
-                    </div>
+                    <i class="fab fa-github"/>
                 </div>
         </footer>
     )

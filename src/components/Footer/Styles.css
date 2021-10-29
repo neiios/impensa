@@ -17,27 +17,12 @@ footer {
     height:40px;
     display:flex;
     align-items: center;
+    color:white;
 }
 
 
-.contacts-links i {
-    color: white;
-}
-.contacts-links {
-    display:flex;
-    gap:10px;
-}
-
-
-@media (max-width:1000px) { 
-    .contentContainer {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    height:850px;
-    };
-}
-
-.contact-year {
-    align-self: flex-end;
+.contentContainer i {
+    color:white;
+    position:relative;
+    margin-left: auto;
 }
