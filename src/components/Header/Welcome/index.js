@@ -13,7 +13,7 @@ const Welcome = () => {
           <div className="front-section">
             <div className="link1"> <Link className="getstarted" style={{ textDecoration: 'none' }} to="/SignUp"><Button className="button21" name="Explore" width="150px" height="50px"/></Link></div>
             <div className="link2"> <Link className="explore" style={{ textDecoration: 'none' }} to="/"><Button className="button12" name="Contact us" width="150px" height="50px"/></Link></div>
-            <img className="front-img" src="../../images/aaa-logo.svg/laptop.svg" alt="image with the laptop and user interface of Impensa" />
+            <img className="front-img" src="../../images/laptop.svg" alt="image with the laptop and user interface of Impensa" />
         </div>
       </container>
     )
