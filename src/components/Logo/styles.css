@@ -1,0 +1,22 @@
+.logo {
+    font-weight:600;
+    color:black;
+    font-size: 1.1rem;
+}
+.main-logo {
+    width:20px;
+    height:20px;
+}
+.logo-container {
+    display:flex;
+    align-items: center;
+    gap:2px;
+}
+.logo-addition {
+    font-weight: 100;
+}
+@media (max-width:800px) { 
+.logo-addition {
+    display:none;
+}
+}

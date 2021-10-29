@@ -1,0 +1,22 @@
+[
+    {
+        "image":"images/money-check-alt-solid.svg",
+        "heading":"Plan your budget",
+        "description": "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. "
+
+    },
+    
+    {
+        "image":"images/donate-solid.svg",
+        "heading":"Plan your budget",
+        "description": "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. "
+
+    },
+    {
+        "image":"require(images/file-invoice-dollar-solid.svg)",
+        "heading":"Plan your budget",
+        "description": "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. "
+
+    }
+
+] 
