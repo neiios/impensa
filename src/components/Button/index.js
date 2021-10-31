@@ -1,13 +1,12 @@
 import React from "react"
-import "./styles.css"
+import {StyledButton} from "./styles.js"
+import { Link } from "react-router-dom"
 const Button = (props) => {
-    const myStyle = {
-    color: props.color,
-    backgroundColor: props.backgroundColor,
-    width: props.width,
-    height: props.height
-    } 
-    return (
- <button style={myStyle} className="btn">{props.name}</button>
-    )}
+    return(
+    <Link to={props.to}>
+        <StyledButton primary={props.primary}>{props.name}</StyledButton>
+    </Link>
+    )
+}
+
 export default Button

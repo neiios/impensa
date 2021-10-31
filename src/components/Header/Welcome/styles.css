@@ -5,6 +5,7 @@
     align-items: center;
     text-align: center;
     margin-top:80px;
+    gap:20px;
 }
 
 .front-section {
@@ -23,7 +24,7 @@
     }
     .main-h1 {
     margin-top:70px;
-    font-size: var(--h1-font-size);
+    font-size: 3em;
     }
     
     .supporting-h2 {
@@ -46,3 +47,5 @@
         }
 
     }
+
+    

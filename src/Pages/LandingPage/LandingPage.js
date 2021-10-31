@@ -1,45 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import Button from "../../components/Button/index"
 import "./LandingPageStyles.css"
-import data from '../../data/data.json'
 import AppFunctionData from '../../data/AppFunctionData.json'
 import Footer from '../../components/Footer/Index'
 import Header from "../../components/Header/index"
-import AppFunction from "../../components/MainSection/Features/Index"
-import ContentBlock from "../../components/MainSection/Functions/index"
-const listItems = data.map (item => 
-    <div>
-                <ContentBlock heading={item.heading} 
-                firstBullet={item.firstBullet} 
-                secondBullet={item.secondBullet} 
-                image={item.image}
-                backgroundColor={item.backgroundColor}
-                color={item.color}
-                textOrder={item.textOrder}
-                imgOrder={item.imgOrder}/>
-    </div>
-    )
+import Feature from "../../components/MainSection/Feature/Index"
+import HeroSection from "../../components/MainSection/HeroSection/index"
+import {homeObjOne, homeObjTwo} from '../../data/Data-HeroSection.js'
+import {featureObjOne,featureObjTwo, featureObjThree, featureObjFour } from '../../data/Data-Features.js'
 
-    const AppFunctions = AppFunctionData.map (item => 
-        <div>
-                    <AppFunction image={item.image} 
-                    heading={item.heading} 
-                    description={item.description}/>
-        </div>
-        )
-const LandingPage = (isSticky, element) => {
+const LandingPage = () => {
     return (//FCFBFD
         <div className="block_1">
+
+
             <Header/>
-            {listItems}
+            <HeroSection {...homeObjOne}/>
+            <HeroSection {...homeObjTwo}/>
             <div className="features">
-                <div className="row-1">
+
+            <div className="row-1">
+                  <div>
                     <h2 className="section-heading">Express Functionality</h2>
                     <p className="section-subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati<br/> dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.</p>
                     </div>
+                    </div>
                 <div className="row-2">
-                    {AppFunctions}
+                    <Feature {...featureObjOne}/>
+                    <Feature {...featureObjTwo}/>
+                    <Feature {...featureObjThree}/>
+                    <Feature {...featureObjFour}/>
                 </div>
             </div>
          

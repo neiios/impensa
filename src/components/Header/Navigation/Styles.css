@@ -1,21 +1,18 @@
 .navbar {
+    z-index:20;
     display:flex;
     max-width:100%;
     position:fixed;
     justify-content: center;
-    top:0;
-    left:0;
-    right:0;
-    width:100%;
+    width:100vw;
+    top:0px;
     background-color: white;
 }
 .inNavbar {
     padding-left:20px;
     padding-right:20px;
     height:60px;
-    width:1000px;
-    left:0;
-    right:0;
+    width:1200px;
     display:grid;
     grid-template-columns: 1fr 1fr;
      align-items: center;}

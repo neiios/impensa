@@ -1,5 +1,5 @@
 import React from 'react'
-import AppFunction from './Features/Index'
+import AppFunction from './Feature/Index'
 import contentBlock from './Functions/index'
 import "./styles.css"
 

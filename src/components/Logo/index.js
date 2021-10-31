@@ -5,7 +5,7 @@ import "./styles.css";
 const Logo = () => {
     return ( <Link style={{ textDecoration: 'none' }} className="logo" to="/LandingPage">
         <container className="logo-container">
-        <img className="main-logo" src="../../images/Impensa.svg" alt="" />
+    Impensa
         </container>
          </Link>
     ) 

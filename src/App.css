@@ -1,15 +1,17 @@
+
 :root {
   --first-color: #353538;
   --first-color-second: white;
   --first-color-alt: #929091;
   --first-color-third: #0e7572;
 
-  --body-font: 'Poppins', sans-serif;
+  --body-font: 
+  "Basier Circle", sans-serif;;
 
-  --big-font-size: 3rem;
+  --big-font-size: 76px;
   --h1-font-size: 1.75rem;
   --h2-font-size: 1.5rem;
-  --h3-font-size: 1rem;
+  --h3-font-size: 1.85rem;
   --normal-font-size: 1rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
@@ -17,6 +19,7 @@
 
 body {
  font-family: var(--body-font);
+ overflow-x: hidden;
 }
 h2 {
   font-size: var(--h2-font-size);
@@ -27,9 +30,13 @@ h1 {  font-size: var(--h1-font-size);
 }
 
 h3{
-  font-size: var(--h3-font-size);
+  font-size: var(--h3-font-size)
+  ;
 }
 
 p {
-  font-size: var(--normal-font-size);
+  font-size: 15px;
+  font-weight: 330;
+  letter-spacing:0.2px;
+  line-height: 24px;
 }

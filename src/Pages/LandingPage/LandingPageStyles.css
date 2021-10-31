@@ -1,77 +1,44 @@
 
-.block_1 {
-    left:0;
-    right:0;
-    position:absolute;
-    width:100%;
-    max-width: 100%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-
 .row-2 {
+    margin-bottom:125px;
     margin-top:50px;
     display:flex;
-    gap:70px;
+    align-items: center;
+    padding-bottom:20px;
+    max-width:1200px;
+    margin:auto;
+    gap:42px;
     justify-content: center;
+    flex-wrap: wrap;
 }
+
 .row-1 {
-    align-self: flex-start;
+    padding:10px;
+    max-width:1200px;
+    display:flex;
+    align-content: flex-start;
+    margin:auto;
 }
 .front-img {
     width:700px;
-    height:500px;
     grid-area: img;
 }
-.features { 
-display:flex;
-flex-direction: column;
-width: 1000px;
-}
 
-@media (max-width:1000px) {
+@media (max-width:1200px) {
     .front-img {
-        width:500px;
-        height:350px;
+max-width: 100%; 
     }
-    .row-2 {
 
-        gap:35px;
-    }
-    .explore-thingy {
-        grid-template-areas: "img img"
-                              "button1 button2";
-        justify-content: center;
-        margin-bottom:200px;    
-    } 
-    .link1 , .link2 {
-        display:grid;
-        justify-content: center;
-    }
     .features {
         justify-content: center;
         align-items: center;
         display:flex;
         flex-direction: column;
-    }
-}
-
-@media (max-width:800px) {
-
-    .row-2 {
-        flex-direction: column;
         gap:0;
     }
 }
 
-.contact-form{
-    /*background-image: url("../budgeting-app-impensa/public/images/world-map.jpg");*/
-    width:700px;
-}
+
 
 
 .row-1 .section-subheading {
@@ -84,7 +51,7 @@ width: 1000px;
     font-size: var(  --h1-font-size);
     font-weight: 700;
     padding:0 0 15px 0;
-    background-image: linear-gradient(var(--first-color-third), var(--first-color-third));
+    background-image: linear-gradient(  #0A2540, var(--first-color-third));
 background-repeat: no-repeat;
 
 /* First sizing pair (4px 50%) will define the size of the border i.e border

@@ -24,10 +24,10 @@ const Navbar = () => {
                     </div>
                             <ul id="navbar_ul">
                                 <li className="option two">
-                                    <Link style={{ textDecoration: 'none' }} activeClassName="active" to="/SignIn"><Button name="SIGN IN"/></Link>
+                                <Button primary name="SIGN IN"/>                                
                                 </li>
                                 <li className="option three">
-                                    <Link style={{ textDecoration: 'none' }} activeClassName="active" to="/SignUp"><Button name="SIGN UP"/></Link>
+                                <Button primary  name="SIGN UP"/>
                                 </li>
                             </ul>
                     </div>
