@@ -8,8 +8,8 @@ function contentBlock  ({lightBg, lightText, headline, descriptionOne, descripti
                 <embed style={{width:"600px",maxWidth:"100%",   verticalAlign: "middle"}} src={img} alt={alt} />
                 <TextSection lightText={lightText}>
                 <h3>{headline}</h3>
-                <p><i class="fas fa-hand-holding-usd"></i> {descriptionOne}</p>
-                <p><i class="fas fa-hand-holding-usd"></i> {descriptionTwo}</p>
+                <p style={{fontSize:"1em"}}><i class="fas fa-hand-holding-usd"></i> {descriptionOne}</p>
+                <p style={{fontSize:"1em"}}><i class="fas fa-hand-holding-usd"></i> {descriptionTwo}</p>
                 </TextSection>
             </Container>
         </HeroSectionWrapper>

@@ -19,12 +19,9 @@ const LandingPage = () => {
             <HeroSection {...homeObjOne}/>
             <HeroSection {...homeObjTwo}/>
             <div className="features">
-
             <div className="row-1">
-                  <div>
                     <h2 className="section-heading">Express Functionality</h2>
                     <p className="section-subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati<br/> dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.</p>
-                    </div>
                     </div>
                 <div className="row-2">
                     <Feature {...featureObjOne}/>

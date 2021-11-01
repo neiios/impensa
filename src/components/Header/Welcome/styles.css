@@ -12,7 +12,7 @@
     display:grid;
     grid-template-areas: "button1 img button2";
     align-items: center;
-    margin-bottom:100px;
+    margin-bottom:60px;
 }
 
 
@@ -21,6 +21,9 @@
     }
     .link2 {
         grid-area: button2;
+    }
+    .link1,.link2 {
+        margin-top:60px;
     }
     .main-h1 {
     margin-top:70px;

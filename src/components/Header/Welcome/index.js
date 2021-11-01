@@ -1,7 +1,5 @@
 import React from "react"
-import {Link} from "react-router-dom"
-import Button from "../../Button"
-import LinkStyled from "../../LinkStyled"
+import {BiggerButton} from "../../Button"
 import "./styles.css"
 const Welcome = () => {
     return (
@@ -11,8 +9,8 @@ const Welcome = () => {
           <h4 className="supporting-h2">Open your free account in minutes and begin to <br/> manage your outlay wisely</h4>
           </div>
           <div className="front-section">
-            <div className="link1"><Button name="Explore"/></div>
-            <div className="link2"><Button name="Contact us"/></div>
+            <div className="link1"><BiggerButton href="/obama.com" >Explore</BiggerButton></div>
+            <div className="link2"><BiggerButton primary href="/obama.com" >Contact us</BiggerButton></div>
             <embed className="front-img" src="../../images/laptop.svg" alt="image with the laptop and user interface of Impensa" />
         </div>
       </container>

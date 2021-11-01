@@ -5,7 +5,7 @@ background: ${props => (props.lightBg ? '#F6F9FC' : '#0A2540')};
 display:flex;
 align-items: center;
 justify-content: center;
-padding: 0 0 50px 0;
+padding: 0 20px 50px 20px;
 `
 
 export const Container = styled.div ` 

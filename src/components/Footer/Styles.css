@@ -1,14 +1,14 @@
 footer {
     margin-top:30px;
     /*width:100vw;*/
-    background: #0A2540;
+    background: #F6F9FC;
     display:flex;
     justify-content: center;
     bottom: 0;
     width:100vw;
 }
 .contentContainer {
-    width:1000px;
+    width:1200px;
     bottom:0;
     padding:10px;
     left:0;
@@ -16,12 +16,12 @@ footer {
     height:30px;
     display:flex;
     align-items: center;
-    color:white;
+    color:#8291A0;
 }
 
 
-.contentContainer i {
-    color:white;
+.contentContainer a {
+    color:black;
     position:relative;
     margin-left: auto;
 }

@@ -1,23 +1,26 @@
 
 .row-2 {
-    margin-bottom:125px;
-    margin-top:50px;
     display:flex;
     align-items: center;
     padding-bottom:20px;
-    max-width:1200px;
     margin:auto;
     gap:42px;
-    justify-content: center;
     flex-wrap: wrap;
+    margin-top:100px;
+    justify-content: center;
 }
-
+.features{
+    padding-bottom:100px;
+    padding-top:100px;
+    max-height: 100%;
+    display:flex;
+    flex-direction: column;
+    max-width: 1200px;
+    justify-content: center;
+    margin: auto;
+}
 .row-1 {
     padding:10px;
-    max-width:1200px;
-    display:flex;
-    align-content: flex-start;
-    margin:auto;
 }
 .front-img {
     width:700px;
