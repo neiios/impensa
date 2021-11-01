@@ -1,13 +1,16 @@
-footer {
+import styled from "styled-components";
+import theme from "../../theme/Index"
+export const FooterWrapper = styled.footer `
     margin-top:30px;
     /*width:100vw;*/
-    background: #F6F9FC;
+    background: ${theme.bg.alt};
     display:flex;
     justify-content: center;
     bottom: 0;
     width:100vw;
-}
-.contentContainer {
+`
+
+export const Container = styled.div `
     width:1200px;
     bottom:0;
     padding:10px;
@@ -16,12 +19,5 @@ footer {
     height:30px;
     display:flex;
     align-items: center;
-    color:#8291A0;
-}
-
-
-.contentContainer a {
-    color:black;
-    position:relative;
-    margin-left: auto;
-}
+    color:${theme.text.grey}
+`

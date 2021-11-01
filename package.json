@@ -43,7 +43,7 @@
     ]
   },
   "devDependencies": {
-    "framer-motion": "^5.0.0",
+    "framer-motion": "^5.0.1",
     "gh-pages": "^3.2.3"
   }
 }

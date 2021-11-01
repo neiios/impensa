@@ -1,15 +1,11 @@
 import React, {useState} from 'react'
-import {Link} from "react-router-dom";
-import Button from "../../components/Button/index"
 import "./LandingPageStyles.css"
-import AppFunctionData from '../../data/AppFunctionData.json'
 import Footer from '../../components/Footer/Index'
 import Header from "../../components/Header/index"
 import Feature from "../../components/MainSection/Feature/Index"
 import HeroSection from "../../components/MainSection/HeroSection/index"
 import {homeObjOne, homeObjTwo} from '../../data/Data-HeroSection.js'
 import {featureObjOne,featureObjTwo, featureObjThree, featureObjFour } from '../../data/Data-Features.js'
-
 const LandingPage = () => {
     return (//FCFBFD
         <div className="block_1">

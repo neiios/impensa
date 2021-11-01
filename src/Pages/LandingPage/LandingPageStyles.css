@@ -23,14 +23,10 @@
     padding:10px;
 }
 .front-img {
-    width:700px;
     grid-area: img;
 }
 
 @media (max-width:1200px) {
-    .front-img {
-max-width: 100%; 
-    }
 
     .features {
         justify-content: center;

@@ -2,7 +2,8 @@ import React from "react"
 import {StyledButton,
         StyledButtonBig,
         A,
-        StyledLink } 
+        StyledLink,
+        LinkContainer  } 
         from "./styles.js"
 const WrappedButton = (Component,props) => {
     const { href, to, target, children, disabled, isLoading, ...rest } = props;
@@ -26,5 +27,6 @@ const WrappedButton = (Component,props) => {
       return button;
     };
 
-export const Button = (props: Props) => WrappedButton(StyledButton, props);
-export const BiggerButton = (props: Props) => WrappedButton(StyledButtonBig, props);
+export const Button = (props) => WrappedButton(StyledButton, props);
+export const BiggerButton = (props) => WrappedButton(StyledButtonBig, props);
+export const ModifiedLink = (props) => WrappedButton(LinkContainer, props);

@@ -7,19 +7,17 @@ font-size: 15px;
 width: 97px;
 height: 32px;
 font-weight: 550;
-color: #0A2540;;
-border: thin solid #0A2540;
+border: thin solid ${theme.text.secondary};
 border-radius: 5px;
 cursor: pointer;
 transition: background-color .5s;
 background-color: white;
-color: #0A2540;
+color: ${theme.text.secondary};
 :hover{
-background: #0A2540;
+background: ${theme.text.secondary};
 color:white;
 }
 :active {
-    opacity:1;
 }
 `
 
@@ -29,14 +27,15 @@ width: 155px;
 
 height: 70px;
 border: none;
-background-color: ${props => (props.primary ? '#F6F9FC' : ' #0A2540')};
-color: ${props => (props.primary ? ' #0A2540' : 'white')};
+background-color: ${props => (props.primary ? theme.text.secondAlt : theme.text.secondary)};
+color: ${props => (props.primary ? theme.text.secondary: 'white')};
 transition: background-color .5s;
 :hover{
-background-color: ${props => (props.primary ? ' #0A2540' : '#F6F9FC')};
-color: ${props => (props.primary ? ' #F6F9FC' : '#0A2540')};
+background-color: ${props => (props.primary ? theme.text.secondary: theme.text.secondAlt)};
+color: ${props => (props.primary ? theme.text.secondAlt : theme.text.secondary)};
 }
 `
+
 
 export const A = styled.a`
   align-items: center;
@@ -44,4 +43,9 @@ export const A = styled.a`
 
 export const StyledLink = styled(Link)`
   align-items: center;
+  text-decoration: none;
 `;
+
+export const LinkContainer = styled.div `
+color: ${theme.text.secondary};
+`

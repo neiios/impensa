@@ -35,3 +35,9 @@
     gap:2px;
     align-items: center;
 }
+@media (max-width:1000px) { 
+    .inNavbar { 
+        padding-left:5px;
+        padding-right:5px;
+    }
+}
