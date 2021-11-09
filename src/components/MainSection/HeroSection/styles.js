@@ -29,3 +29,8 @@ export const TextSection = styled.div `
 color: ${props => (props.lightText ? 'white' : 'black')};
 max-width:540px;
 `
+export const Paragraph = styled.div ` 
+display:flex;
+gap:10px;
+align-items: center;
+`

@@ -1,19 +1,31 @@
 import React from "react"
 import {BiggerButton} from "../../Button"
-import "./styles.css"
+import {Container, 
+        RowOne, 
+        RowTwo,  
+        ExploreBtn, 
+        ContactBtn,
+        WelcomeHeading,
+        WelcomeSubheading} from "./styles.js"
 const Welcome = () => {
     return (
-        <container className="welcome-section">
-          <div className="welcome-text">
-          <h1 className="main-h1">One app <br/> to track your expenses</h1>
-          <h4 className="supporting-h2">Open your free account in minutes and begin to <br/> manage your outlay wisely</h4>
-          </div>
-          <div className="front-section">
-            <div className="link1"><BiggerButton href="/obama.com" >Explore</BiggerButton></div>
-            <div className="link2"><BiggerButton primary href="/obama.com" >Contact us</BiggerButton></div>
-            <embed className="front-img" src="../../images/laptop.svg" alt="image with the laptop and user interface of Impensa" />
-        </div>
-      </container>
+        <Container>
+          <RowOne>
+            <WelcomeHeading>One app <br/> to track your expenses</WelcomeHeading>
+            <WelcomeSubheading>Open your free account in minutes and begin to 
+              <br/> manage your outlay wisely
+            </WelcomeSubheading>
+          </RowOne>
+          <RowTwo>
+              <ExploreBtn>
+                <BiggerButton href="/obama.com" >Explore</BiggerButton>
+              </ExploreBtn>
+              <ContactBtn>
+                <BiggerButton primary href="/obama.com" >Contact us</BiggerButton>
+              </ContactBtn>
+              <embed style={{width:"750px", maxWidth:"100%", gridArea: "img"}} src="../../images/laptop.svg" alt="image with the laptop and user interface of Impensa" />
+          </RowTwo>
+      </Container>
     )
 }
 

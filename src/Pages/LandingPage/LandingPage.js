@@ -6,11 +6,11 @@ import Feature from "../../components/MainSection/Feature/Index"
 import HeroSection from "../../components/MainSection/HeroSection/index"
 import {homeObjOne, homeObjTwo} from '../../data/Data-HeroSection.js'
 import {featureObjOne,featureObjTwo, featureObjThree, featureObjFour } from '../../data/Data-Features.js'
+
 const LandingPage = () => {
+  
     return (//FCFBFD
         <div className="block_1">
-
-
             <Header/>
             <HeroSection {...homeObjOne}/>
             <HeroSection {...homeObjTwo}/>

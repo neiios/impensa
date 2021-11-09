@@ -4,7 +4,8 @@ export const theme = {
     bg: {
         default: '#FFFFFF',  
         secondary: '#0a2540',
-        alt: '#F6F9FC'
+        alt: '#F6F9FC',
+        secondAlt: '#6C63FF',
     },
     text: {
         default: '#353538',

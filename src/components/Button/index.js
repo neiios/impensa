@@ -3,7 +3,8 @@ import {StyledButton,
         StyledButtonBig,
         A,
         StyledLink,
-        LinkContainer  } 
+        LinkContainer,
+        WideBtn  } 
         from "./styles.js"
 const WrappedButton = (Component,props) => {
     const { href, to, target, children, disabled, isLoading, ...rest } = props;
@@ -30,3 +31,4 @@ const WrappedButton = (Component,props) => {
 export const Button = (props) => WrappedButton(StyledButton, props);
 export const BiggerButton = (props) => WrappedButton(StyledButtonBig, props);
 export const ModifiedLink = (props) => WrappedButton(LinkContainer, props);
+export const WideButton = (props) => WrappedButton(WideBtn, props);

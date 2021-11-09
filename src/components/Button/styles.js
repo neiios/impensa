@@ -36,6 +36,14 @@ color: ${props => (props.primary ? theme.text.secondAlt : theme.text.secondary)}
 }
 `
 
+export const WideBtn = styled(StyledButtonBig) `
+width: 100%;
+font-size: 20px !important;
+height: 45px;
+background: #6C63FF;
+:hover{
+}
+`
 
 export const A = styled.a`
   align-items: center;
@@ -44,8 +52,12 @@ export const A = styled.a`
 export const StyledLink = styled(Link)`
   align-items: center;
   text-decoration: none;
+  color:#908BFF;
 `;
 
 export const LinkContainer = styled.div `
 color: ${theme.text.secondary};
-`
+:hover{
+color:${theme.text.secondary} !important;
+}
+  `

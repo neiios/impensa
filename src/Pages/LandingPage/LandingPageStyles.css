@@ -22,10 +22,6 @@
 .row-1 {
     padding:10px;
 }
-.front-img {
-    grid-area: img;
-}
-
 @media (max-width:1200px) {
 
     .features {
