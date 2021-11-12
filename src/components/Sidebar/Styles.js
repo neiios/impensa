@@ -22,12 +22,17 @@ export const StyledLi = styled.a `
 `
 
 
-export const Icon = styled.i `
+export const Icon = styled.img `
 margin-left:25px;
-font-size: 1.5em;
-font-weight:0;
-font-size:20px;
-color: grey;
+width:20px;
+`
+
+export const MenuEl = styled.div `
+display:flex;
+gap:20px;
+:hover {
+
+}
 `
 
 export const IconRow = styled.div `
