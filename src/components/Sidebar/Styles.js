@@ -5,11 +5,9 @@ import Logo from "../Logo/index.js"
 export const SidebarWrapper = styled.nav `
     display:flex;
     flex-direction: column;
-    gap:31px;
-    padding-left:30px;
+    gap:10px;
     padding-top:20px;
     max-width:100%;
-    position:fixed;
     width:230px;
     height:100vh;
     left:0;
@@ -23,15 +21,21 @@ export const StyledLi = styled.a `
 
 
 export const Icon = styled.img `
-margin-left:25px;
-width:20px;
+width:15px;
 `
 
 export const MenuEl = styled.div `
 display:flex;
 gap:20px;
+height:45px;
+width:160px;
+margin-left:30px;
+align-items:center;
+justify-content:center;
+border-radius:15px;
+transition: background-color .3s;
 :hover {
-
+background-color: rgba(126,87,194, .2);
 }
 `
 
@@ -42,3 +46,4 @@ gap:31px;
 margin-top: auto;
 margin-bottom:50px;
 `
+

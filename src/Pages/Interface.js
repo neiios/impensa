@@ -4,37 +4,33 @@ import styled from 'styled-components'
 import UserID from '../components/UserID'
 import Main from "../components/Main.js"
 export const Template = styled.div `
-width:100vw;
-height:100vh;
-display:grid;
-grid-template-areas: 
-            "Sidebar TopNav TopNav"
-            "Sidebar MainContent MainContent"
-            "Sidebar MainContent MainContent";
-grid-template-rows: 50px 100%;
-grid-template-columns: 1fr 1fr;
-`
-export const SideWrapper = styled.div`
-grid-area: Sidebar;
+display:flex;
 `
 export const NavWrapper = styled.div`
-grid-area: TopNav;
+left:0;
+position:fixed;
+width:260px;
+z-index:100;
+background-color: white;
 `
 export const MainWrapper = styled.div`
-grid-area:MainContent;
-background-color:red;
+height:100vh;
+left:270px;
+right:0;
+position:absolute;
+display:flex;
+flex-direction:column;
 `
 const Interface = () => {
     return (//FCFBFD
         <Template>
         <NavWrapper>
-        <UserID/>
+            <Sidebar/>
         </NavWrapper>
-        <SideWrapper>
-        <Sidebar/>
-        </SideWrapper>
+
         <MainWrapper>
-        <Main/>
+            <UserID/>
+            <Main/>
         </MainWrapper>
         </Template>
     )

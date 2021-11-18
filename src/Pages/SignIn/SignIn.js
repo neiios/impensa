@@ -1,11 +1,17 @@
 import React from 'react'
-import {Wrapper, Form, Input, Heading, InputLabel, StringContainer, InputWrapper} from "./Styles.js"
+import {Wrapper, Form, Input, Heading, InputLabel, StringContainer, InputWrapper, Span, Hr,TextContainer} from "./Styles.js"
 import {  WideButton, ModifiedLink } from '../../components/Button/index.js'
 const SignIn = () => {
     return (
         <Wrapper>
             <Form>
             <Heading>Sign in to your account</Heading>
+            <WideButton style={{margin:"auto"}}>Google</WideButton>
+            <TextContainer>
+              <Hr/>
+            <Span>OR</Span>
+            <Hr/>
+            </TextContainer>
             <InputWrapper>
                 <StringContainer>
                 <InputLabel>Email</InputLabel>

@@ -40,7 +40,7 @@ export const WideBtn = styled(StyledButtonBig) `
 width: 100%;
 font-size: 20px !important;
 height: 45px;
-background: #6C63FF;
+background: #2D5F5D;
 :hover{
 }
 `

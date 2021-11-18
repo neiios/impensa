@@ -8,7 +8,6 @@ align-items:center;
 padding-right:50px;
 justify-content:right;
 gap:20px;
-
 `
 
 export const UserName = styled.h4 `
