@@ -4,6 +4,7 @@
 <img/>
   <div align="center">
   
-### Simple, powerful budgeting app.
+### Simple, powerful budgeting app. 
+## Hello friends
 </div>
 
