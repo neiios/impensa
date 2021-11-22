@@ -1,11 +1,8 @@
-import React, {useState} from "react"
+import React from "react"
 import Logo from "../../Logo/index"
 import {Button} from "../../Button";
 import {NavbarWrapper, NavMenu, NavbarContainer, NavItem} from "./styles.js"
-import {Modal} from "../../Modal/Modal.js"
-import SignIn from "../../../Pages/SignIn/SignIn.js";
-import SignUp from "../../SignUp/SignUp";
-import { GlobalStyle } from "../../Modal/Styles";
+
 const Navbar = () => {
     return (
         <NavbarWrapper>

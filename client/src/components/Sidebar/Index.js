@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import { ModifiedLink } from '../Button/index.js'
 import {SidebarWrapper,Icon,IconRow, MenuEl} from "./Styles.js"
 const Navbar = () => {

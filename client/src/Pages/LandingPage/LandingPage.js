@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import "./LandingPageStyles.css"
 import Footer from '../../components/Footer/Index'
 import Header from "../../components/Header/index"

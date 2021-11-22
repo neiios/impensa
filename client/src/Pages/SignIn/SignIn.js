@@ -1,7 +1,7 @@
 import React from 'react'
 import {Wrapper, Form, Input, Heading, InputLabel, StringContainer, InputWrapper, Span, Hr,TextContainer} from "./Styles.js"
 import {  WideButton, ModifiedLink } from '../../components/Button/index.js'
-import theme from '../../theme/Index.js'
+
 const SignIn = () => {
     return (
         <Wrapper>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '../../theme/Index'
+
 // SMALL CONTAINER
 export const ContainerOne = styled.div ` 
 padding:20px;

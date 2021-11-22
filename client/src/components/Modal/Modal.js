@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useCallback, useState} from 'react';
+import React, { useRef, useEffect, useCallback} from 'react';
 import { useSpring, animated } from 'react-spring';
-import {ModalImg, ModalContent, Background, ModalWrapper, CloseModalButton, Container, Button, GlobalStyle} from "./Styles.js"
+import {ModalImg, ModalContent, Background, ModalWrapper, CloseModalButton} from "./Styles.js"
 
 export const Modal = ({ showModal, setShowModal, children }) => {
   const modalRef = useRef();

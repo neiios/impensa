@@ -1,4 +1,3 @@
-import { MdMicNone } from "react-icons/md";
 import styled from "styled-components";
 import {H3} from "../../globalStyles"
 import theme from "../../theme/Index";
