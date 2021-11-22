@@ -40,8 +40,9 @@ export const WideBtn = styled(StyledButtonBig) `
 width: 100%;
 font-size: 20px !important;
 height: 45px;
-background: #2D5F5D;
+background: ${theme.bg.secondary};
 :hover{
+  color: ${theme.text.grey};
 }
 `
 
@@ -57,6 +58,9 @@ export const StyledLink = styled(Link)`
 
 export const LinkContainer = styled.div `
 color: ${theme.text.secondary};
+display:flex;
+gap:5px;
+align-items:center;
 :hover{
 color:${theme.text.secondary} !important;
 }

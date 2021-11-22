@@ -1,12 +1,12 @@
 import React from 'react'
 import {Wrapper, Form, Input, Heading, InputLabel, StringContainer, InputWrapper, Span, Hr,TextContainer} from "./Styles.js"
 import {  WideButton, ModifiedLink } from '../../components/Button/index.js'
+import theme from '../../theme/Index.js'
 const SignIn = () => {
     return (
         <Wrapper>
             <Form>
             <Heading>Sign in to your account</Heading>
-            <WideButton style={{margin:"auto"}}>Google</WideButton>
             <TextContainer>
               <Hr/>
             <Span>OR</Span>
@@ -29,10 +29,10 @@ const SignIn = () => {
             name="password"
           />
           </InputWrapper>
-          <WideButton style={{margin:"auto"}}>Proceed</WideButton>
+          <WideButton style={{margin:"auto"}}>Continue</WideButton>
           <StringContainer primary
             >Don't have and account? 
-            <ModifiedLink style={{color:"#635BFF"}} to="obamium">Sign up</ModifiedLink>
+            <ModifiedLink style={{color:"#635BFF"}} to="/SignUp">Sign up</ModifiedLink>
           </StringContainer>
 
             </Form>

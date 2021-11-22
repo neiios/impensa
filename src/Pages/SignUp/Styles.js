@@ -48,6 +48,7 @@ export const Heading = styled(H3) `
 font-size:1.2em;
 color: ${theme.text.grey};
 margin:auto;
+margin-bottom:20px;
 `
 
 export const InputLabel = styled.label`

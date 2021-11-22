@@ -1,12 +1,10 @@
 import React, {useState} from "react"
-import Logo from "../Logo/index.js"
 import { ModifiedLink } from '../Button/index.js'
 import {SidebarWrapper,Icon,IconRow, MenuEl} from "./Styles.js"
 const Navbar = () => {
     return (
         <SidebarWrapper>    
-            <Logo/>
-            <MenuEl><Icon src="images/icons/home.png"/><ModifiedLink to="/home">Overview</ModifiedLink></MenuEl>
+            <MenuEl><Icon src="images/icons/home.png"/><ModifiedLink to="/Interface">Overview</ModifiedLink></MenuEl>
             <MenuEl><Icon src="images/icons/progress.png"/><ModifiedLink to="/home">Progress</ModifiedLink></MenuEl>
             <MenuEl><Icon src="images/icons/analysis.png"/><ModifiedLink to="/home">Analysis</ModifiedLink></MenuEl>
             <MenuEl> <Icon src="images/icons/archive.png"/><ModifiedLink to="/home">Archive</ModifiedLink></MenuEl>
