@@ -1,10 +1,4 @@
-
-
-  <!-- add img -->
 <img/>
   <div align="center">
-  
-### Simple, powerful budgeting app. 
-## Hello friends
+  ### Simple, powerful budgeting app. 
 </div>
-
