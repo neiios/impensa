@@ -1,0 +1,27 @@
+{
+  "name": "react-node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "v14.18.1"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richard96292/impensa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/richard96292/impensa/issues"
+  },
+  "homepage": "https://github.com/richard96292/impensa#readme",
+  "description": ""
+}
