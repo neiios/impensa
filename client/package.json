@@ -21,7 +21,6 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,8 +45,7 @@
     ]
   },
   "devDependencies": {
-    "framer-motion": "^5.0.1",
-    "gh-pages": "^3.2.3"
+    
   },
   "main": "index.js",
   "keywords": [],
