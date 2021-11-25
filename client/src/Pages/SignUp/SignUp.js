@@ -14,7 +14,7 @@ import { WideButton, ModifiedLink } from "../../components/Button/index.js";
 const SignUp = () => {
   return (
     <Wrapper>
-      <Form action="http://localhost:3000/users/register" method="POST">
+      <Form action="http://localhost:3001/users/register" method="POST">
         <Heading>Create your Impensa account</Heading>
         <InputWrapper>
           <StringContainer>

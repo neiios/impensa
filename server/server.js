@@ -115,7 +115,7 @@ app.post("/users/register", async (req, res) => {
               }
               console.log(results.rows);
               req.flash("success_msg", "You are now registered. Please log in");
-              res.redirect("http://localhost:3001/Interface");
+              res.redirect("http://localhost:3000/Interface");
             }
           );
         }
