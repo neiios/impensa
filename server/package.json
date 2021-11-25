@@ -1,7 +1,6 @@
 {
   "name": "node_login",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -23,5 +22,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "description": ""
 }

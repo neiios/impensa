@@ -47,8 +47,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "prettier": "^2.5.0"
-  }
+  },
+  "description": ""
 }
