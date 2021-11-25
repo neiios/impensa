@@ -49,6 +49,11 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
   res.render("login.ejs");
 });
 
+// Get user nickname
+// app.get("/users/nickname", checkAuthenticated, (req, res) => {
+//   //TODO
+// });
+
 app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
   console.log(req.isAuthenticated());
   res.render("dashboard", { user: req.user.name });

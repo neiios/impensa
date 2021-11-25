@@ -58,6 +58,8 @@ export const NavbarContainer = styled.div`
   width: 100vw;
 `;
 
+const userName = "Cockstar";
+
 const UserID = () => {
   return (
     <NavbarWrapper>
@@ -65,7 +67,7 @@ const UserID = () => {
         <Logo />
         <NavMenu>
           <UserCreds>
-            <UserName>Khabib Nurmagomedov</UserName>
+            <UserName>{userName}</UserName>
             <ArrowIcon src="images/icons/down-arrow.png" />
             <UserImg src="images/max.png" />
           </UserCreds>
