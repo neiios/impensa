@@ -16,7 +16,7 @@ const Navbar = () => {
             <Button to="/SignUp">Sign up</Button>
           </NavItem>
           <NavItem>
-            <Button to="/Interface">Demo</Button>
+            <Button to="/Dashboard">Dashboard</Button>
           </NavItem>
         </NavMenu>
       </NavbarContainer>

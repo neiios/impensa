@@ -1,38 +1,76 @@
-import React from "react";
-import { ModifiedLink } from "../Button/index.js";
-import { SidebarWrapper, Icon, IconRow, MenuEl } from "./Styles.js";
-const Navbar = () => {
+import React, { useState } from "react";
+import {
+  SidebarWrapper,
+  Icon,
+  IconRow,
+  MenuEl,
+  SideSubWrapper,
+  menuLi,
+} from "./Styles.js";
+import styled from "styled-components";
+import Logo from "../../components/Logo";
+import theme from "../../theme/Index.js";
+import { MenuRef } from "../Button/index.js";
+
+const MenuIcon = styled.i`
+  z-index: 10;
+  cursor: pointer;
+  position: fixed;
+  top: 19px;
+  left: 80px;
+  background-color: ${theme.bg.lightestBlue};
+  padding: 9px;
+  border-radius: 10px;
+  margin-left: 100px;
+  color: ${theme.bg.secondary};
+  transition: background 0.2s;
+  :hover {
+    background: ${theme.bg.semiBlue};
+    color: white;
+  }
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+
+export const Navbar = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
   return (
-    <SidebarWrapper>
-      <MenuEl>
-        <Icon src="images/icons/home.png" />
-        <ModifiedLink to="/Interface">Overview</ModifiedLink>
-      </MenuEl>
-      <MenuEl>
-        <Icon src="images/icons/progress.png" />
-        <ModifiedLink to="/home">Progress</ModifiedLink>
-      </MenuEl>
-      <MenuEl>
-        <Icon src="images/icons/analysis.png" />
-        <ModifiedLink to="/home">Analysis</ModifiedLink>
-      </MenuEl>
-      <MenuEl>
-        {" "}
-        <Icon src="images/icons/archive.png" />
-        <ModifiedLink to="/home">Archive</ModifiedLink>
-      </MenuEl>
-      <IconRow>
-        <MenuEl>
-          <Icon src="images/icons/settings.png" />
-          <ModifiedLink to="/home">Settings</ModifiedLink>
-        </MenuEl>
-        <MenuEl>
-          {" "}
-          <Icon src="images/icons/exit.png" />
-          <ModifiedLink to="/home">Log out</ModifiedLink>
-        </MenuEl>
-      </IconRow>
-    </SidebarWrapper>
+    <>
+      <MenuIcon onClick={handleClick} className="fas fa-bars fa-sm" />
+      <SidebarWrapper onclick={handleClick} click={click}>
+        <SideSubWrapper>
+          <MenuEl>
+            <i class="fas fa-home"></i>
+            <MenuRef to="/Interface">Overview</MenuRef>
+          </MenuEl>
+          <MenuEl>
+            <i class="fas fa-chart-line"></i>
+            <MenuRef to="/home">Progress</MenuRef>
+          </MenuEl>
+          <MenuEl>
+            <i class="far fa-chart-bar"></i>
+            <MenuRef to="/home">Analysis</MenuRef>
+          </MenuEl>
+          <MenuEl>
+            {" "}
+            <i class="fas fa-archive"></i>
+            <MenuRef to="/home">Archive</MenuRef>
+          </MenuEl>
+          <IconRow>
+            <MenuEl>
+              <i class="fas fa-sliders-h"></i>
+              <MenuRef to="/home">Settings</MenuRef>
+            </MenuEl>
+            <MenuEl>
+              <i class="fas fa-sign-out-alt"></i>
+              <MenuRef to="/home">Log out</MenuRef>
+            </MenuEl>
+          </IconRow>
+        </SideSubWrapper>
+      </SidebarWrapper>
+    </>
   );
 };
 

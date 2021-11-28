@@ -16,6 +16,7 @@ export const StyledButton = styled.button`
   :hover {
     background: ${theme.text.secondary};
     color: white;
+    background-size: 100%;
   }
   :active {
   }
@@ -33,9 +34,9 @@ export const StyledButtonBig = styled(StyledButton)`
   transition: background-color 0.5s;
   :hover {
     background-color: ${(props) =>
-      props.primary ? theme.text.secondary : theme.text.secondAlt};
+      props.primary ? theme.text.secondary : theme.bg.lightestBlue};
     color: ${(props) =>
-      props.primary ? theme.text.secondAlt : theme.text.secondary};
+      props.primary ? theme.bg.default : theme.bg.secondary};
   }
 `;
 
@@ -49,14 +50,20 @@ export const WideBtn = styled(StyledButtonBig)`
   }
 `;
 
+export const SpentButton = styled(WideBtn)`
+  width: 200px;
+  font-size: 20px !important;
+  height: 45px;
+`;
+
 export const A = styled.a`
   align-items: center;
+  text-decoration: none !important;
 `;
 
 export const StyledLink = styled(Link)`
   align-items: center;
-  text-decoration: none;
-  color: #908bff;
+  text-decoration: none !important;
 `;
 
 export const LinkContainer = styled.div`
@@ -64,7 +71,14 @@ export const LinkContainer = styled.div`
   display: flex;
   gap: 5px;
   align-items: center;
+  transition: opacity 0.4s;
   :hover {
-    color: ${theme.text.secondary} !important;
+    opacity: 0.8 !important;
+  }
+`;
+
+export const MenuLinks = styled(LinkContainer)`
+  @media screen and (max-width: 800px) {
+    display: ${(props) => (props.primary ? "block" : "none")};
   }
 `;

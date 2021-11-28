@@ -1,49 +1,35 @@
 import React from "react";
 import {
   Wrapper,
-  Form,
   Input,
   Heading,
   InputLabel,
   StringContainer,
   InputWrapper,
-  Span,
-  Hr,
-  TextContainer,
-} from "./Styles.js";
+} from "../SignUp/Styles.js";
+import { SignInForm } from "./Styles.js";
 import { WideButton, ModifiedLink } from "../../components/Button/index.js";
 
+// add location to identify currency
 const SignIn = () => {
   return (
     <Wrapper>
-      <Form>
+      <SignInForm action="http://localhost:3001/users/register" method="POST">
         <Heading>Sign in to your account</Heading>
-        <TextContainer>
-          <Hr />
-          <Span>OR</Span>
-          <Hr />
-        </TextContainer>
         <InputWrapper>
-          <StringContainer>
-            <InputLabel>Email</InputLabel>
-          </StringContainer>
-          <Input type="email" name="email" />
-          <StringContainer>
-            <InputLabel>Password</InputLabel>
-            <ModifiedLink style={{ color: "#635BFF" }} to="obamium">
-              Forgot your password?
-            </ModifiedLink>
-          </StringContainer>
-          <Input type="password" name="password" />
+          <InputLabel for="email">Email or username</InputLabel>
+          <Input type="email" id="email" name="email" required />
+          <InputLabel for="password">Password</InputLabel>
+          <Input type="password" id="password" name="password" required />
         </InputWrapper>
         <WideButton style={{ margin: "auto" }}>Continue</WideButton>
         <StringContainer primary>
-          Don't have and account?
+          Don't have an account?
           <ModifiedLink style={{ color: "#635BFF" }} to="/SignUp">
             Sign up
           </ModifiedLink>
         </StringContainer>
-      </Form>
+      </SignInForm>
     </Wrapper>
   );
 };

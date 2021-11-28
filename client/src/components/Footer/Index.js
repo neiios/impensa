@@ -9,7 +9,7 @@ const Footer = () => {
           © 2021 | <ModifiedLink to="a">Contact</ModifiedLink>
         </div>
         <div style={{ marginLeft: "auto", position: "relative" }}>
-          <ModifiedLink href="https://github.com/tmneth/impensa-budgeting-app">
+          <ModifiedLink href="https://github.com/richard96292/impensa">
             <i class="fab fa-github" />
           </ModifiedLink>
         </div>
