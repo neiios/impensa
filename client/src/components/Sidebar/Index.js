@@ -13,7 +13,7 @@ import theme from "../../theme/Index.js";
 import { MenuRef } from "../Button/index.js";
 
 const MenuIcon = styled.i`
-  z-index: 10;
+  z-index: 1000;
   cursor: pointer;
   position: fixed;
   top: 19px;
