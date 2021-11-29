@@ -49,7 +49,7 @@ const Main = () => {
           <ExpenseCont>aaaa</ExpenseCont>
           <ExpenseCont>aaaa</ExpenseCont>
           <ExpenseCont>aaaa</ExpenseCont>
-          <SpentBtn href="rakhmonov.com">New expense</SpentBtn>
+          <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
         </MidContainer>
         <MidContainer></MidContainer>
       </Container>
