@@ -1,48 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { ModifiedLink } from "../Button/index.js";
+import { SidebarWrapper, Icon, IconRow, MenuEl } from "./Styles.js";
 import styled from "styled-components";
-import { Icon } from "../../components/Sidebar/Styles.js";
 import Logo from "../../components/Logo";
+import theme from "../../theme/Index.js";
 
-export const UserName = styled.h4``;
 export const UserCreds = styled.div`
-display:flex;
-gap:5px;
-justify-content:center;
-align-items:center;
-}
-`;
-
-export const ArrowIcon = styled(Icon)`
-  width: 15px;
-  height: 15px;
-  margin-left: 0px;
-  position: relative;
-  top: 0;
-  transition: top ease 0.1s;
+  color: ${theme.bg.secondary};
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: ${theme.bg.lightestBlue};
+  padding: 5px;
+  border-radius: 15px;
+  transition: background-color 0.2s;
   :hover {
-    top: -1px;
+    background-color: ${theme.bg.semiBlue};
+    color: white !important;
   }
 `;
 
 export const UserImg = styled.img`
   border-radius: 50%;
   image-resolution: 300dpi;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
+  :hover {
+  }
 `;
 export const NavbarWrapper = styled.nav`
+  z-index: 999;
   display: flex;
   position: fixed;
   left: 0;
   right: 0;
   top: 0px;
   background-color: #ffffff;
-  justify-content: center;
-  z-index: 999;
 `;
 
 export const NavMenu = styled.div`
-  padding: 0 10px 0 0;
+  padding: 0 5px 0 0;
   margin: 0;
   gap: 20px;
   list-style: none;
@@ -52,15 +51,19 @@ export const NavMenu = styled.div`
 export const NavbarContainer = styled.div`
   height: 70px;
   padding-right: 20px;
-  padding-left: 20px;
+  padding-left: 29px;
   display: flex;
   align-items: center;
   width: 100vw;
 `;
+export const UserName = styled.span`
+  font-weight: 700;
+  font-size: 0.7em;
+`;
 
 const userName = "Cockstar";
 
-const UserID = () => {
+export const Nav = () => {
   return (
     <NavbarWrapper>
       <NavbarContainer>
@@ -68,8 +71,8 @@ const UserID = () => {
         <NavMenu>
           <UserCreds>
             <UserName>{userName}</UserName>
-            <ArrowIcon src="images/icons/down-arrow.png" />
             <UserImg src="images/max.png" />
+            <i class="fas fa-angle-right fa-sm"></i>
           </UserCreds>
         </NavMenu>
       </NavbarContainer>
@@ -77,4 +80,4 @@ const UserID = () => {
   );
 };
 
-export default UserID;
+export default Nav;

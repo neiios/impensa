@@ -23,7 +23,7 @@ const Welcome = () => {
       </RowOne>
       <RowTwo>
         <ExploreBtn>
-          <BiggerButton href="/obama.com">Explore</BiggerButton>
+          <BiggerButton href="#heroSection">Explore</BiggerButton>
         </ExploreBtn>
         <ContactBtn>
           <BiggerButton primary href="/obama.com">

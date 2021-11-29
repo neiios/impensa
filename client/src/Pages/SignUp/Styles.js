@@ -6,12 +6,12 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10%;
+  margin-top: 30px;
 `;
 
 export const Form = styled.form`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  height: 400px;
+  height: 540px;
   width: 370px;
   max-width: 100%;
   border-radius: 20px;
@@ -47,7 +47,7 @@ export const Heading = styled(H3)`
   font-size: 1.2em;
   color: ${theme.text.grey};
   margin: auto;
-  margin-bottom: 20px;
+  margin-top: 0px;
 `;
 
 export const InputLabel = styled.label`
@@ -57,16 +57,13 @@ export const InputLabel = styled.label`
   font-weight: 600;
   letter-spacing: 0.03em;
 `;
-
+// container with "Have an account? Sign in"
 export const StringContainer = styled.div`
-  font-size: 0.8em !important;
+  margin-top: 20px;
   display: flex;
-  padding-top: ${(props) => (props.primary ? "20px" : "0")};
-  gap: ${(props) => (props.primary ? "5px" : "50%")};
-  margin: ${(props) => (props.primary ? "auto" : "none")};
-  @media screen and (max-width: 400px) {
-    gap: ${(props) => (props.primary ? "5px" : "27px")};
-  }
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
 `;
 
 export const InputWrapper = styled.div`
