@@ -34,3 +34,7 @@ export const Heading = styled.h4`
 export const Icon = styled.i `
 color: ${theme.bg.secondary};
 `
+
+export const P = styled.p `
+color: #425466;
+`
