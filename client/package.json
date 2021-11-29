@@ -1,8 +1,14 @@
 {
   "homepage": "https://impensa.studio",
-  "name": "impensa-budgeting-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "impensa-frontend",
+  "version": "1.4.8",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richard96292/impensa.git"
+  }, 
+  "bugs": {
+    "url": "https://github.com/richard96292/impensa/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -18,7 +24,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "start": "prettier --write \"src/**/*.{js,jsx}\" && react-scripts start",
+    "start": "prettier --write \"src/**/*.{js,jsx,json}\" && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -38,16 +44,15 @@
     ],
     "development": [
       "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 firefox version"
     ]
   },
   "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["impensa", "backend", "baking", "nba"],
+  "authors": ["Igor", "Maksim"],
+  "license": "AGPL-3.0-or-later",
   "devDependencies": {
     "prettier": "^2.5.0"
   },
-  "description": ""
+  "description": "Frontend"
 }
