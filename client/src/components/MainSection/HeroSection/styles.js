@@ -1,7 +1,7 @@
 import styled from "styled-components";
-
+import theme from "../../../theme/Index";
 export const HeroSectionWrapper = styled.div`
-  background: ${(props) => (props.lightBg ? "#F6F9FC" : "#0A2540")};
+  background: ${(props) => (props.lightBg ? "#F6F9FC" : theme.bg.secondary )};
   display: flex;
   align-items: center;
   justify-content: center;

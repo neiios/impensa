@@ -29,3 +29,8 @@ export const Heading = styled.h4`
 
   margin-bottom: -5px;
 `;
+
+
+export const Icon = styled.i `
+color: ${theme.bg.secondary};
+`

@@ -1,10 +1,12 @@
 import React from "react";
-import { Container, Heading } from "./styles.js";
+import { Container, 
+        Heading,
+        Icon } from "./styles.js";
 
 const AppFunction = ({ icon, headline, description }) => {
   return (
     <Container>
-      <i style={{ color: "#0A2540" }} class={icon + " fa-2x"}></i>
+      <Icon className={icon + " fa-2x"}></Icon>
       <Heading>{headline}</Heading>
       <p style={{ color: "#425466" }}>{description}</p>
     </Container>
