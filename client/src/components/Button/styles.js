@@ -78,7 +78,6 @@ export const LinkContainer = styled.div`
 `;
 
 export const MenuLinks = styled(LinkContainer)`
-  @media screen and (max-width: 800px) {
-    display: ${(props) => (props.primary ? "block" : "none")};
-  }
+display:flex;
+  gap:12px;
 `;

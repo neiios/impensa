@@ -33,6 +33,13 @@ const MenuIcon = styled.i`
   }
 `;
 
+export const MenuSpan = styled.span`
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`
+
+
 export const Navbar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -42,30 +49,41 @@ export const Navbar = () => {
       <SidebarWrapper onclick={handleClick} click={click}>
         <SideSubWrapper>
           <MenuEl>
+            <MenuRef to="/Interface">
             <i class="fas fa-home"></i>
-            <MenuRef to="/Interface">Overview</MenuRef>
+            <MenuSpan>Overview</MenuSpan>
+            </MenuRef>
           </MenuEl>
           <MenuEl>
+            <MenuRef to="/home">
             <i class="fas fa-chart-line"></i>
-            <MenuRef to="/home">Progress</MenuRef>
+              <MenuSpan>Progress</MenuSpan>
+            </MenuRef>
           </MenuEl>
           <MenuEl>
+            <MenuRef to="/home">
             <i class="far fa-chart-bar"></i>
-            <MenuRef to="/home">Analysis</MenuRef>
+              <MenuSpan>Analysis</MenuSpan>
+            </MenuRef>
           </MenuEl>
           <MenuEl>
-            {" "}
+            <MenuRef to="/home">
             <i class="fas fa-archive"></i>
-            <MenuRef to="/home">Archive</MenuRef>
+              <MenuSpan>Archive</MenuSpan>
+            </MenuRef>
           </MenuEl>
           <IconRow>
             <MenuEl>
+              <MenuRef to="/home">
               <i class="fas fa-sliders-h"></i>
-              <MenuRef to="/home">Settings</MenuRef>
+                <MenuSpan>Settings</MenuSpan>
+              </MenuRef>
             </MenuEl>
             <MenuEl>
+              <MenuRef to="/home">
               <i class="fas fa-sign-out-alt"></i>
-              <MenuRef to="/home">Log out</MenuRef>
+                <MenuSpan>Log out</MenuSpan>
+              </MenuRef>
             </MenuEl>
           </IconRow>
         </SideSubWrapper>
