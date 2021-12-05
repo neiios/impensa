@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-import {
-  SidebarWrapper,
-  Icon,
-  IconRow,
-  MenuEl,
-  SideSubWrapper,
-  menuLi,
-} from "./Styles.js";
+import { SidebarWrapper, IconRow, MenuEl, SideSubWrapper } from "./Styles.js";
 import styled from "styled-components";
-import Logo from "../../components/Logo";
 import theme from "../../theme/Index.js";
-import { MenuRef } from "../Button/index.js";
+import { Button, MenuRef } from "../Button/index.js";
 
 const MenuIcon = styled.i`
   z-index: 1000;
@@ -37,10 +29,9 @@ export const MenuSpan = styled.span`
   @media screen and (max-width: 800px) {
     display: none;
   }
-`
+`;
 
-
-export const Navbar = () => {
+export const Navbar = ({ logout }) => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   return (
@@ -50,40 +41,34 @@ export const Navbar = () => {
         <SideSubWrapper>
           <MenuEl>
             <MenuRef to="/Interface">
-            <i class="fas fa-home"></i>
-            <MenuSpan>Overview</MenuSpan>
+              <i className="fas fa-home"></i>
+              <MenuSpan>Overview</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>
             <MenuRef to="/home">
-            <i class="fas fa-chart-line"></i>
+              <i className="fas fa-chart-line"></i>
               <MenuSpan>Progress</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>
             <MenuRef to="/home">
-            <i class="far fa-chart-bar"></i>
+              <i className="far fa-chart-bar"></i>
               <MenuSpan>Analysis</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>
             <MenuRef to="/home">
-            <i class="fas fa-archive"></i>
+              <i className="fas fa-archive"></i>
               <MenuSpan>Archive</MenuSpan>
             </MenuRef>
           </MenuEl>
           <IconRow>
             <MenuEl>
-              <MenuRef to="/home">
-              <i class="fas fa-sliders-h"></i>
-                <MenuSpan>Settings</MenuSpan>
-              </MenuRef>
+              <Button onClick={(e) => logout(e)}>Settings</Button>
             </MenuEl>
             <MenuEl>
-              <MenuRef to="/home">
-              <i class="fas fa-sign-out-alt"></i>
-                <MenuSpan>Log out</MenuSpan>
-              </MenuRef>
+              <Button onClick={(e) => logout(e)}>Log out</Button>
             </MenuEl>
           </IconRow>
         </SideSubWrapper>
