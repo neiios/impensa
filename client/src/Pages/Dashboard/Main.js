@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
 import {
-  SmallContainer,
   MidContainer,
-  WideContainer,
   ExpenseCont,
 } from "../../components/ContentContainer/Index";
 import { SpentBtn } from "../../components/Button/index.js";

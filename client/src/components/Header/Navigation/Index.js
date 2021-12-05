@@ -10,13 +10,13 @@ const Navbar = () => {
         <Logo />
         <NavMenu>
           <NavItem>
-            <Button to="/SignIn">Sign in</Button>{" "}
+            <Button to="/signin">Sign in</Button>
           </NavItem>
           <NavItem>
-            <Button to="/SignUp">Sign up</Button>
+            <Button to="/signup">Sign up</Button>
           </NavItem>
           <NavItem>
-            <Button to="/Dashboard">Dashboard</Button>
+            <Button to="/dashboard">Dashboard</Button>
           </NavItem>
         </NavMenu>
       </NavbarContainer>

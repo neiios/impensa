@@ -78,6 +78,6 @@ export const LinkContainer = styled.div`
 `;
 
 export const MenuLinks = styled(LinkContainer)`
-display:flex;
-  gap:12px;
+  display: flex;
+  gap: 12px;
 `;

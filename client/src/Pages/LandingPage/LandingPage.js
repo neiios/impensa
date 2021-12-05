@@ -1,5 +1,5 @@
 import React from "react";
-import "./LandingPageStyles.css";
+// components
 import Footer from "../../components/Footer/Index";
 import Header from "../../components/Header/index";
 import Feature from "../../components/MainSection/Feature/Index";
@@ -11,6 +11,8 @@ import {
   featureObjThree,
   featureObjFour,
 } from "../../data/Data-Features.js";
+// styles
+import "./LandingPageStyles.css";
 
 const LandingPage = () => {
   return (

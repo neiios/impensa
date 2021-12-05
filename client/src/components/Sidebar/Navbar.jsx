@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { ModifiedLink } from "../Button/index.js";
-import { SidebarWrapper, Icon, IconRow, MenuEl } from "./Styles.js";
+import React from "react";
 import styled from "styled-components";
 import Logo from "../../components/Logo";
 import theme from "../../theme/Index.js";
@@ -13,7 +11,7 @@ export const UserCreds = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${theme.bg.lightestBlue};
-  padding: 5px;
+  padding: 10px;
   border-radius: 15px;
   transition: background-color 0.2s;
   :hover {
@@ -61,18 +59,15 @@ export const UserName = styled.span`
   font-size: 0.7em;
 `;
 
-const userName = "Cockstar";
-
-export const Nav = () => {
+export const Nav = ({ name }) => {
   return (
     <NavbarWrapper>
       <NavbarContainer>
         <Logo />
         <NavMenu>
           <UserCreds>
-            <UserName>{userName}</UserName>
+            <UserName>{name}</UserName>
             <UserImg src="images/max.png" />
-            <i class="fas fa-angle-right fa-sm"></i>
           </UserCreds>
         </NavMenu>
       </NavbarContainer>
