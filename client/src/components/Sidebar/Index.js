@@ -3,7 +3,8 @@ import { SidebarWrapper, IconRow, MenuEl, SideSubWrapper } from "./Styles.js";
 import styled from "styled-components";
 import theme from "../../theme/Index.js";
 import { Button, MenuRef } from "../Button/index.js";
-
+import TestModal from "../Modal/TestModal.js";
+import ModalService from "../Modal/ModalService.js";
 const MenuIcon = styled.i`
   z-index: 1000;
   cursor: pointer;
@@ -32,6 +33,9 @@ export const MenuSpan = styled.span`
 `;
 
 export const Navbar = ({ logout }) => {
+  const addModal = () => {
+    ModalService.open(TestModal);
+  };
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   return (
@@ -65,7 +69,7 @@ export const Navbar = ({ logout }) => {
           </MenuEl>
           <IconRow>
             <MenuEl>
-              <Button onClick={(e) => logout(e)}>Settings</Button>
+              <Button onClick={ addModal }>Settings</Button>
             </MenuEl>
             <MenuEl>
               <Button onClick={(e) => logout(e)}>Log out</Button>

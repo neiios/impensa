@@ -5,7 +5,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/richard96292/impensa.git"
-  }, 
+  },
   "bugs": {
     "url": "https://github.com/richard96292/impensa/issues"
   },
@@ -48,8 +48,16 @@
     ]
   },
   "main": "index.js",
-  "keywords": ["impensa", "backend", "baking", "nba"],
-  "authors": ["Igor", "Maksim"],
+  "keywords": [
+    "impensa",
+    "backend",
+    "baking",
+    "nba"
+  ],
+  "authors": [
+    "Igor",
+    "Maksim"
+  ],
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
     "prettier": "^2.5.0"

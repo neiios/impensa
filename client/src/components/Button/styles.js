@@ -50,10 +50,19 @@ export const WideBtn = styled(StyledButtonBig)`
   }
 `;
 
-export const SpentButton = styled(WideBtn)`
+export const SpentButton = styled(StyledButton)`
   width: 200px;
   font-size: 20px !important;
   height: 45px;
+`;
+
+export const SmallBtn = styled(WideBtn)`
+padding:1 5 1 5;
+border-radius:10px;
+border: thin solid black;
+width: fit-content;
+height:fit-content;
+font-size:1em !important;
 `;
 
 export const A = styled.a`
