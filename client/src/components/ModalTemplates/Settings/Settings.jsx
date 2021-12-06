@@ -18,7 +18,8 @@ import {
   ProfilePicture,
   Input,
   PenIcon,
-  Icon
+  Icon,
+  PictureSelect
 } from "./Styles.js";
 
 
@@ -120,6 +121,7 @@ const Settings = () => {
         <PictureContainer>
           <H4>Profile Picture</H4>
           <ProfilePicture src="images/max.png" />
+          {visible && <PictureSelect type="file" />}
         </PictureContainer>
       </Container>
     </Wrapper>

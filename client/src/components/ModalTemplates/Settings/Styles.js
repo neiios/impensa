@@ -157,3 +157,12 @@ margin-left:310px;
 z-index:100;
 color: ${theme.bg.secondary};
 `;
+
+export const PictureSelect = styled.input`
+border-radius:20px;
+position:absolute;
+background:red;
+width:170px;
+height:50px;
+top:250px;
+`;
