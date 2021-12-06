@@ -5,7 +5,7 @@ import LandingPage from "./Pages/LandingPage/LandingPage";
 import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
-import ModalRoot from "./components/Modal/ModalRoot.js"
+import ModalRoot from "./components/Modal/ModalRoot.js";
 //styles
 import "./App.css";
 
@@ -37,7 +37,7 @@ const App = () => {
 
   return (
     <BrowserRouter basename="">
-            <ModalRoot />
+      <ModalRoot />
       <div className="App"></div>
       <Switch>
         {/* <Route exact path="/" component={LandingPage} />

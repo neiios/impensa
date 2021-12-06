@@ -11,7 +11,7 @@ export const UserCreds = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${theme.bg.lightestBlue};
-  padding: 10px;
+  padding: 7px;
   border-radius: 15px;
   transition: background-color 0.2s;
   :hover {

@@ -69,7 +69,7 @@ export const Navbar = ({ logout }) => {
           </MenuEl>
           <IconRow>
             <MenuEl>
-              <Button onClick={ addModal }>Settings</Button>
+              <Button onClick={addModal}>Settings</Button>
             </MenuEl>
             <MenuEl>
               <Button onClick={(e) => logout(e)}>Log out</Button>

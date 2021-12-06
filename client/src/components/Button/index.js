@@ -8,7 +8,7 @@ import {
   WideBtn,
   MenuLinks,
   SpentButton,
-  SmallBtn
+  SmallBtn,
 } from "./styles.js";
 const WrappedButton = (Component, props) => {
   const { href, to, target, children, disabled, isLoading, ...rest } = props;
