@@ -43,6 +43,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+flex-wrap:wrap;
   width: 100%;
   height: 100%;
   display: flex;
@@ -52,7 +53,7 @@ export const Container = styled.div`
 `;
 
 export const Heading = styled.h2`
-  margin: 0;
+  margin-top: -25px;
 `;
 
 export const InputSection = styled.div`
@@ -69,8 +70,8 @@ export const InputContainer = styled.div`
 
 export const ProfilePicture = styled.img`
   border-radius: 50%;
-  width: 220px;
-  height: 220px;
+  width: 150px;
+  height: 150px;
   border: thin dashed transparent;
   :hover {
     border: thin dashed black;
@@ -78,10 +79,8 @@ export const ProfilePicture = styled.img`
 `;
 
 export const PictureContainer = styled.div`
-  margin-top: 27px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
   margin-left: auto;
 `;
@@ -97,7 +96,7 @@ export const Label = styled.label`
 `;
 
 export const Subheading = styled.h3`
-  margin-top: 27px;
+  font-size:1.2em;
 `;
 
 export const H4 = styled.h4`
@@ -115,6 +114,7 @@ export const LanguageSelector = styled(InputSection)`
 `;
 
 export const HeadingContainer = styled.div`
+margin: 1px 0 -10px 0;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -161,8 +161,7 @@ color: ${theme.bg.secondary};
 export const PictureSelect = styled.input`
 border-radius:20px;
 position:absolute;
-background:red;
-width:170px;
+width:100px;
 height:50px;
 top:250px;
 `;

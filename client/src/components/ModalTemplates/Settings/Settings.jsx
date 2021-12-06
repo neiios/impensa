@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import theme from "../../../theme/Index.js";
 import { MdDoDisturbOn } from "react-icons/md";
 import ModalService from "../../Modal/ModalService.js";
 import {
@@ -34,7 +35,7 @@ export const EditDetails = () => {
 <InputContainer>
             <Label>Email</Label>
             <Input
-              style={{ color: "blue" }}
+              style={{ color: theme.bg.secondary }}
               value="timeneth@gmail.com"
               type="email"
             />
@@ -70,7 +71,7 @@ export const ReadonlyDetails = () => {
             <Label>Email</Label>
             <Input
               type="email"
-              style={{ color: "blue" }}
+              style={{ color: theme.bg.secondary }}
               value="timeneth@gmail.com"
               readonlyInput
             />
@@ -102,7 +103,7 @@ const Settings = () => {
   const [visible, setVisible] = React.useState(false);
   return (
     <Wrapper>
-      <Heading>Account Status</Heading>
+      <Heading>Settings</Heading>
       <Container>
         <InputSection>
           <HeadingContainer>
@@ -119,7 +120,7 @@ const Settings = () => {
               {visible && <EditDetails/>}
         </InputSection>
         <PictureContainer>
-          <H4>Profile Picture</H4>
+          <Subheading>Profile Picture</Subheading>
           <ProfilePicture src="images/max.png" />
           {visible && <PictureSelect type="file" />}
         </PictureContainer>

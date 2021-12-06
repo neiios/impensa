@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Settings from "../ModalTemplates/Settings/Settings";
 export const Icon = styled.i`
+margin-top:-20px;
+margin-right:-20px;
 padding:8px;
 border-radius:8px;
   float: right;
@@ -30,11 +32,11 @@ export const Dropout = styled.div`
 export const ModalWrapper = styled.div`
   z-index: 1133;
   margin: auto;
-  width: 700px;
-  height: 500px;
+  width: 600px;
+  height: 400px;
   border-radius: 20px;
   background: white;
-  padding: 20px;
+  padding: 30px;
 `;
 
 export default function TestModal(props) {
