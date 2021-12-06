@@ -130,6 +130,7 @@ export const ModifyButtons = styled.div`
 `;
 
 export const SmallBtn = styled.button`
+  cursor: pointer;
     background: ${(props) =>
       props.primary ? theme.bg.lightestBlue : theme.bg.secondary};
 
@@ -138,7 +139,6 @@ color: ${(props) =>
   padding: 6px;
   border-radius: 10px;
   border: none;
-  font-weight:600;
   width: fit-content;
   height: fit-content;
   font-size: .86em !important;

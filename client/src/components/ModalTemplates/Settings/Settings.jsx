@@ -109,8 +109,9 @@ const Settings = () => {
           <HeadingContainer>
             <Subheading>Account Details</Subheading>
             <SmallBtn primary onClick={() => setVisible(!visible)} >
-              Edit
-              <PenIcon className="fas fa-pen fa-xs" />
+            {!visible && "Edit"}
+            {!visible && <PenIcon className="fas fa-pen fa-xs" />}
+            {visible &&  "Close"}
             </SmallBtn>
             <ModifyButtons>
             {visible && <SmallBtn>Save</SmallBtn>}
