@@ -60,6 +60,7 @@ export const InputSection = styled.div`
   gap: 25px;
   display: flex;
   flex-direction: column;
+  padding-left:20px;
 `;
 
 export const InputContainer = styled.div`
@@ -79,6 +80,7 @@ export const ProfilePicture = styled.img`
 `;
 
 export const PictureContainer = styled.div`
+  padding-right:20px;
   display: flex;
   flex-direction: column;
   align-items: center;

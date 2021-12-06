@@ -103,7 +103,6 @@ const Settings = () => {
   const [visible, setVisible] = React.useState(false);
   return (
     <Wrapper>
-      <Heading>Settings</Heading>
       <Container>
         <InputSection>
           <HeadingContainer>

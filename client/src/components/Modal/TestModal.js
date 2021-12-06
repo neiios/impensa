@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import Settings from "../ModalTemplates/Settings/Settings";
+import theme from "../../theme/Index";
 export const Icon = styled.i`
-margin-top:-20px;
-margin-right:-20px;
-padding:8px;
+
+padding:6px;
 border-radius:8px;
-  float: right;
+  margin-left:auto;
   cursor: pointer;
   transition: color 1s;
+  color:white;
   :hover {
     background: rgba(197, 199, 197,.3);
   }
@@ -29,6 +30,22 @@ export const Dropout = styled.div`
   background-color: rgba(1, 1, 1, 0.6);
 `
 
+export const HeaderWrapper= styled.div`
+background: ${theme.bg.secondary};
+border-top-left-radius:20px;
+border-top-right-radius:20px;
+max-width:100%;
+padding:10px 10px 10px 20px;
+display:flex;
+align-items:center;
+`
+
+const Heading = styled.h3 `
+color:white;
+margin:0;
+font-size:1.2em;
+`
+
 export const ModalWrapper = styled.div`
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 1133;
@@ -37,15 +54,19 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 400px;
   border-radius: 20px;
   background: white;
-  padding: 30px;
+
 `;
+
 
 export default function TestModal(props) {
   return (
     <>
     <Dropout onClick={props.close}/>
       <ModalWrapper>
-        <Icon onClick={props.close} className="fas fa-times fa-xl" />
+        <HeaderWrapper>
+          <Heading>Settings</Heading>
+          <Icon  onClick={props.close} className="fas fa-times fa-xl" />
+        </HeaderWrapper>
         <Settings />
       </ModalWrapper>
       </>
