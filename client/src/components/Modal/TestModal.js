@@ -26,10 +26,11 @@ export const Dropout = styled.div`
   right:0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(1, 1, 1, 0.5);
+  background-color: rgba(1, 1, 1, 0.6);
 `
 
 export const ModalWrapper = styled.div`
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 1133;
   margin: auto;
   width: 600px;

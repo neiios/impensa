@@ -15,9 +15,6 @@ const Navbar = () => {
           <NavItem>
             <Button to="/signup">Sign up</Button>
           </NavItem>
-          <NavItem>
-            <Button to="/dashboard">Dashboard</Button>
-          </NavItem>
         </NavMenu>
       </NavbarContainer>
     </NavbarWrapper>

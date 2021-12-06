@@ -130,21 +130,25 @@ export const ModifyButtons = styled.div`
 `;
 
 export const SmallBtn = styled.button`
+letter-spacing: .5px;
   cursor: pointer;
     background: ${(props) =>
-      props.primary ? theme.bg.lightestBlue : theme.bg.secondary};
+      props.primary ? theme.bg.lightestBlue : theme.bg.semiBlue};
 
 color: ${(props) =>
       props.primary ? "black": "white"};
-  padding: 6px;
+  padding: 3px 6px 3px 6px;
   border-radius: 10px;
   border: none;
   width: fit-content;
   height: fit-content;
   font-size: .86em !important;
-  transition: opacity 0.3s;
+  transition: background 0.3s;
   :hover {
-    opacity: .8;
+    color: ${(props) => props.primary ? "white": "black"};
+    background: ${(props) =>
+      props.primary ? theme.bg.semiBlue : theme.bg.lightestBlue};
+
     :active {
       opacity: 1;
     }

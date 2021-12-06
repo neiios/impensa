@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 export const Form = styled.form`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  height: 540px;
+  width: fit-content;
   width: 370px;
   max-width: 100%;
   border-radius: 20px;
@@ -48,6 +48,7 @@ export const Heading = styled(H3)`
   color: ${theme.text.grey};
   margin: auto;
   margin-top: 0px;
+  margin-bottom:35px;
 `;
 
 export const InputLabel = styled.label`
