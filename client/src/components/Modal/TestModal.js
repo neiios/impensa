@@ -1,5 +1,4 @@
 import Dropuout from "./Dropuout";
-import ModalWrapper from "./ModalWrapper";
 import styled from "styled-components";
 import Settings from "../ModalTemplates/Settings/Settings";
 export const Icon = styled.i`
@@ -14,6 +13,15 @@ border-radius:8px;
   :active {
     background: rgba(197, 199, 197,.7);
   }
+`;
+
+export const ModalWrapper = styled.div`
+  margin: auto;
+  width: 700px;
+  height: 500px;
+  border-radius: 20px;
+  background: white;
+  padding: 20px;
 `;
 
 export default function TestModal(props) {

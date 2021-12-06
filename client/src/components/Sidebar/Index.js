@@ -36,6 +36,7 @@ export const Navbar = ({ logout }) => {
   const addModal = () => {
     ModalService.open(TestModal);
   };
+
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   return (

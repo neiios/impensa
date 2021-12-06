@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { MdDoDisturbOn } from "react-icons/md";
+import ModalService from "../../Modal/ModalService.js";
 import {
   Wrapper,
   Heading,
@@ -16,17 +18,87 @@ import {
   ProfilePicture,
   Input,
   PenIcon,
+  Icon
 } from "./Styles.js";
 
-function typeChanger() {
-  alert("The type of Input1 will now change from button to text");
-  document.getElementById("password1").type = "email";
-}
+
+
+export const EditDetails = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+ return (
+<>
+<InputContainer>
+            <Label>Email</Label>
+            <Input
+              style={{ color: "blue" }}
+              value="timeneth@gmail.com"
+              type="email"
+            />
+          </InputContainer>
+          <InputContainer>
+            <Label>Name</Label>
+            <Input value="Jessie"  type="name"/>
+          </InputContainer>
+          <InputContainer>
+            <Label>Old password</Label>
+            <Input
+              value="Anjey Duda is gay"
+              type={passwordShown ? "text" : "password"} 
+            />
+                  <Icon className={passwordShown ? "far fa-eye fa-xs" : "fas fa-eye-slash fa-xs"} onClick={togglePassword}/>
+          </InputContainer>
+          <InputContainer>
+          <Label>New password</Label>
+            <Input
+              value="Anjey Duda is gay"
+              type={passwordShown ? "text" : "password"}
+            />
+          </InputContainer>
+</>
+  );
+
+} 
+
+export const ReadonlyDetails = () => {
+  return (
+<>
+          <InputContainer>
+            <Label>Email</Label>
+            <Input
+              type="email"
+              style={{ color: "blue" }}
+              value="timeneth@gmail.com"
+              readonlyInput
+            />
+          </InputContainer>
+          <InputContainer>
+            <Label>Name</Label>
+            <Input value="Jessie" 
+             type="name" 
+             readonlyInput/>
+          </InputContainer>
+          <InputContainer>
+            <Label>Password</Label>
+            <Input
+              value="Anjey Duda is gay"
+              type="password"
+              readonlyInput
+              
+            />
+          </InputContainer>
+</>
+  );
+
+} 
+
+
 
 const Settings = () => {
   // when click edit btn
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const [visible, setVisible] = React.useState(false);
   return (
     <Wrapper>
       <Heading>Account Status</Heading>
@@ -34,52 +106,16 @@ const Settings = () => {
         <InputSection>
           <HeadingContainer>
             <Subheading>Account Details</Subheading>
-            <EditBtn onClick={handleClick}>
+            <SmallBtn primary onClick={() => setVisible(!visible)} >
               Edit
               <PenIcon className="fas fa-pen fa-xs" />
-            </EditBtn>
-            <ModifyButtons onclick={handleClick} click={!click}>
-              <SmallBtn>Save</SmallBtn>
+            </SmallBtn>
+            <ModifyButtons>
+            {visible && <SmallBtn>Save</SmallBtn>}
             </ModifyButtons>
           </HeadingContainer>
-          <InputContainer>
-            <Label>Email</Label>
-            <Input
-              style={{ color: "blue" }}
-              value="timeneth@gmail.com"
-              onclick={handleClick}
-              click={!click}
-            />
-          </InputContainer>
-          <InputContainer>
-            <Label>Name</Label>
-            <Input value="Jessie" onclick={handleClick} click={!click} />
-          </InputContainer>
-          <InputContainer>
-            <Label>Password</Label>
-            <Input
-              id="password1"
-              value="Anjey Duda is gay"
-              type="password"
-              onclick={handleClick}
-              click={!click}
-            />
-          </InputContainer>
-
-          {/* <DropoutSection>
-        <H4>Currency</H4>
-        <Span>Please select a preferred currency for your Dashboard</Span>
-        </DropoutSection>
-
-        <DropoutSection>
-        <H4>Language</H4>
-        <Span>Please select a preferred language for your Dashboard</Span>
-        <LanguageSelector>
-        <SmallBtn>English</SmallBtn>
-        <SmallBtn>Lithuanian</SmallBtn>
-        <SmallBtn>Russian</SmallBtn>
-        </LanguageSelector>
-       </DropoutSection>  */}
+              {!visible && <ReadonlyDetails/>}
+              {visible && <EditDetails/>}
         </InputSection>
         <PictureContainer>
           <H4>Profile Picture</H4>

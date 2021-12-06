@@ -9,6 +9,12 @@ import theme from "../../../theme/Index";
 */
 
 export const Input = styled.input`
+    outline: ${(props) =>
+      props.readonlyInput ? "none" : "initial"};
+pointer-events: ${(props) =>
+      props.readonlyInput ? "none" : "inherit"};
+  border: ${(props) =>
+  props.readonlyInput ? "1px solid transparent" : "1px solid rgba(3, 102, 214, 0.1)"};
   margin-left: 120px;
   padding: 5px;
   position: absolute;
@@ -16,14 +22,16 @@ export const Input = styled.input`
   height: 20px;
   border-radius: 4px;
   outline: 0;
-  border: ${({ click }) =>
-    click ? "1px solid transparent" : "1px solid rgba(3, 102, 214, 0.1)"};
   font-size: 14px;
   transition: all 0.3s ease-out;
   :focus {
-    box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 2px;
+  //  box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 2px;
+    box-shadow: ${(props) =>
+    props.readonlyInput ? "none" : theme.bg.semiBlue + "0px 0px 0px 2px"};
+
   }
 `;
+
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -56,6 +64,7 @@ export const InputSection = styled.div`
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
+  transition: all 0.3s ease-out;
 `;
 
 export const ProfilePicture = styled.img`
@@ -121,21 +130,30 @@ export const ModifyButtons = styled.div`
 `;
 
 export const SmallBtn = styled.button`
-  padding: 8px;
+    background: ${(props) =>
+      props.primary ? theme.bg.lightestBlue : theme.bg.secondary};
+
+color: ${(props) =>
+      props.primary ? "black": "white"};
+  padding: 6px;
   border-radius: 10px;
   border: none;
+  font-weight:600;
   width: fit-content;
   height: fit-content;
-  font-size: 1em !important;
-  transition: box-shadow 0.3s;
+  font-size: .86em !important;
+  transition: opacity 0.3s;
   :hover {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    opacity: .8;
     :active {
       opacity: 1;
     }
   }
 `;
-export const EditBtn = styled(SmallBtn)`
-  display: ${({ click }) => (click ? "none" : "block")};
+
+export const Icon = styled.i`
+position:absolute;
+margin-left:310px;
+z-index:100;
+color: ${theme.bg.secondary};
 `;
