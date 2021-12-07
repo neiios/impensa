@@ -48,7 +48,7 @@ export const Heading = styled(H3)`
   color: ${theme.text.grey};
   margin: auto;
   margin-top: 0px;
-  margin-bottom:35px;
+  margin-bottom: 35px;
 `;
 
 export const InputLabel = styled.label`
