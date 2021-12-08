@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { MdClose } from 'react-icons/md';
-import { createGlobalStyle } from 'styled-components';
+import styled from "styled-components";
+import { MdClose } from "react-icons/md";
+import { createGlobalStyle } from "styled-components";
 export const Background = styled.div`
   width: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -12,7 +12,7 @@ export const Background = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  max-width:  1000px;
+  max-width: 1000px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -22,20 +22,20 @@ export const ModalWrapper = styled.div`
   z-index: 10;
   border-radius: 10px;
   justify-content: center;
-  align-items:center;
-  @media screen and (max-width:991px) {
-    max-width:  500px;
-    max-height:100vh;
-}
+  align-items: center;
+  @media screen and (max-width: 991px) {
+    max-width: 500px;
+    max-height: 100vh;
+  }
 `;
 
 export const ModalImg = styled.img`
   width: 50%;
   height: 100%;
   border-radius: 10px 0 0 10px;
-  @media screen and (max-width:720px) {
-display:none;
-}
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
 `;
 
 export const ModalContent = styled.div`

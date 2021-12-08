@@ -1,0 +1,37 @@
+{
+  "name": "impensa-server",
+  "version": "1.0.69",
+  "description": "Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "npx nodemon ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richard96292/impensa.git"
+  },
+  "keywords": [
+    "impensa",
+    "backend"
+  ],
+  "authors": [
+    "Igor",
+    "Maksim"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/richard96292/impensa/issues"
+  },
+  "homepage": "https://impensa.studio",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

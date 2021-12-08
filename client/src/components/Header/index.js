@@ -1,12 +1,12 @@
 import Welcome from "./Welcome/index";
-import Navigation from "./Navigation/Index"
+import Navigation from "./Navigation/Index";
 const Header = () => {
-    return (
-        <>
-            <Navigation/>
-            <Welcome/>
-        </>
-    )
-}
+  return (
+    <>
+      <Navigation />
+      <Welcome />
+    </>
+  );
+};
 
-export default Header
+export default Header;
