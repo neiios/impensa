@@ -8,17 +8,9 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 
-const MainState = ({ name, firstExpense }) => {
-  if (firstExpense === null) {
-    return <Banner name={name} />;
-  } else {
-    return <Main />;
-  }
-};
-
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
-  const [firstExpense, setFirstExpense] = useState("");
+  const [expenses, setExpenses] = useState([]);
 
   const getProfile = async () => {
     try {
@@ -29,17 +21,30 @@ const Dashboard = ({ setAuth }) => {
 
       const parseData = await res.json();
 
-      // console.log(parseData);
-
       setName(parseData[0].user_name);
-      setFirstExpense(parseData[0].expense_amount);
     } catch (err) {
       console.error(err.message);
     }
   };
 
+  async function getExpenses() {
+    try {
+      const res = await fetch("http://localhost:5000/dashboard/expenses", {
+        method: "GET",
+        headers: { jwtToken: localStorage.token },
+      });
+
+      const parseData = await res.json();
+
+      setExpenses(parseData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   useEffect(() => {
     getProfile();
+    getExpenses();
   }, []);
 
   const logout = async (e) => {
@@ -58,7 +63,11 @@ const Dashboard = ({ setAuth }) => {
       <Nav name={name} />
       <Wrapper>
         <Sidebar logout={logout} />
-        <MainState name={name} firstExpense={firstExpense} />
+        {expenses.length === 0 ? (
+          <Banner name={name} />
+        ) : (
+          <Main expenses={expenses} />
+        )}
       </Wrapper>
     </>
   );

@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import { useState, useEffect } from "react";
 import {
   MidContainer,
-  ExpenseCont,
 } from "../../components/ContentContainer/Index";
 import { SpentBtn } from "../../components/Button/index.js";
 // Wraps Sidebar Nav and Main-Conent
@@ -38,33 +36,15 @@ margin:0;
   }
 `;
 
-const Main = () => {
-  // const [expenses, setExpenses] = useState([]);
-
-  // async function getExpenses() {
-  //   try {
-  //     const res = await fetch("http://localhost:5000/dashboard/expense", {
-  //       method: "GET",
-  //       headers: { jwtToken: localStorage.token },
-  //     });
-
-  //     const parseData = await res.json;
-
-  //     setExpenses(parseData);
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getExpenses();
-  // }, []);
-
+const Main = ({ expenses }) => {
   return (
     <Wrapper>
       <Container>
         <MidContainer>
           <Heading>Recently spent</Heading>
+          
+          {expenses.map(expense => (<p key={expense.expense_id}>{expense.expense_amount}</p>))}
+
           <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
         </MidContainer>
         <MidContainer></MidContainer>
