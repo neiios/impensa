@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { SidebarWrapper, IconRow, MenuEl, SideSubWrapper } from "./Styles.js";
+import { SidebarWrapper, IconRow, MenuEl, SideSubWrapper } from "./style.jsx";
 import styled from "styled-components";
 import theme from "../../theme/Index.js";
-import { Button, MenuRef } from "../Button/index.js";
-import TestModal from "../Modal/TestModal.js";
-import ModalService from "../Modal/ModalService.js";
+import { Button, MenuRef } from "../Button/index.jsx";
+import TestModal from "../Modal/TestModal";
+import ModalService from "../Modal/ModalService";
 import Settings from "../ModalTemplates/Settings/Settings.jsx";
 const MenuIcon = styled.i`
   z-index: 1000;

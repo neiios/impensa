@@ -1,6 +1,6 @@
 import React from "react";
-import { ModifiedLink } from "../Button";
-import { FooterWrapper, Container } from "./styles.js";
+import { ModifiedLink } from "../Button/index.jsx";
+import { FooterWrapper, Container } from "./style.jsx";
 const Footer = () => {
   return (
     <FooterWrapper>

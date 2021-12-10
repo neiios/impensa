@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Heading, Icon, P } from "./styles.js";
+import { Container, Heading, Icon, P } from "./style.jsx";
 
 const AppFunction = ({ icon, headline, description }) => {
   return (

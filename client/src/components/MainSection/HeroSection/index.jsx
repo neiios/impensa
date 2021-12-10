@@ -4,7 +4,7 @@ import {
   Container,
   TextSection,
   Paragraph,
-} from "./styles.js";
+} from "./style.jsx";
 // also add in what order. order:1 etc...
 function contentBlock({
   lightBg,

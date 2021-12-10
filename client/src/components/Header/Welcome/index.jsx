@@ -1,5 +1,5 @@
 import React from "react";
-import { BiggerButton } from "../../Button";
+import { BiggerButton } from "../../Button/index.jsx";
 import {
   Container,
   RowOne,
@@ -8,7 +8,7 @@ import {
   ContactBtn,
   WelcomeHeading,
   WelcomeSubheading,
-} from "./styles.js";
+} from "./style.jsx";
 const Welcome = () => {
   return (
     <Container>

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
 import { MidContainer } from "../../components/ContentContainer/Index";
-import { SpentBtn } from "../../components/Button/index.js";
+import { SpentBtn } from "../../components/Button/index.jsx";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
   z-index: -1;

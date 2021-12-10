@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 //components
-import LandingPage from "./Pages/LandingPage/LandingPage";
-import SignIn from "./Pages/SignIn/SignIn";
-import SignUp from "./Pages/SignUp/SignUp";
-import Dashboard from "./Pages/Dashboard/Dashboard.js";
-import ModalRoot from "./components/Modal/ModalRoot.js";
+import Hompepage from "./Pages/Homepage/index";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
+import Dashboard from "./Pages/Dashboard/dashboard";
+import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";
 //styles
 import "./App.css";
@@ -46,7 +46,7 @@ const App = () => {
           path="/"
           render={(props) =>
             !isAuthenticated ? (
-              <LandingPage {...props} />
+              <Hompepage {...props} />
             ) : (
               <Redirect to="/dashboard" />
             )

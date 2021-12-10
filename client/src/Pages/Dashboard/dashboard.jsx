@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Sidebar from "../../components/Sidebar/Index";
+import Sidebar from "../../components/Sidebar";
 import styled from "styled-components";
-import Main from "./Main.js";
+import Main from "./main";
 import Nav from "../../components/Sidebar/Navbar";
-import Banner from "./Banner";
+import Banner from "./banner";
 export const Wrapper = styled.div`
   display: flex;
 `;

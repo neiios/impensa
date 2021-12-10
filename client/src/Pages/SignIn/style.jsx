@@ -9,7 +9,7 @@ import {
   InputLabel,
   StringContainer,
   InputWrapper,
-} from "../SignUp/Styles.js";
+} from "../SignUp/style.jsx";
 
 export const SignInForm = styled(Form)`
   height: 400px;

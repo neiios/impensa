@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-// components
-import { WideButton, ModifiedLink } from "../../components/Button/index.js";
-// styles
 import {
   Wrapper,
+  Form,
   Input,
   Heading,
   StringContainer,
   InputWrapper,
-  Form,
-} from "../SignUp/Styles.js";
+} from "./style";
+import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
 
 // add location to identify currency
-const SignIn = ({ setAuth }) => {
+const SignUp = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
     email: "",
+    name: "",
     password: "",
   });
 
-  const { email, password } = inputs;
+  const { email, name, password } = inputs;
 
   const onChange = (e) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -26,8 +25,8 @@ const SignIn = ({ setAuth }) => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { email, password };
-      const response = await fetch("http://localhost:5000/auth/login", {
+      const body = { email, name, password };
+      const response = await fetch("http://localhost:5000/auth/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -51,28 +50,35 @@ const SignIn = ({ setAuth }) => {
   return (
     <Wrapper>
       <Form onSubmit={onSubmitForm}>
-        <Heading>Sign in to your account</Heading>
+        <Heading>Create your Impensa account</Heading>
         <InputWrapper>
           <Input
-            placeholder="Email"
             type="email"
             name="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => onChange(e)}
           />
           <Input
-            placeholder="Password"
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => onChange(e)}
+          />
+          <Input
             type="password"
             name="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => onChange(e)}
           />
         </InputWrapper>
-        <WideButton style={{ margin: "auto" }}>Continue</WideButton>
+        <WideButton style={{ margin: "auto" }}>Create account</WideButton>
         <StringContainer primary>
-          Don't have an account?
-          <ModifiedLink style={{ color: "#635BFF" }} to="/signup">
-            Sign up
+          Have an account?
+          <ModifiedLink style={{ color: "#635BFF" }} to="/signin">
+            Sign in
           </ModifiedLink>
         </StringContainer>
       </Form>
@@ -80,4 +86,4 @@ const SignIn = ({ setAuth }) => {
   );
 };
 
-export default SignIn;
+export default SignUp;

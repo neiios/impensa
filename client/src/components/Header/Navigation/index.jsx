@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "../../Logo/index";
-import { Button } from "../../Button";
-import { NavbarWrapper, NavMenu, NavbarContainer, NavItem } from "./styles.js";
+import Logo from "../../Logo/index.jsx";
+import { Button } from "../../Button/index.jsx";
+import { NavbarWrapper, NavMenu, NavbarContainer, NavItem } from "./style.jsx";
 
 const Navbar = () => {
   return (

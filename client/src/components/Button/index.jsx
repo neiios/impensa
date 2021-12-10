@@ -10,7 +10,7 @@ import {
   SpentButton,
   SmallBtn,
   FitBtn,
-} from "./styles.js";
+} from "./style.jsx";
 const WrappedButton = (Component, props) => {
   const { href, to, target, children, disabled, isLoading, ...rest } = props;
   const button = (

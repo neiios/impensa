@@ -1,5 +1,5 @@
 import React from "react";
-import { ModifiedLink } from "../Button";
+import { ModifiedLink } from "../Button/index.jsx";
 import styled from "styled-components";
 
 const LogoImg = styled.img`

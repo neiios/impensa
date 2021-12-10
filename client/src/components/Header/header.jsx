@@ -1,5 +1,5 @@
-import Welcome from "./Welcome/index";
-import Navigation from "./Navigation/Index";
+import Welcome from "./Welcome/index.jsx";
+import Navigation from "./Navigation/index.jsx";
 const Header = () => {
   return (
     <>

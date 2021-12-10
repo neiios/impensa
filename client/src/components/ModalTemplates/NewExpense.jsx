@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import { FitButton } from "../Button/index.js";
+import { FitButton } from "../Button/index.jsx";
 import ModalService from "../Modal/ModalService.js";
 export const Wrapper = styled.div`
   flex-wrap: wrap;

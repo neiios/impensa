@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../../components/Logo";
+import Logo from "../../components/Logo/index.jsx";
 import theme from "../../theme/Index.js";
 
 export const UserCreds = styled.div`

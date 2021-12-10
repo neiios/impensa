@@ -1,9 +1,9 @@
 import React from "react";
 // components
-import Footer from "../../components/Footer/Index";
-import Header from "../../components/Header/index";
-import Feature from "../../components/MainSection/Feature/Index";
-import HeroSection from "../../components/MainSection/HeroSection/index";
+import Footer from "../../components/Footer/index";
+import Header from "../../components/Header/header";
+import Feature from "../../components/MainSection/Feature/index.jsx";
+import HeroSection from "../../components/MainSection/HeroSection";
 import { homeObjOne, homeObjTwo } from "../../data/Data-HeroSection.js";
 import {
   featureObjOne,
@@ -14,7 +14,7 @@ import {
 // styles
 import "./LandingPageStyles.css";
 
-const LandingPage = () => {
+const Hompepage = () => {
   return (
     //FCFBFD
     <div className="block_1">
@@ -44,4 +44,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Hompepage;

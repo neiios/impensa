@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme/Index";
-import { FitButton } from "../components/Button";
+import { FitButton } from "../components/Button/index.jsx";
 // Wraps Sidebar Nav and Main-Conent
 export const Container = styled.div`
   text-align: center;
