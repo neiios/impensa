@@ -41,7 +41,8 @@ const PageNotFound = () => {
       <Heading>Oops!</Heading>
       <SubHeading>404 - PAGE NOT FOUND</SubHeading>
       <P>
-        The page you are looking for might have been removed or is temporarily unavailable
+        The page you are looking for might have been removed or is temporarily
+        unavailable
       </P>
       <FitButton to="/">GO TO HOMEPAGE</FitButton>
       {/* change btn letter */}

@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import {
-  MidContainer,
-} from "../../components/ContentContainer/Index";
+import { MidContainer } from "../../components/ContentContainer/Index";
 import { SpentBtn } from "../../components/Button/index.js";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
@@ -42,8 +40,10 @@ const Main = ({ expenses }) => {
       <Container>
         <MidContainer>
           <Heading>Recently spent</Heading>
-          
-          {expenses.map(expense => (<p key={expense.expense_id}>{expense.expense_amount}</p>))}
+
+          {expenses.map((expense) => (
+            <p key={expense.expense_id}>{expense.expense_amount}</p>
+          ))}
 
           <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
         </MidContainer>
