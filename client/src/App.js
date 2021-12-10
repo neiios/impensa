@@ -52,12 +52,6 @@ const App = () => {
             )
           }
         />
-        {/*this is 404 route, looks bad ngl*/}
-        <Route
-          exact
-          path="/PageNotFound"
-          render={(props) => <PageNotFound {...props} setAuth={setAuth} />}
-        />
         <Route
           exact
           path="/signin"
