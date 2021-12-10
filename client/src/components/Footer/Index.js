@@ -10,7 +10,7 @@ const Footer = () => {
         </div>
         <div style={{ marginLeft: "auto", position: "relative" }}>
           <ModifiedLink href="https://github.com/richard96292/impensa">
-            <i class="fab fa-github" />
+            <i className="fab fa-github" />
           </ModifiedLink>
         </div>
       </Container>
