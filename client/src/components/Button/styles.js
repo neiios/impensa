@@ -69,15 +69,13 @@ export const FitBtn = styled(StyledButton)`
   background-color: ${(props) =>
     props.primary ? theme.text.secondAlt : theme.text.secondary};
   color: ${(props) => (props.primary ? theme.text.secondary : "white")};
-  border: ${(props) =>
-    props.primary ? "thin solid black" : "thin solid white"};
-width:fit-content;
-height:fit-content;
-padding:5px;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
   border-radius: 10px;
   width: fit-content;
   height: fit-content;
-  font-size: 1em !important;
+  font-size: 2em !important;
 `;
 
 export const A = styled.a`
