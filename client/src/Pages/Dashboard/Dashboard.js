@@ -10,15 +10,13 @@ export const Wrapper = styled.div`
 
 let bannerState = !true;
 
-
-const MainState = ({name}) => {
-  if (bannerState)  {
-   return <Main/>
+const MainState = ({ name }) => {
+  if (bannerState) {
+    return <Main />;
+  } else {
+    return <Banner name={name} />;
   }
-  else {
-    return  <Banner name={name} />;
-    }
-}
+};
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
@@ -53,15 +51,14 @@ const Dashboard = ({ setAuth }) => {
     }
   };
 
-
   return (
     //FCFBFD
     <>
       <Nav name={name} />
       <Wrapper>
         <Sidebar logout={logout} />
-        <MainState name={name}/>
-          </Wrapper>
+        <MainState name={name} />
+      </Wrapper>
     </>
   );
 };

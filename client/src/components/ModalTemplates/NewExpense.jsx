@@ -14,22 +14,16 @@ export const Wrapper = styled.div`
 `;
 
 const NewExpenseModal = () => {
-  return (
-    <Wrapper>
-        Hi
-    </Wrapper>
-  );
+  return <Wrapper>Hi</Wrapper>;
 };
 
-
-
 const ToggleNewExpense = () => {
-    const addModal = () => {
-        ModalService.open(NewExpenseModal);
-      };
+  const addModal = () => {
+    ModalService.open(NewExpenseModal);
+  };
   return (
     <>
-<FitButton onClick={addModal}>new expense</FitButton>
+      <FitButton onClick={addModal}>new expense</FitButton>
     </>
   );
 };

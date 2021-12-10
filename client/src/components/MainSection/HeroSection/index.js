@@ -27,11 +27,11 @@ function contentBlock({
         <TextSection lightText={lightText}>
           <h3>{headline}</h3>
           <Paragraph>
-            <i class="fas fa-hand-holding-usd"></i>
+            <i className="fas fa-hand-holding-usd"></i>
             <p style={{ fontSize: "1em" }}> {descriptionOne}</p>
           </Paragraph>
           <Paragraph>
-            <i class="fas fa-hand-holding-usd"></i>
+            <i className="fas fa-hand-holding-usd"></i>
             <p style={{ fontSize: "1em" }}>{descriptionTwo}</p>
           </Paragraph>
         </TextSection>

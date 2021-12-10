@@ -9,7 +9,7 @@ import {
   MenuLinks,
   SpentButton,
   SmallBtn,
-  FitBtn
+  FitBtn,
 } from "./styles.js";
 const WrappedButton = (Component, props) => {
   const { href, to, target, children, disabled, isLoading, ...rest } = props;
