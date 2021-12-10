@@ -33,13 +33,14 @@ export const MenuSpan = styled.span`
   }
 `;
 //  props="close" heading="Settings"  component="<Settings/>"/
-export const Navbar = ({ logout }) => {
+export const Sidebar = ({ logout }) => {
   const addModal = () => {
     ModalService.open(TestModal);
   };
 
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+
   return (
     <>
       <MenuIcon onClick={handleClick} className="fas fa-bars fa-sm" />
@@ -91,4 +92,4 @@ export const Navbar = ({ logout }) => {
             <Icon className="fas fa-cog"> Settings</Icon>
             <Icon className="fas fa-sign-out-alt"> Log out</Icon>
 */
-export default Navbar;
+export default Sidebar;
