@@ -4,16 +4,15 @@ import theme from "../../../../theme/Index";
 import { FitButton } from "../../../Button/index.jsx";
 export const Wrapper = styled.div`
   display: flex;
-padding:10px;
+  padding: 10px;
 `;
 
-export const Heading = styled.h4`
-`;
+export const Heading = styled.h4``;
 
 const NewExpense = () => {
   return (
     <Wrapper>
-       <Heading>Labels: </Heading>
+      <Heading>Labels: </Heading>
     </Wrapper>
   );
 };

@@ -15,12 +15,12 @@ export const Wrapper = styled.div`
 `;
 
 const ToggleNewExpense = () => {
-    const addModal = () => {
-        ModalService.open(NewExpenseModal);
-      };
+  const addModal = () => {
+    ModalService.open(NewExpenseModal);
+  };
   return (
     <>
-<FitButton onClick={addModal}>new expense</FitButton>
+      <FitButton onClick={addModal}>new expense</FitButton>
     </>
   );
 };
