@@ -2,19 +2,14 @@ const router = require("express").Router();
 const authorize = require("../middleware/authorize");
 const pool = require("../db");
 
-//all todos and name
+// all expenses and name
 
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT user_name FROM users WHERE user_id = $1",
+      "SELECT users.user_name, expenses.expense_id, expenses.expense_amount FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1",
       [req.user.id]
     );
-
-    // const user = await pool.query(
-    //   "SELECT u.user_name, t.todo_id, t.description FROM users AS u LEFT JOIN todos AS t ON u.user_id = t.user_id WHERE u.user_id = $1",
-    //   [req.user.id]
-    // );
 
     res.json(user.rows);
   } catch (err) {
@@ -23,62 +18,65 @@ router.get("/", authorize, async (req, res) => {
   }
 });
 
-// //create a todo
+// create an expense
 
-// router.post("/todos", authorize, async (req, res) => {
-//   try {
-//     console.log(req.body);
-//     const { description } = req.body;
-//     const newTodo = await pool.query(
-//       "INSERT INTO todos (user_id, description) VALUES ($1, $2) RETURNING *",
-//       [req.user.id, description]
-//     );
+router.post("/expense", authorize, async (req, res) => {
+  try {
+    console.log(req.body);
 
-//     res.json(newTodo.rows[0]);
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+    const { amount } = req.body;
 
-// //update a todo
+    const newExpense = await pool.query(
+      "INSERT INTO expenses (user_id, expense_amount) VALUES ($1, $2) RETURNING *",
+      [req.user.id, amount]
+    );
 
-// router.put("/todos/:id", authorize, async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const { description } = req.body;
-//     const updateTodo = await pool.query(
-//       "UPDATE todos SET description = $1 WHERE todo_id = $2 AND user_id = $3 RETURNING *",
-//       [description, id, req.user.id]
-//     );
+    res.json(newExpense.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
-//     if (updateTodo.rows.length === 0) {
-//       return res.json("This todo is not yours");
-//     }
+// update an expense
 
-//     res.json("Todo was updated");
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+router.put("/expense/:id", authorize, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { amount } = req.body;
 
-// //delete a todo
+    const updateExpense = await pool.query(
+      "UPDATE expenses SET expense_amount = $1 WHERE expense_id = $2 AND user_id = $3 RETURNING *",
+      [amount, id, req.user.id]
+    );
 
-// router.delete("/todos/:id", authorize, async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const deleteTodo = await pool.query(
-//       "DELETE FROM todos WHERE todo_id = $1 AND user_id = $2 RETURNING *",
-//       [id, req.user.id]
-//     );
+    if (updateExpense.rows.length === 0) {
+      return res.json("This expense is not yours");
+    }
 
-//     if (deleteTodo.rows.length === 0) {
-//       return res.json("This Todo is not yours");
-//     }
+    res.json("Expense was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
-//     res.json("Todo was deleted");
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
+// delete an expense
+
+router.delete("/expense/:id", authorize, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteExpense = await pool.query(
+      "DELETE FROM expenses WHERE expense_id = $1 AND user_id = $2 RETURNING *",
+      [id, req.user.id]
+    );
+
+    if (deleteExpense.rows.length === 0) {
+      return res.json("This Expense is not yours");
+    }
+
+    res.json(`Expense ${id} was deleted`);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 module.exports = router;

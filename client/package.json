@@ -24,7 +24,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "start": "prettier --write \"src/**/*.{js,jsx,json}\" && react-scripts start",
+    "start": "prettier --write \"src/**/*.{js,jsx,json}\" && BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
