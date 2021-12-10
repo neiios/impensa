@@ -9,6 +9,7 @@ import {
   MenuLinks,
   SpentButton,
   SmallBtn,
+  FitBtn
 } from "./styles.js";
 const WrappedButton = (Component, props) => {
   const { href, to, target, children, disabled, isLoading, ...rest } = props;
@@ -39,3 +40,4 @@ export const WideButton = (props) => WrappedButton(WideBtn, props);
 export const MenuRef = (props) => WrappedButton(MenuLinks, props);
 export const SpentBtn = (props) => WrappedButton(SpentButton, props);
 export const SmallButton = (props) => WrappedButton(SmallBtn, props);
+export const FitButton = (props) => WrappedButton(FitBtn, props);

@@ -6,6 +6,7 @@ import SignIn from "./Pages/SignIn/SignIn";
 import SignUp from "./Pages/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
 import ModalRoot from "./components/Modal/ModalRoot.js";
+import PageNotFound from "./Pages/PageNotFound";
 //styles
 import "./App.css";
 
@@ -55,6 +56,12 @@ const App = () => {
               <Redirect to="/dashboard" />
             )
           }
+        />
+         {/*this is 404 route, looks bad ngl*/} 
+                <Route
+          exact
+          path="/PageNotFound"
+          render={(props) =><PageNotFound {...props} setAuth={setAuth} />}
         />
         <Route
           exact

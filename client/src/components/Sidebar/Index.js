@@ -5,6 +5,7 @@ import theme from "../../theme/Index.js";
 import { Button, MenuRef } from "../Button/index.js";
 import TestModal from "../Modal/TestModal.js";
 import ModalService from "../Modal/ModalService.js";
+import Settings from "../ModalTemplates/Settings/Settings.jsx";
 const MenuIcon = styled.i`
   z-index: 1000;
   cursor: pointer;
@@ -31,7 +32,7 @@ export const MenuSpan = styled.span`
     display: none;
   }
 `;
-
+//  props="close" heading="Settings"  component="<Settings/>"/
 export const Navbar = ({ logout }) => {
   const addModal = () => {
     ModalService.open(TestModal);
@@ -89,6 +90,5 @@ export const Navbar = ({ logout }) => {
             <Icon className="fas fa-archive"> Archive</Icon>
             <Icon className="fas fa-cog"> Settings</Icon>
             <Icon className="fas fa-sign-out-alt"> Log out</Icon>
-
 */
 export default Navbar;

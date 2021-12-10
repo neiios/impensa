@@ -38,7 +38,7 @@ margin:0;
 `;
 
 const Main = () => {
-  return (
+      return (
     <Wrapper>
       <Container>
         <MidContainer>

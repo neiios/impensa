@@ -3,10 +3,22 @@ import Sidebar from "../../components/Sidebar/Index";
 import styled from "styled-components";
 import Main from "./Main.js";
 import Nav from "../../components/Sidebar/Navbar";
-
+import Banner from "./Banner";
 export const Wrapper = styled.div`
   display: flex;
 `;
+
+let bannerState = !true;
+
+
+const MainState = ({name}) => {
+  if (bannerState)  {
+   return <Main/>
+  }
+  else {
+    return  <Banner name={name} />;
+    }
+}
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
@@ -41,14 +53,15 @@ const Dashboard = ({ setAuth }) => {
     }
   };
 
+
   return (
     //FCFBFD
     <>
       <Nav name={name} />
       <Wrapper>
         <Sidebar logout={logout} />
-        <Main />
-      </Wrapper>
+        <MainState name={name}/>
+          </Wrapper>
     </>
   );
 };
