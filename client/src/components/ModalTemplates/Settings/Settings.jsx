@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import theme from "../../../theme/Index.js";
-import { MdDoDisturbOn } from "react-icons/md";
-import ModalService from "../../Modal/ModalService.js";
 import {
   Wrapper,
-  Heading,
   Container,
   InputSection,
   HeadingContainer,
   Subheading,
-  EditBtn,
   ModifyButtons,
   SmallBtn,
   InputContainer,
   Label,
   PictureContainer,
-  H4,
   ProfilePicture,
   Input,
   PenIcon,
@@ -80,11 +75,11 @@ export const ReadonlyDetails = () => {
       </InputContainer>
       <InputContainer>
         <Label>Name</Label>
-        <Input value="Jessie" type="name" readonlyInput />
+        <Input value="Zhong Xina" type="name" readonlyInput />
       </InputContainer>
       <InputContainer>
         <Label>Password</Label>
-        <Input value="Anjey Duda is gay" type="password" readonlyInput />
+        <Input value="Anjey Duda" type="password" readonlyInput />
       </InputContainer>
     </>
   );

@@ -43,10 +43,10 @@ const Main = () => {
       <Container>
         <MidContainer>
           <Heading>Recently spent</Heading>
+          {/* <ExpenseCont>aaaa</ExpenseCont>
           <ExpenseCont>aaaa</ExpenseCont>
           <ExpenseCont>aaaa</ExpenseCont>
-          <ExpenseCont>aaaa</ExpenseCont>
-          <ExpenseCont>aaaa</ExpenseCont>
+          <ExpenseCont>aaaa</ExpenseCont> */}
           <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
         </MidContainer>
         <MidContainer></MidContainer>
