@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
+import { useState, useEffect } from "react";
 import {
   MidContainer,
   ExpenseCont,
@@ -38,15 +39,32 @@ margin:0;
 `;
 
 const Main = () => {
+  // const [expenses, setExpenses] = useState([]);
+
+  // async function getExpenses() {
+  //   try {
+  //     const res = await fetch("http://localhost:5000/dashboard/expense", {
+  //       method: "GET",
+  //       headers: { jwtToken: localStorage.token },
+  //     });
+
+  //     const parseData = await res.json;
+
+  //     setExpenses(parseData);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getExpenses();
+  // }, []);
+
   return (
     <Wrapper>
       <Container>
         <MidContainer>
           <Heading>Recently spent</Heading>
-          {/* <ExpenseCont>aaaa</ExpenseCont>
-          <ExpenseCont>aaaa</ExpenseCont>
-          <ExpenseCont>aaaa</ExpenseCont>
-          <ExpenseCont>aaaa</ExpenseCont> */}
           <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
         </MidContainer>
         <MidContainer></MidContainer>

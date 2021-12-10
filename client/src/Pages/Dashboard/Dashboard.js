@@ -8,18 +8,17 @@ export const Wrapper = styled.div`
   display: flex;
 `;
 
-let bannerState = !true;
-
-const MainState = ({ name }) => {
-  if (bannerState) {
-    return <Main />;
-  } else {
+const MainState = ({ name, firstExpense }) => {
+  if (firstExpense === null) {
     return <Banner name={name} />;
+  } else {
+    return <Main />;
   }
 };
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
+  const [firstExpense, setFirstExpense] = useState("");
 
   const getProfile = async () => {
     try {
@@ -30,8 +29,10 @@ const Dashboard = ({ setAuth }) => {
 
       const parseData = await res.json();
 
-      console.log(parseData);
+      // console.log(parseData);
+
       setName(parseData[0].user_name);
+      setFirstExpense(parseData[0].expense_amount);
     } catch (err) {
       console.error(err.message);
     }
@@ -57,7 +58,7 @@ const Dashboard = ({ setAuth }) => {
       <Nav name={name} />
       <Wrapper>
         <Sidebar logout={logout} />
-        <MainState name={name} />
+        <MainState name={name} firstExpense={firstExpense} />
       </Wrapper>
     </>
   );
