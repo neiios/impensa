@@ -94,4 +94,17 @@ router.get("/expenses", authorize, async (req, res) => {
   }
 });
 
+router.get("/user", authorize, async (req, res) => {
+  try {
+    const userData = await pool.query(
+      "SELECT user_name, user_email FROM users WHERE user_id = $1",
+      [req.user.id]
+    );
+
+    res.json(userData.rows);
+  } catch (err) {
+    console.error(err.mesage);
+  }
+});
+
 module.exports = router;
