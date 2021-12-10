@@ -41,11 +41,6 @@ const App = () => {
       <ModalRoot />
       <div className="App"></div>
       <Switch>
-        {/* <Route exact path="/" component={LandingPage} />
-        <Route exact path="/SignIn" component={SignIn} />
-        <Route exact path="/SignUp" component={SignUp} />
-        <Route exact path="/dashboard" component={Dashboard} /> */}
-
         <Route
           exact
           path="/"
@@ -57,11 +52,11 @@ const App = () => {
             )
           }
         />
-         {/*this is 404 route, looks bad ngl*/} 
-                <Route
+        {/*this is 404 route, looks bad ngl*/}
+        <Route
           exact
           path="/PageNotFound"
-          render={(props) =><PageNotFound {...props} setAuth={setAuth} />}
+          render={(props) => <PageNotFound {...props} setAuth={setAuth} />}
         />
         <Route
           exact
@@ -96,6 +91,7 @@ const App = () => {
             )
           }
         />
+        <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>
   );
