@@ -2,9 +2,9 @@
   "name": "impensa-server",
   "version": "1.0.69",
   "description": "Backend",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "npx nodemon ./server.js"
+    "start": "npx nodemon ./index.js"
   },
   "repository": {
     "type": "git",
