@@ -38,7 +38,7 @@ export const WrapperForMultiselect = styled.nav`
 background:white;
 padding:20px;
 width:650px;
-height:300px;
+height:200px;
 margin:50px;
 position:absolute;
 border: thin solid black;

@@ -1,18 +1,20 @@
 import React from "react";
-
 import ItemForm from "../ItemForm.jsx"
+import {ButtonContainer, Wrapper, H3, InputAmount, Label} from "./style.jsx"
+import { Button } from "../Button";
 const PriceSelect = ({ setForm, navigation }) => {
   const { previous, next } = navigation;
 
   return (
-    <div className="form">
-      <h3>Enter the amount</h3>
-      <ItemForm label="Amount" name="zip" onChange={setForm} />
-      <div>
-        <button onClick={previous}>Previous</button>
-        <button onClick={next}>Next</button>
-      </div>
-    </div>
+    <Wrapper>
+      <H3>Enter the amount</H3>
+      <Label>Label#1</Label>
+      <InputAmount name="zip" onChange={setForm} />
+        <ButtonContainer>
+        <Button onClick={previous}>Previous</Button>
+        <Button onClick={next}>Next</Button>
+        </ButtonContainer>
+    </Wrapper>
   );
 };
 

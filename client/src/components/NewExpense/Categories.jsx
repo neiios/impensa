@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import CreatableSelect from "react-select/creatable";
-import styled from "styled-components";
-
-const H5 = styled.h5``
-
+import {Wrapper, H3, H5, ButtonContainer} from "./style"
+import { Button } from "../Button";
 const GeneralCategories = [
   { value: "entertainment", label: "entertainment", color: "blue" },
   { value: "investment", label: "investment", color: "red" },
@@ -33,33 +31,25 @@ const Categories = ({ setForm, formData, navigation }) => {
   const { next } = navigation;
 
   return (
-    <>
+    <Wrapper>
     <H5>Choose category</H5>
       <CreatableSelect
-        //value={colourOptions.filter((obj) => selectedValue.includes(obj.value))}
         isMulti
-     //   onChange={handleChange}
         options={GeneralCategories}
         className="basic-multi-select"
         classNamePrefix="select"
       />
           <H5>Spent on</H5>
             <CreatableSelect
-        //value={colourOptions.filter((obj) => selectedValue.includes(obj.value))}
         isMulti
-     //   onChange={handleChange}
         options={ExactLabel}
         className="basic-multi-select"
         classNamePrefix="select"
       />
-      <div>
-        <button onClick={next}>Next</button>
-      </div>
-
-      <div>
-        <b>Selected Value: </b> {JSON.stringify(selectedValue, null, 2)}
-      </div>
-    </>
+      <ButtonContainer>
+        <Button onClick={next}>Next</Button>
+        </ButtonContainer>
+    </Wrapper>
   );
 };
 
