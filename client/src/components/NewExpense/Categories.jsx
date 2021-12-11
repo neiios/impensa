@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import CreatableSelect from "react-select/creatable";
-import {Wrapper, H3, H5, ButtonContainer, HR, Ul, Li, InputAmount, HeadingContainer, PriceSelect} from "./style"
+import {
+  Wrapper,
+  H3,
+  H5,
+  ButtonContainer,
+  HR,
+  Ul,
+  Li,
+  InputAmount,
+  HeadingContainer,
+  PriceSelect,
+} from "./style";
 import { Button } from "../Button";
 const GeneralCategories = [
   { value: "entertainment", label: "entertainment", color: "blue" },
@@ -19,7 +30,7 @@ const ExactLabel = [
   { value: "groceries", label: "groceries", color: "#666666" },
 ];
 
- const  Categories = () => {
+const Categories = () => {
   // set value for default selection
   const [selectedValue, setSelectedValue] = useState([]);
 
@@ -30,34 +41,44 @@ const ExactLabel = [
 
   return (
     <Wrapper>
-    <H5>Choose category</H5>
+      <H5>Choose category</H5>
       <CreatableSelect
         isMulti
         options={GeneralCategories}
         className="basic-multi-select"
         classNamePrefix="select"
       />
-          <H5>Spent on</H5>
-            <CreatableSelect
-                onChange={handleChange}
+      <H5>Spent on</H5>
+      <CreatableSelect
+        onChange={handleChange}
         isMulti
         options={ExactLabel}
         className="basic-multi-select"
         classNamePrefix="select"
       />
-        <HR/>
-        <PriceSelect>
+      <HR />
+      <PriceSelect>
         <HeadingContainer>
-        <H5>Spendings</H5>
-        <H5>Amount</H5>
+          <H5>Spendings</H5>
+          <H5>Amount</H5>
         </HeadingContainer>
-        {<Ul> {Object.keys(selectedValue).map((keyName, i) => <Li>{(selectedValue[keyName])} <InputAmount/> </Li> )}</Ul>}
-        </PriceSelect>
-        <ButtonContainer>
+        {
+          <Ul>
+            {" "}
+            {Object.keys(selectedValue).map((keyName, i) => (
+              <Li>
+                {selectedValue[keyName]}
+                <InputAmount type="number" />{" "}
+              </Li>
+            ))}
+          </Ul>
+        }
+      </PriceSelect>
+      <ButtonContainer>
         <Button>Save</Button>
-        </ButtonContainer>
+      </ButtonContainer>
     </Wrapper>
   );
 };
 
-export default Categories
+export default Categories;
