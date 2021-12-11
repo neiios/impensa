@@ -14,7 +14,7 @@ import {
 // styles
 import "./LandingPageStyles.css";
 
-const Hompepage = () => {
+const Homepage = () => {
   return (
     //FCFBFD
     <div className="block_1">
@@ -44,4 +44,4 @@ const Hompepage = () => {
   );
 };
 
-export default Hompepage;
+export default Homepage;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 //components
-import Hompepage from "./Pages/Homepage/index";
+import Homepage from "./Pages/Homepage/index";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import Dashboard from "./Pages/Dashboard/dashboard";
@@ -11,6 +11,8 @@ import PageNotFound from "./Pages/PageNotFound";
 import "./App.css";
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const checkAuthenticated = async () => {
     try {
       const res = await fetch("http://localhost:5000/auth/verify", {
@@ -20,38 +22,27 @@ const App = () => {
 
       const parseRes = await res.json();
 
+      // if user's token is valid sets isAuthenticated to true
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
     } catch (err) {
       console.error(err.message);
     }
   };
 
+  // this use effect runs every time component is rendered
   useEffect(() => {
     checkAuthenticated();
   }, []);
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
   return (
-    <BrowserRouter basename="">
+    <BrowserRouter>
       <ModalRoot />
-      <div className="App"></div>
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={(props) =>
-            !isAuthenticated ? (
-              <Hompepage {...props} />
-            ) : (
-              <Redirect to="/dashboard" />
-            )
-          }
-        />
+        <Route exact path="/" render={() => <Homepage />} />
         <Route
           exact
           path="/signin"
