@@ -9,7 +9,7 @@ const PriceSelect = ({ setForm, navigation }) => {
     <Wrapper>
       <H3>Enter the amount</H3>
       <Label>Label#1</Label>
-      <InputAmount name="zip" onChange={setForm} />
+      <InputAmount type="number" name="zip" onChange={setForm} />
         <ButtonContainer>
         <Button onClick={previous}>Previous</Button>
         <Button onClick={next}>Next</Button>

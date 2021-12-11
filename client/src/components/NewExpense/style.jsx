@@ -21,7 +21,8 @@ position:absolute;
 `;
 
 export const InputAmount = styled.input`
-width:20px;
+min-width:1px;
+max-width:50px;
     outline: none;
 border:none;
 border-bottom:thin solid black !important;

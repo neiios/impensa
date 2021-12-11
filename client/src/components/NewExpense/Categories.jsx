@@ -25,7 +25,7 @@ const Categories = ({ setForm, formData, navigation }) => {
 
   // handle onChange event of the dropdown
   const handleChange = (e) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
   };
 
   const { next } = navigation;
@@ -41,6 +41,7 @@ const Categories = ({ setForm, formData, navigation }) => {
       />
           <H5>Spent on</H5>
             <CreatableSelect
+                onChange={handleChange}
         isMulti
         options={ExactLabel}
         className="basic-multi-select"
@@ -49,6 +50,12 @@ const Categories = ({ setForm, formData, navigation }) => {
       <ButtonContainer>
         <Button onClick={next}>Next</Button>
         </ButtonContainer>
+        <div>
+        <b>Selected Value: </b> {(selectedValue)}
+        {Object.keys(selectedValue).map((keyName, i) => (
+        <span className="input-label"> {selectedValue[keyName]}</span>
+))}
+      </div>
     </Wrapper>
   );
 };
