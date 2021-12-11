@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CreatableSelect from "react-select/creatable";
-import {Wrapper, H3, H5, ButtonContainer} from "./style"
+import {Wrapper, H3, H5, ButtonContainer, HR, Ul, Li, InputAmount, HeadingContainer, PriceSelect} from "./style"
 import { Button } from "../Button";
 const GeneralCategories = [
   { value: "entertainment", label: "entertainment", color: "blue" },
@@ -19,7 +19,7 @@ const ExactLabel = [
   { value: "groceries", label: "groceries", color: "#666666" },
 ];
 
-const Categories = ({ setForm, formData, navigation }) => {
+ const  Categories = () => {
   // set value for default selection
   const [selectedValue, setSelectedValue] = useState([]);
 
@@ -27,8 +27,6 @@ const Categories = ({ setForm, formData, navigation }) => {
   const handleChange = (e) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.label) : []);
   };
-
-  const { next } = navigation;
 
   return (
     <Wrapper>
@@ -47,17 +45,19 @@ const Categories = ({ setForm, formData, navigation }) => {
         className="basic-multi-select"
         classNamePrefix="select"
       />
-      <ButtonContainer>
-        <Button onClick={next}>Next</Button>
+        <HR/>
+        <PriceSelect>
+        <HeadingContainer>
+        <H5>Spendings</H5>
+        <H5>Amount</H5>
+        </HeadingContainer>
+        {<Ul> {Object.keys(selectedValue).map((keyName, i) => <Li>{(selectedValue[keyName])} <InputAmount/> </Li> )}</Ul>}
+        </PriceSelect>
+        <ButtonContainer>
+        <Button>Save</Button>
         </ButtonContainer>
-        <div>
-        <b>Selected Value: </b> {(selectedValue)}
-        {Object.keys(selectedValue).map((keyName, i) => (
-        <span className="input-label"> {selectedValue[keyName]}</span>
-))}
-      </div>
     </Wrapper>
   );
 };
 
-export default Categories;
+export default Categories
