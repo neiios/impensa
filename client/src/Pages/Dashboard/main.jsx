@@ -3,6 +3,7 @@ import styled from "styled-components";
 import theme from "../../theme/Index";
 import { MidContainer } from "../../components/ContentContainer/Index";
 import { SpentBtn } from "../../components/Button/index.jsx";
+import MultiStepForm from "../../components/NewExpense/MultiStepForm";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
   z-index: -1;
@@ -33,7 +34,16 @@ padding:0;
 margin:0;
   }
 `;
-
+export const WrapperForMultiselect = styled.nav`
+background:white;
+padding:20px;
+width:650px;
+height:300px;
+margin:50px;
+position:absolute;
+border: thin solid black;
+left:600px;
+`;
 const Main = ({ expenses }) => {
   return (
     <Wrapper>
@@ -44,7 +54,9 @@ const Main = ({ expenses }) => {
           {expenses.map((expense) => (
             <p key={expense.expense_id}>{expense.expense_amount}</p>
           ))}
-
+          <WrapperForMultiselect>
+          <MultiStepForm/>
+          </WrapperForMultiselect>
           <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
         </MidContainer>
         <MidContainer></MidContainer>
