@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
 import ItemForm from "../../components/ItemForm.jsx";
 // styles
-import { Wrapper, Heading, Form } from "./style";
-import { TextContainer } from "./style.jsx";
+import { Wrapper, Heading, Form, TextContainer } from "./style";
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
   const [inputs, setInputs] = useState({

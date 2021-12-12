@@ -5,6 +5,7 @@ export const H5 = styled.h3`
   font-size: 1.2em;
 `;
 export const Wrapper = styled.div`
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,6 +56,7 @@ export const HR = styled.hr`
   width: 90%;
   margin: 20px 20px;
   color: grey;
+  height: 0.02px;
 `;
 
 export const HeadingContainer = styled.div`

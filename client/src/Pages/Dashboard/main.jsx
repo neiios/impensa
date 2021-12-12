@@ -4,6 +4,7 @@ import theme from "../../theme/Index";
 import { MidContainer } from "../../components/ContentContainer/Index";
 import { SpentBtn } from "../../components/Button/index.jsx";
 import Categories from "../../components/NewExpense/Categories";
+import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
   z-index: -1;
@@ -34,18 +35,6 @@ padding:0;
 margin:0;
   }
 `;
-export const WrapperForMultiselect = styled.nav`
-  min-height: 300px;
-  background: white;
-  padding: 20px;
-  width: 350px;
-  height: fit-content;
-  margin: 50px;
-  position: fixed;
-  margin: auto;
-  border: thin solid black;
-  left: 600px;
-`;
 const Main = ({ expenses }) => {
   return (
     <Wrapper>
@@ -56,10 +45,7 @@ const Main = ({ expenses }) => {
           {expenses.map((expense) => (
             <p key={expense.expense_id}>{expense.expense_amount}</p>
           ))}
-          <WrapperForMultiselect>
-            <Categories />
-          </WrapperForMultiselect>
-          <SpentBtn href="http://www.rakhmonov.com/">New expense</SpentBtn>
+          <ToggleNewExpense />
         </MidContainer>
         <MidContainer></MidContainer>
       </Container>

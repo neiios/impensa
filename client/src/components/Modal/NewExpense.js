@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Settings from "../ModalTemplates/Settings/Settings";
+import Categories from "../NewExpense/Categories";
 import theme from "../../theme/Index";
 import { useTransition } from "react-spring";
 export const Icon = styled.i`
@@ -46,14 +46,17 @@ const Heading = styled.h3`
   font-size: 1.2em;
 `;
 
-export const ModalWrapper = styled.div`
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  z-index: 1133;
-  margin: auto;
-  width: 600px;
-  height: 400px;
-  border-radius: 20px;
+
+export const ModalWrapper = styled.nav`
   background: white;
+  z-index: 1133;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 20px;
+  min-height: 300px;
+  width: 350px;
+  height: fit-content;
+  position: fixed;
+  margin: auto;
 `;
 
 export default function TestModal(props) {
@@ -62,10 +65,10 @@ export default function TestModal(props) {
       <Dropout onClick={props.close} />
       <ModalWrapper>
         <HeaderWrapper>
-          <Heading>Settings</Heading>
+          <Heading>New expense</Heading>
           <Icon onClick={props.close} className="fas fa-times fa-xl" />
         </HeaderWrapper>
-        <Settings />
+        <Categories />
       </ModalWrapper>
     </>
   );
