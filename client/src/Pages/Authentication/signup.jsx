@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import {
-  Wrapper,
-  Form,
-  Input,
-  Heading,
-  StringContainer,
-  InputWrapper,
-} from "./style";
+import { Wrapper, Form, Heading, TextContainer } from "./style";
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
-
+import ItemForm from "../../components/ItemForm.jsx";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -51,36 +44,37 @@ const SignUp = ({ setAuth }) => {
     <Wrapper>
       <Form onSubmit={onSubmitForm}>
         <Heading>Create your Impensa account</Heading>
-        <InputWrapper>
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => onChange(e)}
-          />
-          <Input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => onChange(e)}
-          />
-          <Input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
-        </InputWrapper>
+        <ItemForm
+          position="column"
+          type="email"
+          name="email"
+          label="Email"
+          value={email}
+          onChange={(e) => onChange(e)}
+        />
+        <ItemForm
+          position="column"
+          type="text"
+          name="name"
+          label="Name"
+          value={name}
+          onChange={(e) => onChange(e)}
+        />
+        <ItemForm
+          position="column"
+          type="password"
+          name="password"
+          label="Password"
+          value={password}
+          onChange={(e) => onChange(e)}
+        />
         <WideButton style={{ margin: "auto" }}>Create account</WideButton>
-        <StringContainer primary>
+        <TextContainer>
           Have an account?
           <ModifiedLink style={{ color: "#635BFF" }} to="/signin">
             Sign in
           </ModifiedLink>
-        </StringContainer>
+        </TextContainer>
       </Form>
     </Wrapper>
   );

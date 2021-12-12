@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 //components
 import Homepage from "./Pages/Homepage/index";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import SignIn from "./Pages/Authentication/signin";
+import SignUp from "./Pages/Authentication/signup";
 import Dashboard from "./Pages/Dashboard/dashboard";
 import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";

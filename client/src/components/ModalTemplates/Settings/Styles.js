@@ -156,8 +156,9 @@ export const SmallBtn = styled.button`
 
 export const Icon = styled.i`
   position: absolute;
-  margin-left: 310px;
+  margin-left: 80px;
   z-index: 100;
+  bottom:257px;
   color: ${theme.bg.secondary};
 `;
 

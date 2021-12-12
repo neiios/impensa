@@ -17,7 +17,7 @@ import {
   Icon,
   PictureSelect,
 } from "./Styles.js";
-
+import ItemForm from "../../ItemForm.jsx";
 export const EditDetails = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
@@ -61,32 +61,12 @@ export const EditDetails = () => {
   );
 };
 
-export const ReadonlyDetails = () => {
-  return (
-    <>
-      <InputContainer>
-        <Label>Email</Label>
-        <Input
-          type="email"
-          style={{ color: theme.bg.secondary }}
-          value="timeneth@gmail.com"
-          readonlyInput
-        />
-      </InputContainer>
-      <InputContainer>
-        <Label>Name</Label>
-        <Input value="Zhong Xina" type="name" readonlyInput />
-      </InputContainer>
-      <InputContainer>
-        <Label>Password</Label>
-        <Input value="Anjey Duda" type="password" readonlyInput />
-      </InputContainer>
-    </>
-  );
-};
-
 const Settings = () => {
-  // when click edit btn
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
+
   const [visible, setVisible] = React.useState(false);
   return (
     <Wrapper>
@@ -99,13 +79,49 @@ const Settings = () => {
               {!visible && <PenIcon className="fas fa-pen fa-xs" />}
               {visible && "Close"}
             </SmallBtn>
-            <ModifyButtons>
-              {visible && <SmallBtn>Save</SmallBtn>}
-            </ModifyButtons>
+            {visible && <SmallBtn>Save</SmallBtn>}
           </HeadingContainer>
-          {!visible && <ReadonlyDetails />}
-          {visible && <EditDetails />}
+          <ItemForm
+            type="email"
+            style={{ color: theme.bg.secondary }}
+            value="timeneth@gmail.com"
+            readonlyInput
+            label="Email"
+            postion="row"
+          />
+          <ItemForm
+            value="Zhong Xina"
+            type="name"
+            readonlyInput
+            label="Name"
+            postion="row"
+          />
+
+          <ItemForm
+            type={passwordShown ? "text" : "password"}
+            label="Password"
+            postion="row"
+            readonlyInput
+          />
+
+          {visible && (
+            <ItemForm
+              type={passwordShown ? "text" : "password"}
+              label="New password"
+              postion="row"
+              readonlyInput
+            />
+          )}
+          {visible && (
+            <Icon
+              className={
+                passwordShown ? "fas fa-eye-slash fa-xs" : "far fa-eye fa-xs"
+              }
+              onClick={togglePassword}
+            />
+          )}
         </InputSection>
+
         <PictureContainer>
           <Subheading>Profile Picture</Subheading>
           <ProfilePicture src="images/max.png" />

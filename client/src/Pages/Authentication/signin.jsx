@@ -1,16 +1,9 @@
 import React, { useState } from "react";
-// components
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
+import ItemForm from "../../components/ItemForm.jsx";
 // styles
-import {
-  Wrapper,
-  Input,
-  Heading,
-  StringContainer,
-  InputWrapper,
-  Form,
-} from "../SignUp/style";
-
+import { Wrapper, Heading, Form } from "./style";
+import { TextContainer } from "./style.jsx";
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -52,29 +45,29 @@ const SignIn = ({ setAuth }) => {
     <Wrapper>
       <Form onSubmit={onSubmitForm}>
         <Heading>Sign in to your account</Heading>
-        <InputWrapper>
-          <Input
-            placeholder="Email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => onChange(e)}
-          />
-          <Input
-            placeholder="Password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
-        </InputWrapper>
+        <ItemForm
+          position="column"
+          label="Email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => onChange(e)}
+        />
+        <ItemForm
+          position="column"
+          label="Password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => onChange(e)}
+        />
         <WideButton style={{ margin: "auto" }}>Continue</WideButton>
-        <StringContainer primary>
+        <TextContainer>
           Don't have an account?
           <ModifiedLink style={{ color: "#635BFF" }} to="/signup">
             Sign up
           </ModifiedLink>
-        </StringContainer>
+        </TextContainer>
       </Form>
     </Wrapper>
   );
