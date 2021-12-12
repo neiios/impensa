@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import theme from "../../theme/Index";
-import { FitButton } from "../Button/index.jsx";
+import { SpentBtn } from "../Button/index.jsx";
 import ModalService from "../Modal/ModalService.js";
 import NewExpense from "../Modal/NewExpense.js";
 
@@ -11,7 +10,7 @@ const ToggleNewExpense = () => {
   };
   return (
     <>
-      <FitButton onClick={addModal}>new expense</FitButton>
+      <SpentBtn onClick={addModal}>new expense</SpentBtn>
     </>
   );
 };

@@ -1,11 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import { MidContainer } from "../../components/ContentContainer/Index";
-import { SpentBtn } from "../../components/Button/index.jsx";
-import Categories from "../../components/NewExpense/Categories";
 import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
 // Wraps Sidebar Nav and Main-Conent
+
+export const DataContainer = styled.div`
+  position: relative;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  height: 400px;
+`;
+
+export const ExpenseString = styled.div`
+  padding: 5px;
+  background-color: ${theme.bg.lightestBlue};
+  border-radius: 20px;
+`;
+
+export const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+`;
+
 export const Wrapper = styled.div`
   z-index: -1;
   margin-top: 75px;
@@ -32,22 +50,26 @@ export const Container = styled.div`
 
 export const Heading = styled.h3`
 padding:0;
-margin:0;
+margin-top:0;
+margin-bottom:20px;
   }
 `;
 const Main = ({ expenses }) => {
   return (
     <Wrapper>
       <Container>
-        <MidContainer>
+        <DataContainer>
           <Heading>Recently spent</Heading>
-
-          {expenses.map((expense) => (
-            <p key={expense.expense_id}>{expense.expense_amount}</p>
-          ))}
-          <ToggleNewExpense />
-        </MidContainer>
-        <MidContainer></MidContainer>
+          <ExpenseString>
+            {expenses.map((expense) => (
+              <p key={expense.expense_id}>{expense.expense_amount}</p>
+            ))}
+          </ExpenseString>
+          <ButtonContainer>
+            <ToggleNewExpense />
+          </ButtonContainer>
+        </DataContainer>
+        <DataContainer></DataContainer>
       </Container>
     </Wrapper>
   );
