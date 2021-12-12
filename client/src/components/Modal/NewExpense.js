@@ -46,7 +46,6 @@ const Heading = styled.h3`
   font-size: 1.2em;
 `;
 
-
 export const ModalWrapper = styled.nav`
   background: white;
   z-index: 1133;
@@ -57,7 +56,6 @@ export const ModalWrapper = styled.nav`
   height: fit-content;
   position: fixed;
   margin: auto;
-
 `;
 
 export default function TestModal(props) {
