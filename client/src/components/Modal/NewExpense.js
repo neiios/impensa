@@ -31,7 +31,7 @@ export const Dropout = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-  background: ${theme.bg.secondary};
+  background: ${theme.bg.semiBlue};
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   max-width: 100%;
@@ -52,11 +52,12 @@ export const ModalWrapper = styled.nav`
   z-index: 1133;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
-  min-height: 300px;
+  min-height: 251px;
   width: 350px;
   height: fit-content;
   position: fixed;
   margin: auto;
+
 `;
 
 export default function TestModal(props) {

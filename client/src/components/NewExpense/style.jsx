@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../theme/Index";
 export const H5 = styled.h3`
   margin: 10px 0 10px 0;
-  font-size: 1.2em;
+  font-size: 1em;
 `;
 export const Wrapper = styled.div`
   padding: 10px;
@@ -20,7 +20,6 @@ export const ButtonContainer = styled.div`
 
 export const InputAmount = styled.input`
   padding: 2px;
-  text-align: center;
   position: absolute;
   right: 20px;
   min-width: 1px;
@@ -40,6 +39,8 @@ export const Container = styled.div`
 
 export const Li = styled.li`
   background-color: ${theme.bg.lightestBlue};
+  color: ${theme.bg.secondary};
+  font-size: 0.8em;
   font-weight: 550;
   width: fit-content;
   padding: 8px;
@@ -54,23 +55,27 @@ export const Ul = styled.ul`
 `;
 
 export const HR = styled.hr`
+  align-self: center;
+  height: 1px;
+  border: none;
   width: 90%;
   margin: 20px 20px;
-  color: grey;
-  height: 0.02px;
+  background-color: ${theme.bg.secondary};
 `;
 
 export const HeadingContainer = styled.div`
+  font-size: 0.8em;
   display: flex;
-  gap: 75px;
+  gap: 110px;
+  margin-left: 40px;
 `;
 
 export const PriceSelect = styled.div`
+  width: 250px;
   padding: 10px;
   position: relative;
   margin: auto;
   overflow-y: scroll;
-  height: 150px;
   /* STYLING SCROLLBAR */
 
   ::-webkit-scrollbar {
@@ -84,7 +89,7 @@ export const PriceSelect = styled.div`
 
   /* TO STYLE THE SCROLLBAR THUMB */
   ::-webkit-scrollbar-thumb {
-    background-color: ${theme.bg.secondary};
+    background-color: ${theme.bg.semiBlue};
     border: 0.3vw solid #ffffff;
     border-radius: 5vw;
   }

@@ -67,8 +67,8 @@ export const SmallBtn = styled(WideBtn)`
 
 export const FitBtn = styled(StyledButton)`
   background-color: ${(props) =>
-    props.primary ? theme.text.secondAlt : theme.text.secondary};
-  color: ${(props) => (props.primary ? theme.text.secondary : "white")};
+    props.primary ? theme.bg.secondAlt : theme.bg.secondary};
+  color: ${(props) => (props.primary ? theme.bg.secondary : "white")};
   width: fit-content;
   height: fit-content;
   padding: 5px;
@@ -93,13 +93,14 @@ export const LinkContainer = styled.div`
   display: flex;
   gap: 5px;
   align-items: center;
-  transition: opacity 0.4s;
+  transition: color 0.4s;
   :hover {
-    opacity: 0.8 !important;
+    color: ${theme.bg.secondary} !important;
   }
 `;
 
 export const MenuLinks = styled(LinkContainer)`
   display: flex;
   gap: 12px;
+  color: #677a94;
 `;

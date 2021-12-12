@@ -31,7 +31,7 @@ export const Wrapper = styled.div`
   margin-left: 20px;
   z-index: 100;
   width: 100%;
-  background-color: ${theme.bg.semiBlue};
+  background-color: ${theme.bg.lightestBlue};
   min-height: 100vh;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

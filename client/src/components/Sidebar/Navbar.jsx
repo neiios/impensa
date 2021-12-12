@@ -4,7 +4,7 @@ import Logo from "../../components/Logo/index.jsx";
 import theme from "../../theme/Index.js";
 
 export const UserCreds = styled.div`
-  color: ${theme.bg.secondary};
+  color: #677a94;
   cursor: pointer;
   display: flex;
   gap: 5px;

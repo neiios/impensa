@@ -109,27 +109,32 @@ const Categories = () => {
         classNamePrefix="select"
         styles={colourStyles}
       />
-      <HR />
-      <PriceSelect>
-        <HeadingContainer>
-          <H5>Spendings</H5>
-          <H5>Amount</H5>
-        </HeadingContainer>
-        {
-          <Ul>
-            {" "}
-            {Object.keys(selectedValue).map((keyName, i) => (
-              <Li>
-                {selectedValue[keyName]}
-                <InputAmount type="number" min="0" required />{" "}
-              </Li>
-            ))}
-          </Ul>
-        }
-      </PriceSelect>
-      <ButtonContainer>
-        <Button>Save</Button>
-      </ButtonContainer>
+
+      {selectedValue.length === 0 ? null : (
+        <>
+          <HR></HR>
+          <HeadingContainer>
+            <H5>Spendings</H5>
+            <H5>Amount</H5>
+          </HeadingContainer>
+          <PriceSelect>
+            {
+              <Ul>
+                {" "}
+                {Object.keys(selectedValue).map((keyName, i) => (
+                  <Li>
+                    {selectedValue[keyName]}
+                    <InputAmount type="number" min="0" required />{" "}
+                  </Li>
+                ))}
+              </Ul>
+            }
+          </PriceSelect>
+          <ButtonContainer>
+            <Button>Save</Button>
+          </ButtonContainer>
+        </>
+      )}
     </Wrapper>
   );
 };

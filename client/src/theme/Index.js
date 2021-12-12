@@ -7,6 +7,7 @@ export const theme = {
     alt: "#F6F9FC", // light grey
     semiBlue: "rgba(88, 101, 242, .7)", // light grey
     lightestBlue: "rgba(88, 101, 242, .1)", // light grey
+    secondAlt: "rgba(88, 101, 242, .1)"
   },
   text: {
     default: "#353538",

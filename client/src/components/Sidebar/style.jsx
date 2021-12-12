@@ -43,8 +43,6 @@ export const StyledLi = styled.a``;
 
 export const Icon = styled.img`
   width: 15px;
-  :hover {
-  }
 `;
 
 export const MenuEl = styled.div`
@@ -54,9 +52,7 @@ export const MenuEl = styled.div`
   width: 160px;
   align-items: center;
   justify-content: flex-start;
-
   border-radius: 15px;
-  transition: background-color 0.3s;
   transition: color 0.2s;
   :hover {
     color: ${theme.bg.secondary};

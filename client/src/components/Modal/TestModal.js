@@ -31,7 +31,7 @@ export const Dropout = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-  background: ${theme.bg.secondary};
+  background: ${theme.bg.semiBlue};
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   max-width: 100%;
