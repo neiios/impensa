@@ -10,7 +10,7 @@ const ToggleNewExpense = () => {
   };
   return (
     <>
-      <SpentBtn onClick={addModal}>new expense</SpentBtn>
+      <SpentBtn onClick={addModal}>Add new expense</SpentBtn>
     </>
   );
 };
