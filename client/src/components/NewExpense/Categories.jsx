@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import {
   Wrapper,
-  H3,
   H5,
   ButtonContainer,
   HR,
@@ -13,6 +12,7 @@ import {
   PriceSelect,
 } from "./style";
 import { Button } from "../Button";
+
 const GeneralCategories = [
   { value: "entertainment", label: "entertainment", color: "blue" },
   { value: "investment", label: "investment", color: "red" },
@@ -68,7 +68,7 @@ const Categories = () => {
             {Object.keys(selectedValue).map((keyName, i) => (
               <Li>
                 {selectedValue[keyName]}
-                <InputAmount type="number" />{" "}
+                <InputAmount type="number" min="0" required />{" "}
               </Li>
             ))}
           </Ul>

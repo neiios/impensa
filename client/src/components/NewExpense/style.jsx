@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
-export const H3 = styled.h3`
-  margin: 0;
-`;
 export const H5 = styled.h3`
   margin: 10px 0 10px 0;
   font-size: 1.2em;
@@ -20,6 +17,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const InputAmount = styled.input`
+  padding: 2px;
   text-align: center;
   position: absolute;
   right: 20px;
