@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
 import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
+import LineGraph from "../../components/Data Visualization/linegraph";
 // Wraps Sidebar Nav and Main-Conent
 
 export const DataContainer = styled.div`
@@ -69,7 +70,9 @@ const Main = ({ expenses }) => {
             <ToggleNewExpense />
           </ButtonContainer>
         </DataContainer>
-        <DataContainer></DataContainer>
+        <DataContainer>
+          <LineGraph />
+        </DataContainer>
       </Container>
     </Wrapper>
   );
