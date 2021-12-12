@@ -63,7 +63,7 @@ const Dashboard = ({ setAuth }) => {
       <Nav name={name} />
       <Wrapper>
         <Sidebar logout={logout} />
-        {expenses.length === 0 ? (
+        {expenses.length === null ? (
           <Banner name={name} />
         ) : (
           <Main expenses={expenses} />
