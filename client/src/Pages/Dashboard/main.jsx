@@ -17,6 +17,22 @@ export const ExpenseString = styled.div`
   padding: 5px;
   background-color: ${theme.bg.lightestBlue};
   border-radius: 20px;
+  margin: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+`;
+
+export const ExpenseDate = styled.div`
+  margin-left: auto;
+`;
+
+export const ExpenseDescription = styled.div`
+  background: ${theme.bg.secondary};
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  left: 150px;
 `;
 
 export const ButtonContainer = styled.div`
@@ -55,23 +71,29 @@ margin-top:0;
 margin-bottom:20px;
   }
 `;
+
 const Main = ({ expenses }) => {
+  let i = 3;
   return (
     <Wrapper>
       <Container>
         <DataContainer>
           <Heading>Recently spent</Heading>
-          <ExpenseString>
-            {expenses.map((expense) => (
-              <p key={expense.expense_id}>{expense.expense_amount}</p>
-            ))}
-          </ExpenseString>
+          {expenses.map((expense, i) => (
+            <ExpenseString key={expense.expense_id}>
+              {expense.expense_amount}
+              <ExpenseDescription>
+                {expense.expense_category}
+              </ExpenseDescription>
+              <ExpenseDate>{expense.expense_date}</ExpenseDate>
+            </ExpenseString>
+          ))}
           <ButtonContainer>
             <ToggleNewExpense />
           </ButtonContainer>
         </DataContainer>
         <DataContainer>
-          <LineGraph />
+          <LineGraph expenses={expenses} />
         </DataContainer>
       </Container>
     </Wrapper>
