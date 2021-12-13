@@ -34,7 +34,7 @@ export const ExpenseDescription = styled.div`
   background: ${theme.bg.secondary};
   color: white;
   padding: 5px;
-  border-radius: px;
+  border-radius: 10px;
   left: 120px;
   position: absolute;
 `;
@@ -79,7 +79,7 @@ margin-bottom:20px;
 const Main = ({ expenses }) => {
   const labels = expenses;
   // reducing object's size to the last 5 elements
-  const newobj = labels.slice(Math.max(labels.length - labels.length, 0));
+  const newobj = labels.slice(Math.max(labels.length - 6, 0));
 
   return (
     <Wrapper>

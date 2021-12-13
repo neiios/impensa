@@ -53,8 +53,8 @@ let date = newDate.getDate();
 let month = newDate.getMonth() + 1;
 let year = newDate.getFullYear();
 
-let currentUserDate = `${month}/${date}/${year}`;
-
+let currentUserDate = `${month}/${date - 1}/${year}`;
+console.log(currentUserDate);
 //12/11/2021
 
 export const options = {
@@ -66,6 +66,10 @@ export const options = {
   scales: {
     x: {
       grid: {
+        display: false,
+      },
+      ticks: {
+        autoSkip: true,
         display: false,
       },
     },
@@ -89,12 +93,22 @@ const LineGraph = ({ expenses }) => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-
+  let i = 0;
   let add = 0;
-  const newobj = expenses.slice(Math.max(expenses.length - value, 0));
+  let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
+  newobj.map((expense) =>
+    moment.utc(expense.expense_date).format("MM/DD/Y") >=
+    `${month}/${date - value}/${year}`
+      ? i++
+      : i
+  );
+
+  newobj = expenses.slice(Math.max(expenses.length - i, 0));
   let labels = newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y")
   );
+
+  console.log(i);
   const data = {
     labels,
     datasets: [
@@ -114,7 +128,9 @@ const LineGraph = ({ expenses }) => {
     <GraphWrapper>
       <select value={value} onChange={handleChange}>
         <option value="1">1</option>
-        <option value="5">5</option>
+        <option value="2" selected>
+          2
+        </option>
         <option value="10">10</option>
         <option value="15">15</option>
         <option value={total}>all time</option>
