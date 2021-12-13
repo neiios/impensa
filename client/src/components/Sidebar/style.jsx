@@ -10,6 +10,11 @@ export const SidebarWrapper = styled.nav`
   padding-top: 20px;
   transition: left 0.3s ease;
   display: ${({ click }) => (click ? "none" : "block")};
+
+  @media screen and (max-width: 1300px) {
+    display: none;
+    display: ${({ click }) => (click ? "block" : "none")};
+  }
   @media screen and (max-width: 800px) {
     display: block;
     width: 0;

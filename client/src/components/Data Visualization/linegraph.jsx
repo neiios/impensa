@@ -1,4 +1,3 @@
-import Reac, { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,16 +9,9 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import faker from "faker";
 import theme from "../../theme/Index";
-import styled from "styled-components";
-import NumberFormat from "react-number-format";
 import moment from "moment";
-export const GraphWrapper = styled.div`
-  position: absolute;
-  width: 90%;
-  height: 400px !important;
-`;
+import { GraphWrapper, H4, H6, H3, TextContainer } from "./style";
 
 const states = [
   ["NSW", "New South Wales"],
@@ -54,7 +46,6 @@ let month = newDate.getMonth() + 1;
 let year = newDate.getFullYear();
 
 let currentUserDate = `${month}/${date - 1}/${year}`;
-console.log(currentUserDate);
 //12/11/2021
 
 export const options = {
@@ -67,6 +58,9 @@ export const options = {
     x: {
       grid: {
         display: false,
+      },
+      tooltips: {
+        mode: "label", // or 'x-axis'
       },
       ticks: {
         autoSkip: true,
@@ -82,63 +76,65 @@ export const options = {
 };
 
 const LineGraph = ({ expenses }) => {
-  let total = expenses.length;
-  const getInitialState = () => {
-    const value = "10";
-    return value;
-  };
+  let value = expenses.length,
+    i = 0,
+    add = 0,
+    addToday = 0;
 
-  const [value, setValue] = useState(getInitialState);
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-  let i = 0;
-  let add = 0;
   let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
   newobj.map((expense) =>
-    moment.utc(expense.expense_date).format("MM/DD/Y") >=
-    `${month}/${date - value}/${year}`
+    moment.utc(expense.expense_date).format("MM/DD/Y") ===
+    `${month}/${date - 1}/${year}`
       ? i++
       : i
   );
 
-  newobj = expenses.slice(Math.max(expenses.length - i, 0));
+  let today = expenses.slice(Math.max(expenses.length - i, 0));
+
+  let todaySpent = today.map(
+    (expense) =>
+      (addToday += parseFloat(
+        expense.expense_amount.substring(1).replace(",", "")
+      ))
+  );
+  console.log(todaySpent);
+  newobj = expenses.slice(Math.max(expenses.length - value, 0));
   let labels = newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y")
   );
-
-  console.log(i);
+  let radiusValue;
+  value === 1 ? (radiusValue = 5) : (radiusValue = 0);
   const data = {
     labels,
     datasets: [
       {
-        label: "Dataset 1",
+        label: "Amount",
         data: newobj.map(
-          (expense) => (add += parseFloat(expense.expense_amount.substring(1)))
+          (expense) =>
+            (add += parseFloat(
+              expense.expense_amount.substring(1).replace(",", "")
+            ))
         ),
         borderColor: theme.bg.secondary,
         backgroundColor: theme.bg.secondary,
-        radius: 0,
-        tension: 0.5,
+        radius: radiusValue,
+        tension: 0.3,
       },
     ],
   };
+  //value = how many expenses
   return (
-    <GraphWrapper>
-      <select value={value} onChange={handleChange}>
-        <option value="1">1</option>
-        <option value="2" selected>
-          2
-        </option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value={total}>all time</option>
-      </select>
-      <p>{`Your expenses for the past ${value} expenses`}</p>
-      Total spent: {add}
-      <Line options={options} data={data} />
-    </GraphWrapper>
+    <>
+      <TextContainer>
+        <H3>{add}</H3> total
+      </TextContainer>
+      <TextContainer>
+        <H3>{addToday}</H3> today
+      </TextContainer>
+      <GraphWrapper>
+        <Line options={options} data={data} />
+      </GraphWrapper>
+    </>
   );
 };
 

@@ -11,32 +11,40 @@ export const DataContainer = styled.div`
   padding: 20px;
   background-color: white;
   border-radius: 20px;
-  height: 500px;
+  height: 550px;
+  box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 0.5px;
+`;
+
+export const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 export const ExpenseString = styled.div`
   padding: 20px 0 20px 0;
   border-bottom: 2px solid ${theme.bg.lightestBlue};
-  display: flex;
   gap: 20px;
   align-items: center;
+  display: flex;
 `;
 
 export const ExpenseDate = styled.div`
   position: relative;
-  margin-left: auto;
   font-size: 0.7em;
   font-weight: 550;
   color: grey;
 `;
 
 export const ExpenseDescription = styled.div`
+  margin-left: auto;
+  width: fit-content;
   background: ${theme.bg.secondary};
   color: white;
-  padding: 5px;
+  padding: 8px;
+  font-size: 1.2em;
   border-radius: 10px;
   left: 120px;
-  position: absolute;
 `;
 
 export const ButtonContainer = styled.div`
@@ -79,7 +87,7 @@ margin-bottom:20px;
 const Main = ({ expenses }) => {
   const labels = expenses;
   // reducing object's size to the last 5 elements
-  const newobj = labels.slice(Math.max(labels.length - 6, 0));
+  const newobj = labels.slice(Math.max(labels.length - 5, 0));
 
   return (
     <Wrapper>
@@ -88,13 +96,15 @@ const Main = ({ expenses }) => {
           <Heading>Recently spent</Heading>
           {newobj.map((expense) => (
             <ExpenseString key={expense.expense_id}>
-              {expense.expense_amount}
+              <ColumnContainer>
+                {expense.expense_amount}
+                <ExpenseDate>
+                  {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                </ExpenseDate>
+              </ColumnContainer>
               <ExpenseDescription>
                 {expense.expense_category}
               </ExpenseDescription>
-              <ExpenseDate>
-                {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
-              </ExpenseDate>
             </ExpenseString>
           ))}
           <ButtonContainer>
