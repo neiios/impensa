@@ -64,7 +64,7 @@ export const options = {
       },
       ticks: {
         autoSkip: true,
-        display: false,
+        display: true,
       },
     },
     y: {
@@ -80,7 +80,7 @@ const LineGraph = ({ expenses }) => {
     i = 0,
     add = 0,
     addToday = 0;
-
+  console.log(expenses);
   let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
   newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y") ===
@@ -92,13 +92,11 @@ const LineGraph = ({ expenses }) => {
   let today = expenses.slice(Math.max(expenses.length - i, 0));
 
   let todaySpent = today.map(
-    (expense) =>
-      (addToday += parseFloat(
-        expense.expense_amount.substring(1).replace(",", "")
-      ))
+    (expense) => (addToday += parseFloat(expense.expense_amount))
   );
   console.log(todaySpent);
   newobj = expenses.slice(Math.max(expenses.length - value, 0));
+
   let labels = newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y")
   );
@@ -110,10 +108,7 @@ const LineGraph = ({ expenses }) => {
       {
         label: "Amount",
         data: newobj.map(
-          (expense) =>
-            (add += parseFloat(
-              expense.expense_amount.substring(1).replace(",", "")
-            ))
+          (expense) => (add += parseFloat(expense.expense_amount))
         ),
         borderColor: theme.bg.secondary,
         backgroundColor: theme.bg.secondary,
