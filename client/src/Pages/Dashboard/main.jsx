@@ -3,6 +3,7 @@ import styled from "styled-components";
 import theme from "../../theme/Index";
 import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
 import LineGraph from "../../components/Data Visualization/linegraph";
+import moment from "moment";
 // Wraps Sidebar Nav and Main-Conent
 
 export const DataContainer = styled.div`
@@ -10,29 +11,32 @@ export const DataContainer = styled.div`
   padding: 20px;
   background-color: white;
   border-radius: 20px;
-  height: 400px;
+  height: 500px;
 `;
 
 export const ExpenseString = styled.div`
-  padding: 5px;
-  background-color: ${theme.bg.lightestBlue};
-  border-radius: 20px;
-  margin: 10px;
+  padding: 20px 0 20px 0;
+  border-bottom: 2px solid ${theme.bg.lightestBlue};
   display: flex;
   gap: 20px;
   align-items: center;
 `;
 
 export const ExpenseDate = styled.div`
+  position: relative;
   margin-left: auto;
+  font-size: 0.7em;
+  font-weight: 550;
+  color: grey;
 `;
 
 export const ExpenseDescription = styled.div`
   background: ${theme.bg.secondary};
   color: white;
   padding: 5px;
-  border-radius: 10px;
-  left: 150px;
+  border-radius: px;
+  left: 120px;
+  position: absolute;
 `;
 
 export const ButtonContainer = styled.div`
@@ -73,19 +77,24 @@ margin-bottom:20px;
 `;
 
 const Main = ({ expenses }) => {
-  let i = 3;
+  const labels = expenses;
+  // reducing object's size to the last 5 elements
+  const newobj = labels.slice(Math.max(labels.length - labels.length, 0));
+
   return (
     <Wrapper>
       <Container>
         <DataContainer>
           <Heading>Recently spent</Heading>
-          {expenses.map((expense, i) => (
+          {newobj.map((expense) => (
             <ExpenseString key={expense.expense_id}>
               {expense.expense_amount}
               <ExpenseDescription>
                 {expense.expense_category}
               </ExpenseDescription>
-              <ExpenseDate>{expense.expense_date}</ExpenseDate>
+              <ExpenseDate>
+                {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+              </ExpenseDate>
             </ExpenseString>
           ))}
           <ButtonContainer>

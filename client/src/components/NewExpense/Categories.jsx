@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CreatableSelect from "react-select/creatable";
+import Select from "react-select/creatable";
 import theme from "../../theme/Index";
 import {
   Wrapper,
@@ -11,12 +11,22 @@ import {
   InputAmount,
   HeadingContainer,
   PriceSelect,
+  TextArea,
 } from "./style";
 import { Button } from "../Button";
 import chroma from "chroma-js";
-
+import ItemForm from "../ItemForm";
 const colourStyles: StylesConfig<ColourOption, true> = {
-  control: (styles) => ({ ...styles, backgroundColor: "white" }),
+  control: (base) => ({
+    ...base,
+    border: "none",
+    boxShadow: "rgba(3, 102, 214, 0.1) 0px 0px 0px 1px",
+    transition: "all 0.3s ease-out",
+    "&:hover": {
+      boxShadow: theme.bg.semiBlue + "0px 0px 0px 3px",
+    },
+    // This line disable the blue border
+  }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     const color = chroma(theme.bg.secondary);
     return {
@@ -63,23 +73,18 @@ const colourStyles: StylesConfig<ColourOption, true> = {
 };
 
 const GeneralCategories = [
-  { value: "entertainment", label: "entertainment", color: "blue" },
-  { value: "investments", label: "investments", color: "red" },
-  { value: "subscriptions", label: "subscriptions", color: "#36B37E" },
-  { value: "travelling", label: "travelling", color: "#00875A" },
+  { value: "Netflix", label: "netflix" },
+  { value: "Spotify", label: "spotify" },
+  { value: "Youtube premium", label: "youtube premium" },
+  { value: "HBO Max", label: "HBO Max" },
+  { value: "Tickets", label: "Tickets" },
+  { value: "Travelling", label: "Travelling" },
+  { value: "Transport", label: "Transport" },
+  { value: "Health", label: "Health" },
+  { value: "Delivery", label: "Delivery" },
+  { value: "Groceries", label: "Groceries" },
+  { value: "Accomodation", label: "Accomodation" },
 ];
-
-// const ExactLabel = [
-//   { value: "netflix", label: "netflix", color: "blue" },
-//   { value: "youtube Premium", label: "youtube premium", color: "red" },
-//   { value: "spotify", label: "spotify", color: "#36B37E" },
-//   { value: "accomodation", label: "accomodation", color: "#00875A" },
-//   { value: "primeVideo", label: "prime video", color: "#253858" },
-//   { value: "transport", label: "transport", color: "#666666" },
-//   { value: "groceries", label: "groceries", color: "#666666" },
-//   { value: "cinema", label: "cinema", color: "#666666" },
-//   { value: "food delivery", label: "food delivery", color: "#666666" },
-// ];
 
 const Categories = () => {
   // set value for default selection
@@ -108,25 +113,27 @@ const Categories = () => {
   }
 
   return (
-    <form onSubmit={onSubmitForm}>
+    <Wrapper onSubmit={onSubmitForm}>
       <H5>Choose category</H5>
-      <CreatableSelect
+      <Select
         onChange={(e) => setCategory(e.value)}
         options={GeneralCategories}
         className="basic-multi-select"
         classNamePrefix="select"
         styles={colourStyles}
+        required
       />
       {console.log(category)}
       <H5>Description</H5>
-      <input
-        required
+      <TextArea
+        placeholder="You can put details about your expense here"
         type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
       <H5>Amount</H5>
-      <input
+      <ItemForm
+        position="column"
         required
         type="number"
         min="0.01"
@@ -138,7 +145,7 @@ const Categories = () => {
       <ButtonContainer>
         <Button>Submit</Button>
       </ButtonContainer>
-    </form>
+    </Wrapper>
   );
 };
 

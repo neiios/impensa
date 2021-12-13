@@ -51,7 +51,6 @@ export const ModalWrapper = styled.nav`
   z-index: 1133;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
-  min-height: 251px;
   width: 350px;
   height: fit-content;
   position: fixed;

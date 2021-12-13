@@ -1,4 +1,4 @@
-import React from "react";
+import Reac, { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,13 +11,32 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import faker from "faker";
+import theme from "../../theme/Index";
 import styled from "styled-components";
-
+import NumberFormat from "react-number-format";
+import moment from "moment";
 export const GraphWrapper = styled.div`
   position: absolute;
   width: 90%;
   height: 400px !important;
 `;
+
+const states = [
+  ["NSW", "New South Wales"],
+  ["VIC", "Victoria"],
+  ["WA", "Western Australia"],
+];
+
+const StateDrop = ({ label, ...others }) => (
+  <>
+    <label>{label}</label>
+    <select {...others}>
+      {states.map(([value, name]) => (
+        <option value={value}>{name}</option>
+      ))}
+    </select>
+  </>
+);
 
 ChartJS.register(
   CategoryScale,
@@ -29,17 +48,20 @@ ChartJS.register(
   Legend
 );
 
+let newDate = new Date();
+let date = newDate.getDate();
+let month = newDate.getMonth() + 1;
+let year = newDate.getFullYear();
+
+let currentUserDate = `${month}/${date}/${year}`;
+
+//12/11/2021
+
 export const options = {
   maintainAspectRatio: false,
   responsive: true,
   plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Chart.js Line Chart",
-    },
+    legend: false,
   },
   scales: {
     x: {
@@ -56,24 +78,68 @@ export const options = {
 };
 
 const LineGraph = ({ expenses }) => {
-  const labels = expenses.map((expense) => expense.expense_category);
+  let total = expenses.length;
+  const getInitialState = () => {
+    const value = "10";
+    return value;
+  };
+
+  const [value, setValue] = useState(getInitialState);
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  let add = 0;
+  const newobj = expenses.slice(Math.max(expenses.length - value, 0));
+  let labels = newobj.map((expense) =>
+    moment.utc(expense.expense_date).format("MM/DD/Y")
+  );
   const data = {
     labels,
     datasets: [
       {
         label: "Dataset 1",
-        data: parseFloat(expenses.map((expense) => expense.expense_amount)),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        data: newobj.map(
+          (expense) => (add += parseFloat(expense.expense_amount.substring(1)))
+        ),
+        borderColor: theme.bg.secondary,
+        backgroundColor: theme.bg.secondary,
+        radius: 0,
+        tension: 0.5,
       },
     ],
   };
-
   return (
     <GraphWrapper>
-      <Line options={options} data={data} />;
+      <select value={value} onChange={handleChange}>
+        <option value="1">1</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value={total}>all time</option>
+      </select>
+      <p>{`Your expenses for the past ${value} expenses`}</p>
+      Total spent: {add}
+      <Line options={options} data={data} />
     </GraphWrapper>
   );
 };
 
 export default LineGraph;
+
+/*
+  for (let m = 0; m < 19; m++) {
+    if (
+      newValue ===
+      newobj.map((expense) =>
+        moment.utc(expense.expense_date).format("MM/DD/Y")
+      )
+    ) {
+      newobj = expenses.slice(Math.max(expenses.length - m, 0));
+    } else {
+      continue;
+    }
+    console.log(m);
+  }
+  */
