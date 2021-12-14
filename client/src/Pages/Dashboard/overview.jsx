@@ -19,7 +19,6 @@ export const ExpenseString = styled.div`
   gap: 20px;
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
 `;
 
 export const ExpenseDate = styled.div`
@@ -56,7 +55,7 @@ margin-bottom:20px;
 
 const Main = ({ expenses }) => {
   // reducing object's size to the last 5 elements
-  const newobj = expenses.slice(Math.max(expenses.length - 5, 0));
+  const newobj = expenses.slice(Math.max(expenses.length - 5, 0)).reverse();
 
   return (
     <Container>

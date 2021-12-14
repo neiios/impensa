@@ -98,3 +98,33 @@ export const ExpenseWrapper = styled(HeaderContainer)`
   border: none !important;
   gap: 20px;
 `;
+
+export const Select = styled.select`
+  width: fit-content;
+  font-size: 15px;
+  min-width: 97px;
+  height: 32px;
+  font-weight: 550;
+  border: thin solid ${theme.text.secondary};
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  background-color: white;
+  color: ${theme.text.secondary};
+`;
+
+export const Option = styled.option`
+  text-align: center;
+  border: thin solid ${theme.text.secondary};
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  background-color: white;
+  color: ${theme.text.secondary};
+  :hover {
+    background: ${theme.text.secondary};
+    color: white;
+    background-size: 100%;
+  }
+`;

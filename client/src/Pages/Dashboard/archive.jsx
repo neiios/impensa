@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ArchiveContainer,
   OneExpenseContainer,
@@ -9,18 +9,41 @@ import {
   HeaderContainer,
   ExpenseWrapper,
   ExpenseItem,
+  Select,
+  Option,
 } from "./style";
 import moment from "moment";
 import ExcelExport from "./excelExport";
 // Wraps Sidebar Nav and Main-Conent
 
 const Archive = ({ expenses }) => {
-  const newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
+  const getInitialState = () => {
+    const value = "10";
+    return value;
+  };
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  const [value, setValue] = useState(getInitialState);
+  let newobj;
+  value === "Most recent"
+    ? (newobj = expenses.slice(Math.max(expenses.length - value, 0)).reverse())
+    : (newobj = expenses.slice(Math.max(expenses.length - value, 0)));
+  if (value === 1)
+    newobj = expenses.slice(Math.max(expenses.length - value, 0));
 
   return (
     <ArchiveContainer>
       <HeaderContainer>
         <H3>Archive</H3>
+        <Select value={value} onChange={handleChange}>
+          <Option value="Most recent">Recent first</Option>
+          <Option value="Oldest">Oldest first</Option>
+          <Option value="1">Last expense</Option>
+          <Option value="expenses.length">Display all</Option>
+        </Select>
+
         <ExcelExport expenses={expenses} />
       </HeaderContainer>
       {newobj.map((expense) => (
