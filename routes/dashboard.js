@@ -27,10 +27,11 @@ router.post("/expense", authorize, async (req, res) => {
     const { amount, description, category } = req.body;
 
     const newExpense = await pool.query(
-      "INSERT INTO expenses (user_id, expense_amount, expense_description, expense_category, expense_date) VALUES ($1, $2, $3, $4, CURRENT_DATE) RETURNING *",
+      "INSERT INTO expenses (user_id, expense_amount, expense_description, expense_category) VALUES ($1, $2, $3, $4) RETURNING *",
       [req.user.id, amount, description, category]
     );
 
+    console.log(newExpense.rows[0]);
     res.json(newExpense.rows[0]);
   } catch (err) {
     console.error(err.message);
