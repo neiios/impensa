@@ -54,10 +54,50 @@ const App = () => {
           }
         />
         <Route exact path="/" render={() => <Homepage />} />
-        <Route exact path="/dashboard/analysis" render={() => <Dashboard />} />
-        <Route exact path="/dashboard/overview" render={() => <Dashboard />} />
-        <Route exact path="/dashboard/progress" render={() => <Dashboard />} />
-        <Route exact path="/dashboard/archive" render={() => <Dashboard />} />
+        <Route
+          exact
+          path="/dashboard/analysis"
+          render={(props) =>
+            isAuthenticated ? (
+              <Dashboard {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to="/signin" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/overview"
+          render={(props) =>
+            isAuthenticated ? (
+              <Dashboard {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to="/signin" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/progress"
+          render={(props) =>
+            isAuthenticated ? (
+              <Dashboard {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to="/signin" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/dashboard/archive"
+          render={(props) =>
+            isAuthenticated ? (
+              <Dashboard {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to="/signin" />
+            )
+          }
+        />
         <Route
           exact
           path="/signin"
