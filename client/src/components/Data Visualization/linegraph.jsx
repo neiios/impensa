@@ -45,7 +45,7 @@ let date = newDate.getDate();
 let month = newDate.getMonth() + 1;
 let year = newDate.getFullYear();
 
-let currentUserDate = `${month}/${date - 1}/${year}`;
+let currentUserDate = `${month}/${date}/${year}`;
 //12/11/2021
 
 export const options = {
@@ -121,10 +121,10 @@ const LineGraph = ({ expenses }) => {
   return (
     <>
       <TextContainer>
-        <H3>{add}</H3> total
+        <H3>{add.toFixed(2)}</H3> total
       </TextContainer>
       <TextContainer>
-        <H3>{addToday}</H3> today
+        <H3>{addToday.toFixed(2)}</H3> today
       </TextContainer>
       <GraphWrapper>
         <Line options={options} data={data} />

@@ -7,6 +7,7 @@ import SignUp from "./Pages/Authentication/signup";
 import Dashboard from "./Pages/Dashboard/dashboard";
 import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";
+import Main from "./Pages/Dashboard/main";
 //styles
 import "./App.css";
 
@@ -42,6 +43,7 @@ const App = () => {
     <BrowserRouter>
       <ModalRoot />
       <Switch>
+        <Route path="/Main" component={Main} />
         <Route exact path="/" render={() => <Homepage />} />
         <Route
           exact

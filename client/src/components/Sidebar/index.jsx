@@ -53,7 +53,7 @@ export const Sidebar = ({ logout }) => {
             </MenuRef>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/home">
+            <MenuRef to="/Banner">
               <i className="fas fa-chart-line"></i>
               <MenuSpan>Progress</MenuSpan>
             </MenuRef>

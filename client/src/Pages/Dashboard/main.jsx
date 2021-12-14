@@ -12,7 +12,7 @@ export const DataContainer = styled.div`
   background-color: white;
   border-radius: 20px;
   height: 550px;
-  box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 0.5px;
+  border: thin solid ${theme.bg.semiBlue};
 `;
 
 export const ColumnContainer = styled.div`
