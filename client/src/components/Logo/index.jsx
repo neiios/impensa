@@ -10,7 +10,7 @@ export const Logo = () => (
     style={{ fontSize: "1em", fontWeight: "700", color: "black" }}
     to="/"
   >
-    <LogoImg src="images/Impensa-logo.svg" /> Impensa
+    <LogoImg src="../images/Impensa-logo.svg" /> Impensa
   </ModifiedLink>
 );
 

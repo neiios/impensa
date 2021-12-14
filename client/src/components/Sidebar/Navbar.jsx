@@ -67,7 +67,7 @@ export const Nav = ({ name }) => {
         <NavMenu>
           <UserCreds>
             <UserName>{name}</UserName>
-            <UserImg src="images/max.png" />
+            <UserImg src="../images/max.png" />
           </UserCreds>
         </NavMenu>
       </NavbarContainer>
