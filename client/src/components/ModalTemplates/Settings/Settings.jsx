@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import theme from "../../../theme/Index.js";
 import {
   Wrapper,
@@ -17,115 +17,106 @@ import {
   Icon,
   PictureSelect,
 } from "./Styles.js";
+import { TextArea } from "../../NewExpense/style.jsx";
+import { H5 } from "../../NewExpense/style.jsx";
+import { ButtonContainer } from "../../NewExpense/style.jsx";
 import ItemForm from "../../ItemForm.jsx";
-export const EditDetails = () => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
-  return (
-    <>
-      <InputContainer>
-        <Label>Email</Label>
-        <Input
-          style={{ color: theme.bg.secondary }}
-          value="timeneth@gmail.com"
-          type="email"
-        />
-      </InputContainer>
-      <InputContainer>
-        <Label>Name</Label>
-        <Input value="Jessie" type="name" />
-      </InputContainer>
-      <InputContainer>
-        <Label>Old password</Label>
-        <Input
-          value="Anjey Duda is gay"
-          type={passwordShown ? "text" : "password"}
-        />
-        <Icon
-          className={
-            passwordShown ? "far fa-eye fa-xs" : "fas fa-eye-slash fa-xs"
-          }
-          onClick={togglePassword}
-        />
-      </InputContainer>
-      <InputContainer>
-        <Label>New password</Label>
-        <Input
-          value="Anjey Duda is gay"
-          type={passwordShown ? "text" : "password"}
-        />
-      </InputContainer>
-    </>
-  );
-};
+import { Button } from "../../Button/index.jsx";
 
 const Settings = () => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
+  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userNewPassword, setUserNewPassword] = useState("");
+  const [visible, setVisible] = useState(false);
 
-  const [visible, setVisible] = React.useState(false);
+  async function getUserData() {
+    try {
+      const res = await fetch("http://localhost:5000/dashboard/user", {
+        method: "GET",
+        headers: { jwtToken: localStorage.token },
+      });
+
+      const parseData = await res.json();
+
+      console.log(parseData[0]);
+      setUserEmail(parseData[0].user_email);
+      setUserName(parseData[0].user_name);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  async function onSubmitForm(e) {
+    e.preventDefault();
+    try {
+      const body = { userEmail, userName, userPassword, userNewPassword };
+      const response = await fetch("http://localhost:5000/dashboard/user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          jwtToken: localStorage.token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      console.log(response);
+      window.location = "/dashboard/overview";
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onSubmit={onSubmitForm}>
       <Container>
         <InputSection>
-          <HeadingContainer>
-            <Subheading>Account Details</Subheading>
-            <SmallBtn primary onClick={() => setVisible(!visible)}>
-              {!visible && "Edit"}
-              {!visible && <PenIcon className="fas fa-pen fa-xs" />}
-              {visible && "Close"}
-            </SmallBtn>
-            {visible && <SmallBtn>Save</SmallBtn>}
-          </HeadingContainer>
-          <ItemForm
-            type="email"
-            style={{ color: theme.bg.secondary }}
-            value="timeneth@gmail.com"
-            readonlyInput
-            label="Email"
-            postion="row"
-          />
-          <ItemForm
-            value="Zhong Xina"
-            type="name"
-            readonlyInput
-            label="Name"
-            postion="row"
-          />
-
-          <ItemForm
-            type={passwordShown ? "text" : "password"}
-            label="Password"
-            postion="row"
-            readonlyInput
-          />
-
-          {visible && (
-            <ItemForm
-              type={passwordShown ? "text" : "password"}
-              label="New password"
-              postion="row"
-              readonlyInput
+          <form onSubmit={onSubmitForm}>
+            <h5>Choose category</h5>
+            <input
+              placeholder="Email"
+              type="text"
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+              required
             />
-          )}
-          {visible && (
-            <Icon
-              className={
-                passwordShown ? "fas fa-eye-slash fa-xs" : "far fa-eye fa-xs"
-              }
-              onClick={togglePassword}
+            <H5>Description</H5>
+            <input
+              placeholder="Name"
+              type="text"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
             />
-          )}
+            <H5>Password</H5>
+            <input
+              placeholder="Old Password"
+              type="text"
+              value={userPassword}
+              onChange={(e) => setUserPassword(e.target.value)}
+              required
+            />
+            <H5>New password</H5>
+            <input
+              placeholder="New Password"
+              type="text"
+              value={userNewPassword}
+              onChange={(e) => setUserNewPassword(e.target.value)}
+              required
+            />
+            <ButtonContainer>
+              <Button>Submit</Button>
+            </ButtonContainer>
+          </form>
         </InputSection>
 
         <PictureContainer>
           <Subheading>Profile Picture</Subheading>
-          <ProfilePicture src="images/max.png" />
-          {visible && <PictureSelect type="file" />}
+          <ProfilePicture src="../images/max.png" />
         </PictureContainer>
       </Container>
     </Wrapper>

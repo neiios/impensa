@@ -106,7 +106,7 @@ const Categories = () => {
       });
 
       console.log(response);
-      window.location = "/dashboard";
+      window.location = "/dashboard/overview";
     } catch (err) {
       console.error(err.message);
     }

@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
 const authorize = require("../middleware/authorize");
 const pool = require("../db");
 
@@ -50,10 +51,6 @@ router.put("/expense/:id", authorize, async (req, res) => {
       [amount, id, req.user.id]
     );
 
-    if (updateExpense.rows.length === 0) {
-      return res.json("This expense is not yours");
-    }
-
     res.json("Expense was updated");
   } catch (err) {
     console.error(err.message);
@@ -95,6 +92,7 @@ router.get("/expenses", authorize, async (req, res) => {
   }
 });
 
+// get user data
 router.get("/user", authorize, async (req, res) => {
   try {
     const userData = await pool.query(
@@ -105,6 +103,38 @@ router.get("/user", authorize, async (req, res) => {
     res.json(userData.rows);
   } catch (err) {
     console.error(err.mesage);
+  }
+});
+
+router.put("/user", authorize, async (req, res) => {
+  try {
+    console.log(req.body);
+    const { userName, userEmail, userPassword, userNewPassword } = req.body;
+
+    const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [
+      req.user.id,
+    ]);
+
+    const validPassword = await bcrypt.compare(
+      userPassword,
+      user.rows[0].user_password
+    );
+
+    if (!validPassword) {
+      return res.status(401).json("Invalid Credentials!");
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const bcryptPassword = await bcrypt.hash(userNewPassword, salt);
+
+    const updateUser = await pool.query(
+      "UPDATE users SET user_name=$1, user_email=$2, user_password=$3 WHERE user_id=$4  RETURNING *",
+      [userName, userEmail, bcryptPassword, req.user.id]
+    );
+
+    return res.json("User updated succesfully!");
+  } catch (err) {
+    console.error(err.message);
   }
 });
 
