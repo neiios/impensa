@@ -83,8 +83,7 @@ const LineGraph = ({ expenses }) => {
   console.log(expenses);
   let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
   newobj.map((expense) =>
-    moment.utc(expense.expense_date).format("MM/DD/Y") ===
-    `${month}/${date - 1}/${year}`
+    moment.utc(expense.expense_date).format("MM/DD/Y") === currentUserDate
       ? i++
       : i
   );

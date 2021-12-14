@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Main from "./main";
 import Nav from "../../components/Sidebar/Navbar";
 import Banner from "./banner";
+import { BrowserRouter } from "react-router-dom";
 export const Wrapper = styled.div`
   display: flex;
 `;

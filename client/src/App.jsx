@@ -10,7 +10,6 @@ import PageNotFound from "./Pages/PageNotFound";
 import Main from "./Pages/Dashboard/main";
 //styles
 import "./App.css";
-
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -43,7 +42,6 @@ const App = () => {
     <BrowserRouter>
       <ModalRoot />
       <Switch>
-        <Route path="/Main" component={Main} />
         <Route exact path="/" render={() => <Homepage />} />
         <Route
           exact
@@ -78,7 +76,6 @@ const App = () => {
             )
           }
         />
-        <Route component={PageNotFound} />
       </Switch>
     </BrowserRouter>
   );
