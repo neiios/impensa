@@ -7,6 +7,7 @@ import SignUp from "./Pages/Authentication/signup";
 import Dashboard from "./Pages/Dashboard/dashboard";
 import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";
+import Banner from "./Pages/Dashboard/banner";
 //styles
 import "./App.css";
 const App = () => {
@@ -53,6 +54,10 @@ const App = () => {
           }
         />
         <Route exact path="/" render={() => <Homepage />} />
+        <Route exact path="/dashboard/analysis" render={() => <Dashboard />} />
+        <Route exact path="/dashboard/overview" render={() => <Dashboard />} />
+        <Route exact path="/dashboard/progress" render={() => <Dashboard />} />
+        <Route exact path="/dashboard/archive" render={() => <Dashboard />} />
         <Route
           exact
           path="/signin"
