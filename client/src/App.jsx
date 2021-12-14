@@ -76,6 +76,7 @@ const App = () => {
             )
           }
         />
+        <Route component={PageNotFound}></Route>
       </Switch>
     </BrowserRouter>
   );
