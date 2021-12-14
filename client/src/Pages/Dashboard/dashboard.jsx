@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
-import styled from "styled-components";
-import Main from "./main";
+import Overview from "./overview";
 import Nav from "../../components/Sidebar/Navbar";
 import Banner from "./banner";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-export const Wrapper = styled.div`
-  display: flex;
-`;
-
+import Archive from "./archive";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Wrapper, MainContainer } from "./style";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
   const [expenses, setExpenses] = useState([]);
@@ -65,16 +62,18 @@ const Dashboard = ({ setAuth }) => {
         <BrowserRouter>
           <Nav name={name} />
           <Sidebar logout={logout} />
-          <Route
-            path="/dashboard/overview"
-            exact
-            render={() => <Main expenses={expenses} />}
-          />
-          <Route
-            path="/dashboard/analysis"
-            exact
-            render={() => <Banner name={name} />}
-          />
+          <MainContainer>
+            <Route
+              path="/dashboard/overview"
+              exact
+              render={() => <Overview expenses={expenses} />}
+            />
+            <Route
+              path="/dashboard/archive"
+              exact
+              render={() => <Archive expenses={expenses} />}
+            />
+          </MainContainer>
         </BrowserRouter>
       </Wrapper>
     </>

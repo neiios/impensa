@@ -3,8 +3,9 @@ import theme from "../../theme/Index";
 import { Link } from "react-router-dom";
 export const StyledButton = styled.button`
   // primary prop
+  width: fit-content;
   font-size: 15px;
-  width: 97px;
+  min-width: 97px;
   height: 32px;
   font-weight: 550;
   border: thin solid ${theme.text.secondary};
