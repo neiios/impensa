@@ -7,7 +7,6 @@ import SignUp from "./Pages/Authentication/signup";
 import Dashboard from "./Pages/Dashboard/dashboard";
 import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";
-import Main from "./Pages/Dashboard/main";
 //styles
 import "./App.css";
 const App = () => {
@@ -42,6 +41,17 @@ const App = () => {
     <BrowserRouter>
       <ModalRoot />
       <Switch>
+        <Route
+          exact
+          path="/signin"
+          render={(props) =>
+            !isAuthenticated ? (
+              <SignIn {...props} setAuth={setAuth} />
+            ) : (
+              <Redirect to="/dashboard/overview" />
+            )
+          }
+        />
         <Route exact path="/" render={() => <Homepage />} />
         <Route
           exact
@@ -50,7 +60,7 @@ const App = () => {
             !isAuthenticated ? (
               <SignIn {...props} setAuth={setAuth} />
             ) : (
-              <Redirect to="/dashboard" />
+              <Redirect to="/dashboard/overview" />
             )
           }
         />
@@ -61,13 +71,13 @@ const App = () => {
             !isAuthenticated ? (
               <SignUp {...props} setAuth={setAuth} />
             ) : (
-              <Redirect to="/dashboard" />
+              <Redirect to="/dashboard/overview" />
             )
           }
         />
         <Route
           exact
-          path="/dashboard"
+          path="/dashboard/overview"
           render={(props) =>
             isAuthenticated ? (
               <Dashboard {...props} setAuth={setAuth} />

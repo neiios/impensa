@@ -47,25 +47,25 @@ export const Sidebar = ({ logout }) => {
       <SidebarWrapper onclick={handleClick} click={click}>
         <SideSubWrapper>
           <MenuEl>
-            <MenuRef to="/Interface">
+            <MenuRef to="/dashboard/overview">
               <i className="fas fa-home"></i>
               <MenuSpan>Overview</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/Banner">
+            <MenuRef to="/dashboard/progress">
               <i className="fas fa-chart-line"></i>
               <MenuSpan>Progress</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/home">
+            <MenuRef to="/dashboard/analysis">
               <i className="far fa-chart-bar"></i>
               <MenuSpan>Analysis</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/home">
+            <MenuRef to="/dashboard/archive">
               <i className="fas fa-archive"></i>
               <MenuSpan>Archive</MenuSpan>
             </MenuRef>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Main from "./main";
 import Nav from "../../components/Sidebar/Navbar";
 import Banner from "./banner";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 export const Wrapper = styled.div`
   display: flex;
 `;
@@ -57,21 +57,36 @@ const Dashboard = ({ setAuth }) => {
       console.error(err.message);
     }
   };
-
+  console.log(window.location.pathname);
   return (
     //FCFBFD
     <>
-      <Nav name={name} />
       <Wrapper>
-        <Sidebar logout={logout} />
-        {expenses.length === 0 ? (
-          <Banner name={name} />
-        ) : (
-          <Main expenses={expenses} />
-        )}
+        <BrowserRouter>
+          <Nav name={name} />
+          <Sidebar logout={logout} />
+          <Route
+            path="/dashboard/overview"
+            exact
+            render={() => <Main expenses={expenses} />}
+          />
+          <Route
+            path="/dashboard/analysis"
+            exact
+            render={() => <Banner name={name} />}
+          />
+        </BrowserRouter>
       </Wrapper>
     </>
   );
 };
 
+/* 
+        {expenses.length === 0 ? (
+          <Banner name={name} />
+        ) : (
+          <Main expenses={expenses} />
+        )}
+
+*/
 export default Dashboard;
