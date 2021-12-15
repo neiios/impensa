@@ -106,6 +106,7 @@ const LineGraph = ({ expenses }) => {
     datasets: [
       {
         label: "Amount",
+        fill: true,
         data: newobj.map(
           (expense) => (add += parseFloat(expense.expense_amount))
         ),

@@ -118,12 +118,12 @@ const Categories = () => {
     <Wrapper onSubmit={onSubmitForm}>
       <H5>Choose category</H5>
       <Select
+        defaultValue={GeneralCategories[0]}
         onChange={(e) => setCategory(e.value)}
         options={GeneralCategories}
         className="basic-multi-select"
         classNamePrefix="select"
         styles={colourStyles}
-        required
       />
       {console.log(category)}
       <H5>Description</H5>

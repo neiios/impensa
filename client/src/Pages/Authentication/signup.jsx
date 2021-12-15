@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Wrapper, Form, Heading, TextContainer } from "./style";
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
 import ItemForm from "../../components/ItemForm.jsx";
+import { currency_list } from "../../data/currency-list.js";
+import Select from "react-select/creatable";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -9,7 +11,6 @@ const SignUp = ({ setAuth }) => {
     name: "",
     password: "",
   });
-
   const { email, name, password } = inputs;
 
   const onChange = (e) =>
@@ -59,6 +60,14 @@ const SignUp = ({ setAuth }) => {
           label="Name"
           value={name}
           onChange={(e) => onChange(e)}
+        />
+        <Select
+          onChange={(e) => onChange(e)}
+          options={currency_list}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          styles={currency_list}
+          required
         />
         <ItemForm
           position="column"
