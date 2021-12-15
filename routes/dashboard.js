@@ -41,17 +41,28 @@ router.post("/expense", authorize, async (req, res) => {
 
 // update an expense
 
-router.put("/expense/:id", authorize, async (req, res) => {
+router.put("/expense", authorize, async (req, res) => {
   try {
-    const { id } = req.params;
-    const { amount } = req.body;
+    console.log(req.body);
+    const {
+      expense_id,
+      expense_amount,
+      expense_description,
+      expense_category,
+    } = req.body;
 
     const updateExpense = await pool.query(
-      "UPDATE expenses SET expense_amount = $1 WHERE expense_id = $2 AND user_id = $3 RETURNING *",
-      [amount, id, req.user.id]
+      "UPDATE expenses SET expense_amount = $1, expense_description=$2, expense_category=$3 WHERE expense_id = $4 AND user_id = $5 RETURNING *",
+      [
+        expense_amount,
+        expense_description,
+        expense_category,
+        expense_id,
+        req.user.id,
+      ]
     );
 
-    res.json("Expense was updated");
+    res.json(`Expense with ID ${expense_id} was updated`);
   } catch (err) {
     console.error(err.message);
   }
