@@ -73,10 +73,12 @@ const colourStyles: StylesConfig<ColourOption, true> = {
 };
 
 const GeneralCategories = [
-  { value: "Netflix", label: "netflix" },
-  { value: "Spotify", label: "spotify" },
-  { value: "Youtube premium", label: "youtube premium" },
+  { value: "Audible", label: "Audible" },
+  { value: "Netflix", label: "Netflix" },
+  { value: "Spotify", label: "Spotify" },
+  { value: "Youtube premium", label: "Youtube premium" },
   { value: "HBO Max", label: "HBO Max" },
+  { value: "Disney+", label: "Disney+" },
   { value: "Tickets", label: "Tickets" },
   { value: "Travelling", label: "Travelling" },
   { value: "Transport", label: "Transport" },

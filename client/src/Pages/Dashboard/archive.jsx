@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import {
   ArchiveContainer,
-  OneExpenseContainer,
-  DateContainer,
-  ExpenseCategory,
-  ExpenseDescription,
   H3,
   HeaderContainer,
-  ExpenseWrapper,
-  ExpenseItem,
   Select,
   Option,
+  Icon,
+  ExpenseCategoryCentered,
+  Container,
+  AlterExpense,
+  IconContainer,
 } from "./style";
+import { Table, Colgroup, Col, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
 import ExcelExport from "./excelExport";
+import { Button } from "../../components/Button";
+import ModalService from "../../components/Modal/ModalService";
+import NewExpenseEdit from "../../components/Modal/NewExpense.js";
 // Wraps Sidebar Nav and Main-Conent
 
 const Archive = ({ expenses }) => {
@@ -33,35 +36,69 @@ const Archive = ({ expenses }) => {
   if (value === 1)
     newobj = expenses.slice(Math.max(expenses.length - value, 0));
 
+  let a;
+  const [showDescription, setShowDescription] = useState(false);
+  const addModal = () => {
+    ModalService.open(NewExpenseEdit);
+  };
   return (
     <ArchiveContainer>
       <HeaderContainer>
         <H3>Archive</H3>
+        <Button onClick={() => setShowDescription(!showDescription)}>
+          Alter data
+        </Button>
         <Select value={value} onChange={handleChange}>
           <Option value="Most recent">Recent first</Option>
           <Option value="Oldest">Oldest first</Option>
           <Option value="1">Last expense</Option>
-          <Option value="expenses.length">Display all</Option>
         </Select>
-
         <ExcelExport expenses={expenses} />
       </HeaderContainer>
-      {newobj.map((expense) => (
-        <OneExpenseContainer>
-          <ExpenseWrapper key={expense.expense_id}>
-            <ExpenseItem>{expense.expense_amount}</ExpenseItem>
-            <ExpenseDescription>
-              {expense.expense_description.length === 0
-                ? "No description provided"
-                : expense.expense_description}
-            </ExpenseDescription>
-            <ExpenseCategory>{expense.expense_category}</ExpenseCategory>
-            <DateContainer>
-              {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
-            </DateContainer>
-          </ExpenseWrapper>
-        </OneExpenseContainer>
-      ))}
+      <Table>
+        <Colgroup>
+          {showDescription && <Col style={{ width: "5%", minWidth: "auto" }} />}
+          <Col style={{ width: "10%", minWidth: "auto" }} />
+          <Col style={{ width: "50%", minWidth: "auto" }} />
+          <Col style={{ width: "17%", minWidth: "auto" }} />
+          <Col style={{ width: "15%", minWidth: "auto" }} />
+        </Colgroup>
+        <Thead>
+          <Tr>
+            {showDescription && <Th>Modify</Th>}
+            <Th>Amount</Th>
+            <Th>Description</Th>
+            <Th>Category</Th>
+            <Th>Date</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {newobj.map((expense) => (
+            <Tr key={expense.expense_id}>
+              {showDescription && (
+                <Td>
+                  <IconContainer>
+                    <Icon className="far fa-trash-alt" />
+                    <Icon className="far fa-edit" onClick={addModal} />
+                  </IconContainer>
+                </Td>
+              )}
+              <Td>{(a = expense.expense_amount)}</Td>
+              <Td>
+                {expense.expense_description.length === 0
+                  ? "No description provided"
+                  : expense.expense_description}
+              </Td>
+              <Td>
+                <ExpenseCategoryCentered>
+                  {expense.expense_category}
+                </ExpenseCategoryCentered>
+              </Td>
+              <Td>{moment.utc(expense.expense_date).format("MMM Do, YYYY")}</Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Table>
     </ArchiveContainer>
   );
 };

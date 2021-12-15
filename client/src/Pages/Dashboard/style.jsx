@@ -35,6 +35,7 @@ export const ArchiveContainer = styled(DataContainer)`
   display: flex;
   flex-direction: column;
   height: fit-content;
+  border: 0;
   align-items: center;
 `;
 
@@ -70,6 +71,10 @@ export const ExpenseCategory = styled.div`
   border-radius: 10px;
 `;
 
+export const ExpenseCategoryCentered = styled(ExpenseCategory)`
+  margin: auto;
+`;
+
 export const ExpenseDescription = styled.div`
   font-style: italic;
   text-transform: capitalize;
@@ -86,11 +91,12 @@ export const H3 = styled.h3`
 `;
 
 export const HeaderContainer = styled.div`
-  border-bottom: thin solid ${theme.bg.secondary} !important;
+  border-bottom: thin solid ${theme.bg.lightestBlue} !important;
   width: 100%;
   display: flex;
   align-items: center;
   border: none;
+  gap: 20px;
 `;
 
 export const ExpenseWrapper = styled(HeaderContainer)`
@@ -127,4 +133,62 @@ export const Option = styled.option`
     color: white;
     background-size: 100%;
   }
+`;
+
+// TABLE
+
+export const Table = styled.table`
+  width: 100%;
+`;
+
+export const Colgroup = styled.colgroup``;
+
+export const Col = styled.col``;
+
+export const Thead = styled.thead``;
+
+export const Tr = styled.tr`
+  text-align: center;
+  :hover {
+    background: ${theme.bg.lightestBlue};
+  }
+`;
+
+export const Th = styled.th`
+  padding: 20px;
+
+  text-align: left;
+  &:last-child,
+  &:nth-last-child(2) {
+    text-align: center;
+  }
+`;
+
+export const Tbody = styled.tbody`
+  border: none !important;
+`;
+
+export const Td = styled.td`
+  padding: 20px;
+  text-align: left;
+  &:last-child {
+    margin-left: auto;
+    text-align: center;
+  }
+`;
+
+export const AlterExpense = styled.div`
+  position: absolute;
+  background: red;
+`;
+
+export const Icon = styled.i`
+  :hover {
+    color: ${theme.bg.secondary};
+  }
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  gap: 10px;
 `;

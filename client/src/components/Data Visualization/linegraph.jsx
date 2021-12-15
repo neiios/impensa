@@ -64,7 +64,7 @@ export const options = {
       },
       ticks: {
         autoSkip: true,
-        display: true,
+        display: false,
       },
     },
     y: {
@@ -120,10 +120,10 @@ const LineGraph = ({ expenses }) => {
   return (
     <>
       <TextContainer>
-        <H3>{add.toFixed(2)}</H3> total
+        <H3>{add.toFixed(2)}</H3> TOTAL
       </TextContainer>
       <TextContainer>
-        <H3>{addToday.toFixed(2)}</H3> today
+        <H3>{addToday.toFixed(2)}</H3> TODAY
       </TextContainer>
       <GraphWrapper>
         <Line options={options} data={data} />
