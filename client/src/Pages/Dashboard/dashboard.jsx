@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
+  const [currency, setCurrency] = useState("");
   const [expenses, setExpenses] = useState([]);
 
   const getProfile = async () => {
@@ -20,6 +21,7 @@ const Dashboard = ({ setAuth }) => {
       const parseData = await res.json();
 
       setName(parseData[0].user_name);
+      setCurrency(parseData[0].user_currency);
     } catch (err) {
       console.error(err.message);
     }
@@ -80,14 +82,14 @@ const Dashboard = ({ setAuth }) => {
               {expenses.length === 0 ? (
                 <Banner name={name} />
               ) : (
-                <Overview expenses={expenses} />
+                <Overview expenses={expenses} currency={currency} />
               )}
             </Route>
             <Route path="/dashboard/archive" exact>
               {expenses.length === 0 ? (
                 <Banner name={name} />
               ) : (
-                <Archive expenses={expenses} />
+                <Archive expenses={expenses} currency={currency} />
               )}
             </Route>
           </MainContainer>

@@ -53,7 +53,7 @@ margin-bottom:20px;
   }
 `;
 
-const Main = ({ expenses }) => {
+const Main = ({ expenses, currency }) => {
   // reducing object's size to the last 5 elements
   const newobj = expenses.slice(Math.max(expenses.length - 5, 0)).reverse();
 
@@ -64,7 +64,7 @@ const Main = ({ expenses }) => {
         {newobj.map((expense) => (
           <ExpenseString key={expense.expense_id}>
             <ColumnContainer>
-              {expense.expense_amount}
+              {`${expense.expense_amount}${currency}`}
               <ExpenseDate>
                 {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
               </ExpenseDate>

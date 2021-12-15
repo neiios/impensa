@@ -19,7 +19,7 @@ import ModalService from "../../components/Modal/ModalService";
 import NewExpenseEdit from "../../components/Modal/NewExpenseEdit.js";
 // Wraps Sidebar Nav and Main-Conent
 
-const Archive = ({ expenses }) => {
+const Archive = ({ expenses, currency }) => {
   const [value, setValue] = useState("Recent first");
 
   let newobj;
@@ -86,7 +86,7 @@ const Archive = ({ expenses }) => {
         <Tbody>
           {newobj.map((expense) => (
             <Tr key={expense.expense_id}>
-              <Td>{expense.expense_amount}</Td>
+              <Td>{`${expense.expense_amount}${currency}`}</Td>
               <Td>
                 {expense.expense_description.length === 0
                   ? "No description provided"

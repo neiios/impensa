@@ -8,7 +8,7 @@ const pool = require("../db");
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT users.user_name, expenses.expense_id, expenses.expense_amount FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1",
+      "SELECT users.user_name, users.user_currency, expenses.expense_id, expenses.expense_amount FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1",
       [req.user.id]
     );
 
