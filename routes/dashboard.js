@@ -70,19 +70,16 @@ router.put("/expense", authorize, async (req, res) => {
 
 // delete an expense
 
-router.delete("/expense/:id", authorize, async (req, res) => {
+router.delete("/expense", authorize, async (req, res) => {
   try {
-    const { id } = req.params;
+    console.log(req.body);
+    const { expense_id } = req.body;
     const deleteExpense = await pool.query(
       "DELETE FROM expenses WHERE expense_id = $1 AND user_id = $2 RETURNING *",
-      [id, req.user.id]
+      [expense_id, req.user.id]
     );
 
-    if (deleteExpense.rows.length === 0) {
-      return res.json("This Expense is not yours");
-    }
-
-    res.json(`Expense ${id} was deleted`);
+    res.json(`Expense ${expense_id} was deleted`);
   } catch (err) {
     console.error(err.message);
   }
