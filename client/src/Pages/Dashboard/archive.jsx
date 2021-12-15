@@ -16,74 +16,77 @@ import moment from "moment";
 import ExcelExport from "./excelExport";
 import { Button } from "../../components/Button";
 import ModalService from "../../components/Modal/ModalService";
-import NewExpenseEdit from "../../components/Modal/NewExpense.js";
+import NewExpenseEdit from "../../components/Modal/NewExpenseEdit.js";
 // Wraps Sidebar Nav and Main-Conent
 
 const Archive = ({ expenses }) => {
-  const getInitialState = () => {
-    const value = "10";
-    return value;
-  };
+  const [value, setValue] = useState("Recent first");
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-  const [value, setValue] = useState(getInitialState);
   let newobj;
-  value === "Most recent"
-    ? (newobj = expenses.slice(Math.max(expenses.length - value, 0)).reverse())
-    : (newobj = expenses.slice(Math.max(expenses.length - value, 0)));
-  if (value === 1)
-    newobj = expenses.slice(Math.max(expenses.length - value, 0));
+  switch (value) {
+    case "Recent first":
+      newobj = expenses;
+      break;
+    case "Oldest first":
+      newobj = [...expenses].reverse();
+      break;
+    case "Last expense":
+      newobj = [expenses[0]];
+      break;
+    default:
+      break;
+  }
 
-  let a;
-  const [showDescription, setShowDescription] = useState(false);
   const addModal = () => {
     ModalService.open(NewExpenseEdit);
   };
+
+  async function deleteExpense(expense_id) {
+    try {
+      const res = await fetch("http://localhost:5000/dashboard/expense", {
+        method: "DELETE",
+        headers: { jwtToken: localStorage.token },
+        body: expense_id,
+      });
+
+      console.log("Expense was deleted!");
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   return (
     <ArchiveContainer>
       <HeaderContainer>
         <H3>Archive</H3>
-        <Button onClick={() => setShowDescription(!showDescription)}>
-          Alter data
-        </Button>
-        <Select value={value} onChange={handleChange}>
-          <Option value="Most recent">Recent first</Option>
-          <Option value="Oldest">Oldest first</Option>
-          <Option value="1">Last expense</Option>
+        <Select value={value} onChange={(e) => setValue(e.target.value)}>
+          <Option value="Recent first">Recent first</Option>
+          <Option value="Oldest first">Oldest first</Option>
+          <Option value="Last expense">Last expense</Option>
         </Select>
         <ExcelExport expenses={expenses} />
       </HeaderContainer>
       <Table>
         <Colgroup>
-          {showDescription && <Col style={{ width: "5%", minWidth: "auto" }} />}
           <Col style={{ width: "10%", minWidth: "auto" }} />
           <Col style={{ width: "50%", minWidth: "auto" }} />
           <Col style={{ width: "17%", minWidth: "auto" }} />
           <Col style={{ width: "15%", minWidth: "auto" }} />
+          <Col style={{ width: "5%", minWidth: "auto" }} />
         </Colgroup>
         <Thead>
           <Tr>
-            {showDescription && <Th>Modify</Th>}
             <Th>Amount</Th>
             <Th>Description</Th>
             <Th>Category</Th>
             <Th>Date</Th>
+            <Th>Modify</Th>
           </Tr>
         </Thead>
         <Tbody>
           {newobj.map((expense) => (
             <Tr key={expense.expense_id}>
-              {showDescription && (
-                <Td>
-                  <IconContainer>
-                    <Icon className="far fa-trash-alt" />
-                    <Icon className="far fa-edit" onClick={addModal} />
-                  </IconContainer>
-                </Td>
-              )}
-              <Td>{(a = expense.expense_amount)}</Td>
+              <Td>{expense.expense_amount}</Td>
               <Td>
                 {expense.expense_description.length === 0
                   ? "No description provided"
@@ -95,6 +98,12 @@ const Archive = ({ expenses }) => {
                 </ExpenseCategoryCentered>
               </Td>
               <Td>{moment.utc(expense.expense_date).format("MMM Do, YYYY")}</Td>
+              <Td>
+                <IconContainer>
+                  {/* <Icon className="far fa-trash-alt" onClick={deleteExpense} /> */}
+                  <Icon className="far fa-edit" onClick={addModal} />
+                </IconContainer>
+              </Td>
             </Tr>
           ))}
         </Tbody>
@@ -104,31 +113,3 @@ const Archive = ({ expenses }) => {
 };
 
 export default Archive;
-
-/*
- const newobj = expenses.slice(Math.max(expenses.length - 5, 0));
-
-  return (
-    <Container>
-      <DataContainer>
-        <Heading>Recently spent</Heading>
-        {newobj.map((expense) => (
-          <ExpenseString key={expense.expense_id}>
-            <ColumnContainer>
-              {expense.expense_amount}
-              <ExpenseDate>
-                {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
-              </ExpenseDate>
-            </ColumnContainer>
-            <ExpenseDescription>{expense.expense_category}</ExpenseDescription>
-          </ExpenseString>
-        ))}
-        <ButtonContainer>
-          <ToggleNewExpense />
-        </ButtonContainer>
-      </DataContainer>
-      <DataContainer>
-        <LineGraph expenses={expenses} />
-      </DataContainer>
-    </Container>
-*/

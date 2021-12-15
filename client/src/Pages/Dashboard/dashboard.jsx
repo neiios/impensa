@@ -26,10 +26,10 @@ const Dashboard = ({ setAuth }) => {
   };
 
   function compare(a, b) {
-    if (a.expense_date < b.expense_date) {
+    if (a.expense_date > b.expense_date) {
       return -1;
     }
-    if (a.expense_date > b.expense_date) {
+    if (a.expense_date < b.expense_date) {
       return 1;
     }
     return 0;
