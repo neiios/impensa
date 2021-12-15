@@ -25,7 +25,17 @@ const Dashboard = ({ setAuth }) => {
     }
   };
 
-  async function getExpenses() {
+  function compare(a, b) {
+    if (a.expense_date < b.expense_date) {
+      return -1;
+    }
+    if (a.expense_date > b.expense_date) {
+      return 1;
+    }
+    return 0;
+  }
+
+  async function getExpenses(compare) {
     try {
       const res = await fetch("http://localhost:5000/dashboard/expenses", {
         method: "GET",
@@ -34,6 +44,7 @@ const Dashboard = ({ setAuth }) => {
 
       const parseData = await res.json();
 
+      parseData.sort(compare);
       setExpenses(parseData);
     } catch (err) {
       console.error(err.message);
@@ -42,7 +53,7 @@ const Dashboard = ({ setAuth }) => {
 
   useEffect(() => {
     getProfile();
-    getExpenses();
+    getExpenses(compare);
   }, []);
 
   const logout = async (e) => {
@@ -54,7 +65,9 @@ const Dashboard = ({ setAuth }) => {
       console.error(err.message);
     }
   };
+
   console.log(window.location.pathname);
+
   return (
     //FCFBFD
     <>
@@ -63,16 +76,20 @@ const Dashboard = ({ setAuth }) => {
           <Nav name={name} />
           <Sidebar logout={logout} />
           <MainContainer>
-            <Route
-              path="/dashboard/overview"
-              exact
-              render={() => <Overview expenses={expenses} />}
-            />
-            <Route
-              path="/dashboard/archive"
-              exact
-              render={() => <Archive expenses={expenses} />}
-            />
+            <Route path="/dashboard/overview" exact>
+              {expenses.length === 0 ? (
+                <Banner name={name} />
+              ) : (
+                <Overview expenses={expenses} />
+              )}
+            </Route>
+            <Route path="/dashboard/archive" exact>
+              {expenses.length === 0 ? (
+                <Banner name={name} />
+              ) : (
+                <Archive expenses={expenses} />
+              )}
+            </Route>
           </MainContainer>
         </BrowserRouter>
       </Wrapper>
@@ -80,12 +97,4 @@ const Dashboard = ({ setAuth }) => {
   );
 };
 
-/* 
-        {expenses.length === 0 ? (
-          <Banner name={name} />
-        ) : (
-          <Main expenses={expenses} />
-        )}
-
-*/
 export default Dashboard;
