@@ -22,6 +22,24 @@ import NewExpenseEdit from "../../components/Modal/NewExpenseEdit.js";
 const Archive = ({ expenses, currency }) => {
   const [value, setValue] = useState("Recent first");
 
+  async function deleteExpense(expense_id) {
+    try {
+      console.log(`Expense id is ${expense_id}`);
+      const res = await fetch(
+        `http://localhost:5000/dashboard/expense/${expense_id}`,
+        {
+          method: "DELETE",
+          headers: { jwtToken: localStorage.token },
+        }
+      );
+
+      window.location = "/dashboard/archive";
+      console.log(`Expense was deleted! Response is ${res}`);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   let newobj;
   switch (value) {
     case "Recent first":
@@ -40,20 +58,6 @@ const Archive = ({ expenses, currency }) => {
   const addModal = () => {
     ModalService.open(NewExpenseEdit);
   };
-
-  async function deleteExpense(expense_id) {
-    try {
-      const res = await fetch("http://localhost:5000/dashboard/expense", {
-        method: "DELETE",
-        headers: { jwtToken: localStorage.token },
-        body: expense_id,
-      });
-
-      console.log("Expense was deleted!");
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
 
   return (
     <ArchiveContainer>
@@ -84,28 +88,39 @@ const Archive = ({ expenses, currency }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {newobj.map((expense) => (
-            <Tr key={expense.expense_id}>
-              <Td>{`${expense.expense_amount}${currency}`}</Td>
-              <Td>
-                {expense.expense_description.length === 0
-                  ? "No description provided"
-                  : expense.expense_description}
-              </Td>
-              <Td>
-                <ExpenseCategoryCentered>
-                  {expense.expense_category}
-                </ExpenseCategoryCentered>
-              </Td>
-              <Td>{moment.utc(expense.expense_date).format("MMM Do, YYYY")}</Td>
-              <Td>
-                <IconContainer>
-                  {/* <Icon className="far fa-trash-alt" onClick={deleteExpense} /> */}
-                  <Icon className="far fa-edit" onClick={addModal} />
-                </IconContainer>
-              </Td>
-            </Tr>
-          ))}
+          {newobj[0].expense_id !== null &&
+            newobj.map((expense) => (
+              <Tr key={expense.expense_id}>
+                <Td>{`${expense.expense_amount}${currency}`}</Td>
+                <Td>
+                  {expense.expense_description.length === 0
+                    ? "No description provided"
+                    : expense.expense_description}
+                </Td>
+                <Td>
+                  <ExpenseCategoryCentered>
+                    {expense.expense_category}
+                  </ExpenseCategoryCentered>
+                </Td>
+                <Td>
+                  {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                </Td>
+                <Td>
+                  <IconContainer>
+                    <Icon
+                      className="far fa-edit"
+                      onClick={() => addModal(expense.expense_id)}
+                    />
+                  </IconContainer>
+                  <IconContainer>
+                    <Icon
+                      className="far fa-trash-alt"
+                      onClick={() => deleteExpense(expense.expense_id)}
+                    />
+                  </IconContainer>
+                </Td>
+              </Tr>
+            ))}
         </Tbody>
       </Table>
     </ArchiveContainer>

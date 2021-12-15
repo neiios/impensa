@@ -3,15 +3,16 @@ const bcrypt = require("bcrypt");
 const authorize = require("../middleware/authorize");
 const pool = require("../db");
 
-// all expenses and name
+// all expenses and user data
 
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT users.user_name, users.user_currency, expenses.expense_id, expenses.expense_amount FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1",
+      "SELECT users.user_name, users.user_currency, users.user_email, expenses.expense_id, expenses.expense_amount, expenses.expense_category, expenses.expense_description FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1",
       [req.user.id]
     );
 
+    console.log(user.rows);
     res.json(user.rows);
   } catch (err) {
     console.error(err.message);
@@ -70,15 +71,17 @@ router.put("/expense", authorize, async (req, res) => {
 
 // delete an expense
 
-router.delete("/expense", authorize, async (req, res) => {
+router.delete("/expense/:expense_id", authorize, async (req, res) => {
   try {
     console.log(req.body);
-    const { expense_id } = req.body;
+    const { expense_id } = req.params;
     const deleteExpense = await pool.query(
       "DELETE FROM expenses WHERE expense_id = $1 AND user_id = $2 RETURNING *",
       [expense_id, req.user.id]
     );
 
+    console.log(`req.user.id = ${req.user.id}`);
+    console.log(`deleteExpense = ${deleteExpense}`);
     res.json(`Expense ${expense_id} was deleted`);
   } catch (err) {
     console.error(err.message);
@@ -114,6 +117,7 @@ router.get("/user", authorize, async (req, res) => {
   }
 });
 
+// update user info
 router.put("/user", authorize, async (req, res) => {
   try {
     console.log(req.body);

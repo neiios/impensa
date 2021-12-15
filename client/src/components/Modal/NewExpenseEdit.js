@@ -63,7 +63,7 @@ export default function TestModal(props) {
       <Dropout onClick={props.close} />
       <ModalWrapper>
         <HeaderWrapper>
-          <Heading>{props.a}</Heading>
+          <Heading>Modify Expense</Heading>
           <Icon onClick={props.close} className="fas fa-times fa-xl" />
         </HeaderWrapper>
         <Categories />
