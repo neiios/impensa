@@ -11,6 +11,7 @@ const SignUp = ({ setAuth }) => {
     name: "",
     password: "",
   });
+  const [currency, setCurrency] = useState("");
   const { email, name, password } = inputs;
 
   const onChange = (e) =>
@@ -19,7 +20,7 @@ const SignUp = ({ setAuth }) => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { email, name, password };
+      const body = { email, name, password, currency };
       const response = await fetch("http://localhost:5000/auth/register", {
         method: "POST",
         headers: {
@@ -47,22 +48,22 @@ const SignUp = ({ setAuth }) => {
         <Heading>Create your Impensa account</Heading>
         <ItemForm
           position="column"
-          type="email"
-          name="email"
-          label="Email"
-          value={email}
-          onChange={(e) => onChange(e)}
-        />
-        <ItemForm
-          position="column"
           type="text"
           name="name"
           label="Name"
           value={name}
           onChange={(e) => onChange(e)}
         />
-        <Select
+        <ItemForm
+          position="column"
+          type="email"
+          name="email"
+          label="Email"
+          value={email}
           onChange={(e) => onChange(e)}
+        />
+        <Select
+          onChange={(e) => setCurrency(e.value)}
           options={currency_list}
           className="basic-multi-select"
           classNamePrefix="select"

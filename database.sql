@@ -11,6 +11,7 @@ CREATE TABLE users(
   user_id UUID DEFAULT uuid_generate_v4(),
   user_name VARCHAR(255) NOT NULL,
   user_email VARCHAR(255) NOT NULL UNIQUE,
+  user_currency VARCHAR(255) NOT NULL,
   user_password VARCHAR(255) NOT NULL,
   PRIMARY KEY (user_id)
 );
@@ -36,7 +37,7 @@ CREATE TABLE expenses(
 
 -- create some test data for testing
 
-INSERT INTO users (user_name, user_email, user_password) VALUES ('barbum', 'richard@impensa.studio', 'password');
+INSERT INTO users (user_name, user_email, user_currency, user_password) VALUES ('barbum', 'richard@impensa.studio', 'hryvnia', 'password');
 
 INSERT INTO expenses (expense_amount, expense_description, expense_category, user_id) VALUES ('11.65','here is a short description', 'category for the expense', '765c1420-161d-47aa-8c44-5cf855e8e169');
 
