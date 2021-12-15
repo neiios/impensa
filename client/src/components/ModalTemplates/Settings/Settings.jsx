@@ -76,7 +76,7 @@ const Settings = () => {
       <Container>
         <InputSection>
           <form onSubmit={onSubmitForm}>
-            <h5>Choose category</h5>
+            <H5>Email</H5>
             <input
               placeholder="Email"
               type="text"
@@ -84,7 +84,7 @@ const Settings = () => {
               onChange={(e) => setUserEmail(e.target.value)}
               required
             />
-            <H5>Description</H5>
+            <H5>Name</H5>
             <input
               placeholder="Name"
               type="text"
