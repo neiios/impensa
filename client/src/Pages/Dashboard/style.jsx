@@ -200,20 +200,30 @@ export const IconContainer = styled.div`
 `;
 
 export const NavigationIcon = styled.i`
+  cursor: pointer;
+  color: grey;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px;
+  margin: 80px;
   border-radius: 100%;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   transition: background 0.5s;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   :hover {
-    background: ${theme.bg.lightestBlue};
+    background: #ebedfc;
   }
 `;
 
 export const MonthContainer = styled.div`
+  color: grey;
+  font-size: 1.3em;
   position: absolute;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -232,3 +242,5 @@ export const MonthSwitcher = styled.div`
 
   height: 50px;
 `;
+
+export const NoDataBanner = styled.div``;

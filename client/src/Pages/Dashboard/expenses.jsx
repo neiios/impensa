@@ -10,8 +10,7 @@ import {
   ArchiveContainer,
   H3,
   HeaderContainer,
-  Select,
-  Option,
+  NoDataBanner,
   NavigationIcon,
   ExpenseCategoryCentered,
   AlterExpense,
@@ -23,6 +22,7 @@ import {
 import moment from "moment";
 import PieChart from "../../components/Data Visualization/piechart";
 import { ExpenseContainer } from "./overview.jsx";
+let currentYear = new Date().getFullYear();
 const months = [
   "January",
   "February",
@@ -38,6 +38,10 @@ const months = [
   "December",
 ];
 
+for (let i = 0; i < months.length; i++) {
+  months[i] += " " + currentYear;
+}
+
 export const Container = styled.div`
   padding: 20px;
   display: grid;
@@ -49,14 +53,14 @@ export const Container = styled.div`
   }
 `;
 
-let currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+let currentMonth = new Date().toLocaleString("en-US", { month: "2-digit" });
 const MonthIndex = () => {
   for (let i = 0; i < months.length; i++) {
     if (currentMonth === months[i]) return i;
   }
 };
 const Expenses = ({ expenses, currency }) => {
-  const [counter, setCounter] = useState(MonthIndex);
+  const [counter, setCounter] = useState(currentMonth - 1);
   let incrementCounter = () => setCounter(counter + 1);
   let decrementCounter = () => setCounter(counter - 1);
   if (counter <= 1) {
@@ -86,23 +90,23 @@ const Expenses = ({ expenses, currency }) => {
       <DataContainer>
         <MonthSwitcher>
           <NavigationIcon
-            className="fas fa-chevron-left"
+            className="fas fa-chevron-left fa-1x"
             onClick={decrementCounter}
           />
-          <MonthContainer>{months[counter]}</MonthContainer>
+          <MonthContainer>{`${months[counter]}`}</MonthContainer>
           <NavigationIcon
-            className="fas fa-chevron-right"
+            className="fas fa-chevron-right fa-1x"
             onClick={incrementCounter}
           />
         </MonthSwitcher>
-        <PieChart expenses={expenses} />
+        <PieChart currentMonth={months[counter]} expenses={expenses} />
       </DataContainer>
       <DataContainer>
         <>
           <Heading>{`${months[counter]} expenses`}</Heading>
           {newobj.map((expense) =>
-            moment.utc(expense.expense_date).format("MM") ===
-            (counter + 1).toString() ? (
+            moment.utc(expense.expense_date).format("MMMM YYYY") ===
+            months[counter] ? (
               <>
                 <ExpenseString>
                   <ColumnContainer>
@@ -120,9 +124,12 @@ const Expenses = ({ expenses, currency }) => {
             )
           )}
         </>
-        {MonthIsEmpty
-          ? "There is no data to display here. Try changing the time span or accounts."
-          : null}
+        {MonthIsEmpty ? (
+          <NoDataBanner>
+            There is no data to display here. Try changing the time span or
+            accounts."
+          </NoDataBanner>
+        ) : null}
       </DataContainer>
     </Container>
   );

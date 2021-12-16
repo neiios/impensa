@@ -2,8 +2,8 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { PieChartWrapper } from "./style";
+import moment from "moment";
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 export const options = {
   maintainAspectRatio: false,
   responsive: true,
@@ -17,40 +17,43 @@ const countCategores = (uniqueCount) => {
     {}
   );
 };
-
-const PieChart = ({ expenses }) => {
+let selectedCategories = [],
+  selectedAmounts = [],
+  i = 0;
+const PieChart = ({ expenses, currentMonth }) => {
+  let newobj = expenses.slice(Math.max(0, 0));
+  newobj.map((expense) =>
+    moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth
+      ? selectedCategories.push(expense.expense_category) &&
+        selectedAmounts.push(expense.expense_amount)
+      : null
+  );
+  console.log(selectedCategories);
   let add = 0;
-  let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
   const data = {
-    labels: newobj.map((expense) => expense.expense_category),
+    labels: selectedCategories,
     //backgroundColor: ['rgba(255,0,0,1)'],
     //lineTension: 1,
     datasets: [
       {
         label: "# of Votes",
-        data: newobj.map((expense) => parseFloat(expense.expense_amount)),
+        data: selectedAmounts,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
+          "#7C87EB",
+          "#DE81DC",
+          "#FF84B5",
+          "#FFA088",
+          "#FFCC69",
+          "#F9F871",
         ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
-        ],
-        borderWidth: 1,
+        borderColor: ["white"],
+        borderWidth: 0.5,
       },
     ],
   };
   return (
     <PieChartWrapper>
+      {currentMonth}
       <Doughnut data={data} options={options} />
     </PieChartWrapper>
   );

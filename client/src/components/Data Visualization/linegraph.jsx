@@ -32,8 +32,16 @@ let year = newDate.getFullYear();
 
 let currentUserDate = `${month}/${date}/${year}`;
 //12/11/2021
-
+let a = false;
 export const options = {
+  tooltips: {
+    mode: "index",
+    intersect: false,
+  },
+  hover: {
+    mode: "index",
+    intersect: true,
+  },
   maintainAspectRatio: false,
   responsive: true,
   plugins: {
@@ -48,8 +56,8 @@ export const options = {
         mode: "label", // or 'x-axis'
       },
       ticks: {
-        autoSkip: true,
-        display: true,
+        autoSkip: false,
+        display: false,
       },
     },
     y: {
@@ -108,14 +116,14 @@ const LineGraph = ({ expenses, currency }) => {
 
   let radiusValue;
 
-  expenses.length === 1 ? (radiusValue = 5) : (radiusValue = 0);
+  expenses.length === 1 ? (radiusValue = 5) : (radiusValue = 5);
 
   const data = {
     labels,
     datasets: [
       {
         fill: true,
-        label: "Amount",
+        label: "Total spent",
         data: expenses.map(
           (expense) => (add += parseFloat(expense.expense_amount))
         ),
