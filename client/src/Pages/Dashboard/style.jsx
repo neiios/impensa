@@ -156,7 +156,12 @@ export const Tr = styled.tr`
 
 export const Th = styled.th`
   padding: 20px;
-
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   text-align: left;
   &:last-child,
   &:nth-last-child(2) {
