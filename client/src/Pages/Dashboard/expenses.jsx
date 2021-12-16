@@ -37,6 +37,7 @@ const months = [
   "November",
   "December",
 ];
+
 export const Container = styled.div`
   padding: 20px;
   display: grid;
@@ -74,6 +75,7 @@ const Expenses = ({ expenses, currency }) => {
 
   */
   let i = expenses.length;
+  let MonthIsEmpty = false;
   const newobj = expenses.slice(Math.max(expenses.length - i, 0));
   let monthAmount = 0,
     monthDate,
@@ -113,10 +115,13 @@ const Expenses = ({ expenses, currency }) => {
                 </ExpenseString>
               </>
             ) : (
-              "There is no data to display here. Try changing the time span or accounts"
+              (MonthIsEmpty = true)
             )
           )}
         </>
+        {MonthIsEmpty
+          ? "There is no data to display here. Try changing the time span or accounts."
+          : null}
       </DataContainer>
     </Container>
   );

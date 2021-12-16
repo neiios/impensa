@@ -135,10 +135,10 @@ const LineGraph = ({ expenses, currency }) => {
         <H3>{` ${currency} ${add.toFixed(2)}`}</H3>
         TOTAL SPENT
       </TextContainer>
-      {/* <TextContainer>
+      <TextContainer>
         <H3>{` ${currency} ${addToday.toFixed(2)}`}</H3>
         TODAY SPENT as for {currentUserDate}
-      </TextContainer> */}
+      </TextContainer>
       <GraphWrapper>
         <Line options={options} data={data} />
       </GraphWrapper>
