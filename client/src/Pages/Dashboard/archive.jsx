@@ -91,7 +91,9 @@ const Archive = ({ expenses, currency }) => {
                   />
                 </IconContainer>
               </Td>
-              <Td>{`${currency} ${expense.expense_amount}`}</Td>
+              <Td>
+                {`${currency} ${parseFloat(expense.expense_amount).toFixed(2)}`}
+              </Td>
               <Td>
                 {expense.expense_description.length === 0
                   ? "No description provided"

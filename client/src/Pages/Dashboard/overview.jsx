@@ -60,7 +60,7 @@ export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
       {obj.map((expense) => (
         <ExpenseString key={expense.expense_id}>
           <ColumnContainer>
-            {`${currency} ${expense.expense_amount}`}
+            {`${currency} ${parseFloat(expense.expense_amount).toFixed(2)}`}
             <ExpenseDate>
               {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
             </ExpenseDate>

@@ -106,7 +106,8 @@ const Expenses = ({ expenses, currency }) => {
               <>
                 <ExpenseString>
                   <ColumnContainer>
-                    {`${currency} ${expense.expense_amount}`}
+                    {`${currency} 
+                    ${parseFloat(expense.expense_amount).toFixed(2)}`}
                     <ExpenseDate>
                       {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
                     </ExpenseDate>
