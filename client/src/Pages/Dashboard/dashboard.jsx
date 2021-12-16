@@ -83,6 +83,7 @@ const Dashboard = ({ setAuth }) => {
               {expenses.length === 0 ? (
                 <Banner name={name} />
               ) : (
+                // expenses 4
                 <Overview expenses={expenses} currency={currency} />
               )}
             </Route>
@@ -96,7 +97,7 @@ const Dashboard = ({ setAuth }) => {
 
             <Route path="/dashboard/expenses" exact>
               {expenses.length === 0 ? (
-                <Expenses name={name} />
+                <Banner name={name} />
               ) : (
                 <Expenses expenses={expenses} currency={currency} />
               )}
