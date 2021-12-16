@@ -6,6 +6,7 @@ import Banner from "./banner";
 import Archive from "./archive";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
+import Expenses from "./expenses";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
   const [currency, setCurrency] = useState("");
@@ -90,6 +91,14 @@ const Dashboard = ({ setAuth }) => {
                 <Banner name={name} />
               ) : (
                 <Archive expenses={expenses} currency={currency} />
+              )}
+            </Route>
+
+            <Route path="/dashboard/expenses" exact>
+              {expenses.length === 0 ? (
+                <Expenses name={name} />
+              ) : (
+                <Expenses expenses={expenses} currency={currency} />
               )}
             </Route>
           </MainContainer>

@@ -53,9 +53,9 @@ export const Sidebar = ({ logout }) => {
             </MenuRef>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/dashboard/progress">
-              <i className="fas fa-chart-line"></i>
-              <MenuSpan>Progress</MenuSpan>
+            <MenuRef to="/dashboard/expenses">
+              <i className="fas fa-minus"></i>
+              <MenuSpan>Expenses</MenuSpan>
             </MenuRef>
           </MenuEl>
           <MenuEl>

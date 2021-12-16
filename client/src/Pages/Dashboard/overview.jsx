@@ -53,31 +53,43 @@ margin-bottom:20px;
   }
 `;
 
-const Main = ({ expenses, currency }) => {
-  // reducing object's size to the last 5 elements
-  const newobj = expenses.slice(Math.max(expenses.length - 5, 0)).reverse();
+export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
+  return (
+    <>
+      <Heading>{heading}</Heading>
+      {obj.map((expense) => (
+        <ExpenseString key={expense.expense_id}>
+          <ColumnContainer>
+            {`${currency} ${expense.expense_amount}`}
+            <ExpenseDate>
+              {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+            </ExpenseDate>
+          </ColumnContainer>
+          <ExpenseCategory>{expense.expense_category}</ExpenseCategory>
+        </ExpenseString>
+      ))}
+    </>
+  );
+};
 
+const Main = ({ expenses, currency }) => {
+  const newobj = expenses.slice(Math.max(expenses.length - 5, 0));
+  // reducing object's size to the last 5 elements
   return (
     <Container>
       <DataContainer>
-        <Heading>Recently spent</Heading>
-        {newobj.map((expense) => (
-          <ExpenseString key={expense.expense_id}>
-            <ColumnContainer>
-              {`${expense.expense_amount}${currency}`}
-              <ExpenseDate>
-                {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
-              </ExpenseDate>
-            </ColumnContainer>
-            <ExpenseCategory>{expense.expense_category}</ExpenseCategory>
-          </ExpenseString>
-        ))}
+        <ExpenseContainer
+          obj={newobj}
+          expenses={expenses}
+          currency={currency}
+          heading={"Recently spent"}
+        />
         <ButtonContainer>
           <ToggleNewExpense />
         </ButtonContainer>
       </DataContainer>
       <DataContainer>
-        <LineGraph expenses={expenses} />
+        <LineGraph currency={currency} expenses={expenses} />
       </DataContainer>
     </Container>
   );

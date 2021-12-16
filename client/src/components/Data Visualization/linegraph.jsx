@@ -7,6 +7,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import theme from "../../theme/Index";
@@ -37,7 +38,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 );
 
 let newDate = new Date();
@@ -75,7 +77,7 @@ export const options = {
   },
 };
 
-const LineGraph = ({ expenses }) => {
+const LineGraph = ({ expenses, currency }) => {
   let value = expenses.length,
     i = 0,
     add = 0,
@@ -105,13 +107,13 @@ const LineGraph = ({ expenses }) => {
     labels,
     datasets: [
       {
-        label: "Amount",
         fill: true,
+        label: "Amount",
         data: newobj.map(
           (expense) => (add += parseFloat(expense.expense_amount))
         ),
         borderColor: theme.bg.secondary,
-        backgroundColor: theme.bg.secondary,
+        backgroundColor: theme.bg.semiBlue,
         radius: radiusValue,
         tension: 0.3,
       },
@@ -121,10 +123,12 @@ const LineGraph = ({ expenses }) => {
   return (
     <>
       <TextContainer>
-        <H3>{add.toFixed(2)}</H3> TOTAL
+        <H3>{` ${currency} ${addToday.toFixed(2)}`}</H3>
+        TOTAL SPENT
       </TextContainer>
       <TextContainer>
-        <H3>{addToday.toFixed(2)}</H3> TODAY
+        <H3>{` ${currency} ${addToday.toFixed(2)}`}</H3>
+        TODAY SPENT as for {currentUserDate}
       </TextContainer>
       <GraphWrapper>
         <Line options={options} data={data} />

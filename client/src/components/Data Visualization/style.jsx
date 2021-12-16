@@ -34,3 +34,13 @@ export const TextContainer = styled.div`
 `;
 
 export const H6 = styled.h6``;
+
+export const PieChartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px !important;
+  height: 400px !important;
+
+  max-width: 500px;
+  margin: auto;
+`;

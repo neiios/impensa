@@ -21,12 +21,12 @@ export const ExpenseItem = styled.div`
 `;
 
 export const DataContainer = styled.div`
+  overflow: auto;
   padding: 20px;
   position: relative;
   background-color: white;
   border-radius: 20px;
   height: 550px;
-  border: thin solid ${theme.bg.semiBlue};
 `;
 
 export const ArchiveContainer = styled(DataContainer)`
@@ -190,5 +190,39 @@ export const Icon = styled.i`
 
 export const IconContainer = styled.div`
   display: flex;
+  align-items: center;
+`;
+
+export const NavigationIcon = styled.i`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  transition: background 0.5s;
+  :hover {
+    background: ${theme.bg.lightestBlue};
+  }
+`;
+
+export const MonthContainer = styled.div`
+  position: absolute;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  font-weight: 550;
+`;
+
+export const MonthSwitcher = styled.div`
+  display: flex;
   gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
 `;

@@ -78,7 +78,7 @@ const App = () => {
         />
         <Route
           exact
-          path="/dashboard/progress"
+          path="/dashboard/expenses"
           render={(props) =>
             isAuthenticated ? (
               <Dashboard {...props} setAuth={setAuth} />
