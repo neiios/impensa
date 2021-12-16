@@ -73,6 +73,8 @@ export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
 };
 
 const Main = ({ expenses, currency }) => {
+  document.title = "Impensa - overview";
+
   console.log(expenses);
   // 4 - 5 0 ---> 0 expense.slice 0
   // removes elements from the beginning should not do that should remove from the end instead

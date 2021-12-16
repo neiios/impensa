@@ -5,6 +5,7 @@ import ItemForm from "../../components/ItemForm.jsx";
 import { Wrapper, Heading, Form, TextContainer } from "./style";
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
+  document.title = "Impensa - login";
   const [inputs, setInputs] = useState({
     email: "",
     password: "",

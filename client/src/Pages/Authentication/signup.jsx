@@ -6,6 +6,8 @@ import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select/creatable";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
+  document.title = "Impensa - register";
+
   const [inputs, setInputs] = useState({
     email: "",
     name: "",

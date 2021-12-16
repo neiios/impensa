@@ -36,6 +36,8 @@ export const P = styled.p`
 `;
 
 const PageNotFound = () => {
+  document.title = "Impensa - 404";
+
   return (
     <Container>
       <Heading>Oops!</Heading>

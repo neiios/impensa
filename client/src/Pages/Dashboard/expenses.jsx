@@ -60,6 +60,8 @@ const MonthIndex = () => {
   }
 };
 const Expenses = ({ expenses, currency }) => {
+  document.title = "Impensa - expenses";
+
   const [counter, setCounter] = useState(currentMonth - 1);
   let incrementCounter = () => setCounter(counter + 1);
   let decrementCounter = () => setCounter(counter - 1);

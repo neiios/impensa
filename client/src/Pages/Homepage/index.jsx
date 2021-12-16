@@ -15,6 +15,7 @@ import {
 import "./LandingPageStyles.css";
 
 const Homepage = () => {
+  document.title = "Impensa";
   return (
     //FCFBFD
     <div className="block_1">

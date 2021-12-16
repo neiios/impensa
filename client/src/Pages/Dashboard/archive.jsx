@@ -15,6 +15,8 @@ import NewExpenseEdit from "../../components/Modal/NewExpenseEdit.js";
 // Wraps Sidebar Nav and Main-Conent
 
 const Archive = ({ expenses, currency }) => {
+  document.title = "Impensa - archive";
+
   const [sort, setSort] = useState(false);
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
 

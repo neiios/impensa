@@ -9,6 +9,8 @@ import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
 import PageNotFound from "../PageNotFound";
 const Dashboard = ({ setAuth }) => {
+  document.title = "Impensa - dashboard";
+
   const [name, setName] = useState("");
   const [currency, setCurrency] = useState("");
   const [expenses, setExpenses] = useState([]);
