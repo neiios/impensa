@@ -3,12 +3,12 @@ const bcrypt = require("bcrypt");
 const authorize = require("../middleware/authorize");
 const pool = require("../db");
 
-// all expenses and user data
+// user data for the dashboard
 
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT users.user_name, users.user_currency, users.user_email, expenses.expense_id, expenses.expense_amount, expenses.expense_category, expenses.expense_description FROM users LEFT JOIN expenses ON users.user_id = expenses.user_id WHERE users.user_id = $1",
+      "SELECT user_name, user_currency, user_email FROM users WHERE user_id = $1",
       [req.user.id]
     );
 
@@ -93,7 +93,7 @@ router.delete("/expense/:expense_id", authorize, async (req, res) => {
 router.get("/expenses", authorize, async (req, res) => {
   try {
     const expenses = await pool.query(
-      "SELECT * FROM expenses WHERE user_id = $1",
+      "SELECT * FROM expenses WHERE user_id = $1 ORDER BY expense_date USING <",
       [req.user.id]
     );
 
