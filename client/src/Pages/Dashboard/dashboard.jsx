@@ -7,6 +7,7 @@ import Archive from "./archive";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
+import PageNotFound from "../PageNotFound";
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
   const [currency, setCurrency] = useState("");
@@ -68,29 +69,30 @@ const Dashboard = ({ setAuth }) => {
           <Nav name={name} />
           <Sidebar logout={logout} />
           <MainContainer>
-            <Route path="/dashboard/overview" exact>
-              {expenses.length === 0 ? (
-                <Banner name={name} />
-              ) : (
-                // expenses 4
-                <Overview expenses={expenses} currency={currency} />
-              )}
-            </Route>
-            <Route path="/dashboard/archive" exact>
-              {expenses.length === 0 ? (
-                <Banner name={name} />
-              ) : (
-                <Archive expenses={expenses} currency={currency} />
-              )}
-            </Route>
-
-            <Route path="/dashboard/expenses" exact>
-              {expenses.length === 0 ? (
-                <Banner name={name} />
-              ) : (
-                <Expenses expenses={expenses} currency={currency} />
-              )}
-            </Route>
+            <Switch>
+              <Route path="/dashboard/overview" exact>
+                {expenses.length === 0 ? (
+                  <Banner name={name} />
+                ) : (
+                  <Overview expenses={expenses} currency={currency} />
+                )}
+              </Route>
+              <Route path="/dashboard/archive" exact>
+                {expenses.length === 0 ? (
+                  <Banner name={name} />
+                ) : (
+                  <Archive expenses={expenses} currency={currency} />
+                )}
+              </Route>
+              <Route path="/dashboard/expenses" exact>
+                {expenses.length === 0 ? (
+                  <Banner name={name} />
+                ) : (
+                  <Expenses expenses={expenses} currency={currency} />
+                )}
+              </Route>
+              <Route component={PageNotFound}></Route>
+            </Switch>
           </MainContainer>
         </BrowserRouter>
       </Wrapper>

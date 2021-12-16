@@ -7,9 +7,9 @@ import SignUp from "./Pages/Authentication/signup";
 import Dashboard from "./Pages/Dashboard/dashboard";
 import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";
-import Banner from "./Pages/Dashboard/banner";
 //styles
 import "./App.css";
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -53,62 +53,6 @@ const App = () => {
             )
           }
         />
-        <Route exact path="/" render={() => <Homepage />} />
-        <Route
-          exact
-          path="/dashboard/analysis"
-          render={(props) =>
-            isAuthenticated ? (
-              <Dashboard {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/signin" />
-            )
-          }
-        />
-        <Route
-          exact
-          path="/dashboard/overview"
-          render={(props) =>
-            isAuthenticated ? (
-              <Dashboard {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/signin" />
-            )
-          }
-        />
-        <Route
-          exact
-          path="/dashboard/expenses"
-          render={(props) =>
-            isAuthenticated ? (
-              <Dashboard {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/signin" />
-            )
-          }
-        />
-        <Route
-          exact
-          path="/dashboard/archive"
-          render={(props) =>
-            isAuthenticated ? (
-              <Dashboard {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/signin" />
-            )
-          }
-        />
-        <Route
-          exact
-          path="/signin"
-          render={(props) =>
-            !isAuthenticated ? (
-              <SignIn {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/dashboard/overview" />
-            )
-          }
-        />
         <Route
           exact
           path="/signup"
@@ -121,8 +65,7 @@ const App = () => {
           }
         />
         <Route
-          exact
-          path="/dashboard/overview"
+          path="/dashboard"
           render={(props) =>
             isAuthenticated ? (
               <Dashboard {...props} setAuth={setAuth} />
@@ -131,6 +74,7 @@ const App = () => {
             )
           }
         />
+        <Route exact path="/" render={() => <Homepage />} />
         <Route component={PageNotFound}></Route>
       </Switch>
     </BrowserRouter>
