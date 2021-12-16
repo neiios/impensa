@@ -73,8 +73,12 @@ export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
 };
 
 const Main = ({ expenses, currency }) => {
+  console.log(expenses);
+  // 4 - 5 0 ---> 0 expense.slice 0
+  // removes elements from the beginning should not do that should remove from the end instead
   const newobj = expenses.slice(Math.max(expenses.length - 5, 0));
   // reducing object's size to the last 5 elements
+  console.log(expenses);
   return (
     <Container>
       <DataContainer>

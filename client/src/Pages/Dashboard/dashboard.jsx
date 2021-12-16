@@ -28,17 +28,7 @@ const Dashboard = ({ setAuth }) => {
     }
   };
 
-  function compare(a, b) {
-    if (a.expense_date > b.expense_date) {
-      return -1;
-    }
-    if (a.expense_date < b.expense_date) {
-      return 1;
-    }
-    return 0;
-  }
-
-  async function getExpenses(compare) {
+  async function getExpenses() {
     try {
       const res = await fetch("http://localhost:5000/dashboard/expenses", {
         method: "GET",
@@ -47,7 +37,6 @@ const Dashboard = ({ setAuth }) => {
 
       const parseData = await res.json();
 
-      parseData.sort(compare);
       setExpenses(parseData);
     } catch (err) {
       console.error(err.message);
@@ -56,7 +45,7 @@ const Dashboard = ({ setAuth }) => {
 
   useEffect(() => {
     getProfile();
-    getExpenses(compare);
+    getExpenses();
   }, []);
 
   const logout = async (e) => {

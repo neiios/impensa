@@ -14,23 +14,6 @@ import theme from "../../theme/Index";
 import moment from "moment";
 import { GraphWrapper, H4, H6, H3, TextContainer } from "./style";
 
-const states = [
-  ["NSW", "New South Wales"],
-  ["VIC", "Victoria"],
-  ["WA", "Western Australia"],
-];
-
-const StateDrop = ({ label, ...others }) => (
-  <>
-    <label>{label}</label>
-    <select {...others}>
-      {states.map(([value, name]) => (
-        <option value={value}>{name}</option>
-      ))}
-    </select>
-  </>
-);
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -66,7 +49,7 @@ export const options = {
       },
       ticks: {
         autoSkip: true,
-        display: false,
+        display: true,
       },
     },
     y: {
@@ -78,39 +61,62 @@ export const options = {
 };
 
 const LineGraph = ({ expenses, currency }) => {
-  expenses.reverse();
-  let value = expenses.length,
-    i = 0,
+  console.log(expenses);
+  let i = 0,
     add = 0,
     addToday = 0;
+
   let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
-  console.log(newobj);
+
+  console.log(expenses);
+
   newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y") === currentUserDate
       ? i++
       : i
   );
 
-  let today = expenses.slice(Math.max(expenses.length - i, 0));
+  // 4 - 3, 0
+  // expenses.slice(1) 1000 432 500 312 removes 1000 /// 432 500 312
+  // 1 to remove
+  console.log(expenses);
+
+  // let today = expenses;
+  // for (let index = 0; index < expenses.length - i; index++) {
+  //   today.pop();
+  // }
+
+  // 4 - (4 - 3)
+  let today = expenses.slice(expenses.length - i);
+
+  console.log(today);
+  console.log(expenses);
 
   let todaySpent = today.map(
     (expense) => (addToday += parseFloat(expense.expense_amount))
   );
-  console.log(todaySpent);
-  newobj = expenses.slice(Math.max(expenses.length - value, 0));
 
-  let labels = newobj.map((expense) =>
+  console.log(todaySpent);
+  console.log(expenses);
+  newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
+  console.log(expenses);
+  console.log(newobj);
+
+  let labels = expenses.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y")
   );
+
   let radiusValue;
-  value === 1 ? (radiusValue = 5) : (radiusValue = 0);
+
+  expenses.length === 1 ? (radiusValue = 5) : (radiusValue = 0);
+
   const data = {
     labels,
     datasets: [
       {
         fill: true,
         label: "Amount",
-        data: newobj.map(
+        data: expenses.map(
           (expense) => (add += parseFloat(expense.expense_amount))
         ),
         borderColor: theme.bg.secondary,
@@ -120,17 +126,19 @@ const LineGraph = ({ expenses, currency }) => {
       },
     ],
   };
-  //value = how many expenses
+
+  //expenses.length = how many expenses
+
   return (
     <>
       <TextContainer>
         <H3>{` ${currency} ${add.toFixed(2)}`}</H3>
         TOTAL SPENT
       </TextContainer>
-      <TextContainer>
+      {/* <TextContainer>
         <H3>{` ${currency} ${addToday.toFixed(2)}`}</H3>
         TODAY SPENT as for {currentUserDate}
-      </TextContainer>
+      </TextContainer> */}
       <GraphWrapper>
         <Line options={options} data={data} />
       </GraphWrapper>

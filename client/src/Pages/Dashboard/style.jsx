@@ -190,6 +190,7 @@ export const Icon = styled.i`
 
 export const IconContainer = styled.div`
   display: flex;
+  gap: 20px;
   align-items: center;
 `;
 
