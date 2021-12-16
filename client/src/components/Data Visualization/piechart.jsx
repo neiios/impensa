@@ -3,7 +3,9 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { PieChartWrapper } from "./style";
 import moment from "moment";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
+
 export const options = {
   maintainAspectRatio: false,
   responsive: true,
@@ -11,25 +13,42 @@ export const options = {
     legend: false,
   },
 };
-const countCategores = (uniqueCount) => {
-  return uniqueCount.reduce(
-    (cnt, cur) => ((cnt[cur] = cnt[cur] + 1 || 1), cnt),
-    {}
-  );
-};
+
 let selectedCategories = [],
-  selectedAmounts = [],
-  i = 0;
+  selectedAmounts = [];
+
 const PieChart = ({ expenses, currentMonth }) => {
+  // You should filter expenses you get here
+  // ----- code
+  // ----- code
+
+  // Merged expenses
+  var expensesMerged = expenses.reduce((object, item) => {
+    var category = item.expense_category;
+    var amount = item.expense_amount;
+
+    if (!object.hasOwnProperty(category)) {
+      object[category] = 0;
+    }
+
+    object[category] += parseFloat(amount);
+    return object;
+  }, {});
+
+  console.log(expenses);
+  console.log(expensesMerged);
+  // -------------------
   let newobj = expenses.slice(Math.max(0, 0));
+
   newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth
       ? selectedCategories.push(expense.expense_category) &&
         selectedAmounts.push(expense.expense_amount)
       : null
   );
+
   console.log(selectedCategories);
-  let add = 0;
+
   const data = {
     labels: selectedCategories,
     //backgroundColor: ['rgba(255,0,0,1)'],
@@ -51,6 +70,7 @@ const PieChart = ({ expenses, currentMonth }) => {
       },
     ],
   };
+
   return (
     <PieChartWrapper>
       {currentMonth}
