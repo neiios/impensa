@@ -91,7 +91,7 @@ const Archive = ({ expenses, currency }) => {
                   />
                 </IconContainer>
               </Td>
-              <Td>{`${expense.expense_amount}${currency}`}</Td>
+              <Td>{`${currency} ${expense.expense_amount}`}</Td>
               <Td>
                 {expense.expense_description.length === 0
                   ? "No description provided"
