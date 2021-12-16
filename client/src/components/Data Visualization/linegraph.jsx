@@ -78,12 +78,13 @@ export const options = {
 };
 
 const LineGraph = ({ expenses, currency }) => {
+  expenses.reverse();
   let value = expenses.length,
     i = 0,
     add = 0,
     addToday = 0;
-  console.log(expenses);
   let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
+  console.log(newobj);
   newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y") === currentUserDate
       ? i++
@@ -123,7 +124,7 @@ const LineGraph = ({ expenses, currency }) => {
   return (
     <>
       <TextContainer>
-        <H3>{` ${currency} ${addToday.toFixed(2)}`}</H3>
+        <H3>{` ${currency} ${add.toFixed(2)}`}</H3>
         TOTAL SPENT
       </TextContainer>
       <TextContainer>
