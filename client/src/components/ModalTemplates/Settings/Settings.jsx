@@ -75,43 +75,41 @@ const Settings = () => {
     <Wrapper onSubmit={onSubmitForm}>
       <Container>
         <InputSection>
-          <form onSubmit={onSubmitForm}>
-            <H5>Email</H5>
-            <input
-              placeholder="Email"
-              type="text"
-              value={userEmail}
-              onChange={(e) => setUserEmail(e.target.value)}
-              required
-            />
-            <H5>Name</H5>
-            <input
-              placeholder="Name"
-              type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              required
-            />
-            <H5>Password</H5>
-            <input
-              placeholder="Old Password"
-              type="text"
-              value={userPassword}
-              onChange={(e) => setUserPassword(e.target.value)}
-              required
-            />
-            <H5>New password</H5>
-            <input
-              placeholder="New Password"
-              type="text"
-              value={userNewPassword}
-              onChange={(e) => setUserNewPassword(e.target.value)}
-              required
-            />
-            <ButtonContainer>
-              <Button>Submit</Button>
-            </ButtonContainer>
-          </form>
+          <ItemForm
+            label="Email"
+            placeholder="Email"
+            type="text"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            required
+          />
+          <ItemForm
+            label="Name"
+            placeholder="Name"
+            type="text"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            required
+          />
+          <ItemForm
+            label="Password"
+            placeholder="Old Password"
+            type="password"
+            value={userPassword}
+            onChange={(e) => setUserPassword(e.target.value)}
+            required
+          />
+          <ItemForm
+            label="New password"
+            placeholder="New Password"
+            type="password"
+            value={userNewPassword}
+            onChange={(e) => setUserNewPassword(e.target.value)}
+            required
+          />
+          <ButtonContainer>
+            <Button>Submit</Button>
+          </ButtonContainer>
         </InputSection>
 
         <PictureContainer>

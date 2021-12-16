@@ -55,10 +55,11 @@ export const Heading = styled.h2`
 `;
 
 export const InputSection = styled.div`
-  gap: 25px;
   display: flex;
+  gap: 30px;
   flex-direction: column;
   padding-left: 20px;
+  width: 300px;
 `;
 
 export const InputContainer = styled.div`
