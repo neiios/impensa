@@ -10,8 +10,6 @@ import {
 import { Table, Colgroup, Col, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
 import ExcelExport from "./excelExport";
-import ModalService from "../../components/Modal/ModalService";
-import NewExpenseEdit from "../../components/Modal/NewExpenseEdit.js";
 // Wraps Sidebar Nav and Main-Conent
 
 const Archive = ({ expenses, currency }) => {
@@ -19,6 +17,8 @@ const Archive = ({ expenses, currency }) => {
 
   const [sort, setSort] = useState(false);
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
+  const [disabled, setDisabled] = useState(true);
+  const [selectedExpense, setSelectedExpense] = useState({});
 
   async function deleteExpense(expense_id) {
     try {
@@ -38,10 +38,6 @@ const Archive = ({ expenses, currency }) => {
     }
   }
 
-  const addModal = () => {
-    ModalService.open(NewExpenseEdit);
-  };
-
   async function sortElements() {
     try {
       sort
@@ -52,6 +48,43 @@ const Archive = ({ expenses, currency }) => {
       console.error(err.message);
     }
   }
+
+  async function makeExpenseEditable(expense) {
+    try {
+      setSelectedExpense(expense);
+      setDisabled(!disabled);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  async function onSubmitForm(e) {
+    e.preventDefault();
+    try {
+      const body = selectedExpense;
+      const response = await fetch("http://localhost:5000/dashboard/expense", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          jwtToken: localStorage.token,
+        },
+        body: JSON.stringify(body),
+      });
+
+      setDisabled(!disabled);
+      window.location = "/dashboard/archive";
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  const updateField = (e) => {
+    setSelectedExpense({
+      ...selectedExpense,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <ArchiveContainer>
@@ -79,36 +112,80 @@ const Archive = ({ expenses, currency }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {sortedExpenses.map((expense) => (
-            <Tr key={expense.expense_id}>
+          {disabled ? (
+            sortedExpenses.map((expense) => (
+              <Tr key={expense.expense_id}>
+                <Td>
+                  <IconContainer>
+                    <Icon
+                      className="far fa-edit"
+                      onClick={() => makeExpenseEditable(expense)}
+                    />
+                  </IconContainer>
+                </Td>
+                <Td>
+                  {`${currency} ${parseFloat(expense.expense_amount).toFixed(
+                    2
+                  )}`}
+                </Td>
+                <Td>{expense.expense_description}</Td>
+                <Td>
+                  <ExpenseCategoryCentered>
+                    {expense.expense_category}
+                  </ExpenseCategoryCentered>
+                </Td>
+                <Td>
+                  {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                </Td>
+              </Tr>
+            ))
+          ) : (
+            <Tr key={selectedExpense.expense_id}>
               <Td>
                 <IconContainer>
-                  <Icon
-                    className="far fa-edit"
-                    onClick={() => addModal(expense.expense_id)}
-                  />
+                  <Icon className="fas fa-check" onClick={onSubmitForm} />
                   <Icon
                     className="far fa-trash-alt"
-                    onClick={() => deleteExpense(expense.expense_id)}
+                    onClick={() => deleteExpense(selectedExpense.expense_id)}
+                  />
+                  <Icon
+                    className="fas fa-times"
+                    onClick={() => setDisabled(!disabled)}
                   />
                 </IconContainer>
               </Td>
               <Td>
-                {`${currency} ${parseFloat(expense.expense_amount).toFixed(2)}`}
+                <input
+                  required
+                  type="number"
+                  name="expense_amount"
+                  min="0.01"
+                  step="0.01"
+                  value={selectedExpense.expense_amount}
+                  onChange={(e) => updateField(e)}
+                />
               </Td>
               <Td>
-                {expense.expense_description.length === 0
-                  ? "No description provided"
-                  : expense.expense_description}
+                <input
+                  required
+                  name="expense_description"
+                  type="text"
+                  value={selectedExpense.expense_description}
+                  onChange={(e) => updateField(e)}
+                />
               </Td>
               <Td>
                 <ExpenseCategoryCentered>
-                  {expense.expense_category}
+                  {selectedExpense.expense_category}
                 </ExpenseCategoryCentered>
               </Td>
-              <Td>{moment.utc(expense.expense_date).format("MMM Do, YYYY")}</Td>
+              <Td>
+                {moment
+                  .utc(selectedExpense.expense_date)
+                  .format("MMM Do, YYYY")}
+              </Td>
             </Tr>
-          ))}
+          )}
         </Tbody>
       </Table>
     </ArchiveContainer>
