@@ -3,6 +3,23 @@ import styled from "styled-components";
 import Logo from "../../components/Logo/index.jsx";
 import theme from "../../theme/Index.js";
 
+export const PpContainer = styled.div``;
+
+export const PpCircle = styled.div`
+  background: ${theme.bg.secondary};
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NameFirstLetter = styled.div`
+  font-size: 0.8em;
+  color: white;
+`;
+
 export const UserCreds = styled.div`
   color: #677a94;
   cursor: pointer;
@@ -20,9 +37,8 @@ export const UserCreds = styled.div`
   }
 `;
 
-export const UserImg = styled.img`
+export const UserImg = styled.div`
   border-radius: 50%;
-  image-resolution: 300dpi;
   width: 25px;
   height: 25px;
   :hover {
@@ -67,7 +83,11 @@ export const Nav = ({ name }) => {
         <NavMenu>
           <UserCreds>
             <UserName>{name}</UserName>
-            <UserImg src="../images/max.png" />
+            <PpContainer>
+              <PpCircle>
+                <NameFirstLetter>{name[0]}</NameFirstLetter>
+              </PpCircle>
+            </PpContainer>
           </UserCreds>
         </NavMenu>
       </NavbarContainer>

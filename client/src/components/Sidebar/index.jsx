@@ -32,6 +32,7 @@ export const MenuSpan = styled.span`
     display: none;
   }
 `;
+
 //  props="close" heading="Settings"  component="<Settings/>"/
 export const Sidebar = ({ logout }) => {
   const addModal = () => {
@@ -59,20 +60,20 @@ export const Sidebar = ({ logout }) => {
             </MenuRef>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/dashboard/analysis">
-              <i className="far fa-chart-bar"></i>
-              <MenuSpan>Analysis</MenuSpan>
-            </MenuRef>
-          </MenuEl>
-          <MenuEl>
             <MenuRef to="/dashboard/archive">
               <i className="fas fa-archive"></i>
               <MenuSpan>Archive</MenuSpan>
             </MenuRef>
           </MenuEl>
+          <MenuEl>
+            <MenuRef to="/dashboard/settings">
+              <i className="fas fa-cog"></i>
+              <MenuSpan>Settings</MenuSpan>
+            </MenuRef>
+          </MenuEl>
           <IconRow>
             <MenuEl>
-              <Button onClick={addModal}>Settings</Button>
+              <Button onClick={addModal}>Contact</Button>
             </MenuEl>
             <MenuEl>
               <Button onClick={(e) => logout(e)}>Log out</Button>

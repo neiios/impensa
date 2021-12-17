@@ -246,3 +246,31 @@ export const MonthSwitcher = styled.div`
 `;
 
 export const NoDataBanner = styled.div``;
+
+export const H5 = styled.h5`
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: #404040;
+`;
+
+export const H4 = styled.h4`
+  margin: 0;
+  font-size: 0.9em;
+  color: #404040;
+`;
+
+export const Input = styled.input`
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 11px 15px;
+  background: #f9f9fa;
+  border-radius: 4px;
+  outline: 0;
+  border: 1px solid rgba(3, 102, 214, 0.1);
+  font-size: 14px;
+  transition: all 0.3s ease-out;
+  :focus {
+    box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 3px;
+  }
+`;

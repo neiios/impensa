@@ -4,12 +4,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 250px;
+  width: 240px;
   height: 250px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 15px;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   transition: margin-top 0.2s;
   user-select: none; /* supported by Chrome and Opera */
@@ -17,8 +16,10 @@ export const Container = styled.div`
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  :hover {
-    margin-top: -20px;
+  @media screen and (min-width: 1000px) {
+    :hover {
+      margin-top: -20px;
+    }
   }
 `;
 
@@ -31,6 +32,7 @@ export const Heading = styled.h4`
 `;
 
 export const Icon = styled.i`
+  margin-top: 50px;
   color: ${theme.bg.secondary};
 `;
 

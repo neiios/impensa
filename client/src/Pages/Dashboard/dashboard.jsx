@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
 import PageNotFound from "../PageNotFound";
+import Settings from "./settings.jsx";
 const Dashboard = ({ setAuth }) => {
   document.title = "Impensa - dashboard";
 
@@ -91,6 +92,13 @@ const Dashboard = ({ setAuth }) => {
                   <Banner name={name} />
                 ) : (
                   <Expenses expenses={expenses} currency={currency} />
+                )}
+              </Route>
+              <Route path="/dashboard/settings" exact>
+                {expenses.length === 0 ? (
+                  <Banner name={name} />
+                ) : (
+                  <Settings logout={logout} />
                 )}
               </Route>
               <Route component={PageNotFound}></Route>

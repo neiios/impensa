@@ -86,3 +86,12 @@ export const IconRow = styled.div`
     display: none;
   }
 `;
+
+//profile pic container
+export const PpContainer = styled.div``;
+
+export const PpCircle = styled.div`
+  background: ${theme.bg.secondary};
+`;
+
+export const NameFirstLetter = styled.div``;
