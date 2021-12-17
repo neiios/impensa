@@ -51,6 +51,7 @@ export const options = {
     x: {
       grid: {
         display: false,
+        drawBorder: false,
       },
       tooltips: {
         mode: "label", // or 'x-axis'
@@ -62,6 +63,11 @@ export const options = {
     },
     y: {
       grid: {
+        display: false,
+        drawBorder: false,
+      },
+      ticks: {
+        autoSkip: true,
         display: false,
       },
     },
