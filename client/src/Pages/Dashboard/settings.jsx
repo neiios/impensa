@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ItemForm from "../../components/ItemForm";
 import { Button } from "../../components/Button/index";
 import styled from "styled-components";
 import { ArchiveContainer, H3, H5, Input, H4 } from "./style";
@@ -33,7 +32,6 @@ const Settings = ({ logout }) => {
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userNewPassword, setUserNewPassword] = useState("");
-  const [visible, setVisible] = useState(false);
 
   async function getUserData() {
     try {
@@ -70,7 +68,7 @@ const Settings = ({ logout }) => {
       });
 
       console.log(response);
-      window.location = "/dashboard/overview";
+      logout(e);
     } catch (err) {
       console.error(err.message);
     }
@@ -83,7 +81,6 @@ const Settings = ({ logout }) => {
         <H5>
           Logged in as <EmailContainer>{userEmail}</EmailContainer>
         </H5>
-        <Button onClick={(e) => logout(e)}>Log out</Button>
         <HR />
         <H4>Change password</H4>
         <Input
