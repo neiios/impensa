@@ -24,12 +24,11 @@ const Homepage = () => {
       <HeroSection {...homeObjTwo} />
       <div className="features">
         <div className="row-1">
-          <h2 className="section-heading">Express Functionality</h2>
+          <h2 className="section-heading">Why choose us?</h2>
           <p className="section-subheading">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
-            obcaecati
-            <br /> dignissimos quae quo ad iste ipsum officiis deleniti
-            asperiores sit.
+            In the modern capitalistic society financial literacy means a lot,
+            <br /> we are happily providing you with the best tools available to
+            optimize your day-to-day financial decisions.
           </p>
         </div>
         <div className="row-2">

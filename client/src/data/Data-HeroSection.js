@@ -1,11 +1,11 @@
 export const homeObjOne = {
   lightBg: true,
   lightText: false,
-  headline: "Control your outlay efficiently using spending analytics",
+  headline: " All your spendings in one app",
   descriptionOne:
-    "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. ",
+    "See where all your money goes by easily adding and categorizing new expenses",
   descriptionTwo:
-    "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    "Personalized overview take your user experience even further, with elaborate visualazation of your spendings",
   img: "../../images/laptop.svg",
   imgStart: false,
   alt: "alt",
@@ -15,9 +15,9 @@ export const homeObjTwo = {
   lightText: true,
   headline: "Control your outlay efficiently using spending analytics",
   descriptionOne:
-    "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. ",
+    "View expenses sorted not only by months, but also and categories",
   descriptionTwo:
-    "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+    "Easily export the list of your expenses in a .xlsx file",
   img: "../../images/laptop.svg",
   imgStart: true,
   alt: "alt",

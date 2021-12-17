@@ -1,30 +1,30 @@
 export const featureObjOne = {
-  headline: "Plan your budget",
+  headline: "Spendings tracking",
   description:
-    "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. ",
-  icon: "fas fa-chart-pie",
+    "Stay on top of your finances by seeing where your money goes",
+  icon: "far fa-chart-bar",
   alt: "alt",
 };
 
 export const featureObjTwo = {
-  headline: "Plan your budget",
+  headline: "Expenditure vizualization",
   description:
-    "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. ",
-  icon: "fas fa-donate",
+    "See what categories are taking the most of your money to further optimize your financial habits",
+  icon: "fas fa-chart-pie",
   alt: "alt",
 };
 
 export const featureObjThree = {
-  headline: "Plan your budget",
+  headline: "No to proprietary software",
   description:
-    "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. ",
-  icon: "fas fa-coins",
+    "Impensa is FOSS software licensed under AGPLv3. We respect user's freedom",
+  icon: "fas fa-handshake",
   alt: "alt",
 };
 export const featureObjFour = {
-  headline: "Plan your budget",
+  headline: "Full control",
   description:
-    "Ut quis hendrerit magna, ut auctor neque. Nulla vitae magna ex. Aliquam mollis dolor enim, eget fringilla quam vestibulum at. ",
-  icon: "fas fa-money-check-alt",
+    "Easily add, update or delete your expenses",
+  icon: "fas fa-users",
   alt: "alt",
 };
