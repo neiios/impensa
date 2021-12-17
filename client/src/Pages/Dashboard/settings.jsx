@@ -18,7 +18,7 @@ export const Container = styled.div`
 `;
 
 export const HR = styled.hr`
-  background: #fff2f2;
+  background: #eee1e1;
   width: 100%;
   border: none;
   height: 1px;
