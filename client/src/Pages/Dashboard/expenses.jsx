@@ -101,7 +101,11 @@ const Expenses = ({ expenses, currency }) => {
             onClick={incrementCounter}
           />
         </MonthSwitcher>
-        <PieChart currentMonth={months[counter]} expenses={expenses} />
+        <PieChart
+          currency={currency}
+          currentMonth={months[counter]}
+          expenses={expenses}
+        />
       </DataContainer>
       <DataContainer>
         <>

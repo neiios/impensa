@@ -139,6 +139,8 @@ export const Option = styled.option`
 
 export const Table = styled.table`
   width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
 `;
 
 export const Colgroup = styled.colgroup``;

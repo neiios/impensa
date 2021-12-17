@@ -38,7 +38,7 @@ const PieChart = ({ expenses, currentMonth }) => {
   console.log(expenses);
   console.log(expensesMerged);
   // -------------------
-  let newobj = expenses.slice(Math.max(0, 0));
+  let newobj = expenses.slice(Math.max(expenses.length - expenses, 0));
 
   newobj.map((expense) =>
     moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth
@@ -47,16 +47,21 @@ const PieChart = ({ expenses, currentMonth }) => {
       : null
   );
 
-  console.log(selectedCategories);
+  var keys = Object.keys(expensesMerged);
+  var values = keys.map(function (key) {
+    return expensesMerged[key];
+  });
+
+  console.log(keys, values);
 
   const data = {
-    labels: selectedCategories,
+    labels: keys,
     //backgroundColor: ['rgba(255,0,0,1)'],
     //lineTension: 1,
     datasets: [
       {
-        label: "# of Votes",
-        data: selectedAmounts,
+        label: "Total spent",
+        data: values,
         backgroundColor: [
           "#7C87EB",
           "#DE81DC",
@@ -73,7 +78,6 @@ const PieChart = ({ expenses, currentMonth }) => {
 
   return (
     <PieChartWrapper>
-      {currentMonth}
       <Doughnut data={data} options={options} />
     </PieChartWrapper>
   );
