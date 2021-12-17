@@ -203,7 +203,7 @@ export const IconContainer = styled.div`
 
 export const NavigationIcon = styled.i`
   cursor: pointer;
-  color: grey;
+  color: #404040;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -219,12 +219,12 @@ export const NavigationIcon = styled.i`
   -o-user-select: none;
   user-select: none;
   :hover {
-    background: #ebedfc;
+    background: rgba(64, 64, 64, 0.1);
   }
 `;
 
 export const MonthContainer = styled.div`
-  color: grey;
+  color: #404040;
   font-size: 1.3em;
   position: absolute;
   -webkit-user-select: none;

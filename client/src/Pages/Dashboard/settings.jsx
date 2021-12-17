@@ -6,7 +6,7 @@ import { ArchiveContainer, H3, H5, Input, H4 } from "./style";
 import theme from "../../theme/Index";
 export const Wrapper = styled.div``;
 
-export const Container = styled.div`
+export const Container = styled.form`
   width: 350px;
   justify-content: center;
   align-items: center;
