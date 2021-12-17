@@ -27,7 +27,8 @@ export const EmailContainer = styled.span`
   color: ${theme.bg.secondary};
 `;
 
-const Settings = ({ logout }) => {
+function Settings({ logout }) {
+  const [nameConst, setNameConst] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -45,6 +46,7 @@ const Settings = ({ logout }) => {
       console.log(parseData[0]);
       setUserEmail(parseData[0].user_email);
       setUserName(parseData[0].user_name);
+      setNameConst(parseData[0].user_name);
     } catch (err) {
       console.error(err.message);
     }
@@ -79,7 +81,7 @@ const Settings = ({ logout }) => {
       <Container>
         <H3>Account Details</H3>
         <H5>
-          Logged in as <EmailContainer>{userEmail}</EmailContainer>
+          Logged in as <EmailContainer>{nameConst}</EmailContainer>
         </H5>
         <HR />
         <H4>Change password</H4>
@@ -123,6 +125,6 @@ const Settings = ({ logout }) => {
       </Container>
     </ArchiveContainer>
   );
-};
+}
 
 export default Settings;

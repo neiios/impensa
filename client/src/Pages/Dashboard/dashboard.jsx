@@ -9,6 +9,7 @@ import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
 import PageNotFound from "../PageNotFound";
 import Settings from "./settings.jsx";
+
 const Dashboard = ({ setAuth }) => {
   document.title = "Impensa - dashboard";
 
@@ -16,7 +17,7 @@ const Dashboard = ({ setAuth }) => {
   const [currency, setCurrency] = useState("");
   const [expenses, setExpenses] = useState([]);
 
-  const getProfile = async () => {
+  async function getProfile() {
     try {
       const res = await fetch("http://localhost:5000/dashboard/", {
         method: "GET",
@@ -30,7 +31,7 @@ const Dashboard = ({ setAuth }) => {
     } catch (err) {
       console.error(err.message);
     }
-  };
+  }
 
   async function getExpenses() {
     try {
@@ -52,7 +53,7 @@ const Dashboard = ({ setAuth }) => {
     getExpenses();
   }, []);
 
-  const logout = async (e) => {
+  async function logout(e) {
     e.preventDefault();
     try {
       localStorage.removeItem("token");
@@ -60,7 +61,7 @@ const Dashboard = ({ setAuth }) => {
     } catch (err) {
       console.error(err.message);
     }
-  };
+  }
 
   console.log(window.location.pathname);
 

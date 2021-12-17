@@ -16,8 +16,7 @@ export const homeObjTwo = {
   headline: "Control your outlay efficiently using spending analytics",
   descriptionOne:
     "View expenses sorted not only by months, but also and categories",
-  descriptionTwo:
-    "Easily export the list of your expenses in a .xlsx file",
+  descriptionTwo: "Easily export the list of your expenses in a .xlsx file",
   img: "../../images/laptop.svg",
   imgStart: true,
   alt: "alt",

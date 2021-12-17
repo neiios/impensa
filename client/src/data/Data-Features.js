@@ -1,7 +1,6 @@
 export const featureObjOne = {
   headline: "Spendings tracking",
-  description:
-    "Stay on top of your finances by seeing where your money goes",
+  description: "Stay on top of your finances by seeing where your money goes",
   icon: "far fa-chart-bar",
   alt: "alt",
 };
@@ -23,8 +22,7 @@ export const featureObjThree = {
 };
 export const featureObjFour = {
   headline: "Full control",
-  description:
-    "Easily add, update or delete your expenses",
+  description: "Easily add, update or delete your expenses",
   icon: "fas fa-users",
   alt: "alt",
 };
