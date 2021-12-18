@@ -26,7 +26,10 @@ const Welcome = () => {
           <BiggerButton href="#heroSection">Explore</BiggerButton>
         </ExploreBtn>
         <ContactBtn>
-          <BiggerButton primary href="/obama.com">
+          <BiggerButton
+            primary
+            href="https://github.com/richard96292/impensa/discussions"
+          >
             Contact us
           </BiggerButton>
         </ContactBtn>

@@ -66,7 +66,9 @@ export const Sidebar = ({ logout }) => {
           </MenuEl>
           <IconRow>
             <MenuEl>
-              <Button>Contact</Button>
+              <Button href="https://github.com/richard96292/impensa/discussions">
+                Contact
+              </Button>
             </MenuEl>
             <MenuEl>
               <Button onClick={(e) => logout(e)}>Log out</Button>
