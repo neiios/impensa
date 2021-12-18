@@ -96,112 +96,113 @@ const Archive = ({ expenses, currency }) => {
         <H3>Archive</H3>
         <ExcelExport expenses={expenses} />
       </HeaderContainer>
-      <Table>
-        <Colgroup>
-          <Col style={{ width: "5%", minWidth: "auto" }} />
-          <Col style={{ width: "10%", minWidth: "auto" }} />
-          <Col style={{ width: "40%", minWidth: "auto" }} />
-          <Col style={{ width: "17%", minWidth: "auto" }} />
-          <Col style={{ width: "15%", minWidth: "auto" }} />
-        </Colgroup>
-        <Thead>
-          <Tr>
-            <Th>Modify</Th>
-            <Th>Amount</Th>
-            <Th>Description</Th>
-            <Th>Category</Th>
-            <Th onClick={() => sortElements()}>
-              Date <Icon className="fas fa-sort"></Icon>
-            </Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {disabled ? (
-            sortedExpenses.map((expense) => (
-              <Tr key={expense.expense_id}>
+      <TableWrapper>
+        <Table>
+          <Colgroup>
+            <Col style={{ width: "5%", minWidth: "auto" }} />
+            <Col style={{ width: "10%", minWidth: "auto" }} />
+            <Col style={{ width: "40%", minWidth: "auto" }} />
+            <Col style={{ width: "17%", minWidth: "auto" }} />
+            <Col style={{ width: "15%", minWidth: "auto" }} />
+          </Colgroup>
+          <Thead>
+            <Tr>
+              <Th>Modify</Th>
+              <Th>Amount</Th>
+              <Th>Description</Th>
+              <Th>Category</Th>
+              <Th onClick={() => sortElements()}>
+                Date <Icon className="fas fa-sort"></Icon>
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {disabled ? (
+              sortedExpenses.map((expense) => (
+                <Tr key={expense.expense_id}>
+                  <Td>
+                    <IconContainer>
+                      <Icon
+                        className="far fa-edit"
+                        onClick={() => makeExpenseEditable(expense)}
+                      />
+                    </IconContainer>
+                  </Td>
+                  <Td>
+                    {`${currency} ${parseFloat(expense.expense_amount).toFixed(
+                      2
+                    )}`}
+                  </Td>
+                  <Td>{expense.expense_description}</Td>
+                  <Td>
+                    <ExpenseCategoryCentered>
+                      {expense.expense_category}
+                    </ExpenseCategoryCentered>
+                  </Td>
+                  <Td>
+                    {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                  </Td>
+                </Tr>
+              ))
+            ) : (
+              <Tr key={selectedExpense.expense_id}>
                 <Td>
                   <IconContainer>
                     <Icon
-                      className="far fa-edit"
-                      onClick={() => makeExpenseEditable(expense)}
+                      className="fas fa-times"
+                      onClick={() => setDisabled(!disabled)}
+                    />
+                    <Icon className="fas fa-check" onClick={onSubmitForm} />
+                    <Icon
+                      className="far fa-trash-alt"
+                      onClick={() => deleteExpense(selectedExpense.expense_id)}
                     />
                   </IconContainer>
                 </Td>
                 <Td>
-                  {`${currency} ${parseFloat(expense.expense_amount).toFixed(
-                    2
-                  )}`}
+                  <Input
+                    required
+                    type="number"
+                    name="expense_amount"
+                    min="0.01"
+                    step="0.01"
+                    value={selectedExpense.expense_amount}
+                    onChange={(e) => updateField(e)}
+                  />
                 </Td>
-                <Td>{expense.expense_description}</Td>
                 <Td>
+                  <Input
+                    required
+                    name="expense_description"
+                    type="text"
+                    value={selectedExpense.expense_description}
+                    onChange={(e) => updateField(e)}
+                  />
+                </Td>
+                <Td>
+                  <Input
+                    name="expense_category"
+                    //  defaultValue={GeneralCategories[0]}
+                    onChange={(e) => updateField(e)}
+                    options={GeneralCategories}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                  />
                   <ExpenseCategoryCentered>
-                    {expense.expense_category}
+                    {selectedExpense.expense_category}
                   </ExpenseCategoryCentered>
                 </Td>
                 <Td>
-                  {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                  {moment
+                    .utc(selectedExpense.expense_date)
+                    .format("MMM Do, YYYY")}
                 </Td>
               </Tr>
-            ))
-          ) : (
-            <Tr key={selectedExpense.expense_id}>
-              <Td>
-                <IconContainer>
-                  <Icon
-                    className="fas fa-times"
-                    onClick={() => setDisabled(!disabled)}
-                  />
-                  <Icon className="fas fa-check" onClick={onSubmitForm} />
-                  <Icon
-                    className="far fa-trash-alt"
-                    onClick={() => deleteExpense(selectedExpense.expense_id)}
-                  />
-                </IconContainer>
-              </Td>
-              <Td>
-                <Input
-                  required
-                  type="number"
-                  name="expense_amount"
-                  min="0.01"
-                  step="0.01"
-                  value={selectedExpense.expense_amount}
-                  onChange={(e) => updateField(e)}
-                />
-              </Td>
-              <Td>
-                <Input
-                  required
-                  name="expense_description"
-                  type="text"
-                  value={selectedExpense.expense_description}
-                  onChange={(e) => updateField(e)}
-                />
-              </Td>
-              <Td>
-                <Input
-                  name="expense_category"
-                  //  defaultValue={GeneralCategories[0]}
-                  onChange={(e) => updateField(e)}
-                  options={GeneralCategories}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                />
-                <ExpenseCategoryCentered>
-                  {selectedExpense.expense_category}
-                </ExpenseCategoryCentered>
-              </Td>
-              <Td>
-                {moment
-                  .utc(selectedExpense.expense_date)
-                  .format("MMM Do, YYYY")}
-              </Td>
-            </Tr>
-          )}
-        </Tbody>
-      </Table>
+            )}
+          </Tbody>
+        </Table>
+      </TableWrapper>
     </ArchiveContainer>
   );
 };
-
 export default Archive;

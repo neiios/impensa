@@ -159,9 +159,16 @@ export const Option = styled.option`
 
 export const Table = styled.table`
   border-collapse: collapse;
+  overflow: auto;
+  margin: 0;
 `;
 
-export const TableWrapper = styled.div``;
+export const TableWrapper = styled.div`
+  @media only screen and (max-width: 1000px) {
+    height: 500px;
+    width: 200px;
+  }
+`;
 
 export const Colgroup = styled.colgroup``;
 
