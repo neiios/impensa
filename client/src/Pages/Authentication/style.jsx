@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { H3 } from "../../globalStyles";
 import theme from "../../theme/Index";
 
 export const TextContainer = styled.div`
@@ -35,7 +34,7 @@ export const Form = styled.form`
   }
 `;
 
-export const Heading = styled(H3)`
+export const Heading = styled.h3`
   font-size: 1.2em;
   color: ${theme.text.grey};
   margin: auto;

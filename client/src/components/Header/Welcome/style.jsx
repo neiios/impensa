@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { H1, H2 } from "../../../globalStyles";
 import theme from "../../../theme/Index";
 
 export const Container = styled.nav`
@@ -44,14 +43,15 @@ export const ContactBtn = styled.div`
   }
 `;
 
-export const WelcomeHeading = styled(H1)`
+export const WelcomeHeading = styled.h1`
   margin-top: 70px;
   font-size: 3em;
 `;
-export const WelcomeSubheading = styled(H2)`
+export const WelcomeSubheading = styled.h2`
   font-size: 1.765em;
   margin-bottom: 25px;
-  color: ${theme.text.grey};
+  color: #929091;
+  font-weight: 500;
 `;
 
 export const Br = styled.br``;

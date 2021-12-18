@@ -44,8 +44,8 @@ export const RowOneSubheading = styled.p`
   display: flex;
   flex-direction: column;
   margin-top: -5px;
-  font-size: var(--small-font-size);
-  color: var(--first-color-alt);
+  font-size: 0.813rem;
+  color: #929091;
   font-weight: 500;
 `;
 

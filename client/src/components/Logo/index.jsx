@@ -5,6 +5,7 @@ import styled from "styled-components";
 const LogoImg = styled.img`
   width: 30px;
 `;
+
 export const Logo = () => (
   <ModifiedLink
     style={{ fontSize: "1em", fontWeight: "700", color: "black" }}

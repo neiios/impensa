@@ -29,8 +29,23 @@ export const TextSection = styled.div`
   color: ${(props) => (props.lightText ? "white" : "black")};
   max-width: 540px;
 `;
-export const Paragraph = styled.div`
+
+export const TextSubSection = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+`;
+
+export const P = styled.p`
+  font-size: 1em;
+`;
+
+export const H3 = styled.h3``;
+
+export const Icon = styled.i``;
+
+export const Embed = styled.embed`
+  width: 600px;
+  max-width: 100%;
+  vertical-align: middle;
 `;

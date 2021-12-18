@@ -8,7 +8,7 @@ import Dashboard from "./Pages/Dashboard/dashboard";
 import ModalRoot from "./components/Modal/ModalRoot";
 import PageNotFound from "./Pages/PageNotFound";
 //styles
-import "./App.css";
+import GlobalStyle from "./globalStyles.jsx";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,45 +39,48 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
-      <ModalRoot />
-      <Switch>
-        <Route
-          exact
-          path="/signin"
-          render={(props) =>
-            !isAuthenticated ? (
-              <SignIn {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/dashboard/overview" />
-            )
-          }
-        />
-        <Route
-          exact
-          path="/signup"
-          render={(props) =>
-            !isAuthenticated ? (
-              <SignUp {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/dashboard/overview" />
-            )
-          }
-        />
-        <Route
-          path="/dashboard"
-          render={(props) =>
-            isAuthenticated ? (
-              <Dashboard {...props} setAuth={setAuth} />
-            ) : (
-              <Redirect to="/signin" />
-            )
-          }
-        />
-        <Route exact path="/" render={() => <Homepage />} />
-        <Route component={PageNotFound}></Route>
-      </Switch>
-    </BrowserRouter>
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <ModalRoot />
+        <Switch>
+          <Route
+            exact
+            path="/signin"
+            render={(props) =>
+              !isAuthenticated ? (
+                <SignIn {...props} setAuth={setAuth} />
+              ) : (
+                <Redirect to="/dashboard/overview" />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/signup"
+            render={(props) =>
+              !isAuthenticated ? (
+                <SignUp {...props} setAuth={setAuth} />
+              ) : (
+                <Redirect to="/dashboard/overview" />
+              )
+            }
+          />
+          <Route
+            path="/dashboard"
+            render={(props) =>
+              isAuthenticated ? (
+                <Dashboard {...props} setAuth={setAuth} />
+              ) : (
+                <Redirect to="/signin" />
+              )
+            }
+          />
+          <Route exact path="/" render={() => <Homepage />} />
+          <Route component={PageNotFound}></Route>
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 };
 
