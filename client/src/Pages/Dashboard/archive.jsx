@@ -23,7 +23,6 @@ const Archive = ({ expenses, currency }) => {
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
   const [disabled, setDisabled] = useState(true);
   const [selectedExpense, setSelectedExpense] = useState({});
-  const [category, setCategory] = useState({});
   async function deleteExpense(expense_id) {
     try {
       console.log(`Expense id is ${expense_id}`);
@@ -56,7 +55,6 @@ const Archive = ({ expenses, currency }) => {
   async function makeExpenseEditable(expense) {
     try {
       setSelectedExpense(expense);
-      setCategory(expense);
       setDisabled(!disabled);
     } catch (err) {
       console.error(err.message);
@@ -66,7 +64,7 @@ const Archive = ({ expenses, currency }) => {
   async function onSubmitForm(e) {
     e.preventDefault();
     try {
-      const body = { selectedExpense, category };
+      const body = selectedExpense;
       const response = await fetch("http://localhost:5000/dashboard/expense", {
         method: "PUT",
         headers: {
@@ -91,12 +89,6 @@ const Archive = ({ expenses, currency }) => {
     });
   };
 
-  const updateCategory = (e) => {
-    setCategory({
-      ...category,
-      [e.target.value]: e.target.value,
-    });
-  };
   return (
     <ArchiveContainer>
       <HeaderContainer>
@@ -186,16 +178,16 @@ const Archive = ({ expenses, currency }) => {
                 />
               </Td>
               <Td>
-                <Select
+                <Input
                   name="expense_category"
                   //  defaultValue={GeneralCategories[0]}
-                  onChange={(e) => updateCategory(e.value)}
+                  onChange={(e) => updateField(e)}
                   options={GeneralCategories}
                   className="basic-multi-select"
                   classNamePrefix="select"
                 />
                 <ExpenseCategoryCentered>
-                  {category.expense_category}
+                  {selectedExpense.expense_category}
                 </ExpenseCategoryCentered>
               </Td>
               <Td>
