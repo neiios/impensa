@@ -3,7 +3,7 @@ import { Button } from "../../components/Button/index";
 import styled from "styled-components";
 import { ArchiveContainer, H3, H5, Input, H4 } from "./style";
 import theme from "../../theme/Index";
-import useMediaQuery from "../../hooks/useMediaQuety";
+import useMediaQuery from "../../hooks/useMediaQuery";
 export const Wrapper = styled.div``;
 
 export const Container = styled.form`

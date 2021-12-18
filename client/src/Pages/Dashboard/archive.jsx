@@ -96,11 +96,11 @@ const Archive = ({ expenses, currency }) => {
       <TableWrapper>
         <Table>
           <Colgroup>
-            <Col style={{ width: "5%", minWidth: "auto" }} />
             <Col style={{ width: "10%", minWidth: "auto" }} />
+            <Col style={{ width: "20%", minWidth: "auto" }} />
             <Col style={{ width: "40%", minWidth: "auto" }} />
-            <Col style={{ width: "17%", minWidth: "auto" }} />
-            <Col style={{ width: "15%", minWidth: "auto" }} />
+            <Col style={{ width: "10%", minWidth: "auto" }} />
+            <Col style={{ width: "30%", minWidth: "auto" }} />
           </Colgroup>
           <Thead>
             <Tr>
