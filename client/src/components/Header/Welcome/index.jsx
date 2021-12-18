@@ -8,17 +8,19 @@ import {
   ContactBtn,
   WelcomeHeading,
   WelcomeSubheading,
+  Br,
+  Embed,
 } from "./style.jsx";
 const Welcome = () => {
   return (
     <Container>
       <RowOne>
         <WelcomeHeading>
-          One app <br /> to track your expenses
+          One app <Br /> to track your expenses
         </WelcomeHeading>
         <WelcomeSubheading>
           Open your free account in minutes and begin to
-          <br /> manage your outlay wisely
+          <Br /> manage your outlay wisely
         </WelcomeSubheading>
       </RowOne>
       <RowTwo>
@@ -33,8 +35,7 @@ const Welcome = () => {
             Contact us
           </BiggerButton>
         </ContactBtn>
-        <embed
-          style={{ width: "750px", maxWidth: "100%", gridArea: "img" }}
+        <Embed
           src="../../images/laptop.svg"
           alt="image with the laptop and user interface of Impensa"
         />

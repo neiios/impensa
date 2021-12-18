@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { H1, H2 } from "../../../globalStyles";
 import theme from "../../../theme/Index";
-//import theme from "/theme/Index"
 
 export const Container = styled.nav`
   display: flex;
@@ -53,4 +52,14 @@ export const WelcomeSubheading = styled(H2)`
   font-size: 1.765em;
   margin-bottom: 25px;
   color: ${theme.text.grey};
+`;
+
+export const Br = styled.br``;
+
+// Main laptop picture in homepage
+
+export const Embed = styled.embed`
+  width: 750px;
+  max-width: 100%;
+  grid-area: img;
 `;
