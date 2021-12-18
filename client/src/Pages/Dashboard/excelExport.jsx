@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ReactExport from "react-export-excel";
 import styled from "styled-components";
 import { Button } from "../../components/Button";

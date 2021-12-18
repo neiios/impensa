@@ -12,7 +12,7 @@ import {
 import { Line } from "react-chartjs-2";
 import theme from "../../theme/Index";
 import moment from "moment";
-import { GraphWrapper, H4, H6, H3, TextContainer } from "./style";
+import { GraphWrapper, H3, TextContainer } from "./style";
 
 ChartJS.register(
   CategoryScale,
@@ -32,7 +32,6 @@ let year = newDate.getFullYear();
 
 let currentUserDate = `${month}/${date}/${year}`;
 //12/11/2021
-let a = false;
 export const options = {
   tooltips: {
     mode: "index",

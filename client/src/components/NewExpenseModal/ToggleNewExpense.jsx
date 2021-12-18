@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import theme from "../../theme/Index";
 import { Button } from "../Button/index.jsx";
 import ModalService from "../Modal/ModalService.js";
 import NewExpenseModal from "../Modal/NewExpense.js";

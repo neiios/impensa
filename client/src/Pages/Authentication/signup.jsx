@@ -13,7 +13,6 @@ import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select";
 import { InputLabel } from "../../components/ItemForm.jsx";
 import { colourStyles } from "../../components/NewExpense/Categories";
-import { useForm } from "react-hook-form";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   document.title = "Impensa - register";
