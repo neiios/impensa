@@ -155,63 +155,6 @@ export const Option = styled.option`
   }
 `;
 
-// TABLE
-
-export const Table = styled.table`
-  border-collapse: collapse;
-  overflow: auto;
-  margin: 0;
-`;
-
-export const TableWrapper = styled.div`
-  @media only screen and (max-width: 1000px) {
-    height: 500px;
-    width: 200px;
-  }
-`;
-
-export const Colgroup = styled.colgroup``;
-
-export const Col = styled.col``;
-
-export const Thead = styled.thead``;
-
-export const Tr = styled.tr`
-  text-align: center;
-  :hover {
-    background: ${theme.bg.lightestBlue};
-  }
-`;
-
-export const Th = styled.th`
-  padding: 20px;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  text-align: left;
-  &:last-child,
-  &:first-child,
-  &:nth-last-child(2) {
-    text-align: center;
-  }
-`;
-
-export const Tbody = styled.tbody`
-  border: none !important;
-`;
-
-export const Td = styled.td`
-  padding: 20px;
-  text-align: left;
-  &:last-child {
-    margin-left: auto;
-    text-align: center;
-  }
-`;
-
 export const AlterExpense = styled.div`
   position: absolute;
   background: red;
@@ -302,5 +245,62 @@ export const Input = styled.input`
   transition: all 0.3s ease-out;
   :focus {
     box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 3px;
+  }
+`;
+
+// ======================= TABLE ==========================
+
+export const Table = styled.table`
+  border-collapse: collapse;
+  overflow: auto;
+  margin: 0;
+`;
+
+export const TableWrapper = styled.div`
+  @media only screen and (max-width: 1000px) {
+    height: 500px;
+    width: 200px;
+  }
+`;
+
+export const Colgroup = styled.colgroup``;
+
+export const Col = styled.col``;
+
+export const Thead = styled.thead``;
+
+export const Tr = styled.tr`
+  text-align: center;
+  :hover {
+    background: ${theme.bg.lightestBlue};
+  }
+`;
+
+export const Th = styled.th`
+  padding: 20px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  text-align: left;
+  &:last-child,
+  &:first-child,
+  &:nth-last-child(2) {
+    text-align: center;
+  }
+`;
+
+export const Tbody = styled.tbody`
+  border: none !important;
+`;
+
+export const Td = styled.td`
+  padding: 20px;
+  text-align: left;
+  &:last-child {
+    margin-left: auto;
+    text-align: center;
   }
 `;

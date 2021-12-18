@@ -7,12 +7,13 @@ import {
   GithubContainer,
   GithubIcon,
 } from "./style.jsx";
+let currentYear = new Date().getFullYear();
 const Footer = () => {
   return (
     <FooterWrapper>
       <Container>
         <ContactContainer>
-          © 2021 |
+          © {currentYear} |
           <ModifiedLink href="https://github.com/richard96292/impensa/discussions">
             Contact
           </ModifiedLink>

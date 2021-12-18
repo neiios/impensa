@@ -38,7 +38,7 @@ export const TextContainer = styled.div`
 
 export const H6 = styled.h6``;
 
-export const PieChartWrapper = styled.div`
+export const DoughnutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 10px !important;

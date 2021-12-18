@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { PieChartWrapper } from "./style";
+import { DoughnutWrapper } from "./style";
 import moment from "moment";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -22,7 +22,6 @@ const PieChart = ({ expenses, currentMonth }) => {
   // ----- code
   // ----- code
 
-  // Merged expenses
   var expensesMerged = expenses.reduce((object, item) => {
     var category = item.expense_category;
     var amount = item.expense_amount;
@@ -52,8 +51,6 @@ const PieChart = ({ expenses, currentMonth }) => {
 
   const data = {
     labels: keys,
-    //backgroundColor: ['rgba(255,0,0,1)'],
-    //lineTension: 1,
     datasets: [
       {
         label: "Total spent",
@@ -73,9 +70,9 @@ const PieChart = ({ expenses, currentMonth }) => {
   };
 
   return (
-    <PieChartWrapper>
+    <DoughnutWrapper>
       <Doughnut data={data} options={options} />
-    </PieChartWrapper>
+    </DoughnutWrapper>
   );
 };
 

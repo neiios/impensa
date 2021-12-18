@@ -15,7 +15,7 @@ import {
   ExpenseCategory,
 } from "./style";
 import moment from "moment";
-import PieChart from "../../components/Data Visualization/piechart";
+import PieChart from "../../components/Data Visualization/doughnut";
 let currentYear = new Date().getFullYear();
 const months = [
   "January",

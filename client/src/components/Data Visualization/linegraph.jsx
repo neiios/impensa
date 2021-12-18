@@ -31,7 +31,7 @@ let month = newDate.getMonth() + 1;
 let year = newDate.getFullYear();
 
 let currentUserDate = `${month}/${date}/${year}`;
-//12/11/2021
+
 export const options = {
   tooltips: {
     mode: "index",
@@ -74,54 +74,23 @@ export const options = {
 };
 
 const LineGraph = ({ expenses, currency }) => {
-  console.log(expenses);
-  let i = 0,
-    add = 0,
-    addToday = 0;
+  let numOfExpensesToday = 0,
+    spentInTotal = 0,
+    spentToday = 0;
 
-  let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
-
-  console.log(expenses);
-
-  newobj.map((expense) =>
+  expenses.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y") === currentUserDate
-      ? i++
-      : i
+      ? numOfExpensesToday++
+      : null
   );
 
-  // 4 - 3, 0
-  // expenses.slice(1) 1000 432 500 312 removes 1000 /// 432 500 312
-  // 1 to remove
-  console.log(expenses);
+  let objToday = expenses.slice(expenses.length - numOfExpensesToday);
 
-  // let today = expenses;
-  // for (let index = 0; index < expenses.length - i; index++) {
-  //   today.pop();
-  // }
-
-  // 4 - (4 - 3)
-  let today = expenses.slice(expenses.length - i);
-
-  console.log(today);
-  console.log(expenses);
-
-  let todaySpent = today.map(
-    (expense) => (addToday += parseFloat(expense.expense_amount))
-  );
-
-  console.log(todaySpent);
-  console.log(expenses);
-  newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
-  console.log(expenses);
-  console.log(newobj);
+  objToday.map((expense) => (spentToday += parseFloat(expense.expense_amount)));
 
   let labels = expenses.map((expense) =>
     moment.utc(expense.expense_date).format("MM/DD/Y")
   );
-
-  let radiusValue;
-
-  expenses.length === 1 ? (radiusValue = 5) : (radiusValue = 5);
 
   const data = {
     labels,
@@ -130,26 +99,23 @@ const LineGraph = ({ expenses, currency }) => {
         fill: true,
         label: "Total spent",
         data: expenses.map(
-          (expense) => (add += parseFloat(expense.expense_amount))
+          (expense) => (spentInTotal += parseFloat(expense.expense_amount))
         ),
         borderColor: theme.bg.secondary,
         backgroundColor: theme.bg.semiBlue,
-        radius: radiusValue,
+        radius: 5,
         tension: 0.3,
       },
     ],
   };
-
-  //expenses.length = how many expenses
-
   return (
     <>
       <TextContainer>
-        <H3>{` ${currency} ${add.toFixed(2)}`}</H3>
+        <H3>{` ${currency} ${spentInTotal.toFixed(2)}`}</H3>
         TOTAL SPENT
       </TextContainer>
       <TextContainer>
-        <H3>{` ${currency} ${addToday.toFixed(2)}`}</H3>
+        <H3>{` ${currency} ${spentToday.toFixed(2)}`}</H3>
         TODAY SPENT as for {currentUserDate}
       </TextContainer>
       <GraphWrapper>
@@ -160,19 +126,3 @@ const LineGraph = ({ expenses, currency }) => {
 };
 
 export default LineGraph;
-
-/*
-  for (let m = 0; m < 19; m++) {
-    if (
-      newValue ===
-      newobj.map((expense) =>
-        moment.utc(expense.expense_date).format("MM/DD/Y")
-      )
-    ) {
-      newobj = expenses.slice(Math.max(expenses.length - m, 0));
-    } else {
-      continue;
-    }
-    console.log(m);
-  }
-  */

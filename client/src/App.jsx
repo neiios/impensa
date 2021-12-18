@@ -41,8 +41,8 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <ModalRoot />
       <BrowserRouter>
-        <ModalRoot />
         <Switch>
           <Route
             exact

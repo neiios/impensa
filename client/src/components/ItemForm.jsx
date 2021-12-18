@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme/Index";
+
 export const Input = styled.input`
   max-width: 100%;
   padding: 9.5px 15px;
