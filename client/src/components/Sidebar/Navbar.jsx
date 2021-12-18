@@ -18,6 +18,13 @@ export const PpCircle = styled.div`
 export const NameFirstLetter = styled.div`
   font-size: 0.8em;
   color: white;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  text-align: left;
 `;
 
 export const UserCreds = styled.div`

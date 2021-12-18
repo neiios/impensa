@@ -157,7 +157,9 @@ export const Option = styled.option`
 
 // TABLE
 
-export const Table = styled.table``;
+export const Table = styled.table`
+  border-collapse: collapse;
+`;
 
 export const TableWrapper = styled.div``;
 
