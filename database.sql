@@ -1,5 +1,13 @@
--- impensa database setup
+create .env file in root directory with contents:
 
+POSTGRES_DBUSER = postgres
+POSTGRES_DBPASS = password
+POSTGRES_DBHOST = localhost
+POSTGRES_DBPORT = 5432
+POSTGRES_DBNAME = impensa
+jwtSecret = "barbim"
+
+-- impensa database setup
 CREATE DATABASE impensa;
 
 \c impensa
