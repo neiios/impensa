@@ -99,7 +99,7 @@ const Archive = ({ expenses, currency }) => {
         <Colgroup>
           <Col style={{ width: "5%", minWidth: "auto" }} />
           <Col style={{ width: "10%", minWidth: "auto" }} />
-          <Col style={{ width: "50%", minWidth: "auto" }} />
+          <Col style={{ width: "40%", minWidth: "auto" }} />
           <Col style={{ width: "17%", minWidth: "auto" }} />
           <Col style={{ width: "15%", minWidth: "auto" }} />
         </Colgroup>
@@ -178,10 +178,10 @@ const Archive = ({ expenses, currency }) => {
                 />
               </Td>
               <Td>
-                <Input
+                <Select
                   name="expense_category"
                   //  defaultValue={GeneralCategories[0]}
-                  onChange={(e) => updateField(e)}
+                  onChange={(e) => updateField(e.name)}
                   options={GeneralCategories}
                   className="basic-multi-select"
                   classNamePrefix="select"

@@ -3,10 +3,9 @@ import { H3 } from "../../globalStyles";
 import theme from "../../theme/Index";
 
 export const TextContainer = styled.div`
-  margin-top: 10px;
   justify-content: center;
   display: flex;
-  gap: 20px;
+  gap: 10px;
 `;
 
 export const Wrapper = styled.div`
@@ -30,6 +29,7 @@ export const Form = styled.form`
   flex-direction: column;
   position: relative;
   justify-content: center;
+  gap: 30px;
   @media screen and (max-width: 400px) {
     width: 100%;
   }
@@ -40,5 +40,18 @@ export const Heading = styled(H3)`
   color: ${theme.text.grey};
   margin: auto;
   margin-top: 0px;
-  margin-bottom: 35px;
+  margin-bottom: 10px;
+`;
+
+export const SelectContainer = styled.div`
+  width: 100%;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const InputRow = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
 `;

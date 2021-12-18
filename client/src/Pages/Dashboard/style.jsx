@@ -27,6 +27,14 @@ export const DataContainer = styled.div`
   background-color: white;
   border-radius: 20px;
   height: 550px;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: ${theme.bg.secondary};
+  }
 `;
 
 export const ArchiveContainer = styled(DataContainer)`
@@ -69,6 +77,10 @@ export const ExpenseCategory = styled.div`
   padding: 8px;
   font-size: 1.2em;
   border-radius: 10px;
+  @media only screen and (max-width: 600px) {
+    min-width: 70px;
+    font-size: 0.8em;
+  }
 `;
 
 export const ExpenseCategoryCentered = styled(ExpenseCategory)`

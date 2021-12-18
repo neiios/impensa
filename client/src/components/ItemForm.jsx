@@ -3,10 +3,8 @@ import styled from "styled-components";
 import theme from "../theme/Index";
 export const Input = styled.input`
   max-width: 100%;
-  margin-top: 10px;
-  padding: 11px 15px;
+  padding: 9.5px 15px;
   background: #f9f9fa;
-  margin-bottom: 2rem;
   border-radius: 4px;
   outline: 0;
   border: 1px solid rgba(3, 102, 214, 0.1);
@@ -40,13 +38,19 @@ export const Wrapper = styled.div`
   margin: 10px;
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
 const ItemForm = ({ label, position, type, children, ...otherProps }) => (
   <>
     {position === "column" ? (
-      <>
+      <Container>
         <InputLabel>{label}</InputLabel>
         <Input type={type} {...otherProps} />
-      </>
+      </Container>
     ) : (
       <Wrapper>
         <InputLabel>{label}</InputLabel>

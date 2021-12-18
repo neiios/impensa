@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import { Wrapper, Form, Heading, TextContainer } from "./style";
+import {
+  Wrapper,
+  Form,
+  Heading,
+  TextContainer,
+  SelectContainer,
+  InputRow,
+} from "./style";
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
 import ItemForm from "../../components/ItemForm.jsx";
 import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select/creatable";
+import { InputLabel } from "../../components/ItemForm.jsx";
+
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   document.title = "Impensa - register";
@@ -48,14 +57,27 @@ const SignUp = ({ setAuth }) => {
     <Wrapper>
       <Form onSubmit={onSubmitForm}>
         <Heading>Create your Impensa account</Heading>
-        <ItemForm
-          position="column"
-          type="text"
-          name="name"
-          label="Name"
-          value={name}
-          onChange={(e) => onChange(e)}
-        />
+        <InputRow>
+          <ItemForm
+            label="Name"
+            position="column"
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => onChange(e)}
+          />
+          <SelectContainer>
+            <InputLabel>Currency</InputLabel>
+            <Select
+              onChange={(e) => setCurrency(e.value)}
+              options={currency_list}
+              className="basic-multi-select"
+              classNamePrefix="select"
+              styles={currency_list}
+              required
+            />
+          </SelectContainer>
+        </InputRow>
         <ItemForm
           position="column"
           type="email"
@@ -63,14 +85,6 @@ const SignUp = ({ setAuth }) => {
           label="Email"
           value={email}
           onChange={(e) => onChange(e)}
-        />
-        <Select
-          onChange={(e) => setCurrency(e.value)}
-          options={currency_list}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          styles={currency_list}
-          required
         />
         <ItemForm
           position="column"
