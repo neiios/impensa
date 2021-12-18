@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Categories from "../NewExpense/Categories";
 import theme from "../../theme/Index";
-import { useTransition } from "react-spring";
 export const Icon = styled.i`
   padding: 6px;
   border-radius: 8px;

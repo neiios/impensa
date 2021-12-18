@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Select from "react-select";
-import { GeneralCategories } from "../../components/NewExpense/Categories";
 
 import {
   ArchiveContainer,

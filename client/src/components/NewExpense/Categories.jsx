@@ -1,22 +1,11 @@
 import React, { useState } from "react";
 import Select from "react-select/creatable";
 import theme from "../../theme/Index";
-import {
-  Wrapper,
-  H5,
-  ButtonContainer,
-  HR,
-  Ul,
-  Li,
-  InputAmount,
-  HeadingContainer,
-  PriceSelect,
-  TextArea,
-} from "./style";
+import { Wrapper, H5, ButtonContainer, TextArea } from "./style";
 import { Button } from "../Button";
 import chroma from "chroma-js";
 import ItemForm from "../ItemForm";
-export const colourStyles: StylesConfig<ColourOption, true> = {
+export const colourStyles = {
   control: (base) => ({
     ...base,
     border: "none",

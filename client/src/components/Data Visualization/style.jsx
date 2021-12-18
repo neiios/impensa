@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "../../theme/Index";
 
 export const GraphWrapper = styled.div`
   display: flex;
@@ -45,6 +44,6 @@ export const PieChartWrapper = styled.div`
   margin-top: 10px !important;
   height: 350px !important;
 
-  max-width: 500px;
+  max-width: 380px;
   margin: auto;
 `;

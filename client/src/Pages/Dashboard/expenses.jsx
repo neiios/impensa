@@ -7,13 +7,8 @@ import {
   ExpenseDate,
 } from "./overview";
 import {
-  ArchiveContainer,
-  H3,
-  HeaderContainer,
   NoDataBanner,
   NavigationIcon,
-  ExpenseCategoryCentered,
-  AlterExpense,
   MonthSwitcher,
   DataContainer,
   MonthContainer,
@@ -21,7 +16,6 @@ import {
 } from "./style";
 import moment from "moment";
 import PieChart from "../../components/Data Visualization/piechart";
-import { ExpenseContainer } from "./overview.jsx";
 let currentYear = new Date().getFullYear();
 const months = [
   "January",
@@ -54,11 +48,6 @@ export const Container = styled.div`
 `;
 
 let currentMonth = new Date().toLocaleString("en-US", { month: "2-digit" });
-const MonthIndex = () => {
-  for (let i = 0; i < months.length; i++) {
-    if (currentMonth === months[i]) return i;
-  }
-};
 const Expenses = ({ expenses, currency }) => {
   document.title = "Impensa - expenses";
 
@@ -83,10 +72,6 @@ const Expenses = ({ expenses, currency }) => {
   let i = expenses.length;
   let MonthIsEmpty = false;
   const newobj = expenses.slice(Math.max(expenses.length - i, 0));
-  let monthAmount = 0,
-    monthDate,
-    monthCategory,
-    monthDescription;
   return (
     <Container>
       <DataContainer>
