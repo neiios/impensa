@@ -22,7 +22,6 @@ export const NameFirstLetter = styled.div`
 
 export const UserCreds = styled.div`
   color: ##404040;
-  cursor: pointer;
   display: flex;
   gap: 5px;
   justify-content: center;
@@ -30,11 +29,6 @@ export const UserCreds = styled.div`
   background-color: ${theme.bg.lightestBlue};
   padding: 7px;
   border-radius: 15px;
-  transition: background-color 0.2s;
-  :hover {
-    background-color: ${theme.bg.semiBlue};
-    color: white !important;
-  }
 `;
 
 export const UserImg = styled.div`

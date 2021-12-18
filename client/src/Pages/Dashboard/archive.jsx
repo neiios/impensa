@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Select from "react-select";
+import { GeneralCategories } from "../../components/NewExpense/Categories";
+
 import {
   ArchiveContainer,
   H3,
@@ -6,6 +9,7 @@ import {
   Icon,
   ExpenseCategoryCentered,
   IconContainer,
+  Input,
 } from "./style";
 import { Table, Colgroup, Col, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
@@ -19,7 +23,7 @@ const Archive = ({ expenses, currency }) => {
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
   const [disabled, setDisabled] = useState(true);
   const [selectedExpense, setSelectedExpense] = useState({});
-
+  const [category, setCategory] = useState({});
   async function deleteExpense(expense_id) {
     try {
       console.log(`Expense id is ${expense_id}`);
@@ -52,6 +56,7 @@ const Archive = ({ expenses, currency }) => {
   async function makeExpenseEditable(expense) {
     try {
       setSelectedExpense(expense);
+      setCategory(expense);
       setDisabled(!disabled);
     } catch (err) {
       console.error(err.message);
@@ -61,7 +66,7 @@ const Archive = ({ expenses, currency }) => {
   async function onSubmitForm(e) {
     e.preventDefault();
     try {
-      const body = selectedExpense;
+      const body = { selectedExpense, category };
       const response = await fetch("http://localhost:5000/dashboard/expense", {
         method: "PUT",
         headers: {
@@ -86,6 +91,12 @@ const Archive = ({ expenses, currency }) => {
     });
   };
 
+  const updateCategory = (e) => {
+    setCategory({
+      ...category,
+      [e.target.value]: e.target.value,
+    });
+  };
   return (
     <ArchiveContainer>
       <HeaderContainer>
@@ -143,19 +154,19 @@ const Archive = ({ expenses, currency }) => {
             <Tr key={selectedExpense.expense_id}>
               <Td>
                 <IconContainer>
+                  <Icon
+                    className="fas fa-times"
+                    onClick={() => setDisabled(!disabled)}
+                  />
                   <Icon className="fas fa-check" onClick={onSubmitForm} />
                   <Icon
                     className="far fa-trash-alt"
                     onClick={() => deleteExpense(selectedExpense.expense_id)}
                   />
-                  <Icon
-                    className="fas fa-times"
-                    onClick={() => setDisabled(!disabled)}
-                  />
                 </IconContainer>
               </Td>
               <Td>
-                <input
+                <Input
                   required
                   type="number"
                   name="expense_amount"
@@ -166,7 +177,7 @@ const Archive = ({ expenses, currency }) => {
                 />
               </Td>
               <Td>
-                <input
+                <Input
                   required
                   name="expense_description"
                   type="text"
@@ -175,8 +186,16 @@ const Archive = ({ expenses, currency }) => {
                 />
               </Td>
               <Td>
+                <Select
+                  name="expense_category"
+                  //  defaultValue={GeneralCategories[0]}
+                  onChange={(e) => updateCategory(e.value)}
+                  options={GeneralCategories}
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                />
                 <ExpenseCategoryCentered>
-                  {selectedExpense.expense_category}
+                  {category.expense_category}
                 </ExpenseCategoryCentered>
               </Td>
               <Td>

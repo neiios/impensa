@@ -166,6 +166,7 @@ export const Th = styled.th`
   user-select: none;
   text-align: left;
   &:last-child,
+  &:first-child,
   &:nth-last-child(2) {
     text-align: center;
   }
@@ -190,6 +191,7 @@ export const AlterExpense = styled.div`
 `;
 
 export const Icon = styled.i`
+  cursor: pointer;
   :hover {
     color: ${theme.bg.secondary};
   }
@@ -199,6 +201,7 @@ export const IconContainer = styled.div`
   display: flex;
   gap: 20px;
   align-items: center;
+  justify-content: center;
 `;
 
 export const NavigationIcon = styled.i`

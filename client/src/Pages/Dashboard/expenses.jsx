@@ -101,11 +101,18 @@ const Expenses = ({ expenses, currency }) => {
             onClick={incrementCounter}
           />
         </MonthSwitcher>
-        <PieChart
-          currency={currency}
-          currentMonth={months[counter]}
-          expenses={expenses}
-        />
+        {MonthIsEmpty ? (
+          <NoDataBanner>
+            There is no data to display here. Try changing the time span or
+            accounts.
+          </NoDataBanner>
+        ) : (
+          <PieChart
+            currency={currency}
+            currentMonth={months[counter]}
+            expenses={expenses}
+          />
+        )}
       </DataContainer>
       <DataContainer>
         <>
@@ -125,17 +132,9 @@ const Expenses = ({ expenses, currency }) => {
                   <ExpenseCategory>{expense.expense_category}</ExpenseCategory>
                 </ExpenseString>
               </>
-            ) : (
-              (MonthIsEmpty = true)
-            )
+            ) : null
           )}
         </>
-        {MonthIsEmpty ? (
-          <NoDataBanner>
-            There is no data to display here. Try changing the time span or
-            accounts."
-          </NoDataBanner>
-        ) : null}
       </DataContainer>
     </Container>
   );

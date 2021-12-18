@@ -72,7 +72,7 @@ const colourStyles: StylesConfig<ColourOption, true> = {
   }),
 };
 
-const GeneralCategories = [
+export const GeneralCategories = [
   { value: "Audible", label: "Audible" },
   { value: "Netflix", label: "Netflix" },
   { value: "Spotify", label: "Spotify" },
