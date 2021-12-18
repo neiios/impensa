@@ -96,6 +96,7 @@ const Categories = () => {
         body: JSON.stringify(body),
       });
 
+      console.log(response);
       window.location = "/dashboard/overview";
     } catch (err) {
       console.error(err.message);

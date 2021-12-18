@@ -12,9 +12,11 @@ const useMediaQuery = (minWidth) => {
       const isDesiredWidth = currentWindowWidth < minWidth;
       setState({ windowWidth: currentWindowWidth, isDesiredWidth });
     };
+
     window.addEventListener("resize", resizeHandler);
+
     return () => window.removeEventListener("resize", resizeHandler);
-  }, [state.windowWidth]);
+  }, [minWidth, state.windowWidth]);
 
   return state.isDesiredWidth;
 };
