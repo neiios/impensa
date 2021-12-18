@@ -34,7 +34,7 @@ export const SideSubWrapper = styled.div`
     width: 100%;
     background-color: white;
     position: fixed;
-    height: 50px;
+    height: 60px;
     bottom: 0;
     left: 0;
     right: 0;

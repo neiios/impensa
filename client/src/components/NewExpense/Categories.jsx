@@ -16,7 +16,7 @@ import {
 import { Button } from "../Button";
 import chroma from "chroma-js";
 import ItemForm from "../ItemForm";
-const colourStyles: StylesConfig<ColourOption, true> = {
+export const colourStyles: StylesConfig<ColourOption, true> = {
   control: (base) => ({
     ...base,
     border: "none",

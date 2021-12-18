@@ -19,6 +19,9 @@ export const ExpenseString = styled.div`
   gap: 20px;
   align-items: center;
   display: flex;
+  &:last-child {
+    border: none !important;
+  }
 `;
 
 export const ExpenseDate = styled.div`
@@ -49,7 +52,8 @@ export const Container = styled.div`
 export const Heading = styled.h3`
 padding:0;
 margin-top:0;
-margin-bottom:20px;
+margin-bottom:10px;
+font-size:1.5em;
   }
 `;
 
@@ -78,7 +82,7 @@ const Main = ({ expenses, currency }) => {
   console.log(expenses);
   // 4 - 5 0 ---> 0 expense.slice 0
   // removes elements from the beginning should not do that should remove from the end instead
-  const newobj = expenses.slice(Math.max(expenses.length - 5, 0));
+  const newobj = expenses.slice(Math.max(expenses.length - 4, 0));
   // reducing object's size to the last 5 elements
   console.log(expenses);
   return (

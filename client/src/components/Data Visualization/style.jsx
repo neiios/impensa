@@ -6,8 +6,12 @@ export const GraphWrapper = styled.div`
   flex-direction: column;
   position: absolute;
   width: 90%;
-  height: 400px !important;
+  height: 350px !important;
   margin: 10px;
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+    height: 320px !important;
+  }
 `;
 
 export const H4 = styled.h4`
@@ -38,8 +42,8 @@ export const H6 = styled.h6``;
 export const PieChartWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 50px !important;
-  height: 400px !important;
+  margin-top: 10px !important;
+  height: 350px !important;
 
   max-width: 500px;
   margin: auto;

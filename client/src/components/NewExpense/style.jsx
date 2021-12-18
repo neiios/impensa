@@ -9,7 +9,7 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 400px;
+  height: 350px;
 `;
 
 export const TextArea = styled.textarea`
@@ -17,7 +17,7 @@ export const TextArea = styled.textarea`
   box-sizing: border-box;
   height: 150px;
   max-width: 100%;
-  margin-top: 10px;
+
   padding: 11px 15px;
   background: #f9f9fa;
   border-radius: 4px;
@@ -33,6 +33,7 @@ export const TextArea = styled.textarea`
 export const ButtonContainer = styled.div`
   margin-left: auto;
   position: relative;
+  margin-top: 20px;
 `;
 
 export const InputAmount = styled.input`

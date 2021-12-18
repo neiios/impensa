@@ -10,6 +10,7 @@ import {
   ExpenseCategoryCentered,
   IconContainer,
   Input,
+  TableWrapper,
 } from "./style";
 import { Table, Colgroup, Col, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
@@ -178,10 +179,10 @@ const Archive = ({ expenses, currency }) => {
                 />
               </Td>
               <Td>
-                <Select
+                <Input
                   name="expense_category"
                   //  defaultValue={GeneralCategories[0]}
-                  onChange={(e) => updateField(e.name)}
+                  onChange={(e) => updateField(e)}
                   options={GeneralCategories}
                   className="basic-multi-select"
                   classNamePrefix="select"

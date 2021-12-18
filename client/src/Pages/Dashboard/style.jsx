@@ -14,6 +14,9 @@ export const MainContainer = styled.div`
   min-height: 100vh;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  @media only screen and (max-width: 1000px) {
+    padding-bottom: 50px;
+  }
 `;
 
 export const ExpenseItem = styled.div`
@@ -26,9 +29,10 @@ export const DataContainer = styled.div`
   position: relative;
   background-color: white;
   border-radius: 20px;
-  height: 550px;
+  height: 430px;
+  //  height: fit-content;
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -38,13 +42,14 @@ export const DataContainer = styled.div`
 `;
 
 export const ArchiveContainer = styled(DataContainer)`
+  overflow: auto;
   margin: 20px !important;
   padding: 0;
   display: flex;
   flex-direction: column;
   height: fit-content;
   border: 0;
-  align-items: center;
+  align-items: stretch;
 `;
 
 export const OneExpenseContainer = styled.div`
@@ -78,8 +83,8 @@ export const ExpenseCategory = styled.div`
   font-size: 1.2em;
   border-radius: 10px;
   @media only screen and (max-width: 600px) {
-    min-width: 70px;
-    font-size: 0.8em;
+    min-width: 100px;
+    font-size: 0.9em;
   }
 `;
 
@@ -100,6 +105,9 @@ export const ExpenseDescription = styled.div`
 export const H3 = styled.h3`
   margin: 15px;
   font-size: 1.6em;
+  @media only screen and (max-width: 600px) {
+    font-size: 1em;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -149,11 +157,9 @@ export const Option = styled.option`
 
 // TABLE
 
-export const Table = styled.table`
-  width: 100%;
-  overflow-x: auto;
-  border-collapse: collapse;
-`;
+export const Table = styled.table``;
+
+export const TableWrapper = styled.div``;
 
 export const Colgroup = styled.colgroup``;
 

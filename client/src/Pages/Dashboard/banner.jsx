@@ -5,11 +5,8 @@ import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
   height: 400px;
-  width: 100%;
   z-index: -1;
   margin-top: 75px;
-  margin-right: 20px;
-  margin-left: 20px;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -47,7 +44,7 @@ const Banner = ({ name }) => {
       </Heading>
       <SubHeading>We're almost there!</SubHeading>
       <P>
-        To start your journey with Impensa, please enter <ToggleNewExpense />
+        To start your journey with Impensa, please <ToggleNewExpense />
       </P>
     </Wrapper>
   );

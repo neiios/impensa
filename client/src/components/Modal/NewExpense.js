@@ -3,12 +3,12 @@ import Categories from "../NewExpense/Categories";
 import theme from "../../theme/Index";
 import { useTransition } from "react-spring";
 export const Icon = styled.i`
+color: ${theme.bg.secondary};
   padding: 6px;
   border-radius: 8px;
   margin-left: auto;
   cursor: pointer;
   transition: color 1s;
-  color: white;
   :hover {
     background: rgba(197, 199, 197, 0.3);
   }
@@ -31,9 +31,7 @@ export const Dropout = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-  background: ${theme.bg.semiBlue};
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  border-bottom: 1px solid ${theme.bg.secondary};
   max-width: 100%;
   padding: 10px 10px 10px 20px;
   display: flex;
@@ -41,15 +39,15 @@ export const HeaderWrapper = styled.div`
 `;
 
 const Heading = styled.h3`
-  color: white;
+color: ${theme.bg.secondary};
   margin: 0;
   font-size: 1.2em;
 `;
 
 export const ModalWrapper = styled.nav`
+  transition: all 0.3s ease-out;
   background: white;
   z-index: 1133;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 20px;
   width: 350px;
   height: fit-content;

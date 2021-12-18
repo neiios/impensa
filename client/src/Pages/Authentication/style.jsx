@@ -54,4 +54,9 @@ export const InputRow = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 5px;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
 `;

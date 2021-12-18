@@ -13,7 +13,7 @@ export const FooterWrapper = styled.footer`
 export const Container = styled.div`
   width: 1200px;
   bottom: 0;
-  padding: 10px;
+  padding: 15px;
   left: 0;
   right: 0;
   height: 30px;

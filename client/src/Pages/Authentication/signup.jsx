@@ -10,11 +10,21 @@ import {
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
 import ItemForm from "../../components/ItemForm.jsx";
 import { currency_list } from "../../data/currency-list.js";
-import Select from "react-select/creatable";
+import Select from "react-select";
 import { InputLabel } from "../../components/ItemForm.jsx";
-
+import { colourStyles } from "../../components/NewExpense/Categories";
+import { useForm } from "react-hook-form";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   document.title = "Impensa - register";
 
   const [inputs, setInputs] = useState({
@@ -59,6 +69,7 @@ const SignUp = ({ setAuth }) => {
         <Heading>Create your Impensa account</Heading>
         <InputRow>
           <ItemForm
+            maxLength="12"
             label="Name"
             position="column"
             type="text"
@@ -69,16 +80,17 @@ const SignUp = ({ setAuth }) => {
           <SelectContainer>
             <InputLabel>Currency</InputLabel>
             <Select
+              styles={colourStyles}
               onChange={(e) => setCurrency(e.value)}
               options={currency_list}
               className="basic-multi-select"
               classNamePrefix="select"
-              styles={currency_list}
               required
             />
           </SelectContainer>
         </InputRow>
         <ItemForm
+          maxLength="25"
           position="column"
           type="email"
           name="email"
