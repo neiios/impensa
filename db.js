@@ -2,13 +2,25 @@
 const Pool = require("pg").Pool;
 require("dotenv").config();
 
-const devConfig = `postgresql://${process.env.POSTGRES_DBUSER}:${process.env.POSTGRES_DBPASS}@${process.env.POSTGRES_DBHOST}:${process.env.POSTGRES_DBPORT}/${process.env.POSTGRES_DBNAME}`;
+const devConfig = {
+  user: process.env.POSTGRES_DBUSER,
+  host: process.env.POSTGRES_DBHOST,
+  database: process.env.POSTGRES_DBNAME,
+  password: process.env.POSTGRES_DBPASS,
+  port: process.env.POSTGRES_DBPORT,
+};
 
-const proConfig = process.env.POSTGRESQLCONNSTR_DATABASE_URL;
+const proConfig = {
+  user: process.env.POSTGRES_DBUSER,
+  host: process.env.POSTGRES_DBHOST,
+  database: process.env.POSTGRES_DBNAME,
+  password: process.env.POSTGRES_DBPASS,
+  port: process.env.POSTGRES_DBPORT,
+  ssl: true,
+};
 
-const pool = new Pool({
-  connectionString:
-    process.env.NODE_ENV === "production" ? proConfig : devConfig,
-});
+const pool = new Pool(
+  process.env.NODE_ENV === "production" ? proConfig : devConfig
+);
 
 module.exports = pool;

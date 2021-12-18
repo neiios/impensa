@@ -45,7 +45,7 @@ CREATE TABLE expenses(
 
 -- create some test data for testing
 
-INSERT INTO users (user_name, user_email, user_currency, user_password) VALUES ('barbum', 'richard@impensa.studio', 'hryvnia', 'password');
+INSERT INTO users (user_name, user_email, user_currency, user_password) VALUES ('barbum', 'richard@impensa.studio', '₹', '$2b$10$4evqnUHm2yzANBHw18mM2.HBl8aTk6g1./Lhr3XxyTTqizRkCihYW');
 
 INSERT INTO expenses (expense_amount, expense_description, expense_category, user_id) VALUES ('11.65','here is a short description', 'category for the expense', '765c1420-161d-47aa-8c44-5cf855e8e169');
 
