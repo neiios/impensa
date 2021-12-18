@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Categories from "../NewExpenseModal/NewExpense";
+import NewExpense from "../NewExpenseModal/newExpense";
 import theme from "../../theme/Index";
 export const Icon = styled.i`
   color: ${theme.bg.secondary};
@@ -63,7 +63,7 @@ const NewExpenseModal = (props) => {
           <Heading>New expense</Heading>
           <Icon onClick={props.close} className="fas fa-times fa-xl" />
         </HeaderWrapper>
-        <Categories />
+        <NewExpense />
       </ModalWrapper>
     </>
   );

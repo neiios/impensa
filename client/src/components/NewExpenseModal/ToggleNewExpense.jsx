@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../Button/index.jsx";
-import ModalService from "../Modal/ModalService.js";
-import NewExpenseModal from "../Modal/NewExpense.js";
+import { Button } from "../Button/index";
+import ModalService from "../Modal/modalService";
+import NewExpenseModal from "../Modal/newExpense";
 export const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;

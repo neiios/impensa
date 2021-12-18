@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import ToggleNewExpense from "../../components/NewExpenseModal/ToggleNewExpense";
+import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense";
 import LineGraph from "../../components/Data Visualization/linegraph";
 import moment from "moment";
 // Wraps Sidebar Nav and Main-Conent

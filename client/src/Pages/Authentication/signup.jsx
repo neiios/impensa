@@ -8,11 +8,11 @@ import {
   InputRow,
 } from "./style";
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
-import ItemForm from "../../components/ItemForm.jsx";
+import ItemForm from "../../components/itemForm.jsx";
 import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select";
-import { InputLabel } from "../../components/ItemForm.jsx";
-import { colourStyles } from "../../components/NewExpenseModal/NewExpense";
+import { InputLabel } from "../../components/itemForm.jsx";
+import { colourStyles } from "../../components/NewExpenseModal/newExpense";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   document.title = "Impensa - register";

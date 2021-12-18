@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
-import ItemForm from "../../components/ItemForm.jsx";
+import ItemForm from "../../components/itemForm.jsx";
 // styles
 import { Wrapper, Heading, Form, TextContainer } from "./style";
 // add location to identify currency

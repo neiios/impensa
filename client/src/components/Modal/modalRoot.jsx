@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import ModalService from "./ModalService";
-import styles from "./Backdrop.jsx";
-import { Backdrop } from "./Backdrop.jsx";
+import ModalService from "./modalService.jsx";
+import { Backdrop } from "./backdrop.jsx";
 export default function ModalRoot() {
   const [modal, setModal] = useState({});
 
@@ -25,12 +24,15 @@ export default function ModalRoot() {
 
   return (
     <>
-    {modal.component ? <Backdrop> 
-      {ModalComponent && (
-        <ModalComponent {...modal.props} close={modal.close} />
+      {modal.component ? (
+        <Backdrop>
+          {ModalComponent && (
+            <ModalComponent {...modal.props} close={modal.close} />
+          )}
+        </Backdrop>
+      ) : (
+        ""
       )}
-
-    </Backdrop>: ""}
     </>
   );
 }

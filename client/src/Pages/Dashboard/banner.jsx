@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import ToggleNewExpense from "../../components/NewExpenseModal/ToggleNewExpense.jsx";
+import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense.jsx";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
   height: 400px;

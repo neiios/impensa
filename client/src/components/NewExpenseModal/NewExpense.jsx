@@ -4,7 +4,7 @@ import theme from "../../theme/Index";
 import { Wrapper, H5, ButtonContainer, TextArea } from "./style";
 import { Button } from "../Button";
 import chroma from "chroma-js";
-import ItemForm from "../ItemForm";
+import ItemForm from "../itemForm";
 export const colourStyles = {
   control: (base) => ({
     ...base,

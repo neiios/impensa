@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import Overview from "./overview";
-import Nav from "../../components/Sidebar/Navbar";
+import Nav from "./navbar";
 import Banner from "./banner";
 import Archive from "./archive";
 import { BrowserRouter, Switch, Route } from "react-router-dom";

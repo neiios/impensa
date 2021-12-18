@@ -5,7 +5,7 @@ import Homepage from "./Pages/Homepage/index";
 import SignIn from "./Pages/Authentication/signin";
 import SignUp from "./Pages/Authentication/signup";
 import Dashboard from "./Pages/Dashboard/dashboard";
-import ModalRoot from "./components/Modal/ModalRoot";
+import ModalRoot from "./components/Modal/modalRoot.jsx";
 import PageNotFound from "./Pages/PageNotFound";
 //styles
 import GlobalStyle from "./globalStyles.jsx";
