@@ -37,7 +37,7 @@ function Settings({ logout }) {
 
   async function getUserData() {
     try {
-      const res = await fetch("http://localhost:5000/dashboard/user", {
+      const res = await fetch("/dashboard/user", {
         method: "GET",
         headers: { jwtToken: localStorage.token },
       });
@@ -60,7 +60,7 @@ function Settings({ logout }) {
     e.preventDefault();
     try {
       const body = { userEmail, userName, userPassword, userNewPassword };
-      const response = await fetch("http://localhost:5000/dashboard/user", {
+      const response = await fetch("/dashboard/user", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

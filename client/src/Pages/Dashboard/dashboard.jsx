@@ -19,7 +19,7 @@ const Dashboard = ({ setAuth }) => {
 
   async function getProfile() {
     try {
-      const res = await fetch("http://localhost:5000/dashboard/", {
+      const res = await fetch("/dashboard/", {
         method: "GET",
         headers: { jwtToken: localStorage.token },
       });
@@ -35,7 +35,7 @@ const Dashboard = ({ setAuth }) => {
 
   async function getExpenses() {
     try {
-      const res = await fetch("http://localhost:5000/dashboard/expenses", {
+      const res = await fetch("/dashboard/expenses", {
         method: "GET",
         headers: { jwtToken: localStorage.token },
       });

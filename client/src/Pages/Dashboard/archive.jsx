@@ -27,13 +27,10 @@ const Archive = ({ expenses, currency }) => {
   async function deleteExpense(expense_id) {
     try {
       console.log(`Expense id is ${expense_id}`);
-      const res = await fetch(
-        `http://localhost:5000/dashboard/expense/${expense_id}`,
-        {
-          method: "DELETE",
-          headers: { jwtToken: localStorage.token },
-        }
-      );
+      const res = await fetch(`/dashboard/expense/${expense_id}`, {
+        method: "DELETE",
+        headers: { jwtToken: localStorage.token },
+      });
 
       window.location = "/dashboard/archive";
       console.log(`Expense was deleted! Response is ${res}`);
@@ -66,7 +63,7 @@ const Archive = ({ expenses, currency }) => {
     e.preventDefault();
     try {
       const body = selectedExpense;
-      const response = await fetch("http://localhost:5000/dashboard/expense", {
+      const response = await fetch("/dashboard/expense", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +73,7 @@ const Archive = ({ expenses, currency }) => {
       });
 
       setDisabled(!disabled);
-      window.location = "/dashboard/archive";
+      window.location = "/dashboard/overview";
       console.log(response);
     } catch (err) {
       console.error(err.message);
@@ -181,16 +178,15 @@ const Archive = ({ expenses, currency }) => {
                 </Td>
                 <Td>
                   <Input
+                    required
                     name="expense_category"
-                    //  defaultValue={GeneralCategories[0]}
+                    type="text"
+                    value={selectedExpense.expense_category}
                     onChange={(e) => updateField(e)}
-                    options={GeneralCategories}
-                    className="basic-multi-select"
-                    classNamePrefix="select"
+                    // options={GeneralCategories}
+                    // className="basic-multi-select"
+                    // classNamePrefix="select"
                   />
-                  <ExpenseCategoryCentered>
-                    {selectedExpense.expense_category}
-                  </ExpenseCategoryCentered>
                 </Td>
                 <Td>
                   {moment

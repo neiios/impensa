@@ -3,7 +3,7 @@ import Categories from "../NewExpense/Categories";
 import theme from "../../theme/Index";
 import { useTransition } from "react-spring";
 export const Icon = styled.i`
-color: ${theme.bg.secondary};
+  color: ${theme.bg.secondary};
   padding: 6px;
   border-radius: 8px;
   margin-left: auto;
@@ -39,7 +39,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 const Heading = styled.h3`
-color: ${theme.bg.secondary};
+  color: ${theme.bg.secondary};
   margin: 0;
   font-size: 1.2em;
 `;
@@ -68,6 +68,6 @@ const NewExpenseModal = (props) => {
       </ModalWrapper>
     </>
   );
-}
+};
 
-export default NewExpenseModal
+export default NewExpenseModal;

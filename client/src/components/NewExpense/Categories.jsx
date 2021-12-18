@@ -98,7 +98,7 @@ const Categories = () => {
     e.preventDefault();
     try {
       const body = { description, amount, category };
-      const response = await fetch("http://localhost:5000/dashboard/expense", {
+      const response = await fetch("/dashboard/expense", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

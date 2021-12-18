@@ -33,7 +33,7 @@ const SignUp = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, name, password, currency };
-      const response = await fetch("http://localhost:5000/auth/register", {
+      const response = await fetch("/auth/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

@@ -72,5 +72,6 @@
   "devDependencies": {
     "prettier": "^2.5.0"
   },
-  "description": "Frontend"
+  "description": "Frontend",
+  "proxy": "http://localhost:5000"
 }
