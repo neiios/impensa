@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Categories from "../NewExpense/Categories";
+import Categories from "../NewExpenseModal/NewExpense";
 import theme from "../../theme/Index";
 export const Icon = styled.i`
   color: ${theme.bg.secondary};
