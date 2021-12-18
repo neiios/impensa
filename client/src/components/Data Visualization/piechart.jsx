@@ -35,8 +35,6 @@ const PieChart = ({ expenses, currentMonth }) => {
     return object;
   }, {});
 
-  console.log(expenses);
-  console.log(expensesMerged);
   // -------------------
   let newobj = expenses.slice(Math.max(expenses.length - expenses, 0));
 
@@ -51,8 +49,6 @@ const PieChart = ({ expenses, currentMonth }) => {
   var values = keys.map(function (key) {
     return expensesMerged[key];
   });
-
-  console.log(keys, values);
 
   const data = {
     labels: keys,

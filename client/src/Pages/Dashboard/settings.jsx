@@ -44,7 +44,6 @@ function Settings({ logout }) {
 
       const parseData = await res.json();
 
-      console.log(parseData[0]);
       setUserEmail(parseData[0].user_email);
       setUserName(parseData[0].user_name);
       setNameConst(parseData[0].user_name);

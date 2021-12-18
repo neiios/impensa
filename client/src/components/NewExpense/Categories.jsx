@@ -107,7 +107,6 @@ const Categories = () => {
         body: JSON.stringify(body),
       });
 
-      console.log(response);
       window.location = "/dashboard/overview";
     } catch (err) {
       console.error(err.message);
@@ -125,7 +124,6 @@ const Categories = () => {
         classNamePrefix="select"
         styles={colourStyles}
       />
-      {console.log(category)}
       <H5>Description</H5>
       <TextArea
         placeholder="You can put details about your expense here"

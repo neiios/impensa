@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
+import ToggleNewExpense from "../../components/NewExpenseModal/ToggleNewExpense";
 import LineGraph from "../../components/Data Visualization/linegraph";
 import moment from "moment";
 // Wraps Sidebar Nav and Main-Conent
@@ -79,12 +79,10 @@ export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
 const Main = ({ expenses, currency }) => {
   document.title = "Impensa - overview";
 
-  console.log(expenses);
   // 4 - 5 0 ---> 0 expense.slice 0
   // removes elements from the beginning should not do that should remove from the end instead
   const newobj = expenses.slice(Math.max(expenses.length - 4, 0));
   // reducing object's size to the last 5 elements
-  console.log(expenses);
   return (
     <Container>
       <DataContainer>

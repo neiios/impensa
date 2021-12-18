@@ -16,15 +16,6 @@ import { colourStyles } from "../../components/NewExpense/Categories";
 import { useForm } from "react-hook-form";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
   document.title = "Impensa - register";
 
   const [inputs, setInputs] = useState({

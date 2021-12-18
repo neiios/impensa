@@ -19,7 +19,6 @@ function ExcelExport({ expenses }) {
   const camelCase = (str) => {
     return str.substring(0, 1).toUpperCase() + str.substring(1);
   };
-  console.log(data[0]);
   const filterColumns = (data) => {
     const columns = Object.keys(data[0]);
     const filterColsByKey = columns.filter(

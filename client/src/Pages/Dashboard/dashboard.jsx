@@ -63,8 +63,6 @@ const Dashboard = ({ setAuth }) => {
     }
   }
 
-  console.log(window.location.pathname);
-
   return (
     //FCFBFD
     <>

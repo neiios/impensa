@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Settings from "../ModalTemplates/Settings/Settings";
+import Settings from "../NewExpenseModal/Settings/Settings";
 import theme from "../../theme/Index";
 import { useTransition } from "react-spring";
 export const Icon = styled.i`

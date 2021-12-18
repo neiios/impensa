@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import ToggleNewExpense from "../../components/ModalTemplates/NewExpense";
+import ToggleNewExpense from "../../components/NewExpenseModal/ToggleNewExpense.jsx";
 // Wraps Sidebar Nav and Main-Conent
 export const Wrapper = styled.div`
   height: 400px;
@@ -44,7 +44,7 @@ const Banner = ({ name }) => {
       </Heading>
       <SubHeading>We're almost there!</SubHeading>
       <P>
-        To start your journey with Impensa, please <ToggleNewExpense />
+        To start your journey with Impensa, please add <ToggleNewExpense />
       </P>
     </Wrapper>
   );

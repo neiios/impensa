@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import theme from "../../../../theme/Index";
-import { FitButton } from "../../../Button/index.jsx";
-import ModalService from "../../../Modal/ModalService.js";
-import NewExpenseModal from "../../../Modal/NewExpenseModal.jsx";
+import theme from "../../theme/Index";
+import { Button } from "../Button/index.jsx";
+import ModalService from "../Modal/ModalService.js";
+import NewExpenseModal from "../Modal/NewExpense.js";
 export const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
@@ -20,7 +20,7 @@ const ToggleNewExpense = () => {
   };
   return (
     <>
-      <FitButton onClick={addModal}>new expense</FitButton>
+      <Button onClick={addModal}>new expense</Button>
     </>
   );
 };

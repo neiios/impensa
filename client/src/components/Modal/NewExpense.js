@@ -55,7 +55,7 @@ export const ModalWrapper = styled.nav`
   margin: auto;
 `;
 
-export default function TestModal(props) {
+const NewExpenseModal = (props) => {
   return (
     <>
       <Dropout onClick={props.close} />
@@ -69,3 +69,5 @@ export default function TestModal(props) {
     </>
   );
 }
+
+export default NewExpenseModal
