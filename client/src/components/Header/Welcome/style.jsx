@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "../../../theme/Index";
 
 export const Container = styled.nav`
   display: flex;
