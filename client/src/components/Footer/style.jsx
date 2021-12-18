@@ -21,3 +21,16 @@ export const Container = styled.div`
   align-items: center;
   color: ${theme.text.grey};
 `;
+
+// Link to https://github.com/richard96292/impensa
+export const GithubContainer = styled.div`
+  margin-left: auto;
+`;
+
+// copyright sign + current year + Contact link
+export const ContactContainer = styled.div`
+  display: flex;
+  gap: 5px;
+`;
+
+export const GithubIcon = styled.i``;

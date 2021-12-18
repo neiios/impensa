@@ -7,7 +7,7 @@ import moment from "moment";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const options = {
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   responsive: true,
   plugins: {
     legend: false,
