@@ -8,9 +8,13 @@
 
 ### Simple, effective expense management app.
 
+[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/impensa/impensa)
+[![Stars](https://img.shields.io/github/stars/richard96292/impensa.svg)](https://stackshare.io/impensa/impensa)
+[![License](https://img.shields.io/github/license/richard96292/impensa.svg)](https://stackshare.io/impensa/impensa)
+[![Forks](https://img.shields.io/github/forks/richard96292/impensa.svg)](https://stackshare.io/impensa/impensa)
+
 </div>
 
-[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/impensa/impensa)
 
 ## Impensa is an open-source expense management app
 
