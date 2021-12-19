@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import theme from "../../../theme/Index";
-import { device } from "../../../mediaQueries";
+import theme from "../../theme/Index";
+import { device } from "../../mediaQueries";
 
 export const HeroSectionWrapper = styled.div`
   background: ${(props) => (props.lightBg ? "#F6F9FC" : theme.bg.secondary)};

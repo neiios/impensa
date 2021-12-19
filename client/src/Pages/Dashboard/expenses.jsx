@@ -17,7 +17,7 @@ import {
   ArrowEastIcon,
 } from "./style";
 import moment from "moment";
-import PieChart from "../../components/Data Visualization/doughnut";
+import PieChart from "../../components/Charts/doughnut";
 let currentYear = new Date().getFullYear();
 const months = [
   "January",

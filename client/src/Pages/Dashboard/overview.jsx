@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
 import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense";
-import LineGraph from "../../components/Data Visualization/linegraph";
+import LineGraph from "../../components/Charts/linegraph";
 import moment from "moment";
 // Wraps Sidebar Nav and Main-Conent
 import { DataContainer, ExpenseCategory } from "./style";
