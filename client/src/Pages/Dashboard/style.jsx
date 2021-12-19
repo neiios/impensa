@@ -61,7 +61,14 @@ export const FixedDataContainer = styled.div`
   }
 `;
 
-export const ArchiveContainer = styled(DataContainer)`
+export const ArchiveContainer = styled.div`
+  position: relative;
+  height: fit-content;
+  overflow: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 20px;
+  height: fit-content;
   overflow: auto;
   margin: 20px !important;
   padding: 0;

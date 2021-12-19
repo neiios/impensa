@@ -48,4 +48,5 @@ export const Embed = styled.embed`
   width: 600px;
   max-width: 100%;
   vertical-align: middle;
+  image-rendering: auto;
 `;
