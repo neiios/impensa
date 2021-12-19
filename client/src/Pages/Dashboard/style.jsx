@@ -34,7 +34,7 @@ export const DataContainer = styled.div`
   min-height: 430px;
   //  height: fit-content;
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -52,7 +52,7 @@ export const FixedDataContainer = styled.div`
   height: 430px;
   //  height: fit-content;
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
