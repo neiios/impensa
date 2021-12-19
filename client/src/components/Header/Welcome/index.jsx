@@ -1,5 +1,5 @@
 import React from "react";
-import { BiggerButton } from "../../Button/index.jsx";
+import { OutlineButton } from "../../Button/index.jsx";
 import {
   Container,
   RowOne,
@@ -25,15 +25,15 @@ const Welcome = () => {
       </RowOne>
       <RowTwo>
         <ExploreBtn>
-          <BiggerButton href="#heroSection">Explore</BiggerButton>
+          <OutlineButton href="#heroSection">Explore</OutlineButton>
         </ExploreBtn>
         <ContactBtn>
-          <BiggerButton
+          <OutlineButton
             primary
             href="https://github.com/richard96292/impensa/discussions"
           >
             Contact us
-          </BiggerButton>
+          </OutlineButton>
         </ContactBtn>
         <Embed
           src="../../images/laptop.svg"

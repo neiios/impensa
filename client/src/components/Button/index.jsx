@@ -1,15 +1,10 @@
 import React from "react";
 import {
   StyledButton,
-  StyledButtonBig,
+  StyledOutlineButton,
   A,
   StyledLink,
-  LinkContainer,
-  WideBtn,
-  MenuLinks,
-  SpentButton,
-  SmallBtn,
-  FitBtn,
+  StyledPrimaryOutlineButton,
 } from "./style.jsx";
 const WrappedButton = (Component, props) => {
   const { href, to, target, children, disabled, isLoading, ...rest } = props;
@@ -34,10 +29,7 @@ const WrappedButton = (Component, props) => {
 };
 
 export const Button = (props) => WrappedButton(StyledButton, props);
-export const BiggerButton = (props) => WrappedButton(StyledButtonBig, props);
-export const ModifiedLink = (props) => WrappedButton(LinkContainer, props);
-export const WideButton = (props) => WrappedButton(WideBtn, props);
-export const MenuRef = (props) => WrappedButton(MenuLinks, props);
-export const SpentBtn = (props) => WrappedButton(SpentButton, props);
-export const SmallButton = (props) => WrappedButton(SmallBtn, props);
-export const FitButton = (props) => WrappedButton(FitBtn, props);
+export const OutlineButton = (props) =>
+  WrappedButton(StyledOutlineButton, props);
+export const PrimaryOutlineButton = (props) =>
+  WrappedButton(StyledPrimaryOutlineButton, props);

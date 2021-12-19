@@ -19,3 +19,11 @@ export const theme = {
 };
 
 export default theme;
+
+/*
+primary: will discord color
+lightPrimary:
+lightestPrimary:
+secondary: semi-black
+grey:
+*/

@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { SidebarWrapper, IconRow, MenuEl, SideSubWrapper } from "./style.jsx";
 import styled from "styled-components";
 import theme from "../../theme/Index.js";
-import { Button, MenuRef } from "../Button/index.jsx";
+import { StyledLink } from "../Button/style.jsx";
+import { Button } from "../Button/index.jsx";
+
+const LinkWrapper = styled(StyledLink)`
+  display: flex;
+  gap: 5px;
+`;
+
 const MenuIcon = styled.i`
   z-index: 1000;
   cursor: pointer;
@@ -41,28 +48,28 @@ export const Sidebar = ({ logout }) => {
       <SidebarWrapper onclick={handleClick} click={click}>
         <SideSubWrapper>
           <MenuEl>
-            <MenuRef to="/dashboard/overview">
+            <LinkWrapper to="/dashboard/overview">
               <i className="fas fa-home"></i>
               <MenuSpan>Overview</MenuSpan>
-            </MenuRef>
+            </LinkWrapper>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/dashboard/expenses">
+            <LinkWrapper to="/dashboard/expenses">
               <i className="fas fa-minus"></i>
               <MenuSpan>Expenses</MenuSpan>
-            </MenuRef>
+            </LinkWrapper>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/dashboard/archive">
+            <LinkWrapper to="/dashboard/archive">
               <i className="fas fa-archive"></i>
               <MenuSpan>Archive</MenuSpan>
-            </MenuRef>
+            </LinkWrapper>
           </MenuEl>
           <MenuEl>
-            <MenuRef to="/dashboard/settings">
+            <LinkWrapper to="/dashboard/settings">
               <i className="fas fa-cog"></i>
               <MenuSpan>Settings</MenuSpan>
-            </MenuRef>
+            </LinkWrapper>
           </MenuEl>
           <IconRow>
             <MenuEl>
@@ -79,13 +86,4 @@ export const Sidebar = ({ logout }) => {
     </>
   );
 };
-
-/*
-            <Icon className="fas fa-home"> Overview</Icon>
-            <Icon className="fas fa-chart-line"> Progress</Icon>
-            <Icon className="fas fa-chart-area"> Analysis</Icon>
-            <Icon className="fas fa-archive"> Archive</Icon>
-            <Icon className="fas fa-cog"> Settings</Icon>
-            <Icon className="fas fa-sign-out-alt"> Log out</Icon>
-*/
 export default Sidebar;

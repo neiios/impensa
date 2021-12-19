@@ -1,5 +1,5 @@
 import React from "react";
-import { ModifiedLink } from "../Button/index.jsx";
+import { StyledLink } from "../Button/style.jsx";
 import {
   FooterWrapper,
   Container,
@@ -14,14 +14,14 @@ const Footer = () => {
       <Container>
         <ContactContainer>
           © {currentYear} |
-          <ModifiedLink href="https://github.com/richard96292/impensa/discussions">
+          <StyledLink href="https://github.com/richard96292/impensa/discussions">
             Contact
-          </ModifiedLink>
+          </StyledLink>
         </ContactContainer>
         <GithubContainer>
-          <ModifiedLink href="https://github.com/richard96292/impensa">
+          <StyledLink href="https://github.com/richard96292/impensa">
             <GithubIcon className="fab fa-github" />
-          </ModifiedLink>
+          </StyledLink>
         </GithubContainer>
       </Container>
     </FooterWrapper>

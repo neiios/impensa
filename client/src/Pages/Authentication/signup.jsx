@@ -7,7 +7,8 @@ import {
   SelectContainer,
   InputRow,
 } from "./style";
-import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
+import { StyledLink } from "../../components/Button/style";
+import { PrimaryOutlineButton } from "../../components/Button/index.jsx";
 import ItemForm from "../../components/itemForm.jsx";
 import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select";
@@ -96,12 +97,14 @@ const SignUp = ({ setAuth }) => {
           value={password}
           onChange={(e) => onChange(e)}
         />
-        <WideButton style={{ margin: "auto" }}>Create account</WideButton>
+        <PrimaryOutlineButton style={{ margin: "auto" }}>
+          Create account
+        </PrimaryOutlineButton>
         <TextContainer>
           Have an account?
-          <ModifiedLink style={{ color: "#635BFF" }} to="/signin">
+          <StyledLink style={{ color: "#635BFF" }} to="/signin">
             Sign in
-          </ModifiedLink>
+          </StyledLink>
         </TextContainer>
       </Form>
     </Wrapper>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../theme/Index";
-import { FitButton } from "../components/Button/index.jsx";
+import { Button } from "../components/Button/index.jsx";
 // Wraps Sidebar Nav and Main-Conent
 export const Container = styled.div`
   text-align: center;
@@ -46,8 +46,7 @@ const PageNotFound = () => {
         The page you are looking for might have been removed or is temporarily
         unavailable
       </P>
-      <FitButton to="/">GO TO HOMEPAGE</FitButton>
-      {/* change btn letter */}
+      <Button to="/">GO TO HOMEPAGE</Button>
     </Container>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { WideButton, ModifiedLink } from "../../components/Button/index.jsx";
+import { PrimaryOutlineButton } from "../../components/Button/index.jsx";
+import { StyledLink } from "../../components/Button/style.jsx";
 import ItemForm from "../../components/itemForm.jsx";
-// styles
 import { Wrapper, Heading, Form, TextContainer } from "./style";
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
@@ -61,12 +61,14 @@ const SignIn = ({ setAuth }) => {
           value={password}
           onChange={(e) => onChange(e)}
         />
-        <WideButton style={{ margin: "auto" }}>Continue</WideButton>
+        <PrimaryOutlineButton style={{ margin: "auto" }}>
+          Continue
+        </PrimaryOutlineButton>
         <TextContainer>
           Don't have an account?
-          <ModifiedLink style={{ color: "#635BFF" }} to="/signup">
+          <StyledLink style={{ color: "#635BFF" }} to="/signup">
             Sign up
-          </ModifiedLink>
+          </StyledLink>
         </TextContainer>
       </Form>
     </Wrapper>

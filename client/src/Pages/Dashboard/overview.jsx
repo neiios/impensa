@@ -57,7 +57,7 @@ font-size:1.5em;
   }
 `;
 
-export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
+export const ExpenseContainer = ({ currency, heading, obj }) => {
   return (
     <>
       <Heading>{heading}</Heading>
@@ -78,17 +78,12 @@ export const ExpenseContainer = ({ expenses, currency, heading, obj }) => {
 
 const Main = ({ expenses, currency }) => {
   document.title = "Impensa - overview";
-
-  // 4 - 5 0 ---> 0 expense.slice 0
-  // removes elements from the beginning should not do that should remove from the end instead
   const newobj = expenses.slice(Math.max(expenses.length - 4, 0));
-  // reducing object's size to the last 5 elements
   return (
     <Container>
       <DataContainer>
         <ExpenseContainer
           obj={newobj}
-          expenses={expenses}
           currency={currency}
           heading={"Recently spent"}
         />

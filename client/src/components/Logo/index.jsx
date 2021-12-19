@@ -1,18 +1,22 @@
 import React from "react";
-import { ModifiedLink } from "../Button/index.jsx";
+import { StyledLink } from "../Button/style.jsx";
 import styled from "styled-components";
 
 const LogoImg = styled.img`
   width: 30px;
 `;
 
+const LogoWrapper = styled(StyledLink)`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Logo = () => (
-  <ModifiedLink
-    style={{ fontSize: "1em", fontWeight: "700", color: "black" }}
-    to="/"
-  >
+  <LogoWrapper to="/">
     <LogoImg src="../images/Impensa-logo.svg" /> Impensa
-  </ModifiedLink>
+  </LogoWrapper>
 );
 
 export default Logo;
