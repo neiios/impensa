@@ -13,8 +13,8 @@
 [![License](https://img.shields.io/github/license/richard96292/impensa.svg)](https://stackshare.io/impensa/impensa)
 [![Forks](https://img.shields.io/github/forks/richard96292/impensa.svg)](https://stackshare.io/impensa/impensa)
 
-</div>
 
+</div>
 
 ## Impensa is an open-source expense management app
 
@@ -29,6 +29,10 @@ Impensa is an open-source project, meaning you can easily access needed app func
 We are an open-source alternative to products such as Mint, Simplifi or PocketGuard. Although the functionality of the app is not as advanced, we're designed to be more developer-friendly.
 
 It has been made with love.
+
+## Features
+![ui-demo](./client/public/images/UI-demo.gif)
+
 
 ## Technologies
 
