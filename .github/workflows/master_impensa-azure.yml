@@ -28,7 +28,7 @@ jobs:
           npm run test --if-present
 
       - name: 'Tar files'
-        run: tar -cvf impensa.tar ../
+        run: tar -cvf impensa.tar .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -48,6 +48,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+
+      - name: Untar artifact for deployment
+        run: tar -xvf impensa.tar
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
