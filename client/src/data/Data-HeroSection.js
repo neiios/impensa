@@ -8,7 +8,7 @@ export const homeObjOne = {
     "Personalized overview take your user experience even further, with elaborate visualazation of your spendings",
   img: "../../images/laptop.svg",
   imgStart: false,
-  alt: "alt",
+  alt: "Impensa dashboard interface illustrating container with recent expenses and line graph with total expenses",
 };
 export const homeObjTwo = {
   lightBg: false,
@@ -19,7 +19,7 @@ export const homeObjTwo = {
   descriptionTwo: "Easily export the list of your expenses in a .xlsx file",
   img: "../../images/laptop.svg",
   imgStart: true,
-  alt: "alt",
+  alt: "Impensa Github repository depicting file structure and Readme.txt",
 };
 
 //lightBg, lightText, headline, descriptionOne, descriptionTwo, img, alt, imgStart}

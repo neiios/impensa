@@ -6,8 +6,18 @@ import { StyledLink } from "../Button/style.jsx";
 import { Button } from "../Button/index.jsx";
 
 const LinkWrapper = styled(StyledLink)`
+  cursor: pointer;
   display: flex;
-  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: color 0.3s;
+  &:hover {
+    color: ${theme.bg.secondary};
+  }
+  &:active {
+    color: ${theme.bg.semiBlue};
+  }
 `;
 
 const MenuIcon = styled.i`
@@ -21,9 +31,9 @@ const MenuIcon = styled.i`
   border-radius: 10px;
   margin-left: 100px;
   color: ${theme.bg.secondary};
-  transition: background 0.2s;
+  transition: background-color 0.2s;
   :hover {
-    background: ${theme.bg.semiBlue};
+    background-color: ${theme.bg.semiBlue};
     color: white;
   }
   @media screen and (max-width: 800px) {
@@ -37,7 +47,6 @@ export const MenuSpan = styled.span`
   }
 `;
 
-//  props="close" heading="Settings"  component="<Settings/>"/
 export const Sidebar = ({ logout }) => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);

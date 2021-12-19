@@ -10,7 +10,6 @@ export const featureObjTwo = {
   description:
     "See what categories are taking the most of your money to further optimize your financial habits",
   icon: "fas fa-chart-pie",
-  alt: "alt",
 };
 
 export const featureObjThree = {
@@ -18,11 +17,9 @@ export const featureObjThree = {
   description:
     "Impensa is FOSS software licensed under AGPLv3. We respect user's freedom",
   icon: "fas fa-handshake",
-  alt: "alt",
 };
 export const featureObjFour = {
   headline: "Full control",
   description: "Easily add, update or delete your expenses",
   icon: "fas fa-users",
-  alt: "alt",
 };

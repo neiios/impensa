@@ -9,7 +9,7 @@ import {
   Icon,
   Embed,
 } from "./style.jsx";
-function contentBlock({
+const HeroSection = ({
   lightBg,
   lightText,
   headline,
@@ -18,7 +18,7 @@ function contentBlock({
   img,
   alt,
   imgStart,
-}) {
+}) => {
   return (
     <HeroSectionWrapper lightBg={lightBg}>
       <Container imgStart={imgStart}>
@@ -37,6 +37,6 @@ function contentBlock({
       </Container>
     </HeroSectionWrapper>
   );
-}
+};
 
-export default contentBlock;
+export default HeroSection;

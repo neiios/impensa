@@ -2,7 +2,6 @@ import styled from "styled-components";
 import theme from "../../theme/Index";
 export const FooterWrapper = styled.footer`
   margin-top: 30px;
-  /*width:100vw;*/
   background: ${theme.bg.alt};
   display: flex;
   justify-content: center;

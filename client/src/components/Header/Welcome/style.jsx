@@ -38,7 +38,7 @@ export const ContactBtn = styled.div`
   grid-area: button2;
   @media (max-width: 1200px) {
     grid-area: button2;
-    margin-top: 50px; //hardcoded as fuck
+    margin-top: 50px;
   }
 `;
 

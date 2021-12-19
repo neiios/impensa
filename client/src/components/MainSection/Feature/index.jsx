@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Heading, Icon, P } from "./style.jsx";
 
-const AppFunction = ({ icon, headline, description }) => {
+const Feature = ({ icon, headline, description }) => {
   return (
     <Container>
       <Icon className={icon + " fa-2x"}></Icon>
@@ -11,4 +11,4 @@ const AppFunction = ({ icon, headline, description }) => {
   );
 };
 
-export default AppFunction;
+export default Feature;
