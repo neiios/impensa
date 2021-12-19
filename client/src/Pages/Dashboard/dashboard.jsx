@@ -4,10 +4,9 @@ import Overview from "./overview";
 import Nav from "./navbar";
 import Banner from "./banner";
 import Archive from "./archive";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
-import PageNotFound from "../PageNotFound";
 import Settings from "./settings.jsx";
 
 const Dashboard = ({ setAuth }) => {
@@ -70,39 +69,34 @@ const Dashboard = ({ setAuth }) => {
         <BrowserRouter>
           <Nav name={name} />
           <Sidebar logout={logout} />
-          <MainContainer>
-            <Switch>
-              <Route path="/dashboard/overview" exact>
-                {expenses.length === 0 ? (
-                  <Banner name={name} />
-                ) : (
-                  <Overview expenses={expenses} currency={currency} />
-                )}
-              </Route>
-              <Route path="/dashboard/archive" exact>
-                {expenses.length === 0 ? (
-                  <Banner name={name} />
-                ) : (
-                  <Archive expenses={expenses} currency={currency} />
-                )}
-              </Route>
-              <Route path="/dashboard/expenses" exact>
-                {expenses.length === 0 ? (
-                  <Banner name={name} />
-                ) : (
-                  <Expenses expenses={expenses} currency={currency} />
-                )}
-              </Route>
-              <Route path="/dashboard/settings" exact>
-                {expenses.length === 0 ? (
-                  <Banner name={name} />
-                ) : (
-                  <Settings logout={logout} />
-                )}
-              </Route>
-              <Route component={PageNotFound}></Route>
-            </Switch>
-          </MainContainer>
+          {expenses.length === 0 ? (
+            <Banner name={name} />
+          ) : (
+            <>
+              <MainContainer>
+                <Switch>
+                  <Route
+                    path="/"
+                    exact
+                    render={(props) => <Redirect to="/dashboard/overview" />}
+                  />
+
+                  <Route path="/dashboard/overview" exact>
+                    <Overview expenses={expenses} currency={currency} />
+                  </Route>
+                  <Route path="/dashboard/archive" exact>
+                    <Archive expenses={expenses} currency={currency} />
+                  </Route>
+                  <Route path="/dashboard/expenses" exact>
+                    <Expenses expenses={expenses} currency={currency} />
+                  </Route>
+                  <Route path="/dashboard/settings" exact>
+                    <Settings logout={logout} />
+                  </Route>
+                </Switch>
+              </MainContainer>
+            </>
+          )}
         </BrowserRouter>
       </Wrapper>
     </>

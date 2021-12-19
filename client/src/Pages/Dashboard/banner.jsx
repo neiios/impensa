@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
   height: 400px;
   z-index: -1;
   margin-top: 75px;
+  width: 100%;
+  margin: 80px 20px 0 20px;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -16,6 +18,7 @@ export const Wrapper = styled.div`
   color: white;
   padding: 20px;
   border-radius: 20px;
+  text-align: center;
 `;
 
 export const Heading = styled.h1`
@@ -39,9 +42,7 @@ export const P = styled.p`
 const Banner = ({ name }) => {
   return (
     <Wrapper>
-      <Heading>
-        Hello there, <Italic>{name}!</Italic>
-      </Heading>
+      <Heading>Hello there, {name}!</Heading>
       <SubHeading>We're almost there!</SubHeading>
       <P>
         To start your journey with Impensa, please add <ToggleNewExpense />
