@@ -13,6 +13,9 @@ import {
   DataContainer,
   MonthContainer,
   ExpenseCategory,
+  FixedDataContainer,
+  ArrowWestIcon,
+  ArrowEastIcon,
 } from "./style";
 import moment from "moment";
 import PieChart from "../../components/Data Visualization/doughnut";
@@ -76,12 +79,12 @@ const Expenses = ({ expenses, currency }) => {
     <Container>
       <DataContainer>
         <MonthSwitcher>
-          <NavigationIcon
+          <ArrowWestIcon
             className="fas fa-chevron-left fa-1x"
             onClick={decrementCounter}
           />
           <MonthContainer>{`${months[counter]}`}</MonthContainer>
-          <NavigationIcon
+          <ArrowEastIcon
             className="fas fa-chevron-right fa-1x"
             onClick={incrementCounter}
           />
@@ -99,7 +102,7 @@ const Expenses = ({ expenses, currency }) => {
           />
         )}
       </DataContainer>
-      <DataContainer>
+      <FixedDataContainer>
         <>
           <Heading>{`${months[counter]} expenses`}</Heading>
           {newobj.map((expense) =>
@@ -120,7 +123,7 @@ const Expenses = ({ expenses, currency }) => {
             ) : null
           )}
         </>
-      </DataContainer>
+      </FixedDataContainer>
     </Container>
   );
 };

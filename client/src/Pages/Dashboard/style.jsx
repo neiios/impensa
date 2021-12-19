@@ -25,6 +25,25 @@ export const ExpenseItem = styled.div`
 `;
 
 export const DataContainer = styled.div`
+  height: fit-content;
+  overflow: auto;
+  padding: 20px;
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  min-height: 430px;
+  //  height: fit-content;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: ${theme.bg.secondary};
+  }
+`;
+
+export const FixedDataContainer = styled.div`
   overflow: auto;
   padding: 20px;
   position: relative;
@@ -175,13 +194,14 @@ export const IconContainer = styled.div`
   justify-content: center;
 `;
 
-export const NavigationIcon = styled.i`
+export const ArrowWestIcon = styled.i`
+  left: 0;
+  position: absolute;
   cursor: pointer;
-  color: #404040;
+  color: #521111;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 80px;
   border-radius: 100%;
   width: 40px;
   height: 40px;
@@ -192,8 +212,37 @@ export const NavigationIcon = styled.i`
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  :hover {
-    background-color: rgba(64, 64, 64, 0.1);
+  &:hover {
+    background-color: ${theme.bg.lightestBlue};
+  }
+  &:active {
+    background-color: rgba(88, 101, 242, 0.2);
+  }
+`;
+
+export const ArrowEastIcon = styled.i`
+  right: 0;
+  position: absolute;
+  cursor: pointer;
+  color: #521111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.5s;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  &:hover {
+    background-color: ${theme.bg.lightestBlue};
+  }
+  &:active {
+    background-color: rgba(88, 101, 242, 0.2);
   }
 `;
 
@@ -211,6 +260,9 @@ export const MonthContainer = styled.div`
 `;
 
 export const MonthSwitcher = styled.div`
+  width: 250px;
+  position: relative;
+  margin: auto;
   display: flex;
   gap: 10px;
   align-items: center;

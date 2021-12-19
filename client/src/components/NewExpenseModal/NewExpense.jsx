@@ -75,6 +75,7 @@ export const GeneralCategories = [
   { value: "Delivery", label: "Delivery" },
   { value: "Groceries", label: "Groceries" },
   { value: "Accomodation", label: "Accomodation" },
+  { value: "Hairdresser", label: "Hairdresser" },
 ];
 
 const Categories = () => {
@@ -107,7 +108,7 @@ const Categories = () => {
     <Wrapper onSubmit={onSubmitForm}>
       <H5>Choose category</H5>
       <Select
-        defaultValue={GeneralCategories[0]}
+        // defaultValue={GeneralCategories[0]}
         onChange={(e) => setCategory(e.value)}
         options={GeneralCategories}
         className="basic-multi-select"

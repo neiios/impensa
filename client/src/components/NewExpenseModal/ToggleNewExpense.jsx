@@ -19,7 +19,9 @@ const ToggleNewExpense = () => {
   };
   return (
     <>
-      <Button onClick={addModal}>new expense</Button>
+      <Button primary onClick={addModal}>
+        New expense
+      </Button>
     </>
   );
 };

@@ -4,9 +4,9 @@ import theme from "../../theme/Index";
 import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense";
 import LineGraph from "../../components/Data Visualization/linegraph";
 import moment from "moment";
+import { device } from "../../mediaQueries";
 // Wraps Sidebar Nav and Main-Conent
 import { DataContainer, ExpenseCategory } from "./style";
-
 export const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,10 +31,13 @@ export const ExpenseDate = styled.div`
   color: grey;
 `;
 
+export const ButtonWrapper = styled.div`
+  display: flex;
+  margin-top: 20px;
+`;
+
 export const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  margin-left: auto;
 `;
 
 // Has all Main-block elements
@@ -87,9 +90,11 @@ const Main = ({ expenses, currency }) => {
           currency={currency}
           heading={"Recently spent"}
         />
-        <ButtonContainer>
-          <ToggleNewExpense />
-        </ButtonContainer>
+        <ButtonWrapper>
+          <ButtonContainer>
+            <ToggleNewExpense />
+          </ButtonContainer>
+        </ButtonWrapper>
       </DataContainer>
       <DataContainer>
         <LineGraph currency={currency} expenses={expenses} />

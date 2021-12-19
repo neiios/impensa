@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
 import { Link, NavLink } from "react-router-dom";
+import { device } from "../../mediaQueries";
 export const StyledButton = styled.button`
   width: fit-content;
-  font-size: 15px;
   min-width: 97px;
-  height: 32px;
   font-weight: 550;
   border: thin solid ${theme.color.primary};
   border-radius: 5px;
@@ -13,6 +12,8 @@ export const StyledButton = styled.button`
   transition: background-color 0.5s;
   background-color: white;
   color: ${theme.color.primary};
+  height: ${(props) => (props.primary ? "40px" : "32px")};
+  font-size: ${(props) => (props.primary ? "1.2em" : ".95em")};
   :hover {
     background: ${theme.color.primary};
     color: white;

@@ -13,7 +13,6 @@ export const Container = styled.form`
   flex-direction: column;
   padding: 20px;
   gap: 10px;
-  margin: 20px;
 `;
 
 export const HR = styled.hr`

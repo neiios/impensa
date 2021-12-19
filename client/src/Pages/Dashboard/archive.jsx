@@ -128,7 +128,11 @@ const Archive = ({ expenses, currency }) => {
                       2
                     )}`}
                   </Td>
-                  <Td>{expense.expense_description}</Td>
+                  <Td>
+                    {expense.expense_description.length === 0
+                      ? "No description provided"
+                      : expense.expense_description}
+                  </Td>
                   <Td>
                     <ExpenseCategoryCentered>
                       {expense.expense_category}
