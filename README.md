@@ -1,5 +1,7 @@
 <p align="center">
+  <a href="https://impensa.studio/">
   <img src="./client/public/images/media2.png" />
+    </a>
 </p>
 
 <div align="center">
@@ -18,11 +20,11 @@
 
 ## What's cool about this?
 
-Impensa is an open-source project, meaning you can easily access needed app functional and modify needed lines of code.
+Impensa is an open-source project, meaning you can easily access needed app functional and modify lines of code.
 
 We are an open-source alternative to products such as Mint, Simplifi or PocketGuard. Although the functionality of the app is not as advanced, we're designed to be more developer-friendly.
 
-It's been made with love.
+It has been made with love.
 
 ## Technologies
 
