@@ -44,7 +44,7 @@ const SignIn = ({ setAuth }) => {
   return (
     <Wrapper>
       <Form onSubmit={onSubmitForm}>
-        <Heading>Sign in to your account</Heading>
+        <Heading>Sign in to your Impensa account</Heading>
         <ItemForm
           position="column"
           label="Email"

@@ -19,13 +19,16 @@ import {
   RowOneSubheading,
   Br,
 } from "./style";
-
+import { Element } from "react-scroll";
 const Homepage = () => {
   document.title = "Impensa";
+
   return (
     <>
       <Header />
-      <HeroSection {...homeObjOne} />
+      <Element name="HeroSection">
+        <HeroSection {...homeObjOne} />
+      </Element>
       <HeroSection {...homeObjTwo} />
       <FeaturesContainer>
         <RowOne>

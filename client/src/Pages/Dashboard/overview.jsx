@@ -31,12 +31,9 @@ export const ExpenseDate = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
-  margin-top: 20px;
-`;
-
-export const ButtonContainer = styled.div`
-  margin-left: auto;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 `;
 
 // Has all Main-block elements
@@ -90,9 +87,7 @@ const Main = ({ expenses, currency }) => {
           heading={"Recently spent"}
         />
         <ButtonWrapper>
-          <ButtonContainer>
-            <ToggleNewExpense />
-          </ButtonContainer>
+          <ToggleNewExpense />
         </ButtonWrapper>
       </DataContainer>
       <DataContainer>

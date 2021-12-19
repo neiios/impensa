@@ -4,6 +4,7 @@ import styled from "styled-components";
 import theme from "../../theme/Index.js";
 import { StyledNavLink } from "../Button/style.jsx";
 import { Button } from "../Button/index.jsx";
+import { device } from "../../mediaQueries.jsx";
 const LinkWrapper = styled(StyledNavLink)`
   color: ${(props) => (props.primary ? theme.color.primary : null)};
   cursor: pointer;
@@ -39,13 +40,13 @@ const MenuIcon = styled.i`
     background-color: ${theme.bg.semiBlue};
     color: white;
   }
-  @media screen and (max-width: 800px) {
+  @media ${device.laptop} {
     display: none;
   }
 `;
 
 export const MenuSpan = styled.span`
-  @media screen and (max-width: 800px) {
+  @media ${device.laptop} {
     display: none;
   }
 `;

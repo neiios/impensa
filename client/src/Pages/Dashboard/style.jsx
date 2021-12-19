@@ -25,10 +25,10 @@ export const ExpenseItem = styled.div`
 `;
 
 export const DataContainer = styled.div`
+  position: relative;
   height: fit-content;
   overflow: auto;
   padding: 20px;
-  position: relative;
   background-color: white;
   border-radius: 20px;
   min-height: 430px;
@@ -257,6 +257,9 @@ export const MonthContainer = styled.div`
   -o-user-select: none;
   user-select: none;
   font-weight: 550;
+  @media ${device.mobileL} {
+    font-size: 1em;
+  }
 `;
 
 export const MonthSwitcher = styled.div`
@@ -267,8 +270,10 @@ export const MonthSwitcher = styled.div`
   gap: 10px;
   align-items: center;
   justify-content: center;
-
   height: 50px;
+  @media ${device.mobileL} {
+    width: 200px;
+  }
 `;
 
 export const NoDataBanner = styled.div``;
@@ -310,7 +315,7 @@ export const Table = styled.table`
 `;
 
 export const TableWrapper = styled.div`
-  @media ${device.laptop} {
+  @media ${device.mobileL} {
     height: 500px;
     width: 200px;
   }

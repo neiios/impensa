@@ -116,7 +116,7 @@ const LineGraph = ({ expenses, currency }) => {
       </TextContainer>
       <TextContainer>
         <H3>{` ${currency} ${spentToday.toFixed(2)}`}</H3>
-        TODAY SPENT as for {currentUserDate}
+        TODAY SPENT
       </TextContainer>
       <GraphWrapper>
         <Line options={options} data={data} />

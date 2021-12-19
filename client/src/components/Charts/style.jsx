@@ -41,9 +41,11 @@ export const H6 = styled.h6``;
 export const DoughnutWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 10px !important;
   height: 350px !important;
 
-  max-width: 380px;
+  max-width: 350px;
   margin: auto;
 `;

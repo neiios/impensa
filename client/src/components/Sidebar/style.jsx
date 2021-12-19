@@ -16,7 +16,7 @@ export const SidebarWrapper = styled.nav`
     display: none;
     display: ${({ click }) => (click ? "block" : "none")};
   }
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     display: block;
     width: 0;
   }
@@ -31,11 +31,11 @@ export const SideSubWrapper = styled.div`
   gap: 10px;
   justify-content: center;
   align-items: center;
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     width: 100%;
     background-color: white;
     position: fixed;
-    height: 60px;
+    height: 50px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -66,7 +66,7 @@ export const MenuEl = styled.div`
   :active {
     color: ${theme.bg.semiBlue};
   }
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     margin: auto;
     gap: 0;
     width: 50px;
@@ -83,7 +83,7 @@ export const IconRow = styled.div`
   margin-top: auto;
   margin-bottom: 100px;
   gap: 5px;
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     display: none;
   }
 `;

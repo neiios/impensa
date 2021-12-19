@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import { device } from "../../mediaQueries";
 export const FeaturesContainer = styled.div`
   padding-bottom: 100px;
   padding-top: 100px;
@@ -10,18 +9,11 @@ export const FeaturesContainer = styled.div`
   max-width: 1200px;
   justify-content: center;
   margin: auto;
-
-  @media ${device.tablet} {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
 `;
 
 export const RowOne = styled.div`
   padding: 10px;
+  margin-left: 10px;
 `;
 
 export const RowOneHeading = styled.h2`

@@ -1,5 +1,6 @@
 import React from "react";
 import { OutlineButton } from "../../Button/index.jsx";
+import { Link } from "react-scroll";
 import {
   Container,
   RowOne,
@@ -25,7 +26,9 @@ const Welcome = () => {
       </RowOne>
       <RowTwo>
         <ExploreBtn>
-          <OutlineButton href="#heroSection">Explore</OutlineButton>
+          <Link spy={true} smooth={true} to="HeroSection">
+            <OutlineButton href="#heroSection">Explore</OutlineButton>
+          </Link>
         </ExploreBtn>
         <ContactBtn>
           <OutlineButton
