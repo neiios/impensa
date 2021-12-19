@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { SidebarWrapper, IconRow, MenuEl, SideSubWrapper } from "./style.jsx";
 import styled from "styled-components";
 import theme from "../../theme/Index.js";
-import { StyledLink } from "../Button/style.jsx";
+import { StyledNavLink } from "../Button/style.jsx";
 import { Button } from "../Button/index.jsx";
-
-const LinkWrapper = styled(StyledLink)`
+const LinkWrapper = styled(StyledNavLink)`
+  color: ${(props) => (props.primary ? theme.color.primary : null)};
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -17,6 +17,9 @@ const LinkWrapper = styled(StyledLink)`
   }
   &:active {
     color: ${theme.bg.semiBlue};
+  }
+  &.active {
+    color: ${theme.bg.secondary};
   }
 `;
 
@@ -50,7 +53,6 @@ export const MenuSpan = styled.span`
 export const Sidebar = ({ logout }) => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-
   return (
     <>
       <MenuIcon onClick={handleClick} className="fas fa-bars fa-sm" />

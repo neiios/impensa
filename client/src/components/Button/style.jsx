@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export const StyledButton = styled.button`
   width: fit-content;
   font-size: 15px;
@@ -53,6 +53,12 @@ export const A = styled.a`
 `;
 
 export const StyledLink = styled(Link)`
+  align-items: center;
+  color: #404040;
+  text-decoration: none !important;
+`;
+
+export const StyledNavLink = styled(NavLink)`
   align-items: center;
   color: #404040;
   text-decoration: none !important;
