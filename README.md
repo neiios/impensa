@@ -34,7 +34,7 @@ Let's talk about the architecture of this mono repo:
 - **PostgreSQL**: Object-relational database
 - **React**: Frontend framework
 - **React Chart.js 2**: JavaScript library for Data Visualization
-- **Microsoft Azure**: To deploy a React app
+- **Microsoft Azure**: To deploy React app
 
 #### Folder structure
 
