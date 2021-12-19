@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
+import { device } from "../../mediaQueries";
 //import theme from "/theme/Index"
 
 export const SidebarWrapper = styled.nav`
@@ -11,11 +12,11 @@ export const SidebarWrapper = styled.nav`
   transition: left 0.3s ease;
   display: ${({ click }) => (click ? "none" : "block")};
 
-  @media screen and (max-width: 1300px) {
+  @media ${device.laptop} {
     display: none;
     display: ${({ click }) => (click ? "block" : "none")};
   }
-  @media screen and (max-width: 800px) {
+  @media ${device.tablet} {
     display: block;
     width: 0;
   }
@@ -30,7 +31,7 @@ export const SideSubWrapper = styled.div`
   gap: 10px;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 800px) {
+  @media ${device.tablet} {
     width: 100%;
     background-color: white;
     position: fixed;
@@ -65,7 +66,7 @@ export const MenuEl = styled.div`
   :active {
     color: ${theme.bg.semiBlue};
   }
-  @media screen and (max-width: 800px) {
+  @media ${device.tablet} {
     margin: auto;
     gap: 0;
     width: 50px;
@@ -82,7 +83,7 @@ export const IconRow = styled.div`
   margin-top: auto;
   margin-bottom: 100px;
   gap: 5px;
-  @media screen and (max-width: 800px) {
+  @media ${device.tablet} {
     display: none;
   }
 `;

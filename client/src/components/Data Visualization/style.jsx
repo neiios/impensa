@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { device } from "../../mediaQueries";
 export const GraphWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@ export const GraphWrapper = styled.div`
   width: 90%;
   height: 350px !important;
   margin: 10px;
-  @media only screen and (max-width: 600px) {
+  @media ${device.mobileL} {
     width: 80%;
     height: 320px !important;
   }

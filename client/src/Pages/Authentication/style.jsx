@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
-
+import { device } from "../../mediaQueries";
 export const TextContainer = styled.div`
   justify-content: center;
   display: flex;
@@ -29,7 +29,7 @@ export const Form = styled.form`
   position: relative;
   justify-content: center;
   gap: 30px;
-  @media screen and (max-width: 400px) {
+  @media ${device.mobileL} {
     width: 100%;
   }
 `;
@@ -53,7 +53,7 @@ export const InputRow = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 5px;
-  @media only screen and (max-width: 768px) {
+  @media ${device.tablet} {
     flex-direction: column;
     align-items: stretch;
     gap: 20px;

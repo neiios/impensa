@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
+import { device } from "../../mediaQueries";
 export const Wrapper = styled.div`
   display: flex;
 `;
@@ -14,7 +15,7 @@ export const MainContainer = styled.div`
   min-height: 100vh;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  @media only screen and (max-width: 1000px) {
+  @media ${device.laptop} {
     padding-bottom: 50px;
   }
 `;
@@ -82,7 +83,7 @@ export const ExpenseCategory = styled.div`
   padding: 8px;
   font-size: 1.2em;
   border-radius: 10px;
-  @media only screen and (max-width: 600px) {
+  @media ${device.tablet} {
     min-width: 100px;
     font-size: 0.9em;
   }
@@ -105,7 +106,7 @@ export const ExpenseDescription = styled.div`
 export const H3 = styled.h3`
   margin: 15px;
   font-size: 1.6em;
-  @media only screen and (max-width: 600px) {
+  @media ${device.tablet} {
     font-size: 1em;
   }
 `;
@@ -184,7 +185,7 @@ export const NavigationIcon = styled.i`
   border-radius: 100%;
   width: 40px;
   height: 40px;
-  transition: background 0.5s;
+  transition: background-color 0.5s;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -192,7 +193,7 @@ export const NavigationIcon = styled.i`
   -o-user-select: none;
   user-select: none;
   :hover {
-    background: rgba(64, 64, 64, 0.1);
+    background-color: rgba(64, 64, 64, 0.1);
   }
 `;
 
@@ -257,7 +258,7 @@ export const Table = styled.table`
 `;
 
 export const TableWrapper = styled.div`
-  @media only screen and (max-width: 1000px) {
+  @media ${device.laptop} {
     height: 500px;
     width: 200px;
   }

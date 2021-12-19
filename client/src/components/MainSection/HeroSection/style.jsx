@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import theme from "../../../theme/Index";
+import { device } from "../../../mediaQueries";
+
 export const HeroSectionWrapper = styled.div`
   background: ${(props) => (props.lightBg ? "#F6F9FC" : theme.bg.secondary)};
   display: flex;
@@ -17,10 +19,8 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: stretch;
-  @media screen and (max-width: 991px) {
-    padding: 0 10px 0 10px;
-  }
-  @media screen and (max-width: 768px) {
+
+  @media ${device.laptop} {
     padding: 0 10px 0 10px;
   }
 `;

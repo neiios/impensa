@@ -16,7 +16,7 @@ export const NavbarWrapper = styled.nav`
 export const NavMenu = styled.ul`
   padding: 0 10px 0 0;
   margin: 0;
-  gap: 20px;
+  gap: 15px;
   list-style: none;
   display: flex;
   margin-left: auto;

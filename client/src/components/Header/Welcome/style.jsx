@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { device } from "../../../mediaQueries";
 export const Container = styled.nav`
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ export const RowTwo = styled.div`
   grid-template-areas: "button1 img button2";
   align-items: center;
   margin-bottom: 60px;
-  @media (max-width: 1200px) {
+  @media ${device.laptop} {
     display: grid;
     grid-template-areas:
       "img img"
@@ -28,7 +28,7 @@ export const RowTwo = styled.div`
 
 export const ExploreBtn = styled.div`
   grid-area: button1;
-  @media (max-width: 1200px) {
+  @media ${device.laptop} {
     grid-area: button1;
     margin-top: 50px;
   }
@@ -36,7 +36,7 @@ export const ExploreBtn = styled.div`
 
 export const ContactBtn = styled.div`
   grid-area: button2;
-  @media (max-width: 1200px) {
+  @media ${device.laptop} {
     grid-area: button2;
     margin-top: 50px;
   }

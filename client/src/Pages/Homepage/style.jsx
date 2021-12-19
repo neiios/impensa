@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
+import { device } from "../../mediaQueries";
 export const FeaturesContainer = styled.div`
   padding-bottom: 100px;
   padding-top: 100px;
@@ -10,7 +11,7 @@ export const FeaturesContainer = styled.div`
   justify-content: center;
   margin: auto;
 
-  @media (max-width: 1200px) {
+  @media ${device.tablet} {
     justify-content: center;
     align-items: center;
     display: flex;

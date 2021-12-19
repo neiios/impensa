@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from "../../../theme/Index";
+import { device } from "../../../mediaQueries";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +17,8 @@ export const Container = styled.div`
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  @media screen and (min-width: 1000px) {
+
+  @media ${device.laptop} {
     :hover {
       margin-top: -20px;
     }
