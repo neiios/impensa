@@ -28,7 +28,7 @@ jobs:
           npm run test --if-present
 
       - name: 'Tar files'
-        run: tar -cvf impensa.tar /
+        run: tar -cvf impensa.tar ../
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
