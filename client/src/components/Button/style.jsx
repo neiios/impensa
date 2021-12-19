@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
 import { Link, NavLink } from "react-router-dom";
-import { device } from "../../mediaQueries";
 export const StyledButton = styled.button`
   width: fit-content;
   min-width: 97px;

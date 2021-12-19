@@ -4,7 +4,6 @@ import theme from "../../theme/Index";
 import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense";
 import LineGraph from "../../components/Data Visualization/linegraph";
 import moment from "moment";
-import { device } from "../../mediaQueries";
 // Wraps Sidebar Nav and Main-Conent
 import { DataContainer, ExpenseCategory } from "./style";
 export const ColumnContainer = styled.div`

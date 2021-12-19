@@ -21,7 +21,7 @@ export const theme = {
     lightPrimary: "rgba(88, 101, 242, .7)",
     lightestPrimary: "rgb(248,250,253)",
     secondary: "#404040", //grey
-    secondaryAlt: "#56595e" // alt grey
+    secondaryAlt: "#56595e", // alt grey
   },
 };
 

@@ -8,7 +8,6 @@ import {
 } from "./overview";
 import {
   NoDataBanner,
-  NavigationIcon,
   MonthSwitcher,
   DataContainer,
   MonthContainer,
