@@ -16,6 +16,13 @@ export const theme = {
     secondAlt: "rgba(88, 101, 242, .1)",
     grey: "#56595e",
   },
+  color: {
+    primary: "#5865F2",
+    lightPrimary: "rgba(88, 101, 242, .7)",
+    lightestPrimary: "rgb(248,250,253)",
+    secondary: "#404040", //grey
+    secondaryAlt: "#56595e" // alt grey
+  },
 };
 
 export default theme;

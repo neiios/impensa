@@ -7,14 +7,14 @@ export const StyledButton = styled.button`
   min-width: 97px;
   height: 32px;
   font-weight: 550;
-  border: thin solid ${theme.text.secondary};
+  border: thin solid ${theme.color.primary};
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.5s;
   background-color: white;
-  color: ${theme.text.secondary};
+  color: ${theme.color.primary};
   :hover {
-    background: ${theme.text.secondary};
+    background: ${theme.color.primary};
     color: white;
     background-size: 100%;
   }
@@ -28,14 +28,13 @@ export const StyledOutlineButton = styled(StyledButton)`
   height: 70px;
   border: none;
   background-color: ${(props) =>
-    props.primary ? theme.text.secondAlt : theme.text.secondary};
-  color: ${(props) => (props.primary ? theme.text.secondary : "white")};
+    props.primary ? theme.text.secondAlt : theme.color.primary};
+  color: ${(props) => (props.primary ? theme.color.primary : "white")};
   transition: background-color 0.5s;
   :hover {
     background-color: ${(props) =>
-      props.primary ? theme.text.secondary : theme.bg.lightestBlue};
-    color: ${(props) =>
-      props.primary ? theme.bg.default : theme.bg.secondary};
+      props.primary ? theme.color.primary : theme.color.lightestPrimary};
+    color: ${(props) => (props.primary ? "white" : theme.color.primary)};
   }
 `;
 
@@ -43,9 +42,9 @@ export const StyledPrimaryOutlineButton = styled(StyledOutlineButton)`
   width: 100%;
   font-size: 20px !important;
   height: 45px;
-  background: ${theme.bg.secondary};
+  background: ${theme.color.primary};
   :hover {
-    color: ${theme.text.grey};
+    color: ${theme.color.secondaryAlt};
   }
 `;
 export const A = styled.a`

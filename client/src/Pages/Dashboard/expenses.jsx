@@ -49,7 +49,7 @@ export const Container = styled.div`
 
 let currentMonth = new Date().toLocaleString("en-US", { month: "2-digit" });
 const Expenses = ({ expenses, currency }) => {
-  document.title = "Impensa - expenses";
+  document.title = "Dashboard - Expenses";
 
   const [counter, setCounter] = useState(currentMonth - 1);
   let incrementCounter = () => setCounter(counter + 1);

@@ -10,7 +10,7 @@ import Expenses from "./expenses";
 import Settings from "./settings.jsx";
 
 const Dashboard = ({ setAuth }) => {
-  document.title = "Impensa - dashboard";
+  document.title = "Dashboard";
 
   const [name, setName] = useState("");
   const [currency, setCurrency] = useState("");

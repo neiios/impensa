@@ -16,7 +16,7 @@ import { InputLabel } from "../../components/itemForm.jsx";
 import { colourStyles } from "../../components/NewExpenseModal/newExpense";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
-  document.title = "Impensa - register";
+  document.title = "Impensa: Register";
 
   const [inputs, setInputs] = useState({
     email: "",

@@ -8,16 +8,16 @@ export const Input = styled.input`
   background: #f9f9fa;
   border-radius: 4px;
   outline: 0;
-  border: 1px solid rgba(3, 102, 214, 0.1);
+  border: 1px solid rgba(55, 64, 75, 0.1);
   font-size: 14px;
   transition: all 0.3s ease-out;
   :focus {
-    box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 3px;
+    box-shadow: ${theme.color.lightPrimary} 0px 0px 0px 3px;
   }
 `;
 
 export const InputLabel = styled.label`
-  color: ${theme.text.grey};
+  color: ${theme.color.secondaryAlt};
   font-size: 0.8em;
   font-weight: 600;
   letter-spacing: 0.03em;

@@ -28,6 +28,7 @@ export const EmailContainer = styled.span`
 `;
 
 function Settings({ logout }) {
+  document.title = "Dashboard - Settings";
   const isMobile = useMediaQuery(768);
   const [nameConst, setNameConst] = useState("");
   const [userEmail, setUserEmail] = useState("");

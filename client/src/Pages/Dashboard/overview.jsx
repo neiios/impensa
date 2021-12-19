@@ -77,7 +77,7 @@ export const ExpenseContainer = ({ currency, heading, obj }) => {
 };
 
 const Main = ({ expenses, currency }) => {
-  document.title = "Impensa - overview";
+  document.title = "Dashboard - Overview";
   const newobj = expenses.slice(Math.max(expenses.length - 4, 0));
   return (
     <Container>

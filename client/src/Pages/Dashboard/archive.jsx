@@ -16,7 +16,7 @@ import ExcelExport from "./excelExport";
 // Wraps Sidebar Nav and Main-Conent
 
 const Archive = ({ expenses, currency }) => {
-  document.title = "Impensa - archive";
+  document.title = "Dashboard - Archive";
 
   const [sort, setSort] = useState(false);
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
