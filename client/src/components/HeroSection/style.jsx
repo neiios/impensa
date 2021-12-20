@@ -19,7 +19,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: stretch;
-
+  gap: 50px;
   @media ${device.laptop} {
     padding: 0 10px 0 10px;
   }
@@ -45,8 +45,7 @@ export const H3 = styled.h3``;
 export const Icon = styled.i``;
 
 export const Embed = styled.embed`
-  width: 600px;
+  width: 400px;
   max-width: 100%;
   vertical-align: middle;
-  image-rendering: auto;
 `;
