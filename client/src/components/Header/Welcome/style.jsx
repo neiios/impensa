@@ -58,7 +58,7 @@ export const Br = styled.br``;
 // Main laptop picture in homepage
 
 export const Embed = styled.embed`
-  width: 750px;
+  width: 600px;
   max-width: 100%;
   grid-area: img;
 `;
