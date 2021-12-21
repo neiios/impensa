@@ -78,15 +78,7 @@ const Expenses = ({ expenses, currency }) => {
     <Container>
       <DataContainer>
         <MonthSwitcher>
-          <ArrowWestIcon
-            className="fas fa-chevron-left fa-1x"
-            onClick={decrementCounter}
-          />
           <MonthContainer>{`${months[counter]}`}</MonthContainer>
-          <ArrowEastIcon
-            className="fas fa-chevron-right fa-1x"
-            onClick={incrementCounter}
-          />
         </MonthSwitcher>
         {MonthIsEmpty ? (
           <NoDataBanner>
@@ -130,3 +122,17 @@ const Expenses = ({ expenses, currency }) => {
 export default Expenses;
 
 //[expenses[0]]
+
+/*
+        <MonthSwitcher>
+          <ArrowWestIcon
+            className="fas fa-chevron-left fa-1x"
+            onClick={decrementCounter}
+          />
+          <MonthContainer>{`${months[counter]}`}</MonthContainer>
+          <ArrowEastIcon
+            className="fas fa-chevron-right fa-1x"
+            onClick={incrementCounter}
+          />
+        </MonthSwitcher>
+*/
