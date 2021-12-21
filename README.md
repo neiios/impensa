@@ -44,7 +44,7 @@ Let's talk about the architecture of this mono repo:
   - **Express JS**: Our backend framework of choice
   - **React**: Frontend framework
   - **React Chart.js 2**: JavaScript library for Data Visualization
-  - **Microsoft Azure**: To deploy React app
+  - **DigitalOcean**: To deploy React app
 
 #### Folder structure
 
