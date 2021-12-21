@@ -2,14 +2,29 @@
 const Pool = require("pg").Pool;
 require("dotenv").config();
 
-const config = {
+const devConfig = {
   user: process.env.POSTGRES_DBUSER,
   host: process.env.POSTGRES_DBHOST,
   database: process.env.POSTGRES_DBNAME,
   password: process.env.POSTGRES_DBPASS,
   port: process.env.POSTGRES_DBPORT,
+  ssl: false,
 };
 
-const pool = new Pool(config);
+const proConfig = {
+  user: process.env.POSTGRES_DBUSER,
+  host: process.env.POSTGRES_DBHOST,
+  database: process.env.POSTGRES_DBNAME,
+  password: process.env.POSTGRES_DBPASS,
+  port: process.env.POSTGRES_DBPORT,
+  ssl: { rejectUnauthorized: false },
+};
+
+console.log(proConfig);
+console.log(`Do I use proConfig? ${process.env.NODE_ENV === "production"}`);
+
+const pool = new Pool(
+  process.env.NODE_ENV === "production" ? proConfig : devConfig
+);
 
 module.exports = pool;

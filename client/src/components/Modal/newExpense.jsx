@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import NewExpense from "../NewExpenseModal/newExpense";
 import theme from "../../theme/Index";

@@ -11,6 +11,12 @@ const authorize = require("../middleware/authorize");
 router.post("/register", validInfo, async (req, res) => {
   const { email, name, password, currency } = req.body;
   console.log(req.body);
+  console.log(
+    `Env vars: ${process.env.NODE_ENV}, ${process.env.jwtSecret}, ${process.env.DATABASE_URL}`
+  );
+  console.log(
+    `Env vars: ${process.env.POSTGRES_DBUSER}, ${process.env.POSTGRES_DBHOST}, ${process.env.POSTGRES_DBNAME}, ${process.env.POSTGRES_DBPASS}, ${process.env.POSTGRES_DBPORT}`
+  );
 
   try {
     const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
