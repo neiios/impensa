@@ -13,8 +13,9 @@ export const MainContainer = styled.div`
   width: 100%;
   background-color: ${theme.bg.lightestBlue};
   height: 100%;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  //border-top-left-radius: 20px;
+  //border-top-right-radius: 20px;
+  border-radius: 20px;
   @media ${device.laptop} {
     padding-bottom: 50px;
   }
@@ -52,7 +53,7 @@ export const FixedDataContainer = styled.div`
   height: 430px;
   //  height: fit-content;
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -302,7 +303,7 @@ export const H4 = styled.h4`
 `;
 
 export const Input = styled.input`
-  max-width: 100%;
+  max-width: 50%;
   margin-top: 10px;
   padding: 11px 15px;
   background: #f9f9fa;
@@ -362,12 +363,16 @@ export const Tr = styled.tr`
     background: ${theme.bg.lightestBlue};
   }
   @media ${device.laptop} {
-    border-bottom: 1em solid ${theme.bg.lightestBlue};
+    border-bottom: 1px solid rgba(88, 101, 242, 0.1);
     display: block;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 `;
 
 export const Th = styled.th`
+  padding: 10px 0 10px 0;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -387,7 +392,6 @@ export const Td = styled.td`
   padding: 1em 0 1em 0;
   text-align: center;
   @media ${device.laptop} {
-    border-bottom: 1px solid #f7f2f2;
     display: block;
     font-size: 0.8em;
     text-align: right !important;
