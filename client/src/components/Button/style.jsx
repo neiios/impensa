@@ -50,6 +50,9 @@ export const StyledPrimaryOutlineButton = styled(StyledOutlineButton)`
 export const A = styled.a`
   align-items: center;
   text-decoration: none !important;
+  &:active {
+    color: ${theme.bg.secondary};
+  }
 `;
 
 export const StyledLink = styled(Link)`
