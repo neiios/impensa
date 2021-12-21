@@ -39,7 +39,7 @@ const Welcome = () => {
           </OutlineButton>
         </ContactBtn>
         <Embed
-          src="../../images/laptop.svg"
+          src="../../images/front-img.svg"
           alt="image with the laptop and user interface of Impensa"
         />
       </RowTwo>

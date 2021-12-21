@@ -91,115 +91,103 @@ const Archive = ({ expenses, currency }) => {
         <H3>Archive</H3>
         <ExcelExport expenses={expenses} />
       </HeaderContainer>
-      <TableWrapper>
-        <Table>
-          <Colgroup>
-            <Col style={{ width: "10%", minWidth: "auto" }} />
-            <Col style={{ width: "20%", minWidth: "auto" }} />
-            <Col style={{ width: "40%", minWidth: "auto" }} />
-            <Col style={{ width: "10%", minWidth: "auto" }} />
-            <Col style={{ width: "30%", minWidth: "auto" }} />
-          </Colgroup>
-          <Thead>
-            <Tr>
-              <Th>Modify</Th>
-              <Th>Amount</Th>
-              <Th>Description</Th>
-              <Th>Category</Th>
-              <Th onClick={() => sortElements()}>
-                Date <Icon className="fas fa-sort"></Icon>
-              </Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {disabled ? (
-              sortedExpenses.map((expense) => (
-                <Tr key={expense.expense_id}>
-                  <Td>
-                    <IconContainer>
-                      <Icon
-                        className="far fa-edit"
-                        onClick={() => makeExpenseEditable(expense)}
-                      />
-                    </IconContainer>
-                  </Td>
-                  <Td>
-                    {`${currency} ${parseFloat(expense.expense_amount).toFixed(
-                      2
-                    )}`}
-                  </Td>
-                  <Td>
-                    {expense.expense_description.length === 0
-                      ? "No description provided"
-                      : expense.expense_description}
-                  </Td>
-                  <Td>
-                    <ExpenseCategoryCentered>
-                      {expense.expense_category}
-                    </ExpenseCategoryCentered>
-                  </Td>
-                  <Td>
-                    {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
-                  </Td>
-                </Tr>
-              ))
-            ) : (
-              <Tr key={selectedExpense.expense_id}>
-                <Td>
+      <Table>
+        <Colgroup></Colgroup>
+        <Thead>
+          <Tr>
+            <Th>Modify</Th>
+            <Th>Amount</Th>
+            <Th>Description</Th>
+            <Th>Category</Th>
+            <Th onClick={() => sortElements()}>
+              Date <Icon className="fas fa-sort"></Icon>
+            </Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {disabled ? (
+            sortedExpenses.map((expense) => (
+              <Tr key={expense.expense_id}>
+                <Td data-label="Modify">
                   <IconContainer>
                     <Icon
-                      className="fas fa-times"
-                      onClick={() => setDisabled(!disabled)}
-                    />
-                    <Icon className="fas fa-check" onClick={onSubmitForm} />
-                    <Icon
-                      className="far fa-trash-alt"
-                      onClick={() => deleteExpense(selectedExpense.expense_id)}
+                      className="far fa-edit"
+                      onClick={() => makeExpenseEditable(expense)}
                     />
                   </IconContainer>
                 </Td>
-                <Td>
-                  <Input
-                    required
-                    type="number"
-                    name="expense_amount"
-                    min="0.01"
-                    step="0.01"
-                    value={selectedExpense.expense_amount}
-                    onChange={(e) => updateField(e)}
-                  />
+                <Td data-label="Amount">
+                  {`${currency} ${parseFloat(expense.expense_amount).toFixed(
+                    2
+                  )}`}
                 </Td>
-                <Td>
-                  <Input
-                    required
-                    name="expense_description"
-                    type="text"
-                    value={selectedExpense.expense_description}
-                    onChange={(e) => updateField(e)}
-                  />
+                <Td data-label="Description">
+                  {expense.expense_description.length === 0
+                    ? "No description provided"
+                    : expense.expense_description}
                 </Td>
-                <Td>
-                  <Input
-                    required
-                    name="expense_category"
-                    type="text"
-                    value={selectedExpense.expense_category}
-                    onChange={(e) => updateField(e)}
-                    // options={GeneralCategories}
-                    // className="basic-multi-select"
-                    // classNamePrefix="select"
-                  />
-                </Td>
-                <Td>
-                  {moment
-                    .utc(selectedExpense.expense_date)
-                    .format("MMM Do, YYYY")}
+                <Td data-label="Category">{expense.expense_category}</Td>
+                <Td data-label="Date">
+                  {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
                 </Td>
               </Tr>
-            )}
-          </Tbody>
-        </Table>
-      </TableWrapper>
+            ))
+          ) : (
+            <Tr key={selectedExpense.expense_id}>
+              <Td data-label="Modify">
+                <IconContainer>
+                  <Icon
+                    className="fas fa-times"
+                    onClick={() => setDisabled(!disabled)}
+                  />
+                  <Icon className="fas fa-check" onClick={onSubmitForm} />
+                  <Icon
+                    className="far fa-trash-alt"
+                    onClick={() => deleteExpense(selectedExpense.expense_id)}
+                  />
+                </IconContainer>
+              </Td>
+              <Td data-label="Amount">
+                <Input
+                  required
+                  type="number"
+                  name="expense_amount"
+                  min="0.01"
+                  step="0.01"
+                  value={selectedExpense.expense_amount}
+                  onChange={(e) => updateField(e)}
+                />
+              </Td>
+              <Td data-label="Description">
+                <Input
+                  required
+                  name="expense_description"
+                  type="text"
+                  value={selectedExpense.expense_description}
+                  onChange={(e) => updateField(e)}
+                />
+              </Td>
+              <Td data-label="Category">
+                <Input
+                  required
+                  name="expense_category"
+                  type="text"
+                  value={selectedExpense.expense_category}
+                  onChange={(e) => updateField(e)}
+                  // options={GeneralCategories}
+                  // className="basic-multi-select"
+                  // classNamePrefix="select"
+                />
+              </Td>
+              <Td data-label="Date">
+                {moment
+                  .utc(selectedExpense.expense_date)
+                  .format("MMM Do, YYYY")}
+              </Td>
+            </Tr>
+          )}
+        </Tbody>
+      </Table>
     </ArchiveContainer>
   );
 };

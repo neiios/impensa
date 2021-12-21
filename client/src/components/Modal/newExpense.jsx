@@ -1,8 +1,8 @@
+import React from "react";
 import styled from "styled-components";
 import NewExpense from "../NewExpenseModal/newExpense";
 import theme from "../../theme/Index";
 export const Icon = styled.i`
-  color: ${theme.bg.secondary};
   padding: 6px;
   border-radius: 8px;
   margin-left: auto;
@@ -30,9 +30,8 @@ export const Dropout = styled.div`
 `;
 
 export const HeaderWrapper = styled.div`
-  border-bottom: 1px solid ${theme.bg.secondary};
   max-width: 100%;
-  padding: 10px 10px 10px 20px;
+  padding: 10px 10px 0px 0px;
   display: flex;
   align-items: center;
 `;
@@ -47,11 +46,9 @@ export const ModalWrapper = styled.nav`
   transition: all 0.3s ease-out;
   background: white;
   z-index: 1133;
-  border-radius: 20px;
   width: 350px;
   height: fit-content;
   position: fixed;
-  margin: auto;
 `;
 
 const NewExpenseModal = (props) => {
@@ -60,7 +57,6 @@ const NewExpenseModal = (props) => {
       <Dropout onClick={props.close} />
       <ModalWrapper>
         <HeaderWrapper>
-          <Heading>New expense</Heading>
           <Icon onClick={props.close} className="fas fa-times fa-xl" />
         </HeaderWrapper>
         <NewExpense />

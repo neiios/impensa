@@ -22,6 +22,7 @@ const LinkWrapper = styled(StyledNavLink)`
   &.active {
     color: ${theme.bg.secondary};
   }
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const MenuIcon = styled.i`

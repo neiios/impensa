@@ -12,9 +12,10 @@ export const MainContainer = styled.div`
   z-index: 100;
   width: 100%;
   background-color: ${theme.bg.lightestBlue};
-  min-height: 100vh;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  height: 100%;
+  //border-top-left-radius: 20px;
+  //border-top-right-radius: 20px;
+  border-radius: 20px;
   @media ${device.laptop} {
     padding-bottom: 50px;
   }
@@ -34,7 +35,7 @@ export const DataContainer = styled.div`
   min-height: 430px;
   //  height: fit-content;
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -199,6 +200,9 @@ export const IconContainer = styled.div`
   gap: 20px;
   align-items: center;
   justify-content: center;
+  @media ${device.laptop} {
+    justify-content: flex-end;
+  }
 `;
 
 export const ArrowWestIcon = styled.i`
@@ -299,7 +303,7 @@ export const H4 = styled.h4`
 `;
 
 export const Input = styled.input`
-  max-width: 100%;
+  max-width: 50%;
   margin-top: 10px;
   padding: 11px 15px;
   background: #f9f9fa;
@@ -315,10 +319,18 @@ export const Input = styled.input`
 
 // ======================= TABLE ==========================
 
+// it's like header/title for table do it later with "Archive"
+export const TableCaption = styled.caption``;
+
 export const Table = styled.table`
   border-collapse: collapse;
-  overflow: auto;
   margin: 0;
+  margin: 0;
+  width: 100%;
+  table-layout: fixed;
+  @media ${device.laptop} {
+    border: 0;
+  }
 `;
 
 export const TableWrapper = styled.div`
@@ -332,28 +344,43 @@ export const Colgroup = styled.colgroup``;
 
 export const Col = styled.col``;
 
-export const Thead = styled.thead``;
+export const Thead = styled.thead`
+  @media ${device.laptop} {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+`;
 
 export const Tr = styled.tr`
   text-align: center;
   :hover {
     background: ${theme.bg.lightestBlue};
   }
+  @media ${device.laptop} {
+    border-bottom: 1px solid rgba(88, 101, 242, 0.1);
+    display: block;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 `;
 
 export const Th = styled.th`
-  padding: 20px;
+  padding: 10px 0 10px 0;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  text-align: left;
-  &:last-child,
-  &:first-child,
-  &:nth-last-child(2) {
-    text-align: center;
+  &:nth-child(3) {
+    text-align: left;
   }
 `;
 
@@ -362,10 +389,24 @@ export const Tbody = styled.tbody`
 `;
 
 export const Td = styled.td`
-  padding: 20px;
-  text-align: left;
-  &:last-child {
-    margin-left: auto;
-    text-align: center;
+  padding: 1em 0 1em 0;
+  text-align: center;
+  @media ${device.laptop} {
+    display: block;
+    font-size: 0.8em;
+    text-align: right !important;
+    padding: 10px;
+    &::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  &:nth-child(3) {
+    text-align: left;
   }
 `;
