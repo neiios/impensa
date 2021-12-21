@@ -32,7 +32,7 @@ export const SideSubWrapper = styled.div`
   justify-content: center;
   align-items: center;
   @media ${device.laptop} {
-    width: 100%;
+    width: 100vw;
     background-color: white;
     position: fixed;
     height: 50px;

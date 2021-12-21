@@ -3,9 +3,8 @@ import { Button } from "../../components/Button/index";
 import styled from "styled-components";
 import { ArchiveContainer, H3, H5, Input, H4 } from "./style";
 import theme from "../../theme/Index";
-import useMediaQuery from "../../hooks/useMediaQuery";
+import { device } from "../../mediaQueries";
 export const Wrapper = styled.div``;
-
 export const Container = styled.form`
   justify-content: center;
   align-items: center;
@@ -13,6 +12,13 @@ export const Container = styled.form`
   flex-direction: column;
   padding: 20px;
   gap: 10px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: none;
+  @media ${device.laptop} {
+    display: block;
+  }
 `;
 
 export const HR = styled.hr`
@@ -28,7 +34,6 @@ export const EmailContainer = styled.span`
 
 function Settings({ logout }) {
   document.title = "Dashboard - Settings";
-  const isMobile = useMediaQuery(768);
   const [nameConst, setNameConst] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -83,7 +88,10 @@ function Settings({ logout }) {
         <H5>
           Logged in as <EmailContainer>{nameConst}</EmailContainer>
         </H5>
-        {isMobile ? <Button onClick={(e) => logout(e)}>Log out</Button> : null}
+        <ButtonContainer>
+          {" "}
+          <Button onClick={(e) => logout(e)}>Log out</Button>
+        </ButtonContainer>
         <HR />
         <H4>Change password</H4>
         <Input
