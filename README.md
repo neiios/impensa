@@ -13,7 +13,6 @@
 ![License](https://img.shields.io/github/license/richard96292/impensa.svg)
 ![Forks](https://img.shields.io/github/forks/richard96292/impensa.svg)
 
-
 </div>
 
 ## Impensa is an open-source expense management app
@@ -31,8 +30,8 @@ We are an open-source alternative to products such as Mint, Simplifi or PocketGu
 It has been made with love.
 
 ## Features
-![ui-demo](./client/public/images/UI-demo.gif)
 
+![ui-demo](./client/public/images/UI-demo.gif)
 
 ## Technologies
 
@@ -69,3 +68,5 @@ We run Prettier on-commit, which means you can write code in whatever style you 
 ## Contributors👑
 
 <a href="https://github.com/tmneth"><img src="https://avatars.githubusercontent.com/u/80415416?s=400&u=f561810823dc78213f14431aae7f2bd119a4ed90&v=4" width="50" height="50" alt=""/></a> <a href="https://github.com/richard96292"><img src="https://avatars.githubusercontent.com/u/68248740?v=4" width="50" height="50" alt=""/></a>
+
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=cbbd836036cb&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
