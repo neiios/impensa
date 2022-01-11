@@ -3,6 +3,10 @@ import { PrimaryOutlineButton } from "../../components/Button/index.jsx";
 import { StyledLink } from "../../components/Button/style.jsx";
 import ItemForm from "../../components/itemForm.jsx";
 import { Wrapper, Heading, Form, TextContainer } from "./style";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
   document.title = "Impensa: Sign In";
@@ -33,8 +37,10 @@ const SignIn = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
+        toast.success("Logged in successfully");
       } else {
         setAuth(false);
+        toast.error(parseRes);
       }
     } catch (err) {
       console.error(err.message);
@@ -71,6 +77,7 @@ const SignIn = ({ setAuth }) => {
           </StyledLink>
         </TextContainer>
       </Form>
+      <ToastContainer />
     </Wrapper>
   );
 };

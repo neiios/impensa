@@ -14,6 +14,10 @@ import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select";
 import { InputLabel } from "../../components/itemForm.jsx";
 import { colourStyles } from "../../components/NewExpenseModal/newExpense";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   document.title = "Impensa: Register";
@@ -46,8 +50,10 @@ const SignUp = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
+        toast.success("Logged in successfully");
       } else {
         setAuth(false);
+        toast.error(parseRes);
       }
     } catch (err) {
       console.error(err.message);
@@ -107,6 +113,7 @@ const SignUp = ({ setAuth }) => {
           </StyledLink>
         </TextContainer>
       </Form>
+      <ToastContainer />
     </Wrapper>
   );
 };
