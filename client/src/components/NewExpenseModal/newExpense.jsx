@@ -5,6 +5,9 @@ import { Wrapper, H5, ButtonContainer, TextArea } from "./style";
 import { Button } from "../Button";
 import chroma from "chroma-js";
 import ItemForm from "../itemForm";
+
+import { toast } from "react-toastify";
+
 export const colourStyles = {
   control: (base) => ({
     ...base,
@@ -98,8 +101,10 @@ const Categories = () => {
       });
 
       console.log(response);
+      toast.success("New expense has been added successfully!");
       window.location = "/dashboard/overview";
     } catch (err) {
+      toast.error(err.message);
       console.error(err.message);
     }
   }

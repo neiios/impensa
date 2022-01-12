@@ -4,8 +4,7 @@ import { StyledLink } from "../../components/Button/style.jsx";
 import ItemForm from "../../components/itemForm.jsx";
 import { Wrapper, Heading, Form, TextContainer } from "./style";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
@@ -37,7 +36,7 @@ const SignIn = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Logged in successfully");
+        toast.success("Logged in successfully!");
       } else {
         setAuth(false);
         toast.error(parseRes);
@@ -77,7 +76,6 @@ const SignIn = ({ setAuth }) => {
           </StyledLink>
         </TextContainer>
       </Form>
-      <ToastContainer />
     </Wrapper>
   );
 };

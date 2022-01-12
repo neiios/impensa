@@ -15,8 +15,7 @@ import Select from "react-select";
 import { InputLabel } from "../../components/itemForm.jsx";
 import { colourStyles } from "../../components/NewExpenseModal/newExpense";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
@@ -50,7 +49,7 @@ const SignUp = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Logged in successfully");
+        toast.success("Registered successfully!");
       } else {
         setAuth(false);
         toast.error(parseRes);
@@ -113,7 +112,6 @@ const SignUp = ({ setAuth }) => {
           </StyledLink>
         </TextContainer>
       </Form>
-      <ToastContainer />
     </Wrapper>
   );
 };

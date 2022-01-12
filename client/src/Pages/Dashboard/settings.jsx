@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { ArchiveContainer, H3, H5, Input, H4 } from "./style";
 import theme from "../../theme/Index";
 import { device } from "../../mediaQueries";
+
+import { toast } from "react-toastify";
+
 export const Wrapper = styled.div``;
 export const Container = styled.form`
   justify-content: center;
@@ -75,9 +78,11 @@ function Settings({ logout }) {
       });
 
       console.log(response);
+      toast.success("Account details modified successfully!");
       logout(e);
     } catch (err) {
       console.error(err.message);
+      toast.error(err.message);
     }
   }
 

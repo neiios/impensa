@@ -10,6 +10,9 @@ import PageNotFound from "./Pages/PageNotFound";
 //styles
 import GlobalStyle from "./globalStyles.jsx";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -80,6 +83,7 @@ const App = () => {
           <Route component={PageNotFound}></Route>
         </Switch>
       </BrowserRouter>
+      <ToastContainer />
     </>
   );
 };
