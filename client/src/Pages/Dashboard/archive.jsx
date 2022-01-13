@@ -22,6 +22,7 @@ const Archive = ({ expenses, currency }) => {
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
   const [disabled, setDisabled] = useState(true);
   const [selectedExpense, setSelectedExpense] = useState({});
+
   async function deleteExpense(expense_id) {
     try {
       console.log(`Expense id is ${expense_id}`);
@@ -30,7 +31,13 @@ const Archive = ({ expenses, currency }) => {
         headers: { jwtToken: localStorage.token },
       });
 
-      window.location = "/dashboard/archive";
+      // window.location = "/dashboard/archive";
+      setSortedExpenses(
+        sortedExpenses.filter(
+          (sortedExpense) => sortedExpense.expense_id !== expense_id
+        )
+      );
+      setDisabled(!disabled);
       console.log(`Expense was deleted! Response is ${res}`);
     } catch (err) {
       console.error(err.message);
@@ -57,7 +64,7 @@ const Archive = ({ expenses, currency }) => {
     }
   }
 
-  async function onSubmitForm(e) {
+  async function onSubmitEditForm(e) {
     e.preventDefault();
     try {
       const body = selectedExpense;
@@ -70,8 +77,15 @@ const Archive = ({ expenses, currency }) => {
         body: JSON.stringify(body),
       });
 
+      sortedExpenses.forEach((expense) => {
+        if (expense.expense_id === selectedExpense.expense_id) {
+          expense.expense_amount = selectedExpense.expense_amount;
+          expense.expense_description = selectedExpense.expense_description;
+          expense.expense_category = selectedExpense.expense_category;
+        }
+      });
+
       setDisabled(!disabled);
-      window.location = "/dashboard/overview";
       console.log(response);
     } catch (err) {
       console.error(err.message);
@@ -140,7 +154,7 @@ const Archive = ({ expenses, currency }) => {
                     className="fas fa-times"
                     onClick={() => setDisabled(!disabled)}
                   />
-                  <Icon className="fas fa-check" onClick={onSubmitForm} />
+                  <Icon className="fas fa-check" onClick={onSubmitEditForm} />
                   <Icon
                     className="far fa-trash-alt"
                     onClick={() => deleteExpense(selectedExpense.expense_id)}
