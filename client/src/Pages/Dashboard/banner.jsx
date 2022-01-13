@@ -45,7 +45,7 @@ const Banner = ({ name }) => {
       <Heading>Hello there, {name}!</Heading>
       <SubHeading>We're almost there!</SubHeading>
       <P>
-        To start your journey with Impensa, please add <ToggleNewExpense />
+        To start your journey with Impensa, please add new expense
       </P>
     </Wrapper>
   );

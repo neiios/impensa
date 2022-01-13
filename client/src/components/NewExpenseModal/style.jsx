@@ -5,7 +5,7 @@ export const H5 = styled.h3`
   font-size: 1em;
 `;
 export const Wrapper = styled.form`
-  padding: 10px;
+  padding: 0 15px 15px 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;

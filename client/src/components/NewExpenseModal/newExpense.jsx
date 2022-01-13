@@ -139,7 +139,7 @@ const Categories = () => {
       />
       {/* this is just insane */}
       <ButtonContainer>
-        <Button>Submit</Button>
+        <Button>Add Expense</Button>
       </ButtonContainer>
     </Wrapper>
   );

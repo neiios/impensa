@@ -3,13 +3,23 @@ import styled from "styled-components";
 import NewExpense from "../NewExpenseModal/newExpense";
 import theme from "../../theme/Index";
 export const Icon = styled.i`
+background: rgba(197, 199, 197, 0.3);
+width:15px;
+height:15px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+position:absolute;
+top:-40px;
+right: 0px;
   padding: 6px;
-  border-radius: 8px;
+  border-radius: 50%;
   margin-left: auto;
   cursor: pointer;
   transition: color 1s;
   :hover {
-    background: rgba(197, 199, 197, 0.3);
+    background: rgba(197, 199, 197, 0.2);
   }
   :active {
     background: rgba(197, 199, 197, 0.7);
@@ -29,12 +39,6 @@ export const Dropout = styled.div`
   background-color: rgba(1, 1, 1, 0.6);
 `;
 
-export const HeaderWrapper = styled.div`
-  max-width: 100%;
-  padding: 10px 10px 0px 0px;
-  display: flex;
-  align-items: center;
-`;
 
 const Heading = styled.h3`
   color: ${theme.bg.secondary};
@@ -43,6 +47,7 @@ const Heading = styled.h3`
 `;
 
 export const ModalWrapper = styled.nav`
+  border-radius:15px;
   transition: all 0.3s ease-out;
   background: white;
   z-index: 1133;
@@ -56,9 +61,7 @@ const NewExpenseModal = (props) => {
     <>
       <Dropout onClick={props.close} />
       <ModalWrapper>
-        <HeaderWrapper>
-          <Icon onClick={props.close} className="fas fa-times fa-xl" />
-        </HeaderWrapper>
+      <Icon onClick={props.close} className="fas fa-times fa-xl" />
         <NewExpense />
       </ModalWrapper>
     </>
