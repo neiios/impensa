@@ -57,7 +57,7 @@ const Expenses = ({ expenses, currency }) => {
   const [counter, setCounter] = useState(currentMonth - 1);
   let incrementCounter = () => setCounter(counter + 1);
   let decrementCounter = () => setCounter(counter - 1);
-  if (counter <= 1) {
+  if (counter < 1) {
     decrementCounter = () => setCounter(months.length - 1);
   }
   if (counter >= months.length - 1) {

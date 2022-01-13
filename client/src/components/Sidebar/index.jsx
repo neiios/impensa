@@ -5,7 +5,7 @@ import theme from "../../theme/Index.js";
 import { StyledNavLink } from "../Button/style.jsx";
 import { Button } from "../Button/index.jsx";
 import { device } from "../../mediaQueries.jsx";
-const LinkWrapper = styled(StyledNavLink)`
+export const LinkWrapper = styled(StyledNavLink)`
   color: ${(props) => (props.primary ? theme.color.primary : null)};
   cursor: pointer;
   display: flex;

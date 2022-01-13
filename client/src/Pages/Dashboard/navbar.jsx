@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../../components/Logo/index.jsx";
 import theme from "../../theme/Index.js";
-
+import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense.jsx";
 export const PpContainer = styled.div``;
 
 export const PpCircle = styled.div`
@@ -61,6 +61,7 @@ export const NavMenu = styled.div`
   gap: 20px;
   list-style: none;
   display: flex;
+  align-items:center;
   margin-left: auto;
 `;
 export const NavbarContainer = styled.div`
@@ -82,6 +83,7 @@ export const Nav = ({ name }) => {
       <NavbarContainer>
         <Logo />
         <NavMenu>
+          <ToggleNewExpense/>
           <UserCreds>
             <UserName>{name}</UserName>
             <PpContainer>

@@ -5,7 +5,7 @@ export const GraphWrapper = styled.div`
   flex-direction: column;
   position: absolute;
   width: 90%;
-  height: 350px !important;
+  height: 320px !important;
   margin: 10px;
   @media ${device.mobileL} {
     width: 80%;
@@ -43,9 +43,12 @@ export const DoughnutWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px !important;
-  height: 350px !important;
+  margin-top: 20px !important;
+  height: 300px !important;
 
-  max-width: 350px;
+  width: 320px;
   margin: auto;
+  @media ${device.mobileL} {
+    width: 280px;
+  }
 `;

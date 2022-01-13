@@ -28,11 +28,11 @@ export const ExpenseItem = styled.div`
 export const DataContainer = styled.div`
   position: relative;
   height: fit-content;
-  overflow: auto;
+
   padding: 20px;
   background-color: white;
   border-radius: 20px;
-  min-height: 430px;
+  min-height: 400px;
   //  height: fit-content;
   ::-webkit-scrollbar {
     width: 5px;
@@ -50,7 +50,7 @@ export const FixedDataContainer = styled.div`
   position: relative;
   background-color: white;
   border-radius: 20px;
-  height: 430px;
+  height: 400px;
   //  height: fit-content;
   ::-webkit-scrollbar {
     width: 10px;

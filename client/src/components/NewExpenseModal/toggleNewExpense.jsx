@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button } from "../Button/index";
 import ModalService from "../Modal/modalService";
 import NewExpenseModal from "../Modal/newExpense";
+import theme from "../../theme/Index";
 export const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
@@ -11,7 +12,27 @@ export const Wrapper = styled.div`
   gap: 100px;
   padding-left: 20px;
   padding-right: 20px;
+
 `;
+
+export const Icon = styled.div`
+cursor:pointer;
+border-radius: 50%;
+width: 35px;
+height:35px;
+background: ${theme.color.lightestPrimary};
+display:flex;
+align-items:center;
+justify-content:center;
+transition: color .3s;
+&:hover {
+  color: ${theme.color.primary}
+}
+&:active {
+  color: ${theme.color.lightPrimary}
+}
+`;
+
 
 const ToggleNewExpense = () => {
   const addModal = () => {
@@ -19,9 +40,7 @@ const ToggleNewExpense = () => {
   };
   return (
     <>
-      <Button primary onClick={addModal}>
-        New expense
-      </Button>
+<Icon className="fas fa-plus" primary onClick={addModal}/>
     </>
   );
 };

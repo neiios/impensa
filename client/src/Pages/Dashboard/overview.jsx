@@ -4,6 +4,7 @@ import theme from "../../theme/Index";
 import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense";
 import LineGraph from "../../components/Charts/linegraph";
 import moment from "moment";
+import { LinkWrapper } from "../../components/Sidebar";
 // Wraps Sidebar Nav and Main-Conent
 import { DataContainer, ExpenseCategory } from "./style";
 import { device } from "../../mediaQueries";
@@ -51,11 +52,27 @@ export const Container = styled.div`
 
 export const Heading = styled.h3`
 padding:0;
-margin-top:0;
-margin-bottom:10px;
-font-size:1.5em;
+margin:0;
+font-size:1.35em;
   }
 `;
+export const ViewAllContainer = styled.div`
+display:flex;
+gap:5px;
+justify-content:center;
+align-items:center;
+margin-top:20px;
+font-size:0.9em;
+font-weight:600;
+color: ${theme.color.primary};
+&:hover {
+  color: ${theme.color.lightPrimary};
+}
+&:active {
+  color: ${theme.color.primary};
+}
+`;
+
 
 export const ExpenseContainer = ({ currency, heading, obj }) => {
   return (
@@ -87,9 +104,12 @@ const Main = ({ expenses, currency }) => {
           currency={currency}
           heading={"Recently spent"}
         />
-        <ButtonWrapper>
-          <ToggleNewExpense />
-        </ButtonWrapper>
+        <LinkWrapper to="/dashboard/archive">
+            <ViewAllContainer>
+            View All
+            <i class="fas fa-chevron-right fa-xs"></i>
+            </ViewAllContainer>
+        </LinkWrapper>
       </DataContainer>
       <DataContainer>
         <LineGraph currency={currency} expenses={expenses} />
