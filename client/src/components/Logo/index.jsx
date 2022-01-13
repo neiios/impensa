@@ -3,10 +3,6 @@ import { StyledLink } from "../Button/style.jsx";
 import theme from "../../theme/Index.js";
 import styled from "styled-components";
 import { device } from "../../mediaQueries.jsx";
-const LogoImg = styled.img`
-  width: 30px;
-`;
-
 const LogoWrapper = styled(StyledLink)`
   display: flex;
   gap: 1px;
@@ -16,19 +12,16 @@ const LogoWrapper = styled(StyledLink)`
 `;
 
 const LogoText = styled.span`
+  font-size: 1.1em;
   color: ${theme.color.primary};
-  font-weight: 550;
+  font-weight: 600;
   &:hover {
     color: ${theme.color.lightPrimary};
-  }
-  @media ${device.mobileL} {
-    visibility: hidden;
   }
 `;
 
 export const Logo = () => (
   <LogoWrapper to="/">
-    <LogoImg src="../images/Impensa-logo.svg" />
     <LogoText>Impensa</LogoText>
   </LogoWrapper>
 );

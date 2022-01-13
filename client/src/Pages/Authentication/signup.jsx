@@ -111,6 +111,9 @@ const SignUp = ({ setAuth }) => {
             Sign in
           </StyledLink>
         </TextContainer>
+        <StyledLink style={{ color: "#635BFF" }} to="/signin">
+          Forgot password?
+        </StyledLink>
       </Form>
     </Wrapper>
   );

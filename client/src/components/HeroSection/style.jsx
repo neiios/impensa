@@ -26,7 +26,7 @@ export const Container = styled.div`
 `;
 
 export const TextSection = styled.div`
-  color: ${(props) => (props.lightText ? "white" : "black")};
+  color: ${(props) => (props.lightText ? "white" : theme.color.secondary)};
   max-width: 540px;
 `;
 

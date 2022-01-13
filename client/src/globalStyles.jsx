@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 body {
-  font-family: "Basier Circle", sans-serif;
+  font-family: "Ubuntu";
   overflow-x: hidden;
   color: #404040;
   display: flex;
