@@ -69,7 +69,7 @@ export const ExpenseContainer = ({ currency, heading, obj }) => {
               {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
             </ExpenseDate>
           </ColumnContainer>
-          <ExpenseCategory>{expense.expense_category}</ExpenseCategory>
+          <ExpenseCategory>{(expense.expense_category.length > 9 ? expense.expense_category.slice(0, 9).concat('...') : expense.expense_category)}</ExpenseCategory>
         </ExpenseString>
       ))}
     </>
