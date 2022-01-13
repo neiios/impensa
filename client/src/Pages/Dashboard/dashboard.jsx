@@ -35,7 +35,7 @@ const Dashboard = ({ setAuth }) => {
 
   async function getExpenses() {
     try {
-      const res = await fetch("/dashboard/expenses", {
+      const res = await fetch("/dashboard/api/expenses", {
         method: "GET",
         headers: { jwtToken: localStorage.token },
       });

@@ -90,7 +90,7 @@ router.delete("/expense/:expense_id", authorize, async (req, res) => {
 
 // get all expenses
 
-router.get("/expenses", authorize, async (req, res) => {
+router.get("/api/expenses", authorize, async (req, res) => {
   try {
     const expenses = await pool.query(
       "SELECT * FROM expenses WHERE user_id = $1 ORDER BY expense_date USING <",
