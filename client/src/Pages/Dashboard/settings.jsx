@@ -77,9 +77,15 @@ function Settings({ logout }) {
         body: JSON.stringify(body),
       });
 
-      console.log(response);
-      toast.success("Account details modified successfully!");
-      logout(e);
+      const parseRes = await response.json();
+      console.log(parseRes);
+
+      if (parseRes === "User updated succesfully!") {
+        toast.success(parseRes);
+        logout(e);
+      } else {
+        toast.error(parseRes);
+      }
     } catch (err) {
       console.error(err.message);
       toast.error(err.message);
