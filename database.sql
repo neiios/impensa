@@ -1,4 +1,4 @@
-create .env file in root directory with contents:
+-- create .env file in root directory with contents:
 
 POSTGRES_DBUSER = postgres
 POSTGRES_DBPASS = password
