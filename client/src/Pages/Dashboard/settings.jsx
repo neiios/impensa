@@ -111,15 +111,13 @@ function Settings({ logout }) {
           type="password"
           value={userPassword}
           onChange={(e) => setUserPassword(e.target.value)}
-          required
-        />
+          />
         <Input
           position="column"
           placeholder="New Password"
           type="password"
           value={userNewPassword}
           onChange={(e) => setUserNewPassword(e.target.value)}
-          required
         />
         <HR />
         <H4>Change Name or Email</H4>
@@ -130,7 +128,6 @@ function Settings({ logout }) {
           type="text"
           value={userEmail}
           onChange={(e) => setUserEmail(e.target.value)}
-          required
         />
         <Input
           position="column"
@@ -138,7 +135,6 @@ function Settings({ logout }) {
           type="name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          required
         />
         <HR />
         <Button>Save changes</Button>
