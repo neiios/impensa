@@ -6,6 +6,7 @@ import LineGraph from "../../components/Charts/linegraph";
 import moment from "moment";
 // Wraps Sidebar Nav and Main-Conent
 import { DataContainer, ExpenseCategory } from "./style";
+import { device } from "../../mediaQueries";
 export const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,7 +43,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 0.7fr 1fr;
   gap: 20px;
-  @media screen and (max-width: 800px) {
+  @media ${device.laptop} {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }

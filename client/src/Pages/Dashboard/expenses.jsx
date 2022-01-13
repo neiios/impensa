@@ -18,6 +18,7 @@ import {
 } from "./style";
 import moment from "moment";
 import PieChart from "../../components/Charts/doughnut";
+import { device } from "../../mediaQueries";
 let currentYear = new Date().getFullYear();
 const months = [
   "January",
@@ -43,7 +44,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 0.7fr;
   gap: 20px;
-  @media screen and (max-width: 1100px) {
+  @media ${device.laptop} {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }
@@ -77,9 +78,19 @@ const Expenses = ({ expenses, currency }) => {
   return (
     <Container>
       <DataContainer>
+
         <MonthSwitcher>
+          <ArrowWestIcon
+            className="fas fa-chevron-left fa-1x"
+            onClick={decrementCounter}
+          />
           <MonthContainer>{`${months[counter]}`}</MonthContainer>
+          <ArrowEastIcon
+            className="fas fa-chevron-right fa-1x"
+            onClick={incrementCounter}
+          />
         </MonthSwitcher>
+
         {MonthIsEmpty ? (
           <NoDataBanner>
             There is no data to display here. Try changing the time span or

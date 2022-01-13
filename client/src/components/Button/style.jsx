@@ -11,8 +11,8 @@ export const StyledButton = styled.button`
   transition: background-color 0.5s;
   background-color: white;
   color: ${theme.color.primary};
-  height: ${(props) => (props.primary ? "40px" : "32px")};
-  font-size: ${(props) => (props.primary ? "1.2em" : ".95em")};
+  height: ${(props) => (props.primary ? "35px" : "32px")};
+  font-size: ${(props) => (props.primary ? "1em" : ".95em")};
   :hover {
     background: ${theme.color.primary};
     color: white;

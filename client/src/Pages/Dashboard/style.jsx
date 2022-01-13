@@ -102,13 +102,13 @@ export const DateContainer = styled.div``;
 
 export const ExpenseCategory = styled.div`
   text-align: center;
-  min-width: 150px;
+  min-width: 110px;
   margin-left: auto;
   width: fit-content;
   background: ${theme.bg.secondary};
   color: white;
   padding: 8px;
-  font-size: 1.2em;
+  font-size: 1em;
   border-radius: 10px;
   @media ${device.tablet} {
     min-width: 100px;
