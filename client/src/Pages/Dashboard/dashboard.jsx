@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
 import Settings from "./settings.jsx";
+import { toast } from "react-toastify";
 
 const Dashboard = ({ setAuth }) => {
   document.title = "Dashboard";
@@ -57,7 +58,9 @@ const Dashboard = ({ setAuth }) => {
     try {
       localStorage.removeItem("token");
       setAuth(false);
+      toast.success("Logged out successfully!");
     } catch (err) {
+      toast.error(err.message);
       console.error(err.message);
     }
   }
