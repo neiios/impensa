@@ -7,12 +7,14 @@ import Archive from "./archive";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
+import PageNotFound from "../PageNotFound";
 import Settings from "./settings.jsx";
 import { toast } from "react-toastify";
 
 const Dashboard = ({ setAuth }) => {
   document.title = "Dashboard";
 
+  const [isLoading, setIsLoading] = useState(true);
   const [name, setName] = useState("");
   const [currency, setCurrency] = useState("");
   const [expenses, setExpenses] = useState([]);
@@ -43,6 +45,7 @@ const Dashboard = ({ setAuth }) => {
       const parseData = await res.json();
 
       setExpenses(parseData);
+      setIsLoading(false);
     } catch (err) {
       console.error(err.message);
     }
@@ -69,38 +72,35 @@ const Dashboard = ({ setAuth }) => {
     //FCFBFD
     <>
       <Wrapper>
-        <BrowserRouter>
-          <Nav name={name} />
-          <Sidebar logout={logout} />
-          {expenses.length === 0 ? (
-            <Banner name={name} />
-          ) : (
-            <>
-              <MainContainer>
-                <Switch>
-                  <Route
-                    path="/"
-                    exact
-                    render={(props) => <Redirect to="/dashboard/overview" />}
-                  />
-
-                  <Route path="/dashboard/overview" exact>
-                    <Overview expenses={expenses} currency={currency} />
-                  </Route>
-                  <Route path="/dashboard/archive" exact>
-                    <Archive expenses={expenses} currency={currency} />
-                  </Route>
-                  <Route path="/dashboard/expenses" exact>
-                    <Expenses expenses={expenses} currency={currency} />
-                  </Route>
-                  <Route path="/dashboard/settings" exact>
-                    <Settings logout={logout} />
-                  </Route>
-                </Switch>
-              </MainContainer>
-            </>
-          )}
-        </BrowserRouter>
+        {isLoading === true ? null : (
+          <BrowserRouter>
+            <Nav name={name} />
+            <Sidebar logout={logout} />
+            {expenses.length === 0 ? (
+              <Banner name={name} />
+            ) : (
+              <>
+                <MainContainer>
+                  <Switch>
+                    <Route path="/dashboard/overview" exact>
+                      <Overview expenses={expenses} currency={currency} />
+                    </Route>
+                    <Route path="/dashboard/archive" exact>
+                      <Archive expenses={expenses} currency={currency} />
+                    </Route>
+                    <Route path="/dashboard/expenses" exact>
+                      <Expenses expenses={expenses} currency={currency} />
+                    </Route>
+                    <Route path="/dashboard/settings" exact>
+                      <Settings logout={logout} />
+                    </Route>
+                    <Route component={PageNotFound}></Route>
+                  </Switch>
+                </MainContainer>
+              </>
+            )}
+          </BrowserRouter>
+        )}
       </Wrapper>
     </>
   );
