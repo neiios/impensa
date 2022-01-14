@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { DoughnutWrapper } from "./style";
@@ -14,15 +14,17 @@ export const options = {
   },
 };
 
-let selectedCategories = [],
-  selectedAmounts = [];
-
 const PieChart = ({ expenses, currentMonth }) => {
-  // You should filter expenses you get here
-  // ----- code
-  // ----- code
+  const [currentMonthExpenses, setCurrentMonthExpenses] = useState(
+    expenses.filter(
+      (expense) =>
+        moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth
+    )
+  );
 
-  var expensesMerged = expenses.reduce((object, item) => {
+  console.log(currentMonth);
+
+  var expensesMerged = currentMonthExpenses.reduce((object, item) => {
     var category = item.expense_category;
     var amount = item.expense_amount;
 
@@ -33,16 +35,6 @@ const PieChart = ({ expenses, currentMonth }) => {
     object[category] += parseFloat(amount);
     return object;
   }, {});
-
-  // -------------------
-  let newobj = expenses.slice(Math.max(expenses.length - expenses, 0));
-
-  newobj.map((expense) =>
-    moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth
-      ? selectedCategories.push(expense.expense_category) &&
-        selectedAmounts.push(expense.expense_amount)
-      : null
-  );
 
   var keys = Object.keys(expensesMerged);
   var values = keys.map(function (key) {
