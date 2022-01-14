@@ -38,6 +38,10 @@ export const P = styled.p`
 const PageNotFound = () => {
   document.title = "Impensa - 404";
 
+  async function changeWindowLocation() {
+    window.location = "/";
+  }
+
   return (
     <Container>
       <Heading>Oops!</Heading>
@@ -46,7 +50,7 @@ const PageNotFound = () => {
         The page you are looking for might have been removed or is temporarily
         unavailable
       </P>
-      <Button to="/">GO TO HOMEPAGE</Button>
+      <Button onClick={changeWindowLocation}>GO TO HOMEPAGE</Button>
     </Container>
   );
 };
