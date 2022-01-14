@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../theme/Index";
-import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense";
 import LineGraph from "../../components/Charts/linegraph";
 import moment from "moment";
 import { LinkWrapper } from "../../components/Sidebar";
@@ -110,7 +109,7 @@ const Main = ({ expenses, currency }) => {
         <LinkWrapper to="/dashboard/archive">
           <ViewAllContainer>
             View All
-            <i class="fas fa-chevron-right fa-xs"></i>
+            <i className="fas fa-chevron-right fa-xs"></i>
           </ViewAllContainer>
         </LinkWrapper>
       </DataContainer>

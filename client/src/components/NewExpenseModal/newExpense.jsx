@@ -102,7 +102,8 @@ const Categories = () => {
 
       console.log(response);
       toast.success("New expense has been added successfully!");
-      window.location = "/dashboard/overview";
+      // TODO: make it so adding new expense doesnt reload a page
+      window.location.reload();
     } catch (err) {
       toast.error(err.message);
       console.error(err.message);
