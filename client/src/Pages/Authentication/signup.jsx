@@ -103,16 +103,16 @@ const SignUp = ({ setAuth }) => {
           onChange={(e) => onChange(e)}
         />
         <PrimaryOutlineButton style={{ margin: "auto" }}>
-          Create account
+          Create an account
         </PrimaryOutlineButton>
         <TextContainer>
-          Have an account?
+          Already have an account?
           <StyledLink style={{ color: "#635BFF" }} to="/signin">
             Sign in
           </StyledLink>
         </TextContainer>
-        <StyledLink style={{ color: "#635BFF" }} to="/signin">
-          Forgot password?
+        <StyledLink style={{ color: "#635BFF" }} to="/">
+          Go to homepage
         </StyledLink>
       </Form>
     </Wrapper>

@@ -2,7 +2,7 @@ import React from "react";
 import { StyledLink } from "../Button/style.jsx";
 import theme from "../../theme/Index.js";
 import styled from "styled-components";
-import { device } from "../../mediaQueries.jsx";
+
 const LogoWrapper = styled(StyledLink)`
   display: flex;
   gap: 1px;

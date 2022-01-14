@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-
 import {
   ArchiveContainer,
   H3,
   HeaderContainer,
   Icon,
-  ExpenseCategoryCentered,
   IconContainer,
   Input,
-  TableWrapper,
 } from "./style";
-import { Table, Colgroup, Col, Thead, Tr, Th, Tbody, Td } from "./style";
+import { Table, Colgroup, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
 import ExcelExport from "./excelExport";
 // Wraps Sidebar Nav and Main-Conent

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import NewExpense from "../NewExpenseModal/newExpense";
-import theme from "../../theme/Index";
+
 export const Icon = styled.i`
   background: rgba(197, 199, 197, 0.3);
   width: 15px;
@@ -37,12 +37,6 @@ export const Dropout = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(1, 1, 1, 0.4);
-`;
-
-const Heading = styled.h3`
-  color: ${theme.bg.secondary};
-  margin: 0;
-  font-size: 1.2em;
 `;
 
 export const ModalWrapper = styled.nav`

@@ -4,7 +4,7 @@ import Overview from "./overview";
 import Nav from "./navbar";
 import Banner from "./banner";
 import Archive from "./archive";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Wrapper, MainContainer } from "./style";
 import Expenses from "./expenses";
 import PageNotFound from "../PageNotFound";

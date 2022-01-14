@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "../Button/index";
 import ModalService from "../Modal/modalService";
 import NewExpenseModal from "../Modal/newExpense";
 import theme from "../../theme/Index";
