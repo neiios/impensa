@@ -14,9 +14,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // routes
-app.use("/dashboard", require("./routes/dashboard"));
+app.use("/api/dashboard", require("./routes/dashboard"));
 
-app.use("/auth", require("./routes/jwtAuth"));
+app.use("/api/auth", require("./routes/jwtAuth"));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));

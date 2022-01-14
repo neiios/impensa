@@ -36,7 +36,7 @@ const SignUp = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, name, password, currency };
-      const response = await fetch("/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

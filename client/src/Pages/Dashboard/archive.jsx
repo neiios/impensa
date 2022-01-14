@@ -23,7 +23,7 @@ const Archive = ({ expenses, currency, setExpenses }) => {
   async function deleteExpense(expense_id) {
     try {
       console.log(`Expense id is ${expense_id}`);
-      const res = await fetch(`/dashboard/expense/${expense_id}`, {
+      const res = await fetch(`/api/dashboard/expense/${expense_id}`, {
         method: "DELETE",
         headers: { jwtToken: localStorage.token },
       });
@@ -70,7 +70,7 @@ const Archive = ({ expenses, currency, setExpenses }) => {
     e.preventDefault();
     try {
       const body = selectedExpense;
-      const response = await fetch("/dashboard/expense", {
+      const response = await fetch("/api/dashboard/expense", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

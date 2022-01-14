@@ -19,7 +19,7 @@ const App = () => {
 
   const checkAuthenticated = async () => {
     try {
-      const res = await fetch("/auth/verify", {
+      const res = await fetch("/api/auth/verify", {
         method: "POST",
         headers: { jwtToken: localStorage.token },
       });
