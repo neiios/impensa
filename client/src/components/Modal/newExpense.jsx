@@ -3,16 +3,16 @@ import styled from "styled-components";
 import NewExpense from "../NewExpenseModal/newExpense";
 import theme from "../../theme/Index";
 export const Icon = styled.i`
-background: rgba(197, 199, 197, 0.3);
-width:15px;
-height:15px;
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-position:absolute;
-top:-40px;
-right: 0px;
+  background: rgba(197, 199, 197, 0.3);
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: absolute;
+  top: -40px;
+  right: 0px;
   padding: 6px;
   border-radius: 50%;
   margin-left: auto;
@@ -39,7 +39,6 @@ export const Dropout = styled.div`
   background-color: rgba(1, 1, 1, 0.6);
 `;
 
-
 const Heading = styled.h3`
   color: ${theme.bg.secondary};
   margin: 0;
@@ -47,7 +46,7 @@ const Heading = styled.h3`
 `;
 
 export const ModalWrapper = styled.nav`
-  border-radius:15px;
+  border-radius: 15px;
   transition: all 0.3s ease-out;
   background: white;
   z-index: 1133;
@@ -61,7 +60,7 @@ const NewExpenseModal = (props) => {
     <>
       <Dropout onClick={props.close} />
       <ModalWrapper>
-      <Icon onClick={props.close} className="fas fa-times fa-xl" />
+        <Icon onClick={props.close} className="fas fa-times fa-xl" />
         <NewExpense />
       </ModalWrapper>
     </>

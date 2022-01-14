@@ -12,27 +12,25 @@ export const Wrapper = styled.div`
   gap: 100px;
   padding-left: 20px;
   padding-right: 20px;
-
 `;
 
 export const Icon = styled.div`
-cursor:pointer;
-border-radius: 50%;
-width: 35px;
-height:35px;
-background: ${theme.color.lightestPrimary};
-display:flex;
-align-items:center;
-justify-content:center;
-transition: color .3s;
-&:hover {
-  color: ${theme.color.primary}
-}
-&:active {
-  color: ${theme.color.lightPrimary}
-}
+  cursor: pointer;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: ${theme.color.lightestPrimary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+  &:hover {
+    color: ${theme.color.primary};
+  }
+  &:active {
+    color: ${theme.color.lightPrimary};
+  }
 `;
-
 
 const ToggleNewExpense = () => {
   const addModal = () => {
@@ -40,7 +38,7 @@ const ToggleNewExpense = () => {
   };
   return (
     <>
-<Icon className="fas fa-plus" primary onClick={addModal}/>
+      <Icon className="fas fa-plus" primary onClick={addModal} />
     </>
   );
 };

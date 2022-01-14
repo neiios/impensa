@@ -78,7 +78,6 @@ const Expenses = ({ expenses, currency }) => {
   return (
     <Container>
       <DataContainer>
-
         <MonthSwitcher>
           <ArrowWestIcon
             className="fas fa-chevron-left fa-1x"
@@ -119,7 +118,11 @@ const Expenses = ({ expenses, currency }) => {
                       {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
                     </ExpenseDate>
                   </ColumnContainer>
-                  <ExpenseCategory>{(expense.expense_category.length > 9 ? expense.expense_category.slice(0, 9).concat('...') : expense.expense_category)}</ExpenseCategory>
+                  <ExpenseCategory>
+                    {expense.expense_category.length > 9
+                      ? expense.expense_category.slice(0, 9).concat("...")
+                      : expense.expense_category}
+                  </ExpenseCategory>
                 </ExpenseString>
               </>
             ) : null

@@ -61,7 +61,7 @@ export const NavMenu = styled.div`
   gap: 20px;
   list-style: none;
   display: flex;
-  align-items:center;
+  align-items: center;
   margin-left: auto;
 `;
 export const NavbarContainer = styled.div`
@@ -83,7 +83,7 @@ export const Nav = ({ name }) => {
       <NavbarContainer>
         <Logo />
         <NavMenu>
-          <ToggleNewExpense/>
+          <ToggleNewExpense />
           <UserCreds>
             <UserName>{name}</UserName>
             <PpContainer>

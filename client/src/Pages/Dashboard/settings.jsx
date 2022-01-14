@@ -111,7 +111,7 @@ function Settings({ logout }) {
           type="password"
           value={userPassword}
           onChange={(e) => setUserPassword(e.target.value)}
-          />
+        />
         <Input
           position="column"
           placeholder="New Password"

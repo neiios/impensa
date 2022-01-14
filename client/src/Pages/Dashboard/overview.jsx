@@ -57,22 +57,21 @@ font-size:1.35em;
   }
 `;
 export const ViewAllContainer = styled.div`
-display:flex;
-gap:5px;
-justify-content:center;
-align-items:center;
-margin-top:20px;
-font-size:0.9em;
-font-weight:600;
-color: ${theme.color.primary};
-&:hover {
-  color: ${theme.color.lightPrimary};
-}
-&:active {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
   color: ${theme.color.primary};
-}
+  &:hover {
+    color: ${theme.color.lightPrimary};
+  }
+  &:active {
+    color: ${theme.color.primary};
+  }
 `;
-
 
 export const ExpenseContainer = ({ currency, heading, obj }) => {
   return (
@@ -86,7 +85,11 @@ export const ExpenseContainer = ({ currency, heading, obj }) => {
               {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
             </ExpenseDate>
           </ColumnContainer>
-          <ExpenseCategory>{(expense.expense_category.length > 9 ? expense.expense_category.slice(0, 9).concat('...') : expense.expense_category)}</ExpenseCategory>
+          <ExpenseCategory>
+            {expense.expense_category.length > 9
+              ? expense.expense_category.slice(0, 9).concat("...")
+              : expense.expense_category}
+          </ExpenseCategory>
         </ExpenseString>
       ))}
     </>
@@ -105,10 +108,10 @@ const Main = ({ expenses, currency }) => {
           heading={"Recently spent"}
         />
         <LinkWrapper to="/dashboard/archive">
-            <ViewAllContainer>
+          <ViewAllContainer>
             View All
             <i class="fas fa-chevron-right fa-xs"></i>
-            </ViewAllContainer>
+          </ViewAllContainer>
         </LinkWrapper>
       </DataContainer>
       <DataContainer>
