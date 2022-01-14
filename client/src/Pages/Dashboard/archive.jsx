@@ -15,7 +15,7 @@ import moment from "moment";
 import ExcelExport from "./excelExport";
 // Wraps Sidebar Nav and Main-Conent
 
-const Archive = ({ expenses, currency }) => {
+const Archive = ({ expenses, currency, setExpenses }) => {
   document.title = "Dashboard - Archive";
 
   const [sort, setSort] = useState(false);
@@ -31,12 +31,17 @@ const Archive = ({ expenses, currency }) => {
         headers: { jwtToken: localStorage.token },
       });
 
-      // window.location = "/dashboard/archive";
+      // Remove deleted expense from both arrays with .filter
       setSortedExpenses(
         sortedExpenses.filter(
           (sortedExpense) => sortedExpense.expense_id !== expense_id
         )
       );
+      setExpenses(
+        expenses.filter((expense) => expense.expense_id !== expense_id)
+      );
+
+      // Disable ability to modify fields
       setDisabled(!disabled);
       console.log(`Expense was deleted! Response is ${res}`);
     } catch (err) {

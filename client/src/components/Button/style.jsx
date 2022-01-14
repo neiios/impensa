@@ -14,10 +14,10 @@ export const StyledButton = styled.button`
   height: ${(props) => (props.primary ? "40px" : "32px")};
   font-size: ${(props) => (props.primary ? "1em" : ".95em")};
   :hover {
-opacity: .8;
+    opacity: 0.8;
   }
   :active {
-    opacity: .6;
+    opacity: 0.6;
   }
 `;
 

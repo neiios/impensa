@@ -86,7 +86,11 @@ const Dashboard = ({ setAuth }) => {
                       <Overview expenses={expenses} currency={currency} />
                     </Route>
                     <Route path="/dashboard/archive" exact>
-                      <Archive expenses={expenses} currency={currency} />
+                      <Archive
+                        expenses={expenses}
+                        currency={currency}
+                        setExpenses={setExpenses}
+                      />
                     </Route>
                     <Route path="/dashboard/expenses" exact>
                       <Expenses expenses={expenses} currency={currency} />
