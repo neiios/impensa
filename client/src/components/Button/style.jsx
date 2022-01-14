@@ -6,19 +6,18 @@ export const StyledButton = styled.button`
   min-width: 97px;
   font-weight: 550;
   border: thin solid ${theme.color.primary};
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
-  transition: background-color 0.5s;
-  background-color: white;
-  color: ${theme.color.primary};
-  height: ${(props) => (props.primary ? "35px" : "32px")};
+  transition: opacity 0.5s;
+  background-color: ${theme.color.primary};
+  color: white;
+  height: ${(props) => (props.primary ? "40px" : "32px")};
   font-size: ${(props) => (props.primary ? "1em" : ".95em")};
   :hover {
-    background: ${theme.color.primary};
-    color: white;
-    background-size: 100%;
+opacity: .8;
   }
   :active {
+    opacity: .6;
   }
 `;
 

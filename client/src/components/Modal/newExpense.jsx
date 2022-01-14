@@ -36,7 +36,7 @@ export const Dropout = styled.div`
   right: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(1, 1, 1, 0.6);
+  background-color: rgba(1, 1, 1, 0.4);
 `;
 
 const Heading = styled.h3`
@@ -46,9 +46,9 @@ const Heading = styled.h3`
 `;
 
 export const ModalWrapper = styled.nav`
-  border-radius: 15px;
+  border-radius: 5px;
   transition: all 0.3s ease-out;
-  background: white;
+  background: rgb(250, 251, 255);
   z-index: 1133;
   width: 350px;
   height: fit-content;
