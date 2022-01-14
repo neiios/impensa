@@ -83,6 +83,7 @@ export const Nav = ({ name }) => {
       <NavbarContainer>
         <Logo />
         <NavMenu>
+          <p>Add new expense:</p>
           <ToggleNewExpense />
           <UserCreds>
             <UserName>{name}</UserName>
