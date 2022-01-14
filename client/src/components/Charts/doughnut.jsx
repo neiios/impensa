@@ -15,14 +15,12 @@ export const options = {
 };
 
 const PieChart = ({ expenses, currentMonth }) => {
-  const [currentMonthExpenses, setCurrentMonthExpenses] = useState(
-    expenses.filter(
+ 
+  let currentMonthExpenses = expenses.filter(
       (expense) =>
         moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth
     )
-  );
 
-  console.log(currentMonth);
 
   var expensesMerged = currentMonthExpenses.reduce((object, item) => {
     var category = item.expense_category;
