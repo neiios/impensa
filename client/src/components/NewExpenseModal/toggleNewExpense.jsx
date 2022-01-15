@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Icon = styled.div`
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   border-radius: 50%;
   width: 35px;

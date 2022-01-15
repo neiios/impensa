@@ -103,7 +103,7 @@ export const Nav = ({ name, expenses }) => {
           {expenses.length === 0 ? (
             <>
               <Span>Add new expense</Span>
-              <Icon className="fas fa-arrow-right fa-xl"></Icon>{" "}
+              <Icon className="fas fa-arrow-right fa-xl" />{" "}
             </>
           ) : null}
           <ToggleNewExpense />
