@@ -67,8 +67,6 @@ export const MenuEl = styled.div`
   :active {
     color: ${theme.bg.semiBlue};
   }
-  @media ${device.laptop} {
-  }
 `;
 
 export const IconRow = styled.div`
