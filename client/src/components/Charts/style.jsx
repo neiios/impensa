@@ -49,6 +49,6 @@ export const DoughnutWrapper = styled.div`
   width: 320px;
   margin: auto;
   @media ${device.mobileL} {
-    width: 280px;
+    width: 200px;
   }
 `;

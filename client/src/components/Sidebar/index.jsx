@@ -23,6 +23,16 @@ export const LinkWrapper = styled(StyledNavLink)`
     color: ${theme.bg.secondary};
   }
   -webkit-tap-highlight-color: transparent;
+
+  @media ${device.laptop} {
+    color: rgb(209, 205, 205);
+    &.active {
+      color: white;
+    }
+    &:hover {
+      color: white;
+    }
+  }
 `;
 
 const MenuIcon = styled.i`

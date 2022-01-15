@@ -214,8 +214,8 @@ export const ArrowWestIcon = styled.i`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   transition: background-color 0.5s;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -240,8 +240,8 @@ export const ArrowEastIcon = styled.i`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   transition: background-color 0.5s;
   -webkit-user-select: none;
   -khtml-user-select: none;

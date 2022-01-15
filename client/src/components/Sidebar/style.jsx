@@ -32,17 +32,18 @@ export const SideSubWrapper = styled.div`
   justify-content: center;
   align-items: center;
   @media ${device.laptop} {
-    width: 100vw;
-    background-color: white;
+    background-color: RGBA(71, 69, 84, 0.8);
+    border-radius: 50px;
     position: fixed;
     height: 50px;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 25px;
+    left: 50px;
+    right: 50px;
     gap: 0;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: auto;
   }
 `;
 export const StyledLi = styled.a``;
@@ -69,10 +70,11 @@ export const MenuEl = styled.div`
   @media ${device.laptop} {
     margin: auto;
     gap: 0;
-    width: 50px;
+    width: 30px;
+    height: 30px;
     justify-content: center;
     :hover {
-      background-color: ${theme.bg.lightestBlue};
+      background-color: RGBA(71, 69, 84, 0.2);
     }
   }
 `;
