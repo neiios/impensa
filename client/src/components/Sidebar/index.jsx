@@ -25,12 +25,19 @@ export const LinkWrapper = styled(StyledNavLink)`
   -webkit-tap-highlight-color: transparent;
 
   @media ${device.laptop} {
+    border-radius: 100%;
+    margin: auto;
+    gap: 0;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
     color: rgb(209, 205, 205);
     &.active {
       color: white;
     }
     &:hover {
       color: white;
+      background-color: RGBA(71, 69, 84, 0.2);
     }
   }
 `;

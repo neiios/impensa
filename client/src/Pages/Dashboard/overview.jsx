@@ -3,10 +3,30 @@ import styled from "styled-components";
 import theme from "../../theme/Index";
 import LineGraph from "../../components/Charts/linegraph";
 import moment from "moment";
-import { LinkWrapper } from "../../components/Sidebar";
+import { StyledNavLink } from "../../components/Button/style";
 // Wraps Sidebar Nav and Main-Conent
 import { DataContainer, ExpenseCategory } from "./style";
 import { device } from "../../mediaQueries";
+
+export const LinkWrapper = styled(StyledNavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${(props) => (props.primary ? theme.color.primary : null)};
+  transition: color 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: ${theme.color.primary};
+  &:hover {
+    color: ${theme.color.lightPrimary};
+  }
+  &:active {
+    color: ${theme.color.primary};
+  }
+  gap: 5px;
+`;
+
 export const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -56,20 +76,9 @@ font-size:1.35em;
   }
 `;
 export const ViewAllContainer = styled.div`
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
   margin-top: 20px;
-  font-size: 0.9em;
-  font-weight: 600;
-  color: ${theme.color.primary};
-  &:hover {
-    color: ${theme.color.lightPrimary};
-  }
-  &:active {
-    color: ${theme.color.primary};
-  }
+  width: fit-content;
 `;
 
 export const ExpenseContainer = ({ currency, heading, obj }) => {
@@ -106,12 +115,12 @@ const Main = ({ expenses, currency }) => {
           currency={currency}
           heading={"Recently spent"}
         />
-        <LinkWrapper to="/dashboard/archive">
-          <ViewAllContainer>
+        <ViewAllContainer>
+          <LinkWrapper to="/dashboard/archive">
             View All
             <i className="fas fa-chevron-right fa-xs"></i>
-          </ViewAllContainer>
-        </LinkWrapper>
+          </LinkWrapper>
+        </ViewAllContainer>
       </DataContainer>
       <DataContainer>
         <LineGraph currency={currency} expenses={expenses} />

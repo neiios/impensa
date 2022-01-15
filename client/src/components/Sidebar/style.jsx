@@ -68,14 +68,6 @@ export const MenuEl = styled.div`
     color: ${theme.bg.semiBlue};
   }
   @media ${device.laptop} {
-    margin: auto;
-    gap: 0;
-    width: 30px;
-    height: 30px;
-    justify-content: center;
-    :hover {
-      background-color: RGBA(71, 69, 84, 0.2);
-    }
   }
 `;
 
