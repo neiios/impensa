@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
 
 export const Heading = styled.h1`
   font-weight: 550;
-  font-size: 3em;
+  font-size: 2.5em;
   margin: 10px;
 `;
 

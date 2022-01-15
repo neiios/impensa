@@ -1,8 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Logo from "../../components/Logo/index.jsx";
 import theme from "../../theme/Index.js";
 import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense.jsx";
+import { device } from "../../mediaQueries.jsx";
 export const PpContainer = styled.div``;
 
 export const PpCircle = styled.div`
@@ -77,13 +78,34 @@ export const UserName = styled.span`
   font-size: 0.7em;
 `;
 
-export const Nav = ({ name }) => {
+const animationName = keyframes`
+  0% { transform: translateX(0px);}
+  50% { transform: translateX(8px);}
+  100% {transform: translateX(0px); }
+`;
+export const Span = styled.span`
+  font-size: 0.8em;
+  @media ${device.mobileL} {
+    display: none;
+  }
+`;
+
+export const Icon = styled.i`
+  animation: ${animationName} 1s 0s infinite;
+`;
+
+export const Nav = ({ name, expenses }) => {
   return (
     <NavbarWrapper>
       <NavbarContainer>
         <Logo />
         <NavMenu>
-          <p>Add new expense:</p>
+          {expenses.length === 0 ? (
+            <>
+              <Span>Add new expense</Span>
+              <Icon className="fas fa-arrow-right fa-xl"></Icon>{" "}
+            </>
+          ) : null}
           <ToggleNewExpense />
           <UserCreds>
             <UserName>{name}</UserName>

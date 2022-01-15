@@ -74,7 +74,7 @@ const Dashboard = ({ setAuth }) => {
       <Wrapper>
         {isLoading === true ? null : (
           <BrowserRouter>
-            <Nav name={name} />
+            <Nav expenses={expenses} name={name} />
             <Sidebar logout={logout} />
             {expenses.length === 0 ? (
               <Banner name={name} />
