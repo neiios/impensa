@@ -52,3 +52,10 @@ export const DoughnutWrapper = styled.div`
     width: 200px;
   }
 `;
+
+// if month doesnt have expenses - show this message
+export const NoDataWarning = styled.span`
+  text-align: center;
+  font-size: 1.2em;
+  position: absolute;
+`;

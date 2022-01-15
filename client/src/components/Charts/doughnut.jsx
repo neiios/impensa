@@ -3,6 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { DoughnutWrapper } from "./style";
 import moment from "moment";
+import { NoDataWarning } from "./style.jsx";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -59,7 +60,14 @@ const PieChart = ({ expenses, currentMonth }) => {
 
   return (
     <DoughnutWrapper>
-      <Doughnut data={data} options={options} />
+      {values.length === 0 ? (
+        <NoDataWarning>
+          There is no data to display here. Try changing the time span or
+          accounts.
+        </NoDataWarning>
+      ) : (
+        <Doughnut data={data} options={options} />
+      )}
     </DoughnutWrapper>
   );
 };

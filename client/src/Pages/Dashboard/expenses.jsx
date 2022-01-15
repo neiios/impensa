@@ -7,7 +7,6 @@ import {
   ExpenseDate,
 } from "./overview";
 import {
-  NoDataBanner,
   MonthSwitcher,
   DataContainer,
   MonthContainer,
@@ -18,7 +17,6 @@ import {
 } from "./style";
 import moment from "moment";
 import PieChart from "../../components/Charts/doughnut";
-import { device } from "../../mediaQueries";
 let currentYear = new Date().getFullYear();
 const months = [
   "January",
@@ -42,12 +40,8 @@ for (let i = 0; i < months.length; i++) {
 export const Container = styled.div`
   padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 0.7fr;
+  grid-template-columns: repeat(auto-fill, minmax(1fr, auto));
   gap: 20px;
-  @media ${device.laptop} {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
 `;
 
 let currentMonth = new Date().toLocaleString("en-US", { month: "2-digit" });
@@ -63,18 +57,12 @@ const Expenses = ({ expenses, currency }) => {
   if (counter >= months.length - 1) {
     incrementCounter = () => setCounter(0);
   }
-  /*
-  let newobj = expenses.slice(Math.max(expenses.length - expenses.length, 0));
-  newobj.map((expense) =>
-    moment.utc(expense.expense_date).format("MM/DD/Y") === currentUserDate
-      ? i++
-      : i
+
+  let currentMonthExpenses = expenses.filter(
+    (expense) =>
+      moment.utc(expense.expense_date).format("MMMM YYYY") === months[counter]
   );
 
-  */
-  let i = expenses.length;
-  let MonthIsEmpty = false;
-  const newobj = expenses.slice(Math.max(expenses.length - i, 0));
   return (
     <Container>
       <DataContainer>
@@ -89,26 +77,17 @@ const Expenses = ({ expenses, currency }) => {
             onClick={incrementCounter}
           />
         </MonthSwitcher>
-
-        {MonthIsEmpty ? (
-          <NoDataBanner>
-            There is no data to display here. Try changing the time span or
-            accounts.
-          </NoDataBanner>
-        ) : (
-          <PieChart
-            currency={currency}
-            currentMonth={months[counter]}
-            expenses={expenses}
-          />
-        )}
+        <PieChart
+          currency={currency}
+          currentMonth={months[counter]}
+          expenses={expenses}
+        />
       </DataContainer>
-      <FixedDataContainer>
-        <>
-          <Heading>{`${months[counter]} expenses`}</Heading>
-          {newobj.map((expense) =>
-            moment.utc(expense.expense_date).format("MMMM YYYY") ===
-            months[counter] ? (
+      {currentMonthExpenses.length === 0 ? null : (
+        <FixedDataContainer>
+          <>
+            <Heading>{`${months[counter]} expenses`}</Heading>
+            {currentMonthExpenses.map((expense) => (
               <>
                 <ExpenseString>
                   <ColumnContainer>
@@ -125,28 +104,12 @@ const Expenses = ({ expenses, currency }) => {
                   </ExpenseCategory>
                 </ExpenseString>
               </>
-            ) : null
-          )}
-        </>
-      </FixedDataContainer>
+            ))}
+          </>
+        </FixedDataContainer>
+      )}
     </Container>
   );
 };
 
 export default Expenses;
-
-//[expenses[0]]
-
-/*
-        <MonthSwitcher>
-          <ArrowWestIcon
-            className="fas fa-chevron-left fa-1x"
-            onClick={decrementCounter}
-          />
-          <MonthContainer>{`${months[counter]}`}</MonthContainer>
-          <ArrowEastIcon
-            className="fas fa-chevron-right fa-1x"
-            onClick={incrementCounter}
-          />
-        </MonthSwitcher>
-*/

@@ -12,7 +12,7 @@ export const MainContainer = styled.div`
   z-index: 100;
   width: 100%;
   background-color: ${theme.bg.lightestBlue};
-  height: 100%;
+  height: fit-content;
   //border-top-left-radius: 20px;
   //border-top-right-radius: 20px;
   border-radius: 20px;
@@ -286,8 +286,6 @@ export const MonthSwitcher = styled.div`
     width: 200px;
   }
 `;
-
-export const NoDataBanner = styled.div``;
 
 export const H5 = styled.h5`
   margin: 0;
