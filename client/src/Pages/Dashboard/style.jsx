@@ -3,6 +3,7 @@ import theme from "../../theme/Index";
 import { device } from "../../mediaQueries";
 export const Wrapper = styled.div`
   display: flex;
+  margin-bottom: 85px;
 `;
 export const MainContainer = styled.div`
   z-index: -1;
