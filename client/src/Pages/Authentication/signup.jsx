@@ -111,9 +111,6 @@ const SignUp = ({ setAuth }) => {
             Sign in
           </StyledLink>
         </TextContainer>
-        <StyledLink style={{ color: "#635BFF" }} to="/">
-          Go to homepage
-        </StyledLink>
       </Form>
     </Wrapper>
   );

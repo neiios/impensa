@@ -75,15 +75,6 @@ const SignIn = ({ setAuth }) => {
             Sign up
           </StyledLink>
         </TextContainer>
-        <StyledLink
-          style={{ color: "#635BFF" }}
-          href="https://github.com/richard96292/impensa/discussions"
-        >
-          Forgot password
-        </StyledLink>
-        <StyledLink style={{ color: "#635BFF" }} to="/">
-          Go to homepage
-        </StyledLink>
       </Form>
     </Wrapper>
   );
