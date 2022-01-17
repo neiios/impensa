@@ -16,9 +16,6 @@ export const MainContainer = styled.div`
   //border-top-left-radius: 20px;
   //border-top-right-radius: 20px;
   border-radius: 20px;
-  @media ${device.laptop} {
-    padding-bottom: 50px;
-  }
 `;
 
 export const ExpenseItem = styled.div`
