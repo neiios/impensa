@@ -19,20 +19,18 @@ export const Wrapper = styled.div`
 
 export const Form = styled.form`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: fit-content;
-  width: 370px;
-  max-width: 100%;
   border-radius: 20px;
   margin: 0 auto;
-  max-width: 414px;
   padding: 1.3rem;
   display: flex;
   flex-direction: column;
   position: relative;
   justify-content: center;
   gap: 30px;
+  min-width: 350px;
+  width: fit-content;
   @media ${device.mobileL} {
-    width: 100%;
+    min-width: 0;
   }
 `;
 
