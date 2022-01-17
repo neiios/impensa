@@ -12,7 +12,9 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin-top: 30px;
+  gap: 25px;
 `;
 
 export const Form = styled.form`
@@ -47,15 +49,4 @@ export const SelectContainer = styled.div`
   gap: 5px;
   display: flex;
   flex-direction: column;
-`;
-
-export const InputRow = styled.div`
-  display: flex;
-  align-items: flex-end;
-  gap: 5px;
-  @media ${device.tablet} {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-  }
 `;

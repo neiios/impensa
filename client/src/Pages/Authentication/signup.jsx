@@ -14,9 +14,8 @@ import { currency_list } from "../../data/currency-list.js";
 import Select from "react-select";
 import { InputLabel } from "../../components/itemForm.jsx";
 import { colourStyles } from "../../components/NewExpenseModal/newExpense";
-
 import { toast } from "react-toastify";
-
+import { LogoImg } from "../../components/Logo";
 // add location to identify currency
 const SignUp = ({ setAuth }) => {
   document.title = "Impensa: Register";
@@ -61,30 +60,29 @@ const SignUp = ({ setAuth }) => {
 
   return (
     <Wrapper>
+      <LogoImg />
+      <Heading>Create your Impensa account</Heading>
       <Form onSubmit={onSubmitForm}>
-        <Heading>Create your Impensa account</Heading>
-        <InputRow>
-          <ItemForm
-            maxLength="12"
-            label="Name"
-            position="column"
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => onChange(e)}
+        <ItemForm
+          maxLength="12"
+          label="Name"
+          position="column"
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => onChange(e)}
+        />
+        <SelectContainer>
+          <InputLabel>Currency</InputLabel>
+          <Select
+            styles={colourStyles}
+            onChange={(e) => setCurrency(e.value)}
+            options={currency_list}
+            className="basic-multi-select"
+            classNamePrefix="select"
+            required
           />
-          <SelectContainer>
-            <InputLabel>Currency</InputLabel>
-            <Select
-              styles={colourStyles}
-              onChange={(e) => setCurrency(e.value)}
-              options={currency_list}
-              className="basic-multi-select"
-              classNamePrefix="select"
-              required
-            />
-          </SelectContainer>
-        </InputRow>
+        </SelectContainer>
         <ItemForm
           maxLength="25"
           position="column"

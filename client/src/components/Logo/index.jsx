@@ -11,7 +11,7 @@ const LogoWrapper = styled(StyledLink)`
   transition: color 0.3s;
 `;
 
-const LogoText = styled.span`
+const Text = styled.span`
   font-size: 1.1em;
   color: ${theme.color.primary};
   font-weight: 600;
@@ -20,10 +20,18 @@ const LogoText = styled.span`
   }
 `;
 
-export const Logo = () => (
+const Logo = styled.img`
+  width: 70px;
+`;
+
+export const LogoText = () => (
   <LogoWrapper to="/">
-    <LogoText>Impensa</LogoText>
+    <Text>Impensa</Text>
   </LogoWrapper>
 );
 
-export default Logo;
+export const LogoImg = () => (
+  <LogoWrapper to="/">
+    <Logo src="./../images/logo.svg" />
+  </LogoWrapper>
+);

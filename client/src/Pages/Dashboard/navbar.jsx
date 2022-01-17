@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import Logo from "../../components/Logo/index.jsx";
+import { LogoText } from "../../components/Logo/index.jsx";
 import theme from "../../theme/Index.js";
 import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense.jsx";
 import { device } from "../../mediaQueries.jsx";
@@ -98,7 +98,7 @@ export const Nav = ({ name, expenses }) => {
   return (
     <NavbarWrapper>
       <NavbarContainer>
-        <Logo />
+        <LogoText />
         <NavMenu>
           {expenses.length === 0 ? (
             <>

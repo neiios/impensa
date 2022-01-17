@@ -3,9 +3,8 @@ import { PrimaryOutlineButton } from "../../components/Button/index.jsx";
 import { StyledLink } from "../../components/Button/style.jsx";
 import ItemForm from "../../components/itemForm.jsx";
 import { Wrapper, Heading, Form, TextContainer } from "./style";
-
 import { toast } from "react-toastify";
-
+import { LogoImg } from "../../components/Logo/index.jsx";
 // add location to identify currency
 const SignIn = ({ setAuth }) => {
   document.title = "Impensa: Sign In";
@@ -48,8 +47,9 @@ const SignIn = ({ setAuth }) => {
 
   return (
     <Wrapper>
+      <LogoImg />
+      <Heading>Sign in to Impensa</Heading>
       <Form onSubmit={onSubmitForm}>
-        <Heading>Sign in to your Impensa account</Heading>
         <ItemForm
           position="column"
           label="Email"
