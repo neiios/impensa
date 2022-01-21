@@ -32,6 +32,6 @@ export const LogoText = () => (
 
 export const LogoImg = () => (
   <LogoWrapper to="/">
-    <Logo src="./../images/logo.svg" />
+    <Logo src="./../assets/images/logo.svg" />
   </LogoWrapper>
 );
