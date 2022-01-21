@@ -1,12 +1,14 @@
 <p align="center">
   <a href="https://impensa.studio/">
-  <img src="./client/public/images/media2.png" />
+  <img src="./client/public/assets/images/logo-readme.svg" />
     </a>
 </p>
 
 <div align="center">
 
 ### Simple, effective expense management app.
+
+<br/>
 
 [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/impensa/impensa)
 ![Stars](https://img.shields.io/github/stars/richard96292/impensa.svg)
@@ -49,7 +51,7 @@ Let's talk about the architecture of this mono repo:
 
 ```sh
 Impensa/
-├── .github       # Files used by github
+├── .github       # Files used by GitHub
 ├── client        # React frontend
 ├── middleware    # Authorization middleware
 ├── routes        # Dashboard and authentication routes
@@ -68,5 +70,3 @@ We run Prettier on-commit, which means you can write code in whatever style you 
 ## Contributors👑
 
 <a href="https://github.com/tmneth"><img src="https://avatars.githubusercontent.com/u/80415416?s=400&u=f561810823dc78213f14431aae7f2bd119a4ed90&v=4" width="50" height="50" alt=""/></a> <a href="https://github.com/richard96292"><img src="https://avatars.githubusercontent.com/u/68248740?v=4" width="50" height="50" alt=""/></a>
-
-[![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=cbbd836036cb&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
