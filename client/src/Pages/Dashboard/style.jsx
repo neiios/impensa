@@ -3,7 +3,7 @@ import theme from "../../theme/Index";
 import { device } from "../../mediaQueries";
 export const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 85px;
+  margin-bottom: 95px;
 `;
 export const MainContainer = styled.div`
   z-index: -1;
@@ -225,7 +225,7 @@ export const ArrowWestIcon = styled.i`
     background-color: ${theme.bg.lightestBlue};
   }
   &:active {
-    background-color: rgba(88, 101, 242, 0.2);
+    background-color: rgba(88, 101, 242, 0.1);
   }
 `;
 
@@ -251,7 +251,7 @@ export const ArrowEastIcon = styled.i`
     background-color: ${theme.bg.lightestBlue};
   }
   &:active {
-    background-color: rgba(88, 101, 242, 0.2);
+    background-color: rgba(88, 101, 242, 0.1);
   }
 `;
 

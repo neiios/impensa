@@ -79,6 +79,8 @@ export const GeneralCategories = [
   { value: "Groceries", label: "Groceries" },
   { value: "Accomodation", label: "Accomodation" },
   { value: "Hairdresser", label: "Hairdresser" },
+  { value: "Internet", label: "Internet" },
+  { value: "Cinema", label: "Cinema" },
 ];
 
 const Categories = () => {

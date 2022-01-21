@@ -26,7 +26,7 @@ export const ButtonContainer = styled.div`
 
 export const HR = styled.hr`
   background: #faeaea;
-  width: 20%;
+  width: 200px;
   border: none;
   height: 1px;
 `;
