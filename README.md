@@ -33,7 +33,7 @@ It has been made with love.
 
 ## Features
 
-![ui-demo](./client/public/images/UI-demo.gif)
+![ui-demo](./client/public/assets/images/UI-demo.gif)
 
 ## Technologies
 
