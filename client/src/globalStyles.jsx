@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 body {
-  font-family: "Ubuntu";
+  font-family: sans-serif;
   overflow-x: hidden;
   color: #404040;
   display: flex;
@@ -11,7 +11,7 @@ body {
   padding: 0;
 }
 h2 {
-  font-size: 1.5rem
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
