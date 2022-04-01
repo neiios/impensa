@@ -4,7 +4,7 @@
   "description": "Backend",
   "main": "index.js",
   "engines": {
-    "node": "16.13.1"
+    "node": ">=16"
   },
   "scripts": {
     "build": "cd client && npm install && npm run build",
