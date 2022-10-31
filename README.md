@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://impensa.studio/">
+  <a href="https://impensa.segf.lt/">
   <img src="./client/public/assets/images/logo-readme.svg" />
     </a>
 </p>
