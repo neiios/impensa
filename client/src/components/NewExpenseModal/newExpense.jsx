@@ -102,7 +102,6 @@ const Categories = () => {
         body: JSON.stringify(body),
       });
 
-      console.log(response);
       toast.success("New expense has been added successfully!");
       // TODO: make it so adding new expense doesnt reload a page
       window.location.reload();

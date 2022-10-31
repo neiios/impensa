@@ -22,7 +22,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
 
   async function deleteExpense(expense_id) {
     try {
-      console.log(`Expense id is ${expense_id}`);
       const res = await fetch(`/api/dashboard/expense/${expense_id}`, {
         method: "DELETE",
         headers: { jwtToken: localStorage.token },
@@ -40,7 +39,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
 
       // Disable ability to modify fields
       setDisabled(!disabled);
-      console.log(`Expense was deleted! Response is ${res}`);
     } catch (err) {
       console.error(err.message);
     }
@@ -88,7 +86,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
       });
 
       setDisabled(!disabled);
-      console.log(response);
     } catch (err) {
       console.error(err.message);
     }

@@ -12,7 +12,6 @@ router.get("/", authorize, async (req, res) => {
       [req.user.id]
     );
 
-    console.log(user.rows);
     res.json(user.rows);
   } catch (err) {
     console.error(err.message);
@@ -24,8 +23,6 @@ router.get("/", authorize, async (req, res) => {
 
 router.post("/expense", authorize, async (req, res) => {
   try {
-    console.log(req.body);
-
     const { amount, description, category } = req.body;
 
     const newExpense = await pool.query(
@@ -33,7 +30,6 @@ router.post("/expense", authorize, async (req, res) => {
       [req.user.id, amount, description, category]
     );
 
-    console.log(newExpense.rows[0]);
     res.json(newExpense.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -44,7 +40,6 @@ router.post("/expense", authorize, async (req, res) => {
 
 router.put("/expense", authorize, async (req, res) => {
   try {
-    console.log(req.body);
     const {
       expense_id,
       expense_amount,
@@ -73,15 +68,12 @@ router.put("/expense", authorize, async (req, res) => {
 
 router.delete("/expense/:expense_id", authorize, async (req, res) => {
   try {
-    console.log(req.body);
     const { expense_id } = req.params;
     const deleteExpense = await pool.query(
       "DELETE FROM expenses WHERE expense_id = $1 AND user_id = $2 RETURNING *",
       [expense_id, req.user.id]
     );
 
-    console.log(`req.user.id = ${req.user.id}`);
-    console.log(`deleteExpense = ${deleteExpense}`);
     res.json(`Expense ${expense_id} was deleted`);
   } catch (err) {
     console.error(err.message);
@@ -120,7 +112,6 @@ router.get("/user", authorize, async (req, res) => {
 // update user info
 router.put("/user", authorize, async (req, res) => {
   try {
-    console.log(req.body);
     const { userName, userEmail, userPassword, userNewPassword } = req.body;
 
     const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [
