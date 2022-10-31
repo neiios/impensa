@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/richard96292/impensa/issues"
   },
-  "homepage": "https://impensa.studio",
+  "homepage": "https://impensa.segf.lt",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
