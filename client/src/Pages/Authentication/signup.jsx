@@ -51,7 +51,7 @@ const SignUp = ({ setAuth }) => {
         toast.success("Registered successfully!");
       } else {
         setAuth(false);
-        toast.error(parseRes);
+        toast.error("User already exists!");
       }
     } catch (err) {
       console.error(err.message);
