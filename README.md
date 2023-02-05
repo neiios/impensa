@@ -39,10 +39,10 @@ It has been made with love.
 
 Let's talk about the architecture of this mono repo:
 
-- **Full-stack JavaScript**: We use Node.js to power our servers, and React to power our frontend. Almost all of the code you'll touch in this codebase will be JavaScript.
+- **Frontend Javascript and Java for backend**: Springboot to power servers, and React to power frontend.
 - Here is a list of all the big technologies we use:
   - **PostgreSQL**: Object-relational database
-  - **Express JS**: Our backend framework of choice
+  - **Springboot**: One of the best backend frameworks
   - **React**: Frontend framework
   - **React Chart.js 2**: JavaScript library for Data Visualization
   - **DigitalOcean**: To deploy React app
@@ -53,9 +53,7 @@ Let's talk about the architecture of this mono repo:
 Impensa/
 ├── .github       # Files used by GitHub
 ├── client        # React frontend
-├── middleware    # Authorization middleware
-├── routes        # Dashboard and authentication routes
-├── utils         # JWT token generation
+├── backend       # Authorization, jwt token generation and database
 ```
 
 <details>
