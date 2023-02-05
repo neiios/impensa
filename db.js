@@ -10,7 +10,6 @@ const config = {
   port: process.env.POSTGRES_DBPORT,
 };
 
-console.log(config);
 const pool = new Pool(config);
 
 module.exports = pool;

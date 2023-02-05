@@ -78,7 +78,6 @@ function Settings({ logout }) {
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
 
       if (parseRes === "User updated succesfully!") {
         toast.success(parseRes);

@@ -29,7 +29,7 @@ export const NameFirstLetter = styled.div`
 `;
 
 export const UserCreds = styled.div`
-  color: ##404040;
+  color: #404040;
   display: flex;
   gap: 5px;
   justify-content: center;

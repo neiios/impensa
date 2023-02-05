@@ -38,7 +38,7 @@ const SignIn = ({ setAuth }) => {
         toast.success("Logged in successfully!");
       } else {
         setAuth(false);
-        toast.error(parseRes);
+        toast.error("Invalid credentials.");
       }
     } catch (err) {
       console.error(err.message);
