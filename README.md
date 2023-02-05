@@ -51,9 +51,9 @@ Let's talk about the architecture of this mono repo:
 
 ```sh
 Impensa/
-├── .github       # Files used by GitHub
-├── client        # React frontend
-├── backend       # Authorization, jwt token generation and database
+├── .github                   # Files used by GitHub
+├── client                    # React frontend
+├── expense-management        # Springboot backend
 ```
 
 <details>
