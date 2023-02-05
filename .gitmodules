@@ -1,0 +1,3 @@
+[submodule "expense-management-api"]
+	path = expense-management-api
+	url = https://github.com/tomas6446/expense-management-api
