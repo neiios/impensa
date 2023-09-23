@@ -1,6 +1,6 @@
-client/build
-client/node_modules
-node_modules
 .env
-docs
+node_modules
+server/database-tutorial.sql
 docker
+docs
+build

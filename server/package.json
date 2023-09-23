@@ -7,27 +7,11 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "build": "cd client && npm install && npm run build",
+    "build": "cd ../client && npm install && npm run build",
     "start": "node ./index.js",
     "dev": "npx nodemon ./index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/richard96292/impensa.git"
-  },
-  "keywords": [
-    "impensa",
-    "backend"
-  ],
-  "authors": [
-    "Igor",
-    "Maksim"
-  ],
   "license": "AGPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/richard96292/impensa/issues"
-  },
-  "homepage": "https://impensa.segf.lt",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",

@@ -1,14 +1,32 @@
 {
-  "homepage": "https://impensa.segf.lt",
   "name": "impensa-frontend",
   "version": "1.4.8",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/richard96292/impensa.git"
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "start": "prettier --write \"src/**/*.{js,jsx,json}\" && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
-  "bugs": {
-    "url": "https://github.com/richard96292/impensa/issues"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version"
+    ]
+  },
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -34,46 +52,7 @@
     "react-toastify": "^8.1.0",
     "styled-components": "^5.3.3"
   },
-  "scripts": {
-    "predeploy": "npm run build",
-    "start": "prettier --write \"src/**/*.{js,jsx,json}\" && react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.{js,jsx}\""
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version"
-    ]
-  },
-  "main": "index.js",
-  "keywords": [
-    "impensa",
-    "backend",
-    "baking",
-    "nba"
-  ],
-  "authors": [
-    "Igor",
-    "Maksim"
-  ],
-  "license": "AGPL-3.0-or-later",
   "devDependencies": {
     "prettier": "^2.5.0"
-  },
-  "description": "Frontend",
-  "proxy": "http://localhost:5000"
+  }
 }

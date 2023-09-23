@@ -1,7 +1,5 @@
-# Example Docker Compose File
-version: "3"
-
 # dont forget to fill in .env file
+
 services:
   impensa:
     build: https://github.com/richard96292/impensa.git
@@ -17,16 +15,15 @@ services:
       - POSTGRES_DBHOST=postgres
       - POSTGRES_DBPORT=5432
       - POSTGRES_DBNAME=impensa
-      - NODE_ENV=production
       - jwtSecret=${JWT_SECRET}
     # for traefik
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.impensa.rule=Host(`impensa.studio`) || Host(`www.impensa.studio`)
-      - traefik.http.routers.impensa.entrypoints=websecure
-      - traefik.http.routers.impensa.tls=true
-      - traefik.http.routers.impensa.tls.certresolver=production
-      - traefik.http.services.impensa.loadbalancer.server.port=8080
+    # labels:
+    #   - traefik.enable=true
+    #   - traefik.http.routers.impensa.rule=Host(`impensa.studio`) || Host(`www.impensa.studio`)
+    #   - traefik.http.routers.impensa.entrypoints=websecure
+    #   - traefik.http.routers.impensa.tls=true
+    #   - traefik.http.routers.impensa.tls.certresolver=production
+    #   - traefik.http.services.impensa.loadbalancer.server.port=8080
 
   postgres:
     image: postgres:14

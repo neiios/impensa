@@ -6,7 +6,7 @@
 
 <div align="center">
 
-### Simple, effective expense management app.
+### Simple, effective expense management app
 
 <br/>
 
@@ -45,23 +45,21 @@ Let's talk about the architecture of this mono repo:
   - **Express JS**: Our backend framework of choice
   - **React**: Frontend framework
   - **React Chart.js 2**: JavaScript library for Data Visualization
-  - **DigitalOcean**: To deploy React app
+  - **Docker**: To deploy our app in a neat container
 
-#### Folder structure
+## Folder structure
 
 ```sh
 Impensa/
-├── .github       # Files used by GitHub
-├── client        # React frontend
-├── middleware    # Authorization middleware
-├── routes        # Dashboard and authentication routes
-├── utils         # JWT token generation
+├── client    # React Frontend
+├── docker    # Files for Deployment With Docker
+├── server    # Express Backend
 ```
 
 <details>
   <summary>Click to learn about code style</summary>
 
-#### Code Style
+## Code Style
 
 We run Prettier on-commit, which means you can write code in whatever style you want and it will be automatically formatted according to the common style when you run `git commit`. We also have ESLint set up, although we've disabled all stylistic rules since Prettier takes care of those.
 
