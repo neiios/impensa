@@ -52,7 +52,7 @@ Let's talk about the architecture of this mono repo:
 ```sh
 Impensa/
 ├── client    # React Frontend
-├── docker    # Files for Deployment With Docker
+├── docker    # Files for Deployment
 ├── server    # Express Backend
 ```
 
