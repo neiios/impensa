@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://impensa.segf.lt/">
-  <img src="./client/public/assets/images/logo-readme.svg" />
+  <a href="https://impensa.sgf.lt/">
+  <img src="./public/assets/images/logo-readme.svg" />
     </a>
 </p>
 
@@ -33,7 +33,7 @@ It has been made with love.
 
 ## Features
 
-![ui-demo](./client/public/assets/images/UI-demo.gif)
+![ui-demo](./public/assets/images/UI-demo.gif)
 
 ## Technologies
 
@@ -46,15 +46,6 @@ Let's talk about the architecture of this mono repo:
   - **React**: Frontend framework
   - **React Chart.js 2**: JavaScript library for Data Visualization
   - **Docker**: To deploy our app in a neat container
-
-## Folder structure
-
-```sh
-Impensa/
-├── client    # React Frontend
-├── docker    # Files for Deployment
-├── server    # Express Backend
-```
 
 <details>
   <summary>Click to learn about code style</summary>
