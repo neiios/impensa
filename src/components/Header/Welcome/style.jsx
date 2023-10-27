@@ -23,7 +23,7 @@ export const RowTwo = styled.div`
       "img img"
       "button1 button2";
     align-items: center;
-  } ;
+  }
 `;
 
 export const ExploreBtn = styled.div`

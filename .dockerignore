@@ -1,6 +1,0 @@
-.env
-node_modules
-server/database-tutorial.sql
-docker
-docs
-build

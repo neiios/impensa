@@ -1,6 +1,5 @@
 {
-  "name": "impensa-frontend",
-  "version": "1.4.8",
+  "name": "impensa-client",
   "license": "AGPL-3.0-or-later",
   "scripts": {
     "start": "prettier --write \"src/**/*.{js,jsx,json}\" && react-scripts start",
@@ -9,24 +8,6 @@
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version"
-    ]
-  },
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -54,5 +35,17 @@
   },
   "devDependencies": {
     "prettier": "^2.5.0"
-  }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version"
+    ]
+  },
+  "proxy": "http://localhost:5000"
 }
