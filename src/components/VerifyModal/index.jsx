@@ -24,6 +24,7 @@ const EditCategoryModal = ({
   logout,
 }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  console.log(userData);
   function openModal() {
     setIsOpen(true);
   }
@@ -62,6 +63,8 @@ const EditCategoryModal = ({
         },
         body: JSON.stringify(fieldsToUpdate),
       });
+
+      const parseRes = await response.json();
 
       if (response.ok) {
         toast.success("Your account has been updated successfully!");
