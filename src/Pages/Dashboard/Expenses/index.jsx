@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import {
   Heading,
   ExpenseString,
   ColumnContainer,
   ExpenseDate,
-} from "./overview";
+} from "../Overview/style";
 import {
   MonthSwitcher,
   DataContainer,
@@ -14,9 +13,11 @@ import {
   FixedDataContainer,
   ArrowWestIcon,
   ArrowEastIcon,
-} from "./style";
+  ExpenseAmount,
+} from "../style";
 import moment from "moment";
-import PieChart from "../../components/Charts/doughnut";
+import { Container } from "./style";
+import PieChart from "../../../components/Charts/doughnut";
 let currentYear = new Date().getFullYear();
 const months = [
   "January",
@@ -37,13 +38,6 @@ for (let i = 0; i < months.length; i++) {
   months[i] += " " + currentYear;
 }
 
-export const Container = styled.div`
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(1fr, auto));
-  gap: 20px;
-`;
-
 let currentMonth = new Date().toLocaleString("en-US", { month: "2-digit" });
 const Expenses = ({ expenses, currency }) => {
   document.title = "Dashboard - Expenses";
@@ -60,7 +54,7 @@ const Expenses = ({ expenses, currency }) => {
 
   let currentMonthExpenses = expenses.filter(
     (expense) =>
-      moment.utc(expense.expense_date).format("MMMM YYYY") === months[counter]
+      moment.utc(expense.expense_date).format("MMMM YYYY") === months[counter],
   );
 
   return (
@@ -87,23 +81,28 @@ const Expenses = ({ expenses, currency }) => {
         <FixedDataContainer>
           <>
             <Heading>{`${months[counter]} expenses`}</Heading>
-            {currentMonthExpenses.map((expense) => (
-              <>
+            {currentMonthExpenses.map((expense, index) => (
+              <div key={index}>
                 <ExpenseString>
                   <ColumnContainer>
-                    {`${currency} 
-                    ${parseFloat(expense.expense_amount).toFixed(2)}`}
+                    <ExpenseCategory>
+                      {expense.expenseCategory.name.length > 16
+                        ? expense.expenseCategory.name
+                            .slice(0, 16)
+                            .concat("...")
+                        : expense.expenseCategory.name}
+                    </ExpenseCategory>
                     <ExpenseDate>
                       {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
                     </ExpenseDate>
                   </ColumnContainer>
-                  <ExpenseCategory>
-                    {expense.expense_category.length > 9
-                      ? expense.expense_category.slice(0, 9).concat("...")
-                      : expense.expense_category}
-                  </ExpenseCategory>
+                  <ExpenseAmount>
+                    -{" "}
+                    {`${currency} 
+                    ${parseFloat(expense.amount).toFixed(2)}`}
+                  </ExpenseAmount>
                 </ExpenseString>
-              </>
+              </div>
             ))}
           </>
         </FixedDataContainer>

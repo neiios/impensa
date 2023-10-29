@@ -23,7 +23,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 );
 
 let newDate = new Date();
@@ -80,17 +80,17 @@ const LineGraph = ({ expenses, currency }) => {
     spentToday = 0;
 
   expenses.map((expense) =>
-    moment.utc(expense.expense_date).format("MM/DD/Y") === currentUserDate
+    moment.utc(expense.createdAt).format("MM/DD/Y") === currentUserDate
       ? numOfExpensesToday++
-      : null
+      : null,
   );
 
   let objToday = expenses.slice(expenses.length - numOfExpensesToday);
 
-  objToday.map((expense) => (spentToday += parseFloat(expense.expense_amount)));
+  objToday.map((expense) => (spentToday += parseFloat(expense.amount)));
 
   let labels = expenses.map((expense) =>
-    moment.utc(expense.expense_date).format("MM/DD/Y")
+    moment.utc(expense.createdAt).format("MM/DD/Y"),
   );
 
   const data = {
@@ -100,7 +100,7 @@ const LineGraph = ({ expenses, currency }) => {
         fill: true,
         label: "Total spent",
         data: expenses.map(
-          (expense) => (spentInTotal += parseFloat(expense.expense_amount))
+          (expense) => (spentInTotal += parseFloat(expense.amount)),
         ),
         borderColor: theme.bg.secondary,
         backgroundColor: theme.bg.semiBlue,

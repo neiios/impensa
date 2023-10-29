@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Select from "react-select/creatable";
+import React, { useState, useEffect } from "react";
 import theme from "../../theme/Index";
 import { Wrapper, H5, ButtonContainer, TextArea } from "./style";
 import { Button } from "../Button";
 import chroma from "chroma-js";
 import ItemForm from "../itemForm";
+import Select from "react-select";
 
 import { toast } from "react-toastify";
 
@@ -64,47 +64,61 @@ export const colourStyles = {
   }),
 };
 
-export const GeneralCategories = [
-  { value: "Audible", label: "Audible" },
-  { value: "Netflix", label: "Netflix" },
-  { value: "Spotify", label: "Spotify" },
-  { value: "Youtube premium", label: "Youtube premium" },
-  { value: "HBO Max", label: "HBO Max" },
-  { value: "Disney+", label: "Disney+" },
-  { value: "Tickets", label: "Tickets" },
-  { value: "Travelling", label: "Travelling" },
-  { value: "Transport", label: "Transport" },
-  { value: "Health", label: "Health" },
-  { value: "Delivery", label: "Delivery" },
-  { value: "Groceries", label: "Groceries" },
-  { value: "Accomodation", label: "Accomodation" },
-  { value: "Hairdresser", label: "Hairdresser" },
-  { value: "Internet", label: "Internet" },
-  { value: "Cinema", label: "Cinema" },
-];
-
 const Categories = () => {
   // set value for default selection
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(undefined);
   const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  async function getCategories() {
+    try {
+      const res = await fetch("/api/v1/categories", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      });
+
+      const parseData = await res.json();
+      const formattedCategories = parseData.map((cat) => ({
+        label: cat.name,
+        value: cat.id,
+      }));
+      console.log(formattedCategories);
+      setCategories(formattedCategories);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   async function onSubmitForm(e) {
     e.preventDefault();
     try {
-      const body = { description, amount, category };
-      const response = await fetch("/api/dashboard/expense", {
+      const body = {
+        amount,
+        expenseCategoryId: category.id,
+        description,
+      };
+
+      const response = await fetch("/api/v1/expenses", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          jwtToken: localStorage.token,
+          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify(body),
       });
 
+      const parseRes = await response.json();
+
       toast.success("New expense has been added successfully!");
-      // TODO: make it so adding new expense doesnt reload a page
-      window.location.reload();
+
+      console.log(parseRes);
     } catch (err) {
       toast.error(err.message);
       console.error(err.message);
@@ -114,14 +128,16 @@ const Categories = () => {
   return (
     <Wrapper onSubmit={onSubmitForm}>
       <H5>Choose category</H5>
+
       <Select
-        // defaultValue={GeneralCategories[0]}
-        onChange={(e) => setCategory(e.value)}
-        options={GeneralCategories}
+        styles={colourStyles}
+        onChange={(e) => setCategory({ name: e.label, id: e.value })}
+        options={categories}
         className="basic-multi-select"
         classNamePrefix="select"
-        styles={colourStyles}
+        required
       />
+
       <H5>Description</H5>
       <TextArea
         placeholder="You can put details about your expense here"

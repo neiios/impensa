@@ -34,9 +34,9 @@ const Homepage = () => {
         <RowOne>
           <RowOneHeading>Why choose us?</RowOneHeading>
           <RowOneSubheading>
-            In the modern capitalistic society financial literacy means a lot,
-            <Br /> we are happily providing you with the best tools available to
-            optimize your day-to-day financial decisions.
+            Effective financial management goes beyond impulse decisions.
+            <Br /> We offer reliable tools to guide your daily financial
+            choices.
           </RowOneSubheading>
         </RowOne>
         <RowTwo>

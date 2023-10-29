@@ -11,12 +11,12 @@ export const StyledButton = styled.button`
   transition: opacity 0.5s;
   background-color: ${theme.color.primary};
   color: white;
-  height: ${(props) => (props.primary ? "40px" : "32px")};
-  font-size: ${(props) => (props.primary ? "1em" : ".95em")};
-  :hover {
+  height: ${(props) => (props.$primary ? "40px" : "32px")};
+  font-size: ${(props) => (props.$primary ? "1em" : ".95em")};
+  &:hover {
     opacity: 0.8;
   }
-  :active {
+  &:active {
     opacity: 0.6;
   }
 `;
@@ -27,13 +27,13 @@ export const StyledOutlineButton = styled(StyledButton)`
   height: 70px;
   border: none;
   background-color: ${(props) =>
-    props.primary ? theme.text.secondAlt : theme.color.primary};
-  color: ${(props) => (props.primary ? theme.color.primary : "white")};
+    props.$primary ? theme.text.secondAlt : theme.color.primary};
+  color: ${(props) => (props.$primary ? theme.color.primary : "white")};
   transition: background-color 0.5s;
-  :hover {
+  &:hover {
     background-color: ${(props) =>
-      props.primary ? theme.color.primary : theme.color.lightestPrimary};
-    color: ${(props) => (props.primary ? "white" : theme.color.primary)};
+      props.$primary ? theme.color.primary : theme.color.lightestPrimary};
+    color: ${(props) => (props.$primary ? "white" : theme.color.primary)};
   }
 `;
 
@@ -42,7 +42,7 @@ export const StyledPrimaryOutlineButton = styled(StyledOutlineButton)`
   font-size: 20px !important;
   height: 45px;
   background: ${theme.color.primary};
-  :hover {
+  &:hover {
     color: ${theme.color.secondaryAlt};
   }
 `;

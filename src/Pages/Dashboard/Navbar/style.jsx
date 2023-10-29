@@ -1,10 +1,25 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
-import { LogoText } from "../../components/Logo/index.jsx";
-import theme from "../../theme/Index.js";
-import ToggleNewExpense from "../../components/NewExpenseModal/toggleNewExpense.jsx";
-import { device } from "../../mediaQueries.jsx";
-export const PpContainer = styled.div``;
+import { device } from "../../../mediaQueries";
+import theme from "../../../theme/Index";
+
+export const Icon = styled.div`
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: ${theme.color.lightestPrimary};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;
+  &:hover {
+    color: ${theme.color.primary};
+  }
+  &:active {
+    color: ${theme.color.lightPrimary};
+  }
+`;
 
 export const PpCircle = styled.div`
   background: ${theme.bg.secondary};
@@ -43,7 +58,7 @@ export const UserImg = styled.div`
   border-radius: 50%;
   width: 25px;
   height: 25px;
-  :hover {
+  &:hover {
   }
 `;
 export const NavbarWrapper = styled.nav`
@@ -90,35 +105,8 @@ export const Span = styled.span`
   }
 `;
 
-export const Icon = styled.i`
+export const ArrowIcon = styled.i`
   animation: ${animationName} 1s 0s infinite;
 `;
 
-export const Nav = ({ name, expenses }) => {
-  return (
-    <NavbarWrapper>
-      <NavbarContainer>
-        <LogoText />
-        <NavMenu>
-          {expenses.length === 0 ? (
-            <>
-              <Span>Add new expense</Span>
-              <Icon className="fas fa-arrow-right fa-xl" />{" "}
-            </>
-          ) : null}
-          <ToggleNewExpense />
-          <UserCreds>
-            <UserName>{name}</UserName>
-            <PpContainer>
-              <PpCircle>
-                <NameFirstLetter>{name[0]}</NameFirstLetter>
-              </PpCircle>
-            </PpContainer>
-          </UserCreds>
-        </NavMenu>
-      </NavbarContainer>
-    </NavbarWrapper>
-  );
-};
-
-export default Nav;
+export const PpContainer = styled.div``;

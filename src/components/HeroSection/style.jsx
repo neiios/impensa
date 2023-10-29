@@ -3,7 +3,7 @@ import theme from "../../theme/Index";
 import { device } from "../../mediaQueries";
 
 export const HeroSectionWrapper = styled.div`
-  background: ${(props) => (props.lightBg ? "#F6F9FC" : theme.bg.secondary)};
+  background: ${(props) => (props.$lightBg ? "#F6F9FC" : theme.bg.secondary)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   margin-top: 200px;
   margin-bottom: 100px;
   display: flex;
-  flex-direction: ${(props) => (props.imgStart ? "row-reverse" : "row")};
+  flex-direction: ${(props) => (props.$imgStart ? "row-reverse" : "row")};
   flex-wrap: wrap;
   justify-content: center;
   align-content: stretch;
@@ -26,7 +26,7 @@ export const Container = styled.div`
 `;
 
 export const TextSection = styled.div`
-  color: ${(props) => (props.lightText ? "white" : theme.color.secondary)};
+  color: ${(props) => (props.$lightText ? "white" : theme.color.secondary)};
   max-width: 540px;
 `;
 

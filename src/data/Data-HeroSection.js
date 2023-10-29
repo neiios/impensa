@@ -13,13 +13,12 @@ export const homeObjOne = {
 export const homeObjTwo = {
   lightBg: false,
   lightText: true,
-  headline: "Control your outlay efficiently using spending analytics",
+  headline: "Efficient spending analytics at your fingertips",
   descriptionOne:
-    "View expenses sorted not only by months, but also and categories",
-  descriptionTwo: "Easily export the list of your expenses in a .xlsx file",
+    "Break down expenses by month and categories for a clear financial overview",
+  descriptionTwo:
+    "Craft personalized categories tailored to your unique spending habits",
   img: "../../assets/images/hero2.svg",
   imgStart: true,
   alt: "Impensa Github repository depicting file structure and Readme.txt",
 };
-
-//lightBg, lightText, headline, descriptionOne, descriptionTwo, img, alt, imgStart}

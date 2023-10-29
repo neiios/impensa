@@ -22,7 +22,7 @@ const SignIn = ({ setAuth }) => {
     e.preventDefault();
     try {
       const body = { email, password };
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/v1/auth/signin", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -35,10 +35,9 @@ const SignIn = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
         setAuth(true);
-        toast.success("Logged in successfully!");
       } else {
         setAuth(false);
-        toast.error("Invalid credentials.");
+        toast.error("User does not exist!");
       }
     } catch (err) {
       console.error(err.message);

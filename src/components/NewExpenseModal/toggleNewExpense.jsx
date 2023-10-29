@@ -32,13 +32,13 @@ export const Icon = styled.div`
   }
 `;
 
-const ToggleNewExpense = () => {
+const ToggleNewExpense = (setExpenses) => {
   const addModal = () => {
     ModalService.open(NewExpenseModal);
   };
   return (
     <>
-      <Icon className="fas fa-plus" primary onClick={addModal} />
+      <Icon className="fas fa-plus" $primary onClick={addModal} />
     </>
   );
 };

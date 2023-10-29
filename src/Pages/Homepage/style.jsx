@@ -26,11 +26,15 @@ export const RowOneHeading = styled.h2`
   /* First sizing pair (4px 50%) will define the size of the border i.e border
 will be of having 4px width and 50% height. */
   /* 2nd pair will define the size of stretched background image. */
-  background-size: 100px 5%, calc(100% - 80%) 100%;
+  background-size:
+    100px 5%,
+    calc(100% - 80%) 100%;
 
   /* Similar to size, first pair will define the position of the border
 and 2nd one for the container background */
-  background-position: left bottom, 1px 0;
+  background-position:
+    left bottom,
+    1px 0;
 `;
 
 export const RowOneSubheading = styled.p`

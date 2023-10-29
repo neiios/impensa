@@ -26,13 +26,13 @@ const Welcome = () => {
       </RowOne>
       <RowTwo>
         <ExploreBtn>
-          <Link spy={true} smooth={true} to="HeroSection">
-            <OutlineButton href="#heroSection">Explore</OutlineButton>
-          </Link>
+          <OutlineButton scroll="true" to="HeroSection">
+            Explore
+          </OutlineButton>
         </ExploreBtn>
         <ContactBtn>
           <OutlineButton
-            primary
+            $primary
             href="https://github.com/richard96292/impensa/discussions"
           >
             Contact us

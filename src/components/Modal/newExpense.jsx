@@ -18,10 +18,10 @@ export const Icon = styled.i`
   margin-left: auto;
   cursor: pointer;
   transition: color 1s;
-  :hover {
+  &:hover {
     background: rgba(197, 199, 197, 0.2);
   }
-  :active {
+  &:active {
     background: rgba(197, 199, 197, 0.7);
   }
 `;

@@ -1,15 +1,83 @@
 import styled from "styled-components";
 import theme from "../../theme/Index";
-export const H5 = styled.h3`
-  margin: 15px 0 15px 0;
-  font-size: 1em;
+
+export const CloseModal = styled.i`
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
 `;
-export const Wrapper = styled.form`
-  padding: 0 15px 15px 15px;
+
+export const Headline = styled.h4`
+  font-size: 1.3em;
+  margin: 0;
+  margin-right: auto;
+`;
+
+export const InputField = styled.div`
+  width: 100%;
+  position: relative;
+  margin: 10px 0 10px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 350px;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const Heading = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+export const Input = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 15px;
+  background: #f9f9fa;
+  border-radius: 4px;
+  outline: 0;
+  border: 1px solid rgba(3, 102, 214, 0.1);
+  font-size: 14px;
+  transition: all 0.3s ease-out;
+  &:focus {
+    box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 3px;
+  }
+`;
+
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+`;
+
+export const StyledButton = styled.button`
+  padding: 0.5rem;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 4px;
+`;
+
+export const SaveButton = styled(StyledButton)`
+  background-color: ${theme.color.primary};
+  margin-left: auto;
+  position: relative;
+  margin-top: 20px;
+`;
+
+export const DeleteButton = styled(StyledButton)`
+  background-color: #f25865;
+`;
+
+export const H5 = styled.h3`
+  margin: 15px 0 15px 0;
+  font-size: 1em;
 `;
 
 export const TextArea = styled.textarea`
@@ -37,8 +105,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export const InputAmount = styled.input`
+  box-sizing: border-box;
   padding: 2px;
-  position: absolute;
+
   right: 20px;
   min-width: 1px;
   max-width: 50px;
@@ -111,4 +180,21 @@ export const PriceSelect = styled.div`
     border: 0.3vw solid #ffffff;
     border-radius: 5vw;
   }
+`;
+
+export const Wrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400px;
+`;
+
+export const ContentWrapper = styled.form`
+  height: fit-content;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 15px;
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArchiveContainer,
   H3,
@@ -6,11 +6,10 @@ import {
   Icon,
   IconContainer,
   Input,
-} from "./style";
+} from "../style";
 import { Table, Colgroup, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
-import ExcelExport from "./excelExport";
-// Wraps Sidebar Nav and Main-Conent
+import { toast } from "react-toastify";
 
 const Archive = ({ expenses, currency, setExpenses }) => {
   document.title = "Dashboard - Archive";
@@ -20,26 +19,28 @@ const Archive = ({ expenses, currency, setExpenses }) => {
   const [disabled, setDisabled] = useState(true);
   const [selectedExpense, setSelectedExpense] = useState({});
 
-  async function deleteExpense(expense_id) {
+  async function onDeleteExpense(id) {
     try {
-      const res = await fetch(`/api/dashboard/expense/${expense_id}`, {
+      const response = await fetch(`/api/v1/expenses/${id}`, {
         method: "DELETE",
-        headers: { jwtToken: localStorage.token },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`,
+        },
       });
 
-      // Remove deleted expense from both arrays with .filter
-      setSortedExpenses(
-        sortedExpenses.filter(
-          (sortedExpense) => sortedExpense.expense_id !== expense_id
-        )
-      );
-      setExpenses(
-        expenses.filter((expense) => expense.expense_id !== expense_id)
-      );
-
-      // Disable ability to modify fields
+      if (response.ok) {
+        setExpenses((prevExpenses) =>
+          prevExpenses.filter((expense) => expense.id !== id),
+        );
+        toast.success("Expense has been deleted successfully!");
+      } else {
+        const errorData = await response.json();
+        toast.error(`Error deleting expense: ${errorData.message}`);
+      }
       setDisabled(!disabled);
     } catch (err) {
+      toast.error(err.message);
       console.error(err.message);
     }
   }
@@ -66,22 +67,23 @@ const Archive = ({ expenses, currency, setExpenses }) => {
 
   async function onSubmitEditForm(e) {
     e.preventDefault();
+    console.log(e);
     try {
       const body = selectedExpense;
-      const response = await fetch("/api/dashboard/expense", {
+      const response = await fetch(`/api/v1/expenses/${selectedExpense.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          jwtToken: localStorage.token,
+          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify(body),
       });
 
       sortedExpenses.forEach((expense) => {
-        if (expense.expense_id === selectedExpense.expense_id) {
-          expense.expense_amount = selectedExpense.expense_amount;
-          expense.expense_description = selectedExpense.expense_description;
-          expense.expense_category = selectedExpense.expense_category;
+        if (expense.id === selectedExpense.id) {
+          expense.amount = selectedExpense.amount;
+          expense.description = selectedExpense.description;
+          expense.expenseCategory.name = selectedExpense.expenseCategory.name;
         }
       });
 
@@ -92,17 +94,28 @@ const Archive = ({ expenses, currency, setExpenses }) => {
   }
 
   const updateField = (e) => {
-    setSelectedExpense({
-      ...selectedExpense,
+    setSelectedExpense((prevSelectedExpense) => ({
+      ...prevSelectedExpense,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
+
+  useEffect(() => {
+    setSortedExpenses(
+      sort
+        ? [...expenses].sort(
+            (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+          )
+        : [...expenses].sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          ),
+    );
+  }, [expenses, sort]);
 
   return (
     <ArchiveContainer>
       <HeaderContainer>
         <H3>Archive</H3>
-        <ExcelExport expenses={expenses} />
       </HeaderContainer>
       <Table>
         <Colgroup></Colgroup>
@@ -120,7 +133,7 @@ const Archive = ({ expenses, currency, setExpenses }) => {
         <Tbody>
           {disabled ? (
             sortedExpenses.map((expense) => (
-              <Tr key={expense.expense_id}>
+              <Tr key={expense.id}>
                 <Td data-label="Modify">
                   <IconContainer>
                     <Icon
@@ -130,33 +143,34 @@ const Archive = ({ expenses, currency, setExpenses }) => {
                   </IconContainer>
                 </Td>
                 <Td data-label="Amount">
-                  {`${currency} ${parseFloat(expense.expense_amount).toFixed(
-                    2
-                  )}`}
+                  {`${currency} ${parseFloat(expense.amount).toFixed(2)}`}
                 </Td>
                 <Td data-label="Description">
-                  {expense.expense_description.length === 0
+                  {expense.description.length === 0
                     ? "No description provided"
-                    : expense.expense_description}
+                    : expense.description}
                 </Td>
-                <Td data-label="Category">{expense.expense_category}</Td>
+                <Td data-label="Category">{expense.expenseCategory.name}</Td>
                 <Td data-label="Date">
-                  {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                  {moment.utc(expense.createdAt).format("MMM Do, YYYY")}
                 </Td>
               </Tr>
             ))
           ) : (
-            <Tr key={selectedExpense.expense_id}>
+            <Tr key={selectedExpense.id}>
               <Td data-label="Modify">
                 <IconContainer>
                   <Icon
                     className="fas fa-times"
                     onClick={() => setDisabled(!disabled)}
                   />
-                  <Icon className="fas fa-check" onClick={onSubmitEditForm} />
+                  <Icon
+                    className="fas fa-check"
+                    onClick={(e) => onSubmitEditForm(e, selectedExpense)}
+                  />
                   <Icon
                     className="far fa-trash-alt"
-                    onClick={() => deleteExpense(selectedExpense.expense_id)}
+                    onClick={() => onDeleteExpense(selectedExpense.id)}
                   />
                 </IconContainer>
               </Td>
@@ -164,38 +178,33 @@ const Archive = ({ expenses, currency, setExpenses }) => {
                 <Input
                   required
                   type="number"
-                  name="expense_amount"
+                  name="amount"
                   min="0.01"
                   step="0.01"
-                  value={selectedExpense.expense_amount}
+                  value={selectedExpense.amount}
                   onChange={(e) => updateField(e)}
                 />
               </Td>
               <Td data-label="Description">
                 <Input
                   required
-                  name="expense_description"
+                  name="description"
                   type="text"
-                  value={selectedExpense.expense_description}
+                  value={selectedExpense.description}
                   onChange={(e) => updateField(e)}
                 />
               </Td>
               <Td data-label="Category">
                 <Input
                   required
-                  name="expense_category"
+                  name="category.name"
                   type="text"
-                  value={selectedExpense.expense_category}
+                  value={selectedExpense.expenseCategory.name}
                   onChange={(e) => updateField(e)}
-                  // options={GeneralCategories}
-                  // className="basic-multi-select"
-                  // classNamePrefix="select"
                 />
               </Td>
               <Td data-label="Date">
-                {moment
-                  .utc(selectedExpense.expense_date)
-                  .format("MMM Do, YYYY")}
+                {moment.utc(selectedExpense.createdAt).format("MMM Do, YYYY")}
               </Td>
             </Tr>
           )}

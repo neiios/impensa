@@ -20,10 +20,10 @@ const HeroSection = ({
   imgStart,
 }) => {
   return (
-    <HeroSectionWrapper lightBg={lightBg}>
-      <Container imgStart={imgStart}>
+    <HeroSectionWrapper $lightBg={lightBg}>
+      <Container $imgStart={imgStart}>
         <Embed src={img} alt={alt} />
-        <TextSection lightText={lightText}>
+        <TextSection $lightText={lightText}>
           <H3>{headline}</H3>
           <TextSubSection>
             <Icon className="fas fa-hand-holding-usd" />

@@ -22,11 +22,11 @@ const SignUp = ({ setAuth }) => {
 
   const [inputs, setInputs] = useState({
     email: "",
-    name: "",
+    username: "",
     password: "",
   });
   const [currency, setCurrency] = useState("");
-  const { email, name, password } = inputs;
+  const { email, username, password } = inputs;
 
   const onChange = (e) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -34,8 +34,8 @@ const SignUp = ({ setAuth }) => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { email, name, password, currency };
-      const response = await fetch("/api/auth/register", {
+      const body = { email, username, password, currency };
+      const response = await fetch("/api/v1/auth/signup", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -68,8 +68,8 @@ const SignUp = ({ setAuth }) => {
           label="Name"
           position="column"
           type="text"
-          name="name"
-          value={name}
+          name="username"
+          value={username}
           onChange={(e) => onChange(e)}
         />
         <SelectContainer>

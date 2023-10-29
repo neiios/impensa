@@ -54,7 +54,7 @@ const MenuIcon = styled.i`
   margin-left: 100px;
   color: ${theme.bg.secondary};
   transition: background-color 0.2s;
-  :hover {
+  &:hover {
     background-color: ${theme.bg.semiBlue};
     color: white;
   }
@@ -74,8 +74,8 @@ export const Sidebar = ({ logout }) => {
   const handleClick = () => setClick(!click);
   return (
     <>
-      <MenuIcon onClick={handleClick} className="fas fa-bars fa-sm" />
-      <SidebarWrapper onclick={handleClick} click={click}>
+      <MenuIcon onClick={handleClick} className="fas fa-bars fa-xm" />
+      <SidebarWrapper $click={click}>
         <SideSubWrapper>
           <MenuEl>
             <LinkWrapper to="/dashboard/overview">

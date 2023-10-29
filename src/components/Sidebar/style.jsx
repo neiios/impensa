@@ -10,11 +10,11 @@ export const SidebarWrapper = styled.nav`
   width: 270px;
   padding-top: 20px;
   transition: left 0.3s ease;
-  display: ${({ click }) => (click ? "none" : "block")};
+  display: ${({ $click }) => ($click ? "none" : "block")};
 
   @media ${device.laptop} {
     display: none;
-    display: ${({ click }) => (click ? "block" : "none")};
+    display: ${({ $click }) => ($click ? "block" : "none")};
   }
   @media ${device.laptop} {
     display: block;
@@ -61,10 +61,10 @@ export const MenuEl = styled.div`
   justify-content: flex-start;
   border-radius: 15px;
   transition: color 0.2s;
-  :hover {
+  &:hover {
     color: ${theme.bg.secondary};
   }
-  :active {
+  &:active {
     color: ${theme.bg.semiBlue};
   }
 `;

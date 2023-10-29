@@ -17,11 +17,11 @@ export const Container = styled.div`
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  :hover {
+  &:hover {
     margin-top: -20px;
   }
   @media ${device.tablet} {
-    :hover {
+    &:hover {
       margin-top: 0px;
     }
   }

@@ -11,7 +11,7 @@ export const Input = styled.input`
   border: 1px solid rgba(55, 64, 75, 0.1);
   font-size: 14px;
   transition: all 0.3s ease-out;
-  :focus {
+  &:focus {
     box-shadow: ${theme.color.lightPrimary} 0px 0px 0px 3px;
   }
 `;

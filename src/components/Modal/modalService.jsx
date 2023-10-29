@@ -4,7 +4,7 @@ const ModalService = {
   },
   open(component, props = {}) {
     document.dispatchEvent(
-      new CustomEvent("open", { detail: { component, props } })
+      new CustomEvent("open", { detail: { component, props } }),
     );
   },
 };

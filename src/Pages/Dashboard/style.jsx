@@ -6,11 +6,10 @@ export const Wrapper = styled.div`
   margin-bottom: 95px;
 `;
 export const MainContainer = styled.div`
-  z-index: -1;
+  /* z-index: -1; */
   margin-top: 75px;
   margin-right: 20px;
   margin-left: 20px;
-  z-index: 100;
   width: 100%;
   background-color: ${theme.bg.lightestBlue};
   height: fit-content;
@@ -78,6 +77,15 @@ export const ArchiveContainer = styled.div`
   align-items: stretch;
 `;
 
+export const UserContainer = styled.form`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+`;
+
 export const OneExpenseContainer = styled.div`
   display: flex;
   width: 100%;
@@ -87,7 +95,7 @@ export const OneExpenseContainer = styled.div`
   &:last-child {
     border-bottom: none;
   }
-  :hover {
+  &:hover {
     background: ${theme.bg.lightestBlue};
     :last-child {
       border-bottom-left-radius: 20px;
@@ -99,13 +107,7 @@ export const OneExpenseContainer = styled.div`
 export const DateContainer = styled.div``;
 
 export const ExpenseCategory = styled.div`
-  text-align: center;
   min-width: 110px;
-  margin-left: auto;
-  width: fit-content;
-  background: ${theme.bg.secondary};
-  color: white;
-  padding: 8px;
   font-size: 1em;
   border-radius: 10px;
   @media ${device.tablet} {
@@ -126,6 +128,10 @@ export const ExpenseDescription = styled.div`
   padding: 8px;
   font-size: 1em;
   border-radius: 10px;
+`;
+
+export const ExpenseAmount = styled.span`
+  margin-left: auto;
 `;
 
 export const H3 = styled.h3`
@@ -174,7 +180,7 @@ export const Option = styled.option`
   transition: background-color 0.5s;
   background-color: white;
   color: ${theme.text.secondary};
-  :hover {
+  &:hover {
     background: ${theme.text.secondary};
     color: white;
     background-size: 100%;
@@ -188,7 +194,7 @@ export const AlterExpense = styled.div`
 
 export const Icon = styled.i`
   cursor: pointer;
-  :hover {
+  &:hover {
     color: ${theme.bg.secondary};
   }
 `;
@@ -308,101 +314,7 @@ export const Input = styled.input`
   border: 1px solid rgba(3, 102, 214, 0.1);
   font-size: 14px;
   transition: all 0.3s ease-out;
-  :focus {
+  &:focus {
     box-shadow: ${theme.bg.semiBlue} 0px 0px 0px 3px;
-  }
-`;
-
-// ======================= TABLE ==========================
-
-// it's like header/title for table do it later with "Archive"
-export const TableCaption = styled.caption``;
-
-export const Table = styled.table`
-  border-collapse: collapse;
-  margin: 0;
-  margin: 0;
-  width: 100%;
-  table-layout: fixed;
-  @media ${device.laptop} {
-    border: 0;
-  }
-`;
-
-export const TableWrapper = styled.div`
-  @media ${device.mobileL} {
-    height: 500px;
-    width: 200px;
-  }
-`;
-
-export const Colgroup = styled.colgroup``;
-
-export const Col = styled.col``;
-
-export const Thead = styled.thead`
-  @media ${device.laptop} {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-`;
-
-export const Tr = styled.tr`
-  text-align: center;
-  :hover {
-    background: ${theme.bg.lightestBlue};
-  }
-  @media ${device.laptop} {
-    border-bottom: 1px solid rgba(88, 101, 242, 0.1);
-    display: block;
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-`;
-
-export const Th = styled.th`
-  padding: 10px 0 10px 0;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  &:nth-child(3) {
-    text-align: left;
-  }
-`;
-
-export const Tbody = styled.tbody`
-  border: none !important;
-`;
-
-export const Td = styled.td`
-  padding: 1em 0 1em 0;
-  text-align: center;
-  @media ${device.laptop} {
-    display: block;
-    font-size: 0.8em;
-    text-align: right !important;
-    padding: 10px;
-    &::before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-    &:last-child {
-      border-bottom: 0;
-    }
-  }
-  &:nth-child(3) {
-    text-align: left;
   }
 `;

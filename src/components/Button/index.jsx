@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-scroll";
 import {
   StyledButton,
   StyledOutlineButton,
@@ -7,7 +8,8 @@ import {
   StyledPrimaryOutlineButton,
 } from "./style.jsx";
 const WrappedButton = (Component, props) => {
-  const { href, to, target, children, disabled, isLoading, ...rest } = props;
+  const { href, to, target, children, disabled, isLoading, scroll, ...rest } =
+    props;
   const button = (
     <Component disabled={disabled || isLoading} {...rest}>
       {children}
@@ -24,7 +26,14 @@ const WrappedButton = (Component, props) => {
         {button}
       </A>
     );
+  if (scroll)
+    return (
+      <Link spy={true} smooth={true} to={to}>
+        {button}
+      </Link>
+    );
   if (to) return <StyledLink to={to}>{button}</StyledLink>;
+
   return button;
 };
 
