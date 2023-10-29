@@ -19,7 +19,7 @@ const Dashboard = ({ setAuth }) => {
   const [currency, setCurrency] = useState("");
   const [expenses, setExpenses] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  console.log(window.navigator);
   async function getProfile() {
     try {
       const res = await fetch("/api/v1/me", {

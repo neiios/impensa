@@ -169,12 +169,11 @@ const EditCategoryModal = ({
             type="text"
             value={categoryName}
             onChange={(e) => setCategoryName(e.target.value)}
+            minLength={3}
+            required
           />
           <ButtonsContainer>
-            <SaveButton>{currentId ? "Save" : "Create"}</SaveButton>
-            <DeleteButton type="button" onClick={onCancelClick}>
-              {currentId ? "Remove" : "Cancel"}
-            </DeleteButton>
+            <SaveButton>{currentId ? "Save" : "Add"}</SaveButton>
           </ButtonsContainer>
         </ContentWrapper>
       </Modal>

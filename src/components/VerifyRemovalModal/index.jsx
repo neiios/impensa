@@ -55,10 +55,13 @@ const VerifyRemovalModal = ({
         body: JSON.stringify({ password: userPassword }),
       });
 
-      const parseRes = await response.json();
-
-      toast.success(parseRes);
-      logout(e);
+      if (response.ok) {
+        toast.success("Your account has been removed successfully!");
+        logout(e);
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.errors.Password[0]);
+      }
     } catch (err) {
       console.error(err.message);
       toast.error(err.message);
@@ -101,10 +104,7 @@ const VerifyRemovalModal = ({
           />
 
           <ButtonsContainer>
-            <SaveButton>Save</SaveButton>
-            <DeleteButton type="button" onClick={onCancelClick}>
-              Cancel
-            </DeleteButton>
+            <DeleteButton>Confirm</DeleteButton>
           </ButtonsContainer>
         </ContentWrapper>
       </Modal>

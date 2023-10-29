@@ -107,6 +107,11 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
       const parseData = await response.json();
       console.log(parseData);
       setExpenses((prevExpenses) => [...prevExpenses, parseData]);
+
+      setDescription("");
+      setAmount(undefined);
+      setCategory([]);
+
       toast.success("New expense has been added successfully!");
     } catch (err) {
       toast.error(err.message);

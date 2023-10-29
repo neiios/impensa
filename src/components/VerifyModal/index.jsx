@@ -64,10 +64,13 @@ const EditCategoryModal = ({
         body: JSON.stringify(fieldsToUpdate),
       });
 
-      const parseRes = await response.json();
-
-      toast.success(parseRes);
-      logout(e);
+      if (response.ok) {
+        toast.success("Your account has been updated successfully!");
+        logout(e);
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.errors.Password[0]);
+      }
     } catch (err) {
       console.error(err.message);
       toast.error(err.message);
@@ -110,10 +113,7 @@ const EditCategoryModal = ({
           />
 
           <ButtonsContainer>
-            <SaveButton>Save</SaveButton>
-            <DeleteButton type="button" onClick={onCancelClick}>
-              Cancel
-            </DeleteButton>
+            <DeleteButton>Confirm</DeleteButton>
           </ButtonsContainer>
         </ContentWrapper>
       </Modal>

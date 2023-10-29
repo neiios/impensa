@@ -15,6 +15,7 @@ import {
   Category,
   Hint,
   RemoveAccount,
+  SelectContainer,
 } from "./style";
 import { toast } from "react-toastify";
 import VerifyModal from "../../../components/VerifyModal";
@@ -125,14 +126,17 @@ function Settings({ logout, categories, setCategories }) {
         <UserContainer>
           <HR />
           <H4>Change currency</H4>
-          <Select
-            styles={colourStyles}
-            onChange={handleCurrencyChange}
-            options={currency_list}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            value={currency_list.find((c) => c.value === userData.currency)} // Ensures the correct value is selected
-          />
+          <SelectContainer>
+            <Select
+              styles={colourStyles}
+              onChange={handleCurrencyChange}
+              options={currency_list}
+              className="basic-multi-select"
+              classNamePrefix="select"
+              value={currency_list.find((c) => c.value === userData.currency)}
+            />
+          </SelectContainer>
+
           <HR />
           <H4>Change password</H4>
           <Input

@@ -29,7 +29,7 @@ export const ExpenseContainer = ({ currency, heading, obj }) => {
             </ExpenseDate>
           </ColumnContainer>
           <ExpenseAmount>
-            -{`${currency} ${parseFloat(expense.amount).toFixed(2)}`}
+            {`${currency} ${parseFloat(expense.amount).toFixed(2)}`}
           </ExpenseAmount>
         </ExpenseString>
       ))}

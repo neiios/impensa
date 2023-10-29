@@ -65,3 +65,7 @@ export const RemoveAccount = styled.span`
     text-decoration: underline;
   }
 `;
+
+export const SelectContainer = styled.div`
+  width: 100%;
+`;

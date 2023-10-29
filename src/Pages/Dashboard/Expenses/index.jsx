@@ -97,7 +97,6 @@ const Expenses = ({ expenses, currency }) => {
                     </ExpenseDate>
                   </ColumnContainer>
                   <ExpenseAmount>
-                    -{" "}
                     {`${currency} 
                     ${parseFloat(expense.amount).toFixed(2)}`}
                   </ExpenseAmount>

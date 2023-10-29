@@ -82,7 +82,7 @@ export const UserContainer = styled.form`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+
   gap: 10px;
 `;
 
@@ -305,7 +305,6 @@ export const H4 = styled.h4`
 `;
 
 export const Input = styled.input`
-  max-width: 50%;
   margin-top: 10px;
   padding: 11px 15px;
   background: #f9f9fa;

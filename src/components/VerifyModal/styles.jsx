@@ -68,13 +68,17 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  /* width: 100%; */
+  cursor: pointer;
   padding: 0.5rem;
   width: 85px;
   color: #fff;
   border: none;
   font-weight: 600;
   border-radius: 4px;
+  transition: opacity 0.2s ease-in;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const SaveButton = styled(StyledButton)`
