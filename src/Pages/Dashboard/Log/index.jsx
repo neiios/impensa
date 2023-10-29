@@ -49,7 +49,7 @@ const Log = () => {
               <Td data-label="IP">{log.ip}</Td>
               <Td data-label="Date">
                 {" "}
-                {moment.utc(log.date).format("MMM Do, YYYY HH:mm")}
+                {moment(log.date).format("MMM Do, YYYY HH:mm")}
               </Td>
               <Td data-label="User Agent">{log.browser}</Td>
             </Tr>
