@@ -109,7 +109,6 @@ const EditCategoryModal = ({
 
       if (response.ok) {
         const updatedCategory = await response.json();
-        console.log(updatedCategory);
         setCategories((prevCategories) =>
           prevCategories.map((category) =>
             category.id === currentId ? updatedCategory : category,

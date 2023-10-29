@@ -16,6 +16,7 @@ import {
   Hint,
   RemoveAccount,
   SelectContainer,
+  UserLog,
 } from "./style";
 import { toast } from "react-toastify";
 import VerifyModal from "../../../components/VerifyModal";
@@ -172,6 +173,7 @@ function Settings({ logout, categories, setCategories }) {
           <VerifyRemovalModal logout={logout}>
             <RemoveAccount>Remove your account</RemoveAccount>
           </VerifyRemovalModal>
+          <UserLog to="../log">View user activity</UserLog>
         </UserContainer>
       </Container>
     </ArchiveContainer>

@@ -10,6 +10,7 @@ import Nav from "../Navbar";
 import Banner from "../banner";
 import Archive from "../Archive";
 import Settings from "../Settings";
+import Log from "../Log";
 
 const Dashboard = ({ setAuth }) => {
   document.title = "Dashboard";
@@ -19,7 +20,6 @@ const Dashboard = ({ setAuth }) => {
   const [currency, setCurrency] = useState("");
   const [expenses, setExpenses] = useState([]);
   const [categories, setCategories] = useState([]);
-  console.log(window.navigator);
   async function getProfile() {
     try {
       const res = await fetch("/api/v1/me", {
@@ -49,7 +49,6 @@ const Dashboard = ({ setAuth }) => {
 
       const parseData = await res.json();
       setExpenses(parseData);
-      console.log(parseData);
       setIsLoading(false);
     } catch (err) {
       console.error(err.message);
@@ -84,7 +83,6 @@ const Dashboard = ({ setAuth }) => {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
       setCategories(parseData);
     } catch (err) {
       console.error(err.message);
@@ -140,6 +138,7 @@ const Dashboard = ({ setAuth }) => {
                       />
                     }
                   />
+                  <Route path="log" element={<Log />} />
                 </Routes>
               </MainContainer>
             </>

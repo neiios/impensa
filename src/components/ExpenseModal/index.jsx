@@ -105,7 +105,6 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
       });
 
       const parseData = await response.json();
-      console.log(parseData);
       setExpenses((prevExpenses) => [...prevExpenses, parseData]);
 
       setDescription("");

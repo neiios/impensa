@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import theme from "../../../theme/Index";
 import { device } from "../../../mediaQueries";
+import { Link, NavLink } from "react-router-dom";
 
 export const Container = styled.div`
   justify-content: center;
@@ -68,4 +69,14 @@ export const RemoveAccount = styled.span`
 
 export const SelectContainer = styled.div`
   width: 100%;
+`;
+
+export const UserLog = styled(Link)`
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: #238fd2;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
