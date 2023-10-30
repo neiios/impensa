@@ -65,11 +65,16 @@ const Archive = ({ expenses, currency, setExpenses }) => {
     }
   }
 
-  async function onSubmitEditForm(e) {
+  async function onSubmitEditForm(e, selectedExpense) {
     e.preventDefault();
-    console.log(e);
+
     try {
-      const body = selectedExpense;
+      const body = {
+        amount: selectedExpense.amount,
+        description: selectedExpense.description,
+        expenseCategoryId: selectedExpense.expenseCategory.id,
+      };
+      console.log(body);
       const response = await fetch(`/api/v1/expenses/${selectedExpense.id}`, {
         method: "PUT",
         headers: {
@@ -195,13 +200,7 @@ const Archive = ({ expenses, currency, setExpenses }) => {
                 />
               </Td>
               <Td data-label="Category">
-                <Input
-                  required
-                  name="category.name"
-                  type="text"
-                  value={selectedExpense.expenseCategory.name}
-                  onChange={(e) => updateField(e)}
-                />
+                {selectedExpense.expenseCategory.name}
               </Td>
               <Td data-label="Date">
                 {moment.utc(selectedExpense.createdAt).format("MMM Do, YYYY")}
