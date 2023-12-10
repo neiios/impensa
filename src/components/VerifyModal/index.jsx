@@ -73,7 +73,7 @@ const EditCategoryModal = ({
           },
           body: JSON.stringify({
             title: "Update of the account",
-            description: `Your updated your contact details`,
+            description: `You updated your contact details`,
           }),
         });
         logout(e);
