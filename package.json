@@ -2,7 +2,7 @@
   "name": "impensa-client",
   "license": "AGPL-3.0-or-later",
   "scripts": {
-    "start": "prettier --write \"src/**/*.{js,jsx,json}\" && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
