@@ -6,6 +6,7 @@ import {
   TextContainer,
   SelectContainer,
   InputRow,
+  SigninContainer,
 } from "./style";
 import { StyledLink } from "../../components/Button/style";
 import { PrimaryOutlineButton } from "../../components/Button/index.jsx";
@@ -61,54 +62,56 @@ const SignUp = ({ setAuth }) => {
     <Wrapper>
       <LogoImg />
       <Heading>Create your Impensa account</Heading>
-      <Form onSubmit={onSubmitForm}>
-        <ItemForm
-          maxLength="12"
-          label="Name"
-          position="column"
-          type="text"
-          name="username"
-          value={username}
-          onChange={(e) => onChange(e)}
-        />
-        <SelectContainer>
-          <InputLabel>Currency</InputLabel>
-          <Select
-            styles={colourStyles}
-            onChange={(e) => setCurrency(e.value)}
-            options={currency_list}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            required
+      <SigninContainer>
+        <Form onSubmit={onSubmitForm}>
+          <ItemForm
+            maxLength="12"
+            label="Name"
+            position="column"
+            type="text"
+            name="username"
+            value={username}
+            onChange={(e) => onChange(e)}
           />
-        </SelectContainer>
-        <ItemForm
-          maxLength="25"
-          position="column"
-          type="email"
-          name="email"
-          label="Email"
-          value={email}
-          onChange={(e) => onChange(e)}
-        />
-        <ItemForm
-          position="column"
-          type="password"
-          name="password"
-          label="Password"
-          value={password}
-          onChange={(e) => onChange(e)}
-        />
-        <PrimaryOutlineButton style={{ margin: "auto" }}>
-          Create an account
-        </PrimaryOutlineButton>
-        <TextContainer>
-          Already have an account?
-          <StyledLink style={{ color: "#635BFF" }} to="/signin">
-            Sign in
-          </StyledLink>
-        </TextContainer>
-      </Form>
+          <SelectContainer>
+            <InputLabel>Currency</InputLabel>
+            <Select
+              styles={colourStyles}
+              onChange={(e) => setCurrency(e.value)}
+              options={currency_list}
+              className="basic-multi-select"
+              classNamePrefix="select"
+              required
+            />
+          </SelectContainer>
+          <ItemForm
+            maxLength="25"
+            position="column"
+            type="email"
+            name="email"
+            label="Email"
+            value={email}
+            onChange={(e) => onChange(e)}
+          />
+          <ItemForm
+            position="column"
+            type="password"
+            name="password"
+            label="Password"
+            value={password}
+            onChange={(e) => onChange(e)}
+          />
+          <PrimaryOutlineButton style={{ margin: "auto" }}>
+            Create an account
+          </PrimaryOutlineButton>
+          <TextContainer>
+            Already have an account?
+            <StyledLink style={{ color: "#635BFF" }} to="/signin">
+              Sign in
+            </StyledLink>
+          </TextContainer>
+        </Form>
+      </SigninContainer>
     </Wrapper>
   );
 };
