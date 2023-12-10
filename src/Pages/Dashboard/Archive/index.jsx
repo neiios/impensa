@@ -18,32 +18,6 @@ const Archive = ({ expenses, currency, setExpenses, categories }) => {
   const [sort, setSort] = useState(false);
   const [sortedExpenses, setSortedExpenses] = useState([...expenses].reverse());
   const [disabled, setDisabled] = useState(true);
-  const [selectedExpense, setSelectedExpense] = useState({});
-
-  async function onDeleteExpense(id) {
-    try {
-      const response = await fetch(`/api/v1/expenses/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        setExpenses((prevExpenses) =>
-          prevExpenses.filter((expense) => expense.id !== id),
-        );
-        toast.success("Expense has been deleted successfully!");
-      } else {
-        const errorData = await response.json();
-        toast.error(`Error deleting expense: ${errorData.message}`);
-      }
-      setDisabled(!disabled);
-    } catch (err) {
-      toast.error(err.message);
-      console.error(err.message);
-    }
-  }
 
   async function sortElements() {
     try {
@@ -51,38 +25,6 @@ const Archive = ({ expenses, currency, setExpenses, categories }) => {
         ? setSortedExpenses(expenses)
         : setSortedExpenses([...expenses].reverse());
       setSort(!sort);
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
-
-  async function onSubmitEditForm(e, selectedExpense) {
-    e.preventDefault();
-
-    try {
-      const body = {
-        amount: selectedExpense.amount,
-        description: selectedExpense.description,
-        expenseCategoryId: selectedExpense.expenseCategory.id,
-      };
-      console.log(body);
-      const response = await fetch(`/api/v1/expenses/${selectedExpense.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-
-      sortedExpenses.forEach((expense) => {
-        if (expense.id === selectedExpense.id) {
-          expense.amount = selectedExpense.amount;
-          expense.description = selectedExpense.description;
-          expense.expenseCategory.name = selectedExpense.expenseCategory.name;
-        }
-      });
-
-      setDisabled(!disabled);
     } catch (err) {
       console.error(err.message);
     }

@@ -76,21 +76,29 @@ export const colourStyles = {
 
 const ExpenseModal = ({ setExpenses, categories, expense, children }) => {
   const [description, setDescription] = useState(expense?.description || "");
-  const [amount, setAmount] = useState(expense?.amount || undefined);
+  const [amount, setAmount] = useState(expense?.amount || "");
   const [date, setDate] = useState(
-    expense
-      ? new Date(expense.spentAt).toISOString().substring(0, 16)
-      : undefined,
+    expense ? new Date(expense.spentAt).toISOString().substring(0, 16) : "",
   );
   const [category, setCategory] = useState(
     expense
-      ? {
-          id: expense.expenseCategory.id,
-          name: expense.expenseCategory.name,
-        }
-      : [],
+      ? { id: expense.expenseCategory.id, name: expense.expenseCategory.name }
+      : null,
   );
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (expense) {
+      // If editing an expense, prefill the state
+      setDescription(expense.description);
+      setAmount(expense.amount);
+      setDate(new Date(expense.spentAt).toISOString().substring(0, 16));
+      setCategory({
+        id: expense.expenseCategory.id,
+        label: expense.expenseCategory.name,
+      });
+    }
+  }, [expense]);
 
   function openModal() {
     setIsOpen(true);
@@ -133,42 +141,39 @@ const ExpenseModal = ({ setExpenses, categories, expense, children }) => {
 
   async function onSubmitForm(e) {
     e.preventDefault();
+    const formattedDate = new Date(date).toISOString();
+    const body = {
+      amount: amount,
+      expenseCategoryId: category.id,
+      description: description,
+      spentAt: formattedDate,
+    };
     try {
-      const formattedDate = new Date(date).toISOString();
-      const body = {
-        amount: amount,
-        expenseCategoryId: category.id,
-        description: description,
-        spentAt: formattedDate,
-      };
-
-      const method = expense ? "PUT" : "POST";
       const endpoint = expense
         ? `/api/v1/expenses/${expense.id}`
         : "/api/v1/expenses";
-
       const response = await fetch(endpoint, {
-        method: method,
+        method: expense ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
-      if (!expense) {
-        const parseData = await response.json();
-        setExpenses((prevExpenses) => [...prevExpenses, parseData]);
-
-        setDescription("");
-        setAmount(null);
-        setDate(undefined);
+      if (response.ok) {
+        const responseData = await response.json();
+        if (expense) {
+          setExpenses((prevExpenses) =>
+            prevExpenses.map((e) => (e.id === expense.id ? responseData : e)),
+          );
+        } else {
+          setExpenses((prevExpenses) => [...prevExpenses, responseData]);
+        }
+        closeModal();
+        toast.success(`Expense ${expense ? "updated" : "added"} successfully!`);
+      } else {
+        toast.error(`Failed to ${expense ? "update" : "add"} expense.`);
       }
-
-      closeModal();
-      toast.success(
-        `Expense has been ${expense ? "updated" : "added"} successfully!`,
-      );
     } catch (err) {
       toast.error(err.message);
-      console.error(err.message);
     }
   }
 
