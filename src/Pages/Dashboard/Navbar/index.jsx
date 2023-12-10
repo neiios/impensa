@@ -115,11 +115,6 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
               <ArrowIcon className="fas fa-arrow-right fa-xl" />{" "}
             </>
           ) : null}
-          <Icon
-            ref={envelopeIconRef}
-            onClick={toggleNotificationHub}
-            className="fa-solid fa-envelope"
-          ></Icon>
 
           <ExpenseModal
             categories={categories}
@@ -128,6 +123,12 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
           >
             <Icon className="fas fa-plus" />
           </ExpenseModal>
+          <Icon
+            ref={envelopeIconRef}
+            onClick={toggleNotificationHub}
+            className="fa-solid fa-envelope"
+          ></Icon>
+
           <UserCreds>
             <UserName>{name}</UserName>
             <PpContainer>
