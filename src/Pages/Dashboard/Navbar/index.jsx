@@ -106,6 +106,24 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
     }
   }
 
+  async function MarkAllAsRead() {
+    try {
+      const response = await fetch("/api/v1/notifications/read/all", {
+        method: "PUT",
+      });
+
+      if (response.ok) {
+        // Update local state to mark all unread notifications as read
+        setUnreadNotifications([]);
+        setReadNotifications([...unreadNotifications, ...readNotifications]);
+      } else {
+        console.error("Failed to mark all notifications as read");
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   async function toggleNotificationReadStatus(id, isRead) {
     try {
       await fetch(`/api/v1/notifications/${id}/toggle-read`, {
@@ -178,7 +196,10 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
       </NavbarContainer>
       {isNotificationHubVisible && (
         <NotificationHub ref={notificationHubRef}>
-          <SectionHeading>Unread</SectionHeading>
+          <NotificationControls>
+            <SectionHeading>Unread</SectionHeading>{" "}
+            <Control onClick={MarkAllAsRead}>(Mark all as read)</Control>
+          </NotificationControls>
           {!unreadNotifications.length ? (
             <WarningMsg>Nothing here yet</WarningMsg>
           ) : (

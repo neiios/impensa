@@ -168,6 +168,7 @@ export const WarningMsg = styled.span`
 export const NotificationControls = styled.div`
   display: flex;
   gap: 10px;
+  align-items: center;
 `;
 
 export const Control = styled.span`
