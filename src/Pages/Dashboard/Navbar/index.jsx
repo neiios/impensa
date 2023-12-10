@@ -26,6 +26,32 @@ import {
 } from "./style.jsx";
 import moment from "moment";
 
+const NotificationItem = ({
+  notification,
+  toggleReadStatus,
+  deleteNotification,
+}) => {
+  return (
+    <Notification key={notification.id}>
+      <NotificationTitle>{notification.title}</NotificationTitle>
+      <NotificationDescription>
+        {notification.description}
+      </NotificationDescription>
+      <NotificationControls>
+        <Date>{moment.utc(notification.createdAt).format("MMM Do, YYYY")}</Date>
+        <Control
+          onClick={() => toggleReadStatus(notification.id, notification.isRead)}
+        >
+          {notification.isRead ? "Mark as unread" : "Mark as read"}
+        </Control>
+        <Control onClick={() => deleteNotification(notification.id)}>
+          Delete
+        </Control>
+      </NotificationControls>
+    </Notification>
+  );
+};
+
 export const Nav = ({ name, expenses, setExpenses, categories }) => {
   const [isNotificationHubVisible, setIsNotificationHubVisible] =
     useState(false);
@@ -147,66 +173,27 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
           {!unreadNotifications.length ? (
             <WarningMsg>Nothing here yet</WarningMsg>
           ) : (
-            <>
-              {unreadNotifications.map((notification) => (
-                <Notification key={notification.id}>
-                  <NotificationTitle>{notification.title}</NotificationTitle>
-                  <NotificationDescription>
-                    {notification.description}
-                  </NotificationDescription>
-
-                  <NotificationControls>
-                    <Date>
-                      {moment
-                        .utc(notification.createdAt)
-                        .format("MMM Do, YYYY")}
-                    </Date>
-                    <Control
-                      onClick={() =>
-                        toggleNotificationReadStatus(notification.id, false)
-                      }
-                    >
-                      Mark as read
-                    </Control>
-                    <Control
-                      onClick={() => deleteNotification(notification.id)}
-                    >
-                      Delete
-                    </Control>
-                  </NotificationControls>
-                </Notification>
-              ))}
-            </>
+            unreadNotifications.map((notification) => (
+              <NotificationItem
+                key={notification.id}
+                notification={notification}
+                toggleReadStatus={toggleNotificationReadStatus}
+                deleteNotification={deleteNotification}
+              />
+            ))
           )}
           <SectionHeading>Read</SectionHeading>
-
           {!readNotifications.length ? (
             <WarningMsg>Nothing here yet</WarningMsg>
           ) : (
-            <>
-              {readNotifications.map((notification) => (
-                <Notification key={notification.id}>
-                  <NotificationTitle>{notification.title}</NotificationTitle>
-                  <NotificationDescription>
-                    {notification.description}
-                  </NotificationDescription>
-                  <NotificationControls>
-                    <Control
-                      onClick={() =>
-                        toggleNotificationReadStatus(notification.id, true)
-                      }
-                    >
-                      Mark as unread
-                    </Control>
-                    <Control
-                      onClick={() => deleteNotification(notification.id)}
-                    >
-                      Delete
-                    </Control>
-                  </NotificationControls>
-                </Notification>
-              ))}
-            </>
+            readNotifications.map((notification) => (
+              <NotificationItem
+                key={notification.id}
+                notification={notification}
+                toggleReadStatus={toggleNotificationReadStatus}
+                deleteNotification={deleteNotification}
+              />
+            ))
           )}
         </NotificationHub>
       )}
