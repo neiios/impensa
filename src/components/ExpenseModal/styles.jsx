@@ -191,7 +191,7 @@ export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 400px;
+  height: 500px;
 `;
 
 export const ContentWrapper = styled.form`

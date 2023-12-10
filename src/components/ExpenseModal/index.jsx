@@ -75,6 +75,7 @@ export const colourStyles = {
 const ExpenseModal = ({ setExpenses, categories, children }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(undefined);
+  const [date, setDate] = useState(undefined);
   const [category, setCategory] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -93,6 +94,7 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
         amount,
         expenseCategoryId: category.id,
         description,
+        spentAt: date
       };
 
       const response = await fetch("/api/v1/expenses", {
@@ -109,8 +111,9 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
 
       setDescription("");
       setAmount(undefined);
+      setDate(undefined);
       setCategory([]);
-
+      closeModal();
       toast.success("New expense has been added successfully!");
     } catch (err) {
       toast.error(err.message);
@@ -185,7 +188,15 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
             onChange={(e) => setAmount(e.target.value)}
           />
 
-          <SaveButton onClick={closeModal}>Add Expense</SaveButton>
+          <H5>Date</H5>
+          <ItemForm
+            position="column"
+            required
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <SaveButton>Add Expense</SaveButton>
         </Wrapper>
       </Modal>
     </>
