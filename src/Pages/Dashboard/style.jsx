@@ -306,6 +306,8 @@ export const H4 = styled.h4`
 
 export const Input = styled.input`
   margin-top: 10px;
+  width:100%;
+  box-sizing: border-box;
   padding: 11px 15px;
   background: #f9f9fa;
   border-radius: 4px;

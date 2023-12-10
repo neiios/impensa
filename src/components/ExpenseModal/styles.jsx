@@ -89,7 +89,7 @@ export const TextArea = styled.textarea`
   resize: none;
   box-sizing: border-box;
   height: 150px;
-  max-width: 100%;
+  width: 100%;
 
   padding: 11px 15px;
   background: #f9f9fa;

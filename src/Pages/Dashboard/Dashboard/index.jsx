@@ -11,6 +11,7 @@ import Banner from "../banner";
 import Archive from "../Archive";
 import Settings from "../Settings";
 import Log from "../Log";
+import Contact from "../Contact";
 
 const Dashboard = ({ setAuth }) => {
   document.title = "Dashboard";
@@ -135,6 +136,13 @@ const Dashboard = ({ setAuth }) => {
                         categories={categories}
                         setCategories={setCategories}
                         logout={logout}
+                      />
+                    }
+                  />
+                  <Route
+                    path="contact"
+                    element={
+                      <Contact
                       />
                     }
                   />
