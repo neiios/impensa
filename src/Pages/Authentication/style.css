@@ -1,0 +1,14 @@
+.oauth-provider-button {
+    height: 45px;
+    font-size: 1.25rem;
+    font-weight: 550;
+    color: white;
+    background-color: #2b3137;
+    border-radius: 4px;
+    border: none;
+}
+
+.oauth-provider-button:hover {
+    background-color: #49525c;
+    cursor: pointer;
+}

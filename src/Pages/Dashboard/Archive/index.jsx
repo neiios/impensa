@@ -25,7 +25,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
         },
       });
 
@@ -79,7 +78,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify(body),
       });

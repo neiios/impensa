@@ -26,10 +26,10 @@ export const colourStyles = {
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-        ? data.color
-        : isFocused
-        ? color.alpha(0.1).css()
-        : undefined,
+          ? data.color
+          : isFocused
+            ? color.alpha(0.1).css()
+            : undefined,
       color: isDisabled ? "#ccc" : isSelected,
 
       cursor: isDisabled ? "not-allowed" : "default",
@@ -75,9 +75,6 @@ const Categories = () => {
     try {
       const res = await fetch("/api/v1/categories", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();
@@ -109,7 +106,6 @@ const Categories = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify(body),
       });

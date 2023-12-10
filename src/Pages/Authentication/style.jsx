@@ -18,6 +18,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  gap: 30px;
+`;
+
+export const SigninContainer = styled.form`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
   margin: 0 auto;

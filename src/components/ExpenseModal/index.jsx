@@ -34,10 +34,10 @@ export const colourStyles = {
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-        ? data.color
-        : isFocused
-        ? color.alpha(0.1).css()
-        : undefined,
+          ? data.color
+          : isFocused
+            ? color.alpha(0.1).css()
+            : undefined,
       color: isDisabled ? "#ccc" : isSelected,
 
       cursor: isDisabled ? "not-allowed" : "default",
@@ -101,7 +101,6 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify(body),
       });

@@ -25,9 +25,6 @@ const Dashboard = ({ setAuth }) => {
     try {
       const res = await fetch("/api/v1/me", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();
@@ -43,9 +40,6 @@ const Dashboard = ({ setAuth }) => {
     try {
       const res = await fetch("/api/v1/expenses", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();
@@ -65,11 +59,18 @@ const Dashboard = ({ setAuth }) => {
   async function logout(e) {
     e.preventDefault();
     try {
-      localStorage.removeItem("token");
-      setAuth(false);
-      toast.success("Logged out successfully!");
+      const res = await fetch("/api/v1/auth/signout", {
+        method: "POST",
+      });
+
+      if (res.status === 200) {
+        setAuth(false);
+        toast.success("Logged out successfully!");
+      } else {
+        throw new Error("res.status wasnt 200");
+      }
     } catch (err) {
-      toast.error(err.message);
+      toast.error("Error logging out. Try again.");
       console.error(err.message);
     }
   }
@@ -78,9 +79,6 @@ const Dashboard = ({ setAuth }) => {
     try {
       const res = await fetch("/api/v1/categories", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();

@@ -41,9 +41,6 @@ function Settings({ logout, categories, setCategories }) {
     try {
       const res = await fetch("/api/v1/categories", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();
@@ -57,9 +54,6 @@ function Settings({ logout, categories, setCategories }) {
     try {
       const res = await fetch("/api/v1/me", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();

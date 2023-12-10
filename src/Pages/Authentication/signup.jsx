@@ -45,8 +45,7 @@ const SignUp = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      if (parseRes.jwtToken) {
-        localStorage.setItem("token", parseRes.jwtToken);
+      if (response.status === 200) {
         setAuth(true);
         toast.success("Registered successfully!");
       } else {

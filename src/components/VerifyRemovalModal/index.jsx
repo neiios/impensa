@@ -49,7 +49,6 @@ const VerifyRemovalModal = ({
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify({ password: userPassword }),
       });

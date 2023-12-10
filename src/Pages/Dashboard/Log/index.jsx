@@ -12,9 +12,6 @@ const Log = () => {
     try {
       const res = await fetch("/api/v1/logs", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       const parseData = await res.json();

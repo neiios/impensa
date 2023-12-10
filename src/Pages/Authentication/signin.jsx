@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import { PrimaryOutlineButton } from "../../components/Button/index.jsx";
 import { StyledLink } from "../../components/Button/style.jsx";
 import ItemForm from "../../components/itemForm.jsx";
-import { Wrapper, Heading, Form, TextContainer } from "./style";
+import {
+  Wrapper,
+  Heading,
+  Form,
+  TextContainer,
+  SigninContainer,
+  OauthProviderButton,
+} from "./style";
+import "./style.css";
 import { toast } from "react-toastify";
 import { LogoImg } from "../../components/Logo/index.jsx";
 // add location to identify currency
@@ -32,8 +40,7 @@ const SignIn = ({ setAuth }) => {
 
       const parseRes = await response.json();
 
-      if (parseRes.jwtToken) {
-        localStorage.setItem("token", parseRes.jwtToken);
+      if (response.status === 200) {
         setAuth(true);
       } else {
         setAuth(false);
@@ -44,37 +51,50 @@ const SignIn = ({ setAuth }) => {
     }
   };
 
+  function onSignInGithub() {
+    window.location = "http://localhost:5274/api/v1/auth/github";
+  }
+
   return (
     <Wrapper>
       <LogoImg />
       <Heading>Sign in to Impensa</Heading>
-      <Form onSubmit={onSubmitForm}>
-        <ItemForm
-          position="column"
-          label="Email"
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => onChange(e)}
-        />
-        <ItemForm
-          position="column"
-          label="Password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => onChange(e)}
-        />
-        <PrimaryOutlineButton style={{ margin: "auto" }}>
-          Continue
-        </PrimaryOutlineButton>
+      <SigninContainer>
+        <Form onSubmit={onSubmitForm}>
+          <ItemForm
+            position="column"
+            label="Email"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => onChange(e)}
+          />
+          <ItemForm
+            position="column"
+            label="Password"
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => onChange(e)}
+          />
+          <PrimaryOutlineButton style={{ margin: "auto" }}>
+            Continue
+          </PrimaryOutlineButton>
+        </Form>
+        <button
+          className="oauth-provider-button"
+          type="button"
+          onClick={onSignInGithub}
+        >
+          <i className="fab fa-github"></i> Sign in with GitHub
+        </button>
         <TextContainer>
           Don't have an account?
           <StyledLink style={{ color: "#635BFF" }} to="/signup">
             Sign up
           </StyledLink>
         </TextContainer>
-      </Form>
+      </SigninContainer>
     </Wrapper>
   );
 };

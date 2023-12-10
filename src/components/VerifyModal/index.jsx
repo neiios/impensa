@@ -59,7 +59,6 @@ const EditCategoryModal = ({
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
         },
         body: JSON.stringify(fieldsToUpdate),
       });

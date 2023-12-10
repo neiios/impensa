@@ -21,9 +21,6 @@ const App = () => {
     try {
       const res = await fetch("/api/v1/auth/verify", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`,
-        },
       });
 
       if (res.status === 200) {
