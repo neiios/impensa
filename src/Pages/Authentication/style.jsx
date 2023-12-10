@@ -25,7 +25,7 @@ export const Form = styled.form`
   gap: 30px;
 `;
 
-export const SigninContainer = styled.form`
+export const SigninContainer = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
   margin: 0 auto;
