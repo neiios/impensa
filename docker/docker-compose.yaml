@@ -1,0 +1,25 @@
+# IMPORTANT: Ensure local images are built first
+services:
+  impensa-server-dotnet:
+    image: impensa-server-dotnet:latest
+    container_name: impensa-server-dotnet
+    ports:
+      - "8080:8080"
+    environment:
+      - POSTGRES_CONNECTION_STRING=Host=impensa-server-dotnet-postgres-prod;Port=5432;Username=postgres;Password=postgres;Database=impensa-dotnet;
+      - GITHUB_CLIENT_ID=0000
+      - GITHUB_CLIENT_SECRET=0000
+      - MAILJET_API_KEY=0000
+      - MAILJET_SECRET_KEY=0000
+      # Used for oauth callback, needs to be registered with the api provider
+      - CLIENT_ADDRESS=https://your-domain.com
+      - PRODUCTION=true
+    depends_on:
+      - impensa-server-dotnet-postgres-prod
+  impensa-server-dotnet-postgres-prod:
+    container_name: impensa-server-dotnet-postgres-prod
+    image: docker.io/postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: impensa-dotnet
