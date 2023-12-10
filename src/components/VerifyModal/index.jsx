@@ -66,6 +66,16 @@ const EditCategoryModal = ({
 
       if (response.ok) {
         toast.success("Your account has been updated successfully!");
+        await fetch(`/api/v1/notifications`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: "Update of the account",
+            description: `Your updated your contact details`,
+          }),
+        });
         logout(e);
       } else {
         const errorData = await response.json();

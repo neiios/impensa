@@ -22,7 +22,9 @@ import {
   WarningMsg,
   NotificationControls,
   Control,
+  Date,
 } from "./style.jsx";
+import moment from "moment";
 
 export const Nav = ({ name, expenses, setExpenses, categories }) => {
   const [isNotificationHubVisible, setIsNotificationHubVisible] =
@@ -152,7 +154,13 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
                   <NotificationDescription>
                     {notification.description}
                   </NotificationDescription>
+
                   <NotificationControls>
+                    <Date>
+                      {moment
+                        .utc(notification.createdAt)
+                        .format("MMM Do, YYYY")}
+                    </Date>
                     <Control
                       onClick={() =>
                         toggleNotificationReadStatus(notification.id, false)

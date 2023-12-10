@@ -146,6 +146,9 @@ export const Notification = styled.div`
 
 export const NotificationTitle = styled.span`
   font-weight: 550;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
 `;
 
 export const NotificationDescription = styled.p`
@@ -175,4 +178,8 @@ export const Control = styled.span`
   &:hover {
     opacity: 0.7;
   }
+`;
+
+export const Date = styled.span`
+  font-size: 0.5rem;
 `;

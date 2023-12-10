@@ -38,8 +38,6 @@ const SignIn = ({ setAuth }) => {
         body: JSON.stringify(body),
       });
 
-      const parseRes = await response.json();
-
       if (response.status === 200) {
         setAuth(true);
       } else {
