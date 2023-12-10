@@ -139,7 +139,7 @@ const EditCategoryModal = ({
           },
           body: JSON.stringify({
             title: "Update of a category",
-            description: `You changed category name from "${category}" to "${categoryName}"`,
+            description: `You changed category name from "${category}" to ${categoryName}"`,
           }),
         });
       } else {

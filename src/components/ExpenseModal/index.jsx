@@ -9,6 +9,8 @@ import {
   H5,
   TextArea,
   Wrapper,
+  ButtonsContainer,
+  DeleteButton,
 } from "./styles";
 import ItemForm from "../itemForm";
 import { toast } from "react-toastify";
@@ -72,11 +74,22 @@ export const colourStyles = {
   }),
 };
 
-const ExpenseModal = ({ setExpenses, categories, children }) => {
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(undefined);
-  const [date, setDate] = useState(null);
-  const [category, setCategory] = useState([]);
+const ExpenseModal = ({ setExpenses, categories, expense, children }) => {
+  const [description, setDescription] = useState(expense?.description || "");
+  const [amount, setAmount] = useState(expense?.amount || undefined);
+  const [date, setDate] = useState(
+    expense
+      ? new Date(expense.spentAt).toISOString().substring(0, 16)
+      : undefined,
+  );
+  const [category, setCategory] = useState(
+    expense
+      ? {
+          id: expense.expenseCategory.id,
+          name: expense.expenseCategory.name,
+        }
+      : [],
+  );
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -87,35 +100,72 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
     setIsOpen(false);
   }
 
+  async function onDeleteExpense(id) {
+    try {
+      const response = await fetch(`/api/v1/expenses/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setExpenses((prevExpenses) =>
+          prevExpenses.filter((expense) => expense.id !== id),
+        );
+        toast.success("Expense has been deleted successfully!");
+      } else {
+        const errorData = await response.json();
+        toast.error(`Error deleting expense: ${errorData.message}`);
+      }
+    } catch (err) {
+      toast.error(err.message);
+      console.error(err.message);
+    }
+  }
+
+  async function onCancelClick() {
+    if (expense) {
+      onDeleteExpense(expense.id);
+    }
+    closeModal();
+  }
+
   async function onSubmitForm(e) {
     e.preventDefault();
     try {
       const formattedDate = new Date(date).toISOString();
-
       const body = {
-        amount,
+        amount: amount,
         expenseCategoryId: category.id,
-        description,
+        description: description,
         spentAt: formattedDate,
       };
 
-      const response = await fetch("/api/v1/expenses", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const method = expense ? "PUT" : "POST";
+      const endpoint = expense
+        ? `/api/v1/expenses/${expense.id}`
+        : "/api/v1/expenses";
+
+      const response = await fetch(endpoint, {
+        method: method,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
-      const parseData = await response.json();
-      setExpenses((prevExpenses) => [...prevExpenses, parseData]);
+      if (!expense) {
+        const parseData = await response.json();
+        setExpenses((prevExpenses) => [...prevExpenses, parseData]);
 
-      setDescription("");
-      setAmount(undefined);
-      setDate(undefined);
-      setCategory([]);
+        setDescription("");
+        setAmount(null);
+        setDate(undefined);
+      }
+
       closeModal();
-      toast.success("New expense has been added successfully!");
+      toast.success(
+        `Expense has been ${expense ? "updated" : "added"} successfully!`,
+      );
     } catch (err) {
       toast.error(err.message);
       console.error(err.message);
@@ -148,7 +198,9 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
       >
         <Wrapper onSubmit={onSubmitForm}>
           <Heading>
-            <Headline>Add Expense</Headline>
+            <Headline onClick={onCancelClick}>
+              {expense ? "Edit expense" : "Add Expense"}
+            </Headline>
             <CloseModal
               onClick={closeModal}
               className="fa-solid fa-xmark fa-xl"
@@ -159,6 +211,12 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
 
           <Select
             styles={colourStyles}
+            defaultValue={
+              expense && {
+                value: expense.expenseCategory.id,
+                label: expense.expenseCategory.name,
+              }
+            }
             onChange={(selectedOption) =>
               setCategory({
                 id: selectedOption.value,
@@ -197,7 +255,12 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
-          <SaveButton>Add Expense</SaveButton>
+          <ButtonsContainer>
+            <DeleteButton onClick={onCancelClick} type="button">
+              {expense ? "Remove" : "Cancel"}
+            </DeleteButton>
+            <SaveButton>{expense ? "Save" : "Add"}</SaveButton>
+          </ButtonsContainer>
         </Wrapper>
       </Modal>
     </>

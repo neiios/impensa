@@ -10,8 +10,9 @@ import {
 import { Table, Colgroup, Thead, Tr, Th, Tbody, Td } from "./style";
 import moment from "moment";
 import { toast } from "react-toastify";
+import ExpenseModal from "../../../components/ExpenseModal";
 
-const Archive = ({ expenses, currency, setExpenses }) => {
+const Archive = ({ expenses, currency, setExpenses, categories }) => {
   document.title = "Dashboard - Archive";
 
   const [sort, setSort] = useState(false);
@@ -55,15 +56,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
     }
   }
 
-  async function makeExpenseEditable(expense) {
-    try {
-      setSelectedExpense(expense);
-      setDisabled(!disabled);
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
-
   async function onSubmitEditForm(e, selectedExpense) {
     e.preventDefault();
 
@@ -96,13 +88,6 @@ const Archive = ({ expenses, currency, setExpenses }) => {
     }
   }
 
-  const updateField = (e) => {
-    setSelectedExpense((prevSelectedExpense) => ({
-      ...prevSelectedExpense,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   useEffect(() => {
     setSortedExpenses(
       sort
@@ -134,77 +119,33 @@ const Archive = ({ expenses, currency, setExpenses }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {disabled ? (
-            sortedExpenses.map((expense) => (
-              <Tr key={expense.id}>
-                <Td data-label="Modify">
-                  <IconContainer>
-                    <Icon
-                      className="far fa-edit"
-                      onClick={() => makeExpenseEditable(expense)}
-                    />
-                  </IconContainer>
-                </Td>
-                <Td data-label="Amount">
-                  {`${currency} ${parseFloat(expense.amount).toFixed(2)}`}
-                </Td>
-                <Td data-label="Description">
-                  {expense.description.length === 0
-                    ? "No description provided"
-                    : expense.description}
-                </Td>
-                <Td data-label="Category">{expense.expenseCategory.name}</Td>
-                <Td data-label="Date">
-                  {moment.utc(expense.spentAt).format("MMM Do, YYYY")}
-                </Td>
-              </Tr>
-            ))
-          ) : (
-            <Tr key={selectedExpense.id}>
+          {sortedExpenses.map((expense) => (
+            <Tr key={expense.id}>
               <Td data-label="Modify">
                 <IconContainer>
-                  <Icon
-                    className="fas fa-times"
-                    onClick={() => setDisabled(!disabled)}
-                  />
-                  <Icon
-                    className="fas fa-check"
-                    onClick={(e) => onSubmitEditForm(e, selectedExpense)}
-                  />
-                  <Icon
-                    className="far fa-trash-alt"
-                    onClick={() => onDeleteExpense(selectedExpense.id)}
-                  />
+                  <ExpenseModal
+                    setExpenses={setExpenses}
+                    categories={categories}
+                    expense={expense}
+                  >
+                    <Icon className="far fa-edit" />
+                  </ExpenseModal>
                 </IconContainer>
               </Td>
               <Td data-label="Amount">
-                <Input
-                  required
-                  type="number"
-                  name="amount"
-                  min="0.01"
-                  step="0.01"
-                  value={selectedExpense.amount}
-                  onChange={(e) => updateField(e)}
-                />
+                {`${currency} ${parseFloat(expense.amount).toFixed(2)}`}
               </Td>
               <Td data-label="Description">
-                <Input
-                  required
-                  name="description"
-                  type="text"
-                  value={selectedExpense.description}
-                  onChange={(e) => updateField(e)}
-                />
+                {expense.description.length === 0
+                  ? "No description provided"
+                  : expense.description}
               </Td>
-              <Td data-label="Category">
-                {selectedExpense.expenseCategory.name}
-              </Td>
+              <Td data-label="Category">{expense.expenseCategory.name}</Td>
               <Td data-label="Date">
-                {moment.utc(selectedExpense.spentAt).format("MMM Do, YYYY")}
+                {moment.utc(expense.spentAt).format("MMM Do, YYYY")}
               </Td>
             </Tr>
-          )}
+          ))}
         </Tbody>
       </Table>
     </ArchiveContainer>

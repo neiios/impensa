@@ -50,15 +50,19 @@ export const Input = styled.input`
 `;
 
 export const ButtonsContainer = styled.div`
-  width: 100%;
+  width: fit-content;
   display: flex;
+  margin-left: auto;
   gap: 1rem;
-  justify-content: flex-end;
+  justify-content: end;
+
+  margin-top: 20px;
 `;
 
 export const StyledButton = styled.button`
   cursor: pointer;
   padding: 0.5rem;
+  width: 85px;
   color: #fff;
   border: none;
   font-weight: 600;
@@ -71,9 +75,6 @@ export const StyledButton = styled.button`
 
 export const SaveButton = styled(StyledButton)`
   background-color: ${theme.color.primary};
-  margin-left: auto;
-  position: relative;
-  margin-top: 20px;
 `;
 
 export const DeleteButton = styled(StyledButton)`

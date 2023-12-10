@@ -117,6 +117,7 @@ const Dashboard = ({ setAuth }) => {
                       <Archive
                         expenses={expenses}
                         currency={currency}
+                        categories={categories}
                         setExpenses={setExpenses}
                       />
                     }
