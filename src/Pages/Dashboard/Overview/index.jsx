@@ -25,7 +25,7 @@ export const ExpenseContainer = ({ currency, heading, obj }) => {
                 : expense.expenseCategory.name}
             </ExpenseCategory>
             <ExpenseDate>
-              {moment.utc(expense.createdAt).format("MMM Do, YYYY")}
+              {moment.utc(expense.spentAt).format("MMM Do, YYYY")}
             </ExpenseDate>
           </ColumnContainer>
           <ExpenseAmount>

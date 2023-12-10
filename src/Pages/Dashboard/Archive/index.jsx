@@ -107,10 +107,10 @@ const Archive = ({ expenses, currency, setExpenses }) => {
     setSortedExpenses(
       sort
         ? [...expenses].sort(
-            (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+            (a, b) => new Date(a.spentAt) - new Date(b.spentAt),
           )
         : [...expenses].sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+            (a, b) => new Date(b.spentAt) - new Date(a.spentAt),
           ),
     );
   }, [expenses, sort]);
@@ -155,7 +155,7 @@ const Archive = ({ expenses, currency, setExpenses }) => {
                 </Td>
                 <Td data-label="Category">{expense.expenseCategory.name}</Td>
                 <Td data-label="Date">
-                  {moment.utc(expense.createdAt).format("MMM Do, YYYY")}
+                  {moment.utc(expense.spentAt).format("MMM Do, YYYY")}
                 </Td>
               </Tr>
             ))
@@ -201,7 +201,7 @@ const Archive = ({ expenses, currency, setExpenses }) => {
                 {selectedExpense.expenseCategory.name}
               </Td>
               <Td data-label="Date">
-                {moment.utc(selectedExpense.createdAt).format("MMM Do, YYYY")}
+                {moment.utc(selectedExpense.spentAt).format("MMM Do, YYYY")}
               </Td>
             </Tr>
           )}

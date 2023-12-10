@@ -18,7 +18,7 @@ import {
 import moment from "moment";
 import { Container } from "./style";
 import PieChart from "../../../components/Charts/doughnut";
-let currentYear = new Date().getFullYear();
+
 const months = [
   "January",
   "February",
@@ -34,28 +34,38 @@ const months = [
   "December",
 ];
 
-for (let i = 0; i < months.length; i++) {
-  months[i] += " " + currentYear;
-}
+const currentYear = new Date().getFullYear();
+const currentMonthIndex = new Date().getMonth();
 
-let currentMonth = new Date().toLocaleString("en-US", { month: "2-digit" });
 const Expenses = ({ expenses, currency }) => {
-  document.title = "Dashboard - Expenses";
+  const [year, setYear] = useState(currentYear);
+  const [monthIndex, setMonthIndex] = useState(currentMonthIndex);
 
-  const [counter, setCounter] = useState(currentMonth - 1);
-  let incrementCounter = () => setCounter(counter + 1);
-  let decrementCounter = () => setCounter(counter - 1);
-  if (counter < 1) {
-    decrementCounter = () => setCounter(months.length - 1);
-  }
-  if (counter >= months.length - 1) {
-    incrementCounter = () => setCounter(0);
-  }
+  const incrementMonth = () => {
+    if (monthIndex === 11) {
+      setMonthIndex(0);
+      setYear(year + 1);
+    } else {
+      setMonthIndex(monthIndex + 1);
+    }
+  };
 
-  let currentMonthExpenses = expenses.filter(
-    (expense) =>
-      moment.utc(expense.expense_date).format("MMMM YYYY") === months[counter],
-  );
+  const decrementMonth = () => {
+    if (monthIndex === 0) {
+      setMonthIndex(11);
+      setYear(year - 1);
+    } else {
+      setMonthIndex(monthIndex - 1);
+    }
+  };
+
+  let currentMonthExpenses = expenses
+    .filter(
+      (expense) =>
+        moment.utc(expense.spentAt).format("MMMM YYYY") ===
+        `${months[monthIndex]} ${year}`,
+    )
+    .sort((a, b) => new Date(a.spentAt) - new Date(b.spentAt)); // Sort expenses by date
 
   return (
     <Container>
@@ -63,24 +73,24 @@ const Expenses = ({ expenses, currency }) => {
         <MonthSwitcher>
           <ArrowWestIcon
             className="fas fa-chevron-left fa-1x"
-            onClick={decrementCounter}
+            onClick={decrementMonth}
           />
-          <MonthContainer>{`${months[counter]}`}</MonthContainer>
+          <MonthContainer>{`${months[monthIndex]} ${year}`}</MonthContainer>
           <ArrowEastIcon
             className="fas fa-chevron-right fa-1x"
-            onClick={incrementCounter}
+            onClick={incrementMonth}
           />
         </MonthSwitcher>
         <PieChart
           currency={currency}
-          currentMonth={months[counter]}
+          currentMonth={`${months[monthIndex]} ${year}`}
           expenses={expenses}
         />
       </DataContainer>
       {currentMonthExpenses.length === 0 ? null : (
         <FixedDataContainer>
           <>
-            <Heading>{`${months[counter]} expenses`}</Heading>
+            <Heading>{`${months[monthIndex]} ${year}`}</Heading>
             {currentMonthExpenses.map((expense, index) => (
               <div key={index}>
                 <ExpenseString>
@@ -93,7 +103,7 @@ const Expenses = ({ expenses, currency }) => {
                         : expense.expenseCategory.name}
                     </ExpenseCategory>
                     <ExpenseDate>
-                      {moment.utc(expense.expense_date).format("MMM Do, YYYY")}
+                      {moment.utc(expense.spentAt).format("MMM Do, YYYY")}
                     </ExpenseDate>
                   </ColumnContainer>
                   <ExpenseAmount>

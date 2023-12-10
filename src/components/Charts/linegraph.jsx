@@ -80,26 +80,29 @@ const LineGraph = ({ expenses, currency }) => {
     spentToday = 0;
 
   expenses.map((expense) =>
-    moment.utc(expense.createdAt).format("MM/DD/Y") === currentUserDate
+    moment.utc(expense.spentAt).format("MM/DD/Y") === currentUserDate
       ? numOfExpensesToday++
       : null,
   );
 
   let objToday = expenses.slice(expenses.length - numOfExpensesToday);
 
-  objToday.map((expense) => (spentToday += parseFloat(expense.amount)));
-
-  let labels = expenses.map((expense) =>
-    moment.utc(expense.createdAt).format("MM/DD/Y"),
+  const sortedExpenses = expenses.sort((a, b) =>
+    moment.utc(a.spentAt).diff(moment.utc(b.spentAt)),
   );
 
+  objToday.map((expense) => (spentToday += parseFloat(expense.amount)));
+
+  let labels = sortedExpenses.map((expense) =>
+    moment.utc(expense.spentAt).format("MM/DD/Y"),
+  );
   const data = {
     labels,
     datasets: [
       {
         fill: true,
         label: "Total spent",
-        data: expenses.map(
+        data: sortedExpenses.map(
           (expense) => (spentInTotal += parseFloat(expense.amount)),
         ),
         borderColor: theme.bg.secondary,

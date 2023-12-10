@@ -34,10 +34,10 @@ export const colourStyles = {
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-          ? data.color
-          : isFocused
-            ? color.alpha(0.1).css()
-            : undefined,
+        ? data.color
+        : isFocused
+        ? color.alpha(0.1).css()
+        : undefined,
       color: isDisabled ? "#ccc" : isSelected,
 
       cursor: isDisabled ? "not-allowed" : "default",
@@ -75,7 +75,7 @@ export const colourStyles = {
 const ExpenseModal = ({ setExpenses, categories, children }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(undefined);
-  const [date, setDate] = useState(undefined);
+  const [date, setDate] = useState(null);
   const [category, setCategory] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -90,11 +90,13 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
   async function onSubmitForm(e) {
     e.preventDefault();
     try {
+      const formattedDate = new Date(date).toISOString();
+
       const body = {
         amount,
         expenseCategoryId: category.id,
         description,
-        spentAt: date
+        spentAt: formattedDate,
       };
 
       const response = await fetch("/api/v1/expenses", {
@@ -191,7 +193,7 @@ const ExpenseModal = ({ setExpenses, categories, children }) => {
           <ItemForm
             position="column"
             required
-            type="date"
+            type="datetime-local"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />

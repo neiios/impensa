@@ -18,7 +18,7 @@ export const options = {
 const PieChart = ({ expenses, currentMonth }) => {
   let currentMonthExpenses = expenses.filter(
     (expense) =>
-      moment.utc(expense.expense_date).format("MMMM YYYY") === currentMonth,
+      moment.utc(expense.spentAt).format("MMMM YYYY") === currentMonth,
   );
 
   var expensesMerged = currentMonthExpenses.reduce((object, item) => {
