@@ -48,6 +48,16 @@ const EditCategoryModal = ({
           prevCategories.filter((category) => category.id !== currentId),
         );
         toast.success("Category been deleted successfully!");
+        await fetch(`/api/v1/notifications`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: "Deletion of a category",
+            description: `You removed category "${category}"`,
+          }),
+        });
       } else {
         // Handle the case where the server response was not ok
         const errorData = await response.json();
@@ -83,6 +93,16 @@ const EditCategoryModal = ({
       const parseData = await response.json();
       setCategories((prevCategories) => [...prevCategories, parseData]);
       toast.success("New category has been added successfully!");
+      await fetch(`/api/v1/notifications`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: "Creation of a category",
+          description: `You added category "${categoryName}"`,
+        }),
+      });
     } catch (err) {
       toast.error(err.message);
       console.error(err.message);
@@ -106,13 +126,22 @@ const EditCategoryModal = ({
 
       if (response.ok) {
         const updatedCategory = await response.json();
-        console.log(updatedCategory);
         setCategories((prevCategories) =>
           prevCategories.map((category) =>
             category.id === currentId ? updatedCategory : category,
           ),
         );
         toast.success("Category has been updated successfully!");
+        await fetch(`/api/v1/notifications`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: "Update of a category",
+            description: `You changed category name from "${category}" to "${categoryName}"`,
+          }),
+        });
       } else {
         const errorData = await response.json();
         toast.error(`Error updating category: ${errorData.message}`);

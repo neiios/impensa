@@ -110,3 +110,69 @@ export const ArrowIcon = styled.i`
 `;
 
 export const PpContainer = styled.div``;
+
+export const NotificationHub = styled.div`
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  z-index: 1000;
+  right: 20px;
+  top: 70px;
+  gap: 20px;
+  max-width: 270px;
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+`;
+
+export const Notification = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  align-content: center;
+  padding: 15px;
+  gap: 2px;
+  border-radius: 20px;
+  background: ${theme.color.lightestPrimary};
+`;
+
+export const NotificationTitle = styled.span`
+  font-weight: 550;
+`;
+
+export const NotificationDescription = styled.p`
+  padding: 0;
+  margin: 0;
+  max-width: 90%;
+`;
+
+export const SectionHeading = styled.h4`
+  margin: 0;
+`;
+
+export const WarningMsg = styled.span`
+  font-size: 0.8rem;
+`;
+
+export const NotificationControls = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+export const Control = styled.span`
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.5rem;
+  transition: opacity 0.15s ease-in-out;
+  &:hover {
+    opacity: 0.7;
+  }
+`;

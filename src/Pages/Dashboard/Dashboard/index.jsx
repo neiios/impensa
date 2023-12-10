@@ -137,13 +137,7 @@ const Dashboard = ({ setAuth }) => {
                       />
                     }
                   />
-                  <Route
-                    path="contact"
-                    element={
-                      <Contact
-                      />
-                    }
-                  />
+                  <Route path="contact" element={<Contact />} />
                   <Route path="log" element={<Log />} />
                 </Routes>
               </MainContainer>

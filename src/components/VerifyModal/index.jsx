@@ -24,7 +24,6 @@ const EditCategoryModal = ({
   logout,
 }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  console.log(userData);
   function openModal() {
     setIsOpen(true);
   }

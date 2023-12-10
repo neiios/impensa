@@ -26,10 +26,10 @@ export const colourStyles = {
       backgroundColor: isDisabled
         ? undefined
         : isSelected
-          ? data.color
-          : isFocused
-            ? color.alpha(0.1).css()
-            : undefined,
+        ? data.color
+        : isFocused
+        ? color.alpha(0.1).css()
+        : undefined,
       color: isDisabled ? "#ccc" : isSelected,
 
       cursor: isDisabled ? "not-allowed" : "default",
@@ -82,7 +82,6 @@ const Categories = () => {
         label: cat.name,
         value: cat.id,
       }));
-      console.log(formattedCategories);
       setCategories(formattedCategories);
     } catch (err) {
       console.error(err.message);
@@ -113,8 +112,6 @@ const Categories = () => {
       const parseRes = await response.json();
 
       toast.success("New expense has been added successfully!");
-
-      console.log(parseRes);
     } catch (err) {
       toast.error(err.message);
       console.error(err.message);
