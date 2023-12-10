@@ -69,11 +69,13 @@ function Contact({ logout, categories, setCategories }) {
             placeholder="Title"
             type="name"
             value={title}
+            required
             onChange={(e) => setTitle(e.target.value)}
           />
           <HR />
           <H4>Put here any relevant information</H4>
           <TextArea
+            required
             placeholder="Write anything you feel we need to know!"
             type="text"
             value={description}
