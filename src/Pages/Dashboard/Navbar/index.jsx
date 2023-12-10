@@ -23,6 +23,8 @@ import {
   NotificationControls,
   Control,
   Date,
+  Envelope,
+  NotificationCount,
 } from "./style.jsx";
 import moment from "moment";
 
@@ -151,12 +153,19 @@ export const Nav = ({ name, expenses, setExpenses, categories }) => {
           >
             <Icon className="fas fa-plus" />
           </ExpenseModal>
-          <Icon
-            ref={envelopeIconRef}
-            onClick={toggleNotificationHub}
-            className="fa-solid fa-envelope"
-          ></Icon>
 
+          <Envelope>
+            {!unreadNotifications.length ? null : (
+              <NotificationCount>
+                {unreadNotifications.length}
+              </NotificationCount>
+            )}
+            <Icon
+              ref={envelopeIconRef}
+              onClick={toggleNotificationHub}
+              className="fa-solid fa-envelope"
+            ></Icon>
+          </Envelope>
           <UserCreds>
             <UserName>{name}</UserName>
             <PpContainer>

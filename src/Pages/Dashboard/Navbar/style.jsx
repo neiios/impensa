@@ -183,3 +183,23 @@ export const Control = styled.span`
 export const Date = styled.span`
   font-size: 0.5rem;
 `;
+
+export const Envelope = styled.div`
+  position: relative;
+`;
+
+export const NotificationCount = styled.span`
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  padding: 1px;
+  border-radius: 100%;
+  background-color: #ff8d6f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 0.8rem;
+  width: 17px;
+  height: 17px;
+`;
