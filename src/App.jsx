@@ -14,10 +14,12 @@ import GlobalStyle from "./globalStyles.jsx";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import Reports from "./Pages/Reports/index.jsx";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAdmin, setUsAdmin] = useState(false);
 
   const checkAuthenticated = async () => {
     try {
@@ -36,8 +38,23 @@ const App = () => {
     }
   };
 
+  const checkIsAdmin = async () => {
+    try {
+      const res = await fetch("/api/v1/auth/is-admin", {
+        method: "GET",
+      });
+
+      const parseData = await res.json();
+      setUsAdmin(parseData.isAdmin);
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   useEffect(() => {
     checkAuthenticated();
+    checkIsAdmin();
   }, []);
 
   const setAuth = (boolean) => {
@@ -97,6 +114,16 @@ const App = () => {
                 <Dashboard setAuth={setAuth} />
               ) : (
                 <Navigate to="/signin" />
+              )
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              isAuthenticated && isAdmin ? (
+                <Reports />
+              ) : (
+                <Navigate to="/reports" />
               )
             }
           />
