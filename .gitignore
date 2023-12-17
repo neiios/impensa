@@ -52,10 +52,6 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variables file
-.env
-.env.*.local
-
 # IDEs and editors
 .vscode/
 .idea/

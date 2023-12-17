@@ -50,7 +50,9 @@ const SignIn = ({ setAuth }) => {
   };
 
   function onSignInGithub() {
-    window.location = "http://localhost:5274/api/v1/auth/github";
+    const backendLocation = process.env.REACT_APP_BACKEND_LOCATION ?? "";
+    const endpointPath = `${backendLocation}/api/v1/auth/github`;
+    window.location = endpointPath;
   }
 
   return (
