@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 body {
-  font-family: sans-serif;
+  font-family: system-ui, sans-serif;
+  font-weight: normal;
   overflow-x: hidden;
   color: #404040;
   display: flex;
@@ -10,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 h2 {
   font-size: 1.5rem;
   font-weight: 400;
@@ -29,8 +31,6 @@ p {
   letter-spacing: 0.2px;
   line-height: 24px;
 }
-
-
 `;
 
 export default GlobalStyle;
