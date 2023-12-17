@@ -59,8 +59,8 @@ const SignUp = ({ setAuth }) => {
   return (
     <Wrapper>
       <LogoImg />
-      <Heading>Create your Impensa account</Heading>
       <SigninContainer>
+        <Heading>Create your Impensa account</Heading>
         <Form onSubmit={onSubmitForm}>
           <ItemForm
             maxLength="12"

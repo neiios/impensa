@@ -4,6 +4,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "./Pages/Homepage/index";
 import SignIn from "./Pages/Authentication/signin";
 import SignUp from "./Pages/Authentication/signup";
+import PasswordResetRequestPage from "./Pages/Authentication/password-reset-request-page.jsx";
+import PasswordResetPage from "./Pages/Authentication/password-reset-page.jsx";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import ModalRoot from "./components/Modal/modalRoot.jsx";
 import PageNotFound from "./Pages/PageNotFound";
@@ -63,6 +65,26 @@ const App = () => {
             element={
               !isAuthenticated ? (
                 <SignUp setAuth={setAuth} />
+              ) : (
+                <Navigate to="/dashboard/overview" />
+              )
+            }
+          />
+          <Route
+            path="/reset-password-request"
+            element={
+              !isAuthenticated ? (
+                <PasswordResetRequestPage />
+              ) : (
+                <Navigate to="/dashboard/overview" />
+              )
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              !isAuthenticated ? (
+                <PasswordResetPage />
               ) : (
                 <Navigate to="/dashboard/overview" />
               )

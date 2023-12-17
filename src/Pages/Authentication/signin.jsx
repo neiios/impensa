@@ -58,8 +58,9 @@ const SignIn = ({ setAuth }) => {
   return (
     <Wrapper>
       <LogoImg />
-      <Heading>Sign in to Impensa</Heading>
       <SigninContainer>
+        <Heading>Sign in to Impensa</Heading>
+
         <Form onSubmit={onSubmitForm}>
           <ItemForm
             position="column"
@@ -88,6 +89,12 @@ const SignIn = ({ setAuth }) => {
         >
           <i className="fab fa-github"></i> Sign in with GitHub
         </button>
+        <TextContainer>
+          Forgot your password?
+          <StyledLink style={{ color: "#635BFF" }} to="/reset-password-request">
+            Reset the password
+          </StyledLink>
+        </TextContainer>
         <TextContainer>
           Don't have an account?
           <StyledLink style={{ color: "#635BFF" }} to="/signup">

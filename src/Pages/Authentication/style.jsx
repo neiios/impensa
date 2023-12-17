@@ -29,7 +29,7 @@ export const SigninContainer = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
   margin: 0 auto;
-  padding: 1.3rem;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   position: relative;
