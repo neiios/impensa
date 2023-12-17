@@ -111,7 +111,7 @@ const App = () => {
             path="/dashboard/*"
             element={
               isAuthenticated ? (
-                <Dashboard setAuth={setAuth} />
+                <Dashboard setAuth={setAuth} isAdmin={isAdmin} />
               ) : (
                 <Navigate to="/signin" />
               )

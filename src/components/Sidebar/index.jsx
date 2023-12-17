@@ -69,7 +69,7 @@ export const MenuSpan = styled.span`
   }
 `;
 
-export const Sidebar = ({ logout }) => {
+export const Sidebar = ({ logout, isAdmin }) => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   return (
@@ -102,6 +102,11 @@ export const Sidebar = ({ logout }) => {
             </LinkWrapper>
           </MenuEl>
           <IconRow>
+            {isAdmin && (
+              <MenuEl>
+                <Button to="/reports">Reports</Button>
+              </MenuEl>
+            )}
             <MenuEl>
               <Button to="/dashboard/contact">Contact</Button>
             </MenuEl>

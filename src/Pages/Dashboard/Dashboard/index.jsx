@@ -13,7 +13,7 @@ import Settings from "../Settings";
 import Log from "../Log";
 import Contact from "../Contact";
 
-const Dashboard = ({ setAuth }) => {
+const Dashboard = ({ setAuth, isAdmin }) => {
   document.title = "Dashboard";
 
   const [isLoading, setIsLoading] = useState(true);
@@ -98,7 +98,7 @@ const Dashboard = ({ setAuth }) => {
             setExpenses={setExpenses}
             name={name}
           />
-          <Sidebar logout={logout} />
+          <Sidebar logout={logout} isAdmin={isAdmin} />
           {expenses.length === 0 ? (
             <Banner name={name} />
           ) : (
