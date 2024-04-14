@@ -17,6 +17,10 @@
 
 </div>
 
+## Project updates
+> [!IMPORTANT]
+> Currently, Impensa supports two operational backends: one developed in [.NET](https://github.com/neiios/impensa-server-dotnet) and the other in [NodeJS](https://github.com/neiios/impensa-server-node).
+
 ## Impensa is an open-source expense management app
 
 - See where all your money goes by easily adding and categorizing new expenses
@@ -35,13 +39,16 @@ We are an open-source alternative to products such as Mint, Simplifi or PocketGu
 
 ## Technologies
 
+> [!IMPORTANT]
+> This repository hosts the client-side component of the project. For the server-side code, please refer to a separate repository [here](https://github.com/neiios/impensa-server-dotnet).
+
 Let's talk about the architecture of this mono repo:
 
-- **Full-stack JavaScript**: We use Node.js to power our servers, and React to power our frontend. Almost all of the code you'll touch in this codebase will be JavaScript.
+- We use NodeJS and .NET to power our servers, and React to power our frontend.
 - Here is a list of all the big technologies we use:
-  - **PostgreSQL 16**: Object-relational database
-  - **.Net 8**: Our backend framework of choice
+  - **.NET 8**: Our backend frameworks of choice
   - **React 18**: Frontend framework
+  - **PostgreSQL 16**: Object-relational database
   - **Docker**: To deploy our app in a neat container
 
 ## Deployment
@@ -71,9 +78,6 @@ We run Prettier on-commit, which means you can write code in whatever style you 
 <a href="https://github.com/tmneth">
   <img src="https://avatars.githubusercontent.com/u/80415416?v=4" width="50" height="50" alt="tmneth"/>
 </a>
-<a href="https://github.com/richard96292">
-  <img src="https://avatars.githubusercontent.com/u/68248740?v=4" width="50" height="50" alt="richard96292"/>
+<a href="https://github.com/neiios">
+  <img src="https://avatars.githubusercontent.com/u/68248740?v=4" width="50" height="50" alt="neiios"/>
 </a> 
-<a href="https://github.com/tomas6446">
-  <img src="https://avatars.githubusercontent.com/u/77100735?v=4" width="50" height="50" alt="tomas6446"/>
-</a>
