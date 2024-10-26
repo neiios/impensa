@@ -1,134 +1,151 @@
-import React, { useState, useEffect } from "react";
-import "../../theme/Modal.css";
+import React, { useState } from "react";
 import Modal from "react-modal";
-import {
-  CloseModal,
-  ContentWrapper,
-  Headline,
-  Heading,
-  Input,
-  SaveButton,
-  DeleteButton,
-  ButtonsContainer,
-} from "./styles";
+import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { Button } from "react-scroll";
+
 Modal.setAppElement("#root");
 
-const EditCategoryModal = ({
-  children,
-  currentId,
-  setCategories,
-  category,
-  userData,
-  logout,
-}) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
+const EditUserModal = ({ children, userData, onClose, logout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function closeModal() {
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => {
     setIsOpen(false);
+    setPassword("");
+    onClose?.();
+  };
+
+  function getUpdatedFields() {
+    const fields = {};
+    const fieldsToCheck = ['email', 'username', 'newPassword', 'currency'];
+
+    fieldsToCheck.forEach(field => {
+      if (userData[field]?.trim()) {
+        fields[field] = userData[field].trim();
+      }
+    });
+
+    fields.password = password;
+    return fields;
   }
 
-  const [userPassword, setUserPassword] = useState(null);
-
-  async function onCancelClick() {
-    if (currentId) {
-      onDeleteCategory();
-    }
-    closeModal();
-  }
-
-  // Function to submit the form
-  const onSubmitForm = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    const fieldsToUpdate = {};
-    if (userData.email !== "") fieldsToUpdate.email = userData.email;
-    if (userData.username !== "") fieldsToUpdate.username = userData.username;
-    if (userData.newPassword !== "")
-      fieldsToUpdate.newPassword = userData.newPassword;
-    if (userData.currency !== "") fieldsToUpdate.currency = userData.currency;
-    fieldsToUpdate.password = userPassword;
+    if (!password) {
+      toast.error("Password is required");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/v1/me", {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fieldsToUpdate),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(getUpdatedFields()),
       });
 
-      const parseRes = await response.json();
+      const data = await response.json();
 
       if (response.ok) {
-        toast.success("Your account has been updated successfully!");
-        await fetch(`/api/v1/notifications`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: "Update of the account",
-            description: `You updated your contact details`,
-          }),
-        });
+        toast.success("Account updated successfully!");
+        await createNotification("Update of the account", "You updated your contact details");
         logout(e);
       } else {
-        const errorData = await response.json();
-        toast.error(errorData.errors.Password[0]);
+        toast.error(data.message || "Failed to update account");
       }
     } catch (err) {
-      console.error(err.message);
-      toast.error(err.message);
+      console.error("Update failed:", err);
+      toast.error("Failed to update account. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-  };
+  }
+
+  async function createNotification(title, description) {
+    try {
+      await fetch("/api/v1/notifications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description }),
+      });
+    } catch (err) {
+      console.error("Failed to create notification:", err);
+    }
+  }
 
   return (
     <>
-      <div onClick={openModal}>{children}</div>
+      <div onClick={handleOpen}>{children}</div>
       <Modal
-        className={{
-          base: "modal-base",
-          afterOpen: "modal-base_after-open",
-          beforeClose: "modal-base_before-close",
-        }}
-        overlayClassName={{
-          base: "overlay-base",
-          afterOpen: "overlay-base_after-open",
-          beforeClose: "overlay-base_before-close",
-        }}
+        isOpen={isOpen}
+        onRequestClose={handleClose}
+        className="modal-base"
+        overlayClassName="overlay-base"
         closeTimeoutMS={200}
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
       >
-        <ContentWrapper onSubmit={onSubmitForm}>
-          <Heading>
-            <Headline>Confirm changes</Headline>
-            <CloseModal
-              onClick={closeModal}
-              className="fa-solid fa-xmark fa-xl"
+        <form onSubmit={handleSubmit} className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-bold">Confirm Changes</h2>
+            <button
+              type="button"
+              onClick={handleClose}
+              className="text-gray-500 hover:text-gray-700"
+              aria-label="Close"
+            >
+              <i className="fa-solid fa-xmark fa-xl" />
+            </button>
+          </div>
+
+          <div className="mb-6">
+            <input
+              type="password"
+              placeholder="Your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-2 border rounded"
+              required
             />
-          </Heading>
+          </div>
 
-          <Input
-            position="column"
-            placeholder="Your password"
-            type="password"
-            value={userPassword}
-            onChange={(e) => setUserPassword(e.target.value)}
-          />
-
-          <ButtonsContainer>
-            <DeleteButton>Confirm</DeleteButton>
-          </ButtonsContainer>
-        </ContentWrapper>
+          <div className="flex justify-end gap-4">
+            <button
+              type="button"
+              onClick={handleClose}
+              className="px-4 py-2 text-gray-600 bg-gray-200 rounded hover:bg-gray-300"
+              disabled={isSubmitting}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Updating..." : "Confirm"}
+            </button>
+          </div>
+        </form>
       </Modal>
     </>
   );
 };
 
-export default EditCategoryModal;
+EditUserModal.propTypes = {
+  children: PropTypes.node.isRequired,
+  userData: PropTypes.shape({
+    email: PropTypes.string,
+    username: PropTypes.string,
+    newPassword: PropTypes.string,
+    currency: PropTypes.string,
+  }).isRequired,
+  onClose: PropTypes.func,
+  logout: PropTypes.func.isRequired,
+};
+
+export default EditUserModal;
