@@ -79,7 +79,16 @@ function EditUserModal({ children, userData, onClose, logout }) {
 
   return (
     <>
-      <div onClick={handleOpen}>{children}</div>
+      <button
+        onClick={handleOpen}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') ? handleOpen() : null}
+        className="inline-flex w-auto"
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+      >
+        {children}
+      </button>
       <Modal
         isOpen={isOpen}
         onRequestClose={handleClose}
@@ -110,6 +119,7 @@ function EditUserModal({ children, userData, onClose, logout }) {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-2 border rounded"
               required
+              aria-label="Password confirmation"
             />
           </div>
 
@@ -134,7 +144,7 @@ function EditUserModal({ children, userData, onClose, logout }) {
       </Modal>
     </>
   );
-};
+}
 
 EditUserModal.propTypes = {
   children: PropTypes.node.isRequired,
