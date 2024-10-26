@@ -1,38 +1,50 @@
-name: Build
+name: Build and Analysis
 on:
- push:
-   branches:
-     - master
- pull_request:
-   types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - master
+      - main
+
 jobs:
   sonarcloud:
-    name: SonarCloud
+    name: Build and analyze
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 
-
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v4.2.2
+          
+      - uses: pnpm/action-setup@v4.0.0
         name: Install pnpm
         with:
           version: 9
-          run_install: false
-
+          
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.1.0
         with:
           node-version: 20
           cache: 'pnpm'
-
+          
       - name: Install dependencies
-        run: pnpm install
-
+        run: pnpm install --frozen-lockfile
+        
       - name: Test and coverage
         run: pnpm run coverage
-
+          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          SONAR_TOKEN: ${{ secrets. SONARCLOUD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=neiios_impensa
+            -Dsonar.organization=impensa-sonar
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
