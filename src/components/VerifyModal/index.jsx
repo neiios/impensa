@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "../../theme/Modal.css";
+import React, { useState } from "react";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import {
   CloseModal,
   ContentWrapper,
@@ -11,85 +12,107 @@ import {
   DeleteButton,
   ButtonsContainer,
 } from "./styles";
-import { toast } from "react-toastify";
-import { Button } from "react-scroll";
+
 Modal.setAppElement("#root");
 
-const EditCategoryModal = ({
-  children,
-  currentId,
-  setCategories,
-  category,
-  userData,
-  logout,
-}) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
+const EditUserModal = ({ children, userData, onClose, logout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function closeModal() {
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => {
     setIsOpen(false);
-  }
+    setPassword("");
+    onClose?.();
+  };
 
-  const [userPassword, setUserPassword] = useState(null);
+  const getUpdatedFields = () => {
+    const fields = {};
+    const fieldsToCheck = ["email", "username", "newPassword", "currency"];
 
-  async function onCancelClick() {
-    if (currentId) {
-      onDeleteCategory();
-    }
-    closeModal();
-  }
+    fieldsToCheck.forEach((field) => {
+      if (userData[field]?.trim()) {
+        fields[field] = userData[field].trim();
+      }
+    });
 
-  // Function to submit the form
-  const onSubmitForm = async (e) => {
+    fields.password = password;
+    return fields;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const fieldsToUpdate = {};
-    if (userData.email !== "") fieldsToUpdate.email = userData.email;
-    if (userData.username !== "") fieldsToUpdate.username = userData.username;
-    if (userData.newPassword !== "")
-      fieldsToUpdate.newPassword = userData.newPassword;
-    if (userData.currency !== "") fieldsToUpdate.currency = userData.currency;
-    fieldsToUpdate.password = userPassword;
+    if (!password) {
+      toast.error("Password is required");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/v1/me", {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fieldsToUpdate),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(getUpdatedFields()),
       });
 
-      const parseRes = await response.json();
+      const data = await response.json();
 
       if (response.ok) {
-        toast.success("Your account has been updated successfully!");
-        await fetch(`/api/v1/notifications`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: "Update of the account",
-            description: `You updated your contact details`,
-          }),
-        });
+        toast.success("Account updated successfully!");
+        await createNotification(
+          "Update of the account",
+          "You updated your contact details",
+        );
         logout(e);
       } else {
-        const errorData = await response.json();
-        toast.error(errorData.errors.Password[0]);
+        toast.error(data.message || "Failed to update account");
       }
     } catch (err) {
-      console.error(err.message);
-      toast.error(err.message);
+      console.error("Update failed:", err);
+      toast.error("Failed to update account. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const createNotification = async (title, description) => {
+    try {
+      await fetch("/api/v1/notifications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description }),
+      });
+    } catch (err) {
+      console.error("Failed to create notification:", err);
     }
   };
 
   return (
     <>
-      <div onClick={openModal}>{children}</div>
+      <button
+        onClick={handleOpen}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            handleOpen();
+          }
+        }}
+        style={{
+          background: "none",
+          border: "none",
+          padding: 0,
+          width: "auto",
+          display: "inline-flex",
+        }}
+        role="button"
+        tabIndex={0}
+        aria-haspopup="dialog"
+        aria-label="Edit user settings"
+      >
+        {children}
+      </button>
       <Modal
         className={{
           base: "modal-base",
@@ -102,15 +125,20 @@ const EditCategoryModal = ({
           beforeClose: "overlay-base_before-close",
         }}
         closeTimeoutMS={200}
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isOpen}
+        onRequestClose={handleClose}
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
+        aria-labelledby="modal-title"
       >
-        <ContentWrapper onSubmit={onSubmitForm}>
+        <ContentWrapper onSubmit={handleSubmit}>
           <Heading>
-            <Headline>Confirm changes</Headline>
+            <Headline id="modal-title">Confirm changes</Headline>
             <CloseModal
-              onClick={closeModal}
+              onClick={handleClose}
               className="fa-solid fa-xmark fa-xl"
+              aria-label="Close modal"
+              type="button"
             />
           </Heading>
 
@@ -118,12 +146,32 @@ const EditCategoryModal = ({
             position="column"
             placeholder="Your password"
             type="password"
-            value={userPassword}
-            onChange={(e) => setUserPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            aria-label="Password confirmation"
           />
 
           <ButtonsContainer>
-            <DeleteButton>Confirm</DeleteButton>
+            <SaveButton
+              type="button"
+              onClick={handleClose}
+              disabled={isSubmitting}
+              aria-label="Cancel changes"
+            >
+              Cancel
+            </SaveButton>
+            <DeleteButton
+              type="submit"
+              disabled={isSubmitting}
+              aria-label={
+                isSubmitting
+                  ? "Updating account settings..."
+                  : "Confirm changes"
+              }
+            >
+              {isSubmitting ? "Updating..." : "Confirm"}
+            </DeleteButton>
           </ButtonsContainer>
         </ContentWrapper>
       </Modal>
@@ -131,4 +179,16 @@ const EditCategoryModal = ({
   );
 };
 
-export default EditCategoryModal;
+EditUserModal.propTypes = {
+  children: PropTypes.node.isRequired,
+  userData: PropTypes.shape({
+    email: PropTypes.string,
+    username: PropTypes.string,
+    newPassword: PropTypes.string,
+    currency: PropTypes.string,
+  }).isRequired,
+  onClose: PropTypes.func,
+  logout: PropTypes.func.isRequired,
+};
+
+export default EditUserModal;
