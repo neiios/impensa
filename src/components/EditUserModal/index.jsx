@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 Modal.setAppElement("#root");
 
-const EditUserModal = ({ children, userData, onClose, logout }) => {
+function EditUserModal({ children, userData, onClose, logout }) {
   const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

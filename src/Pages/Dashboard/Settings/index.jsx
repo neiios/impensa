@@ -19,7 +19,7 @@ import {
   UserLog,
 } from "./style";
 import { toast } from "react-toastify";
-import VerifyModal from "../../../components/VerifyModal";
+import EditUserModal from "../../../components/EditUserModal";
 
 function Settings({ logout, categories, setCategories }) {
   document.title = "Dashboard - Settings";
@@ -161,9 +161,9 @@ function Settings({ logout, categories, setCategories }) {
             onChange={handleInputChange}
           />
           <HR />
-          <VerifyModal logout={logout} userData={userData}>
+          <EditUserModal logout={logout} userData={userData}>
             <Button type="button">Save changes</Button>
-          </VerifyModal>
+          </EditUserModal>
           <VerifyRemovalModal logout={logout}>
             <RemoveAccount>Remove your account</RemoveAccount>
           </VerifyRemovalModal>

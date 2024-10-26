@@ -20,7 +20,7 @@ import {
   ContactContainer
 } from "./style";
 import { toast } from "react-toastify";
-import VerifyModal from "../../../components/VerifyModal";
+import EditUserModal from "../../../components/EditUserModal";
 import { TextArea } from "../../../components/ExpenseModal/styles.jsx";
 
 function Contact({ logout, categories, setCategories }) {
