@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Heading } from "../Overview/style";
-import {
-  MonthSwitcher,
-  DataContainer,
-  MonthContainer,
-  FixedDataContainer,
-  ArrowWestIcon,
-  ArrowEastIcon,
-} from "../style";
-import { Container } from "./style";
+import { Heading, DataContainer, Container } from "./Expenses.style";
 import PieChart from "../../../components/Charts/doughnut";
-import ExpenseItem from "./ExpenseItem";
+import MonthNavigation from "./MonthNavigation";
+import ExpensesList from "./ExpensesList";
 import { MONTHS } from "./constants";
 import {
   getCurrentYear,
@@ -19,26 +11,26 @@ import {
   filterExpensesByMonth,
 } from "./utils";
 
+const adjustMonthAndYear = (monthIndex, year, increment) => {
+  if (increment) {
+    return monthIndex === 11 ? [0, year + 1] : [monthIndex + 1, year];
+  } else {
+    return monthIndex === 0 ? [11, year - 1] : [monthIndex - 1, year];
+  }
+};
+
 const Expenses = ({ expenses, currency }) => {
   const [year, setYear] = useState(getCurrentYear());
   const [monthIndex, setMonthIndex] = useState(getCurrentMonthIndex());
 
-  const incrementMonth = () => {
-    if (monthIndex === 11) {
-      setMonthIndex(0);
-      setYear((prevYear) => prevYear + 1);
-    } else {
-      setMonthIndex((prevIndex) => prevIndex + 1);
-    }
-  };
-
-  const decrementMonth = () => {
-    if (monthIndex === 0) {
-      setMonthIndex(11);
-      setYear((prevYear) => prevYear - 1);
-    } else {
-      setMonthIndex((prevIndex) => prevIndex - 1);
-    }
+  const handleMonthChange = (increment) => {
+    const [newMonthIndex, newYear] = adjustMonthAndYear(
+      monthIndex,
+      year,
+      increment,
+    );
+    setMonthIndex(newMonthIndex);
+    setYear(newYear);
   };
 
   const currentMonthExpenses = filterExpensesByMonth(
@@ -50,17 +42,12 @@ const Expenses = ({ expenses, currency }) => {
   return (
     <Container>
       <DataContainer>
-        <MonthSwitcher>
-          <ArrowWestIcon
-            className="fas fa-chevron-left fa-1x"
-            onClick={decrementMonth}
-          />
-          <MonthContainer>{`${MONTHS[monthIndex]} ${year}`}</MonthContainer>
-          <ArrowEastIcon
-            className="fas fa-chevron-right fa-1x"
-            onClick={incrementMonth}
-          />
-        </MonthSwitcher>
+        <MonthNavigation
+          month={MONTHS[monthIndex]}
+          year={year}
+          onPrevious={() => handleMonthChange(false)}
+          onNext={() => handleMonthChange(true)}
+        />
         <PieChart
           currency={currency}
           currentMonth={`${MONTHS[monthIndex]} ${year}`}
@@ -68,16 +55,10 @@ const Expenses = ({ expenses, currency }) => {
         />
       </DataContainer>
       {currentMonthExpenses.length > 0 && (
-        <FixedDataContainer>
+        <>
           <Heading>{`${MONTHS[monthIndex]} ${year}`}</Heading>
-          {currentMonthExpenses.map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              expense={expense}
-              currency={currency}
-            />
-          ))}
-        </FixedDataContainer>
+          <ExpensesList expenses={currentMonthExpenses} currency={currency} />
+        </>
       )}
     </Container>
   );
@@ -86,6 +67,7 @@ const Expenses = ({ expenses, currency }) => {
 Expenses.propTypes = {
   expenses: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string.isRequired,
       spentAt: PropTypes.string.isRequired,
       amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
         .isRequired,
