@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "../../theme/Modal.css";
+import React, { useState } from "react";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
 import {
   CloseModal,
   ContentWrapper,
@@ -11,119 +11,90 @@ import {
   DeleteButton,
   ButtonsContainer,
 } from "./styles";
-import { toast } from "react-toastify";
-import { Button } from "react-scroll";
+import { handleUserSubmit } from "./submitHandler"; // Adjust path as necessary
+
 Modal.setAppElement("#root");
 
-const EditCategoryModal = ({
-  children,
-  currentId,
-  setCategories,
-  category,
-  userData,
-  logout,
-}) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
+const EditUserModal = ({ children, userData, onClose, logout }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function closeModal() {
+  const handleToggleModal = () => setIsOpen(!isOpen);
+
+  const resetModalState = () => {
     setIsOpen(false);
-  }
-
-  const [userPassword, setUserPassword] = useState(null);
-
-  async function onCancelClick() {
-    if (currentId) {
-      onDeleteCategory();
-    }
-    closeModal();
-  }
-
-  // Function to submit the form
-  const onSubmitForm = async (e) => {
-    e.preventDefault();
-
-    const fieldsToUpdate = {};
-    if (userData.email !== "") fieldsToUpdate.email = userData.email;
-    if (userData.username !== "") fieldsToUpdate.username = userData.username;
-    if (userData.newPassword !== "")
-      fieldsToUpdate.newPassword = userData.newPassword;
-    if (userData.currency !== "") fieldsToUpdate.currency = userData.currency;
-    fieldsToUpdate.password = userPassword;
-
-    try {
-      const response = await fetch("/api/v1/me", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fieldsToUpdate),
-      });
-
-      const parseRes = await response.json();
-
-      if (response.ok) {
-        toast.success("Your account has been updated successfully!");
-        await fetch(`/api/v1/notifications`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: "Update of the account",
-            description: `You updated your contact details`,
-          }),
-        });
-        logout(e);
-      } else {
-        const errorData = await response.json();
-        toast.error(errorData.errors.Password[0]);
-      }
-    } catch (err) {
-      console.error(err.message);
-      toast.error(err.message);
-    }
+    setPassword("");
+    onClose?.();
   };
+
+  const createNotification = (title, description) =>
+    fetch("/api/v1/notifications", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, description }),
+    }).catch((err) => console.error("Notification error:", err));
 
   return (
     <>
-      <div onClick={openModal}>{children}</div>
-      <Modal
-        className={{
-          base: "modal-base",
-          afterOpen: "modal-base_after-open",
-          beforeClose: "modal-base_before-close",
-        }}
-        overlayClassName={{
-          base: "overlay-base",
-          afterOpen: "overlay-base_after-open",
-          beforeClose: "overlay-base_before-close",
-        }}
-        closeTimeoutMS={200}
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+      <button
+        onClick={handleToggleModal}
+        style={{ background: "none", border: "none", display: "inline-flex" }}
+        aria-haspopup="dialog"
+        aria-label="Edit user settings"
       >
-        <ContentWrapper onSubmit={onSubmitForm}>
+        {children}
+      </button>
+      <Modal
+        className="modal-base"
+        overlayClassName="overlay-base"
+        closeTimeoutMS={200}
+        isOpen={isOpen}
+        onRequestClose={resetModalState}
+        shouldCloseOnOverlayClick
+        shouldCloseOnEsc
+        aria-labelledby="modal-title"
+      >
+        <ContentWrapper
+          onSubmit={(e) =>
+            handleUserSubmit({
+              e,
+              password,
+              userData,
+              logout,
+              setIsSubmitting,
+              createNotification,
+            })
+          }
+        >
           <Heading>
-            <Headline>Confirm changes</Headline>
-            <CloseModal
-              onClick={closeModal}
-              className="fa-solid fa-xmark fa-xl"
-            />
+            <Headline id="modal-title">Confirm changes</Headline>
+            <CloseModal onClick={resetModalState} aria-label="Close modal" />
           </Heading>
-
           <Input
-            position="column"
             placeholder="Your password"
             type="password"
-            value={userPassword}
-            onChange={(e) => setUserPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            aria-label="Password confirmation"
           />
-
           <ButtonsContainer>
-            <DeleteButton>Confirm</DeleteButton>
+            <SaveButton
+              type="button"
+              onClick={resetModalState}
+              disabled={isSubmitting}
+              aria-label="Cancel changes"
+            >
+              Cancel
+            </SaveButton>
+            <DeleteButton
+              type="submit"
+              disabled={isSubmitting}
+              aria-label="Confirm changes"
+            >
+              {isSubmitting ? "Updating..." : "Confirm"}
+            </DeleteButton>
           </ButtonsContainer>
         </ContentWrapper>
       </Modal>
@@ -131,4 +102,16 @@ const EditCategoryModal = ({
   );
 };
 
-export default EditCategoryModal;
+EditUserModal.propTypes = {
+  children: PropTypes.node.isRequired,
+  userData: PropTypes.shape({
+    email: PropTypes.string,
+    username: PropTypes.string,
+    newPassword: PropTypes.string,
+    currency: PropTypes.string,
+  }).isRequired,
+  onClose: PropTypes.func,
+  logout: PropTypes.func.isRequired,
+};
+
+export default EditUserModal;
