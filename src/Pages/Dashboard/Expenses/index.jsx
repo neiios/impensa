@@ -1,123 +1,82 @@
 import React, { useState } from "react";
-import {
-  Heading,
-  ExpenseString,
-  ColumnContainer,
-  ExpenseDate,
-} from "../Overview/style";
-import {
-  MonthSwitcher,
-  DataContainer,
-  MonthContainer,
-  ExpenseCategory,
-  FixedDataContainer,
-  ArrowWestIcon,
-  ArrowEastIcon,
-  ExpenseAmount,
-} from "../style";
-import moment from "moment";
-import { Container } from "./style";
+import PropTypes from "prop-types";
+import { Heading, DataContainer, Container } from "./Expenses.style";
 import PieChart from "../../../components/Charts/doughnut";
+import MonthNavigation from "./MonthNavigation";
+import ExpensesList from "./ExpensesList";
+import { MONTHS } from "./constants";
+import {
+  getCurrentYear,
+  getCurrentMonthIndex,
+  filterExpensesByMonth,
+} from "./utils";
 
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-const currentYear = new Date().getFullYear();
-const currentMonthIndex = new Date().getMonth();
+const adjustMonthAndYear = (monthIndex, year, increment) => {
+  if (increment) {
+    return monthIndex === 11 ? [0, year + 1] : [monthIndex + 1, year];
+  } else {
+    return monthIndex === 0 ? [11, year - 1] : [monthIndex - 1, year];
+  }
+};
 
 const Expenses = ({ expenses, currency }) => {
-  const [year, setYear] = useState(currentYear);
-  const [monthIndex, setMonthIndex] = useState(currentMonthIndex);
+  const [year, setYear] = useState(getCurrentYear());
+  const [monthIndex, setMonthIndex] = useState(getCurrentMonthIndex());
 
-  const incrementMonth = () => {
-    if (monthIndex === 11) {
-      setMonthIndex(0);
-      setYear(year + 1);
-    } else {
-      setMonthIndex(monthIndex + 1);
-    }
+  const handleMonthChange = (increment) => {
+    const [newMonthIndex, newYear] = adjustMonthAndYear(
+      monthIndex,
+      year,
+      increment,
+    );
+    setMonthIndex(newMonthIndex);
+    setYear(newYear);
   };
 
-  const decrementMonth = () => {
-    if (monthIndex === 0) {
-      setMonthIndex(11);
-      setYear(year - 1);
-    } else {
-      setMonthIndex(monthIndex - 1);
-    }
-  };
-
-  let currentMonthExpenses = expenses
-    .filter(
-      (expense) =>
-        moment.utc(expense.spentAt).format("MMMM YYYY") ===
-        `${months[monthIndex]} ${year}`,
-    )
-    .sort((a, b) => new Date(a.spentAt) - new Date(b.spentAt)); // Sort expenses by date
+  const currentMonthExpenses = filterExpensesByMonth(
+    expenses,
+    MONTHS[monthIndex],
+    year,
+  );
 
   return (
     <Container>
       <DataContainer>
-        <MonthSwitcher>
-          <ArrowWestIcon
-            className="fas fa-chevron-left fa-1x"
-            onClick={decrementMonth}
-          />
-          <MonthContainer>{`${months[monthIndex]} ${year}`}</MonthContainer>
-          <ArrowEastIcon
-            className="fas fa-chevron-right fa-1x"
-            onClick={incrementMonth}
-          />
-        </MonthSwitcher>
+        <MonthNavigation
+          month={MONTHS[monthIndex]}
+          year={year}
+          onPrevious={() => handleMonthChange(false)}
+          onNext={() => handleMonthChange(true)}
+        />
         <PieChart
           currency={currency}
-          currentMonth={`${months[monthIndex]} ${year}`}
+          currentMonth={`${MONTHS[monthIndex]} ${year}`}
           expenses={expenses}
         />
       </DataContainer>
-      {currentMonthExpenses.length === 0 ? null : (
-        <FixedDataContainer>
-          <>
-            <Heading>{`${months[monthIndex]} ${year}`}</Heading>
-            {currentMonthExpenses.map((expense, index) => (
-              <div key={index}>
-                <ExpenseString>
-                  <ColumnContainer>
-                    <ExpenseCategory>
-                      {expense.expenseCategory.name.length > 16
-                        ? expense.expenseCategory.name
-                            .slice(0, 16)
-                            .concat("...")
-                        : expense.expenseCategory.name}
-                    </ExpenseCategory>
-                    <ExpenseDate>
-                      {moment.utc(expense.spentAt).format("MMM Do, YYYY")}
-                    </ExpenseDate>
-                  </ColumnContainer>
-                  <ExpenseAmount>
-                    {`${currency} 
-                    ${parseFloat(expense.amount).toFixed(2)}`}
-                  </ExpenseAmount>
-                </ExpenseString>
-              </div>
-            ))}
-          </>
-        </FixedDataContainer>
+      {currentMonthExpenses.length > 0 && (
+        <>
+          <Heading>{`${MONTHS[monthIndex]} ${year}`}</Heading>
+          <ExpensesList expenses={currentMonthExpenses} currency={currency} />
+        </>
       )}
     </Container>
   );
+};
+
+Expenses.propTypes = {
+  expenses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      spentAt: PropTypes.string.isRequired,
+      amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+      expenseCategory: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  ).isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Expenses;
