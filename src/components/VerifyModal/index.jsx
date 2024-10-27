@@ -106,7 +106,6 @@ const EditUserModal = ({ children, userData, onClose, logout }) => {
           width: "auto",
           display: "inline-flex",
         }}
-        role="button"
         tabIndex={0}
         aria-haspopup="dialog"
         aria-label="Edit user settings"
