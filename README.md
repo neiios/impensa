@@ -75,9 +75,9 @@ We run Prettier on-commit, which means you can write code in whatever style you 
 
 ## Contributors 👑
 
-<a href="https://github.com/tmneth">
-  <img src="https://avatars.githubusercontent.com/u/80415416?v=4" width="50" height="50" alt="tmneth"/>
+<a href="https://github.com/maksimbar">
+  <img src="https://avatars.githubusercontent.com/u/80415416?v=4" width="50px" alt="maksimbar"/>
 </a>
 <a href="https://github.com/neiios">
-  <img src="https://avatars.githubusercontent.com/u/68248740?v=4" width="50" height="50" alt="neiios"/>
-</a> 
+  <img src="https://avatars.githubusercontent.com/u/68248740?v=4" width="50px" alt="neiios"/>
+</a>
